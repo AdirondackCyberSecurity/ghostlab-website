@@ -841,6 +841,21 @@
       font-size: 0.82rem;
       margin: 0;
     }
+    .radio-listen-btn {
+      width: 100%;
+      margin: 14px 0 10px;
+      border: none;
+    }
+    .radio-listen-btn.is-live {
+      background: linear-gradient(180deg, #ffb06a 0%, var(--warning) 100%);
+      color: #1a0d00;
+      box-shadow: 0 0 0 1px rgba(255, 140, 64, 0.45), 0 10px 28px rgba(255, 140, 64, 0.22);
+    }
+    .radio-card {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
 
     /* Modes / badges */
     .mode-card {

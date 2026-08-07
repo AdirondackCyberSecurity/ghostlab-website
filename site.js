@@ -66,133 +66,176 @@
     }, 2600);
   }
 
-  // Team PTT radio demo — rotate peers and speak investigation callouts
+  // Team PTT radio demo — peers speak aloud through device speakers
   var peers = document.querySelectorAll("#radioVisual .peer");
   var radioVisual = document.getElementById("radioVisual");
-  if (peers.length && radioVisual && "speechSynthesis" in window) {
+  var listenBtn = document.getElementById("radioListenBtn");
+  var radioNote = document.getElementById("radioNote");
+
+  if (peers.length && radioVisual) {
     var idx = 1;
-    var radioInView = false;
-    var speechUnlocked = false;
+    var radioLive = false;
     var peerVoices = [];
-    // Slight per-peer voice character so three investigators feel distinct
+    var rotateTimer = null;
+    var hasSpeech = "speechSynthesis" in window;
+
+    // Distinct speaking styles per investigator (pitch/rate still differ if OS reuses a voice)
     var voiceStyle = [
-      { rate: 1.02, pitch: 1.05 },
-      { rate: 0.96, pitch: 0.85 },
-      { rate: 1.0, pitch: 1.15 }
+      { rate: 1.06, pitch: 1.12 }, // Alex — brighter / quicker
+      { rate: 0.94, pitch: 0.82 }, // Jack — lower / radio grit
+      { rate: 1.0, pitch: 1.22 }   // Morgan — higher
     ];
 
     function loadPeerVoices() {
+      if (!hasSpeech) return;
       var all = window.speechSynthesis.getVoices() || [];
       var en = all.filter(function (v) {
-        return /^en/i.test(v.lang || "");
+        return /^en(-|_|$)/i.test(v.lang || "") || /english/i.test(v.name || "");
       });
-      var pool = en.length ? en : all;
+      var pool = en.length ? en : all.slice();
       if (!pool.length) {
         peerVoices = [];
         return;
       }
-      // Prefer distinct voices; fall back to cycling the pool
-      var preferred = pool.filter(function (v) {
-        var n = (v.name || "").toLowerCase();
-        return /samantha|alex|daniel|karen|moira|rishi|aaron|fred|siri|google|microsoft|enhanced|premium|neural/i.test(n);
-      });
-      var source = preferred.length >= 2 ? preferred : pool;
-      peerVoices = [
-        source[0] || pool[0],
-        source[1] || pool[Math.min(1, pool.length - 1)],
-        source[2] || pool[Math.min(2, pool.length - 1)]
+      // Prefer three different system voices when available
+      var preferredNames = [
+        /samantha|karen|moira|female|zira|siri.*female|google us english female/i,
+        /daniel|alex|fred|david|male|aaron|google us english male|microsoft david/i,
+        /moira|fiona|karen|tessa|victoria|siri|google uk|microsoft zira|neural/i
       ];
+      peerVoices = [null, null, null];
+      preferredNames.forEach(function (re, i) {
+        var found = pool.find(function (v) { return re.test(v.name || ""); });
+        if (found) peerVoices[i] = found;
+      });
+      // Fill gaps with distinct remaining voices
+      var used = peerVoices.filter(Boolean).map(function (v) { return v.name; });
+      pool.forEach(function (v) {
+        for (var i = 0; i < 3; i++) {
+          if (!peerVoices[i] && used.indexOf(v.name) === -1) {
+            peerVoices[i] = v;
+            used.push(v.name);
+          }
+        }
+      });
+      for (var j = 0; j < 3; j++) {
+        if (!peerVoices[j]) peerVoices[j] = pool[j % pool.length];
+      }
     }
-    loadPeerVoices();
-    if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
-      window.speechSynthesis.onvoiceschanged = loadPeerVoices;
+
+    if (hasSpeech) {
+      loadPeerVoices();
+      if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
+        window.speechSynthesis.onvoiceschanged = loadPeerVoices;
+      }
+      // Chrome often loads voices async
+      setTimeout(loadPeerVoices, 250);
+      setTimeout(loadPeerVoices, 1000);
     }
 
     function speakLine(peerIndex, text) {
-      if (!speechUnlocked || !radioInView || !text) return;
+      if (!radioLive || !hasSpeech || !text) return;
       try {
         window.speechSynthesis.cancel();
-        var u = new SpeechSynthesisUtterance(text);
-        var style = voiceStyle[peerIndex % voiceStyle.length];
-        u.rate = style.rate;
-        u.pitch = style.pitch;
-        u.volume = 1;
-        if (peerVoices[peerIndex]) u.voice = peerVoices[peerIndex];
-        // Keep default English when the voice list is empty
-        if (!u.voice) u.lang = "en-US";
-        window.speechSynthesis.speak(u);
+        // Chrome bug: cancel can swallow the next speak — brief defer helps
+        setTimeout(function () {
+          if (!radioLive) return;
+          loadPeerVoices();
+          var u = new SpeechSynthesisUtterance(text);
+          var style = voiceStyle[peerIndex % voiceStyle.length];
+          u.rate = style.rate;
+          u.pitch = style.pitch;
+          u.volume = 1;
+          u.lang = "en-US";
+          if (peerVoices[peerIndex]) u.voice = peerVoices[peerIndex];
+          window.speechSynthesis.speak(u);
+        }, 40);
       } catch (e) { /* ignore */ }
     }
 
-    function unlockSpeech() {
-      if (speechUnlocked) return;
-      speechUnlocked = true;
-      var note = document.getElementById("radioNote");
-      if (note) {
-        note.textContent = "Live team radio — each investigator calls out what they’re seeing mid-hunt.";
-      }
-      // If IO hasn't fired yet, check visibility directly inside the gesture
-      if (!radioInView) {
-        var rect = radioVisual.getBoundingClientRect();
-        radioInView = rect.top < window.innerHeight && rect.bottom > 0;
-      }
-      // Speak inside the user gesture so browsers allow audio
-      if (radioInView) {
-        var talking = radioVisual.querySelector(".peer.talking");
-        var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
-        if (tIdx < 0) tIdx = idx;
-        speakLine(tIdx, peers[tIdx].getAttribute("data-line"));
-      }
-    }
-    ["pointerdown", "keydown", "touchstart"].forEach(function (evt) {
-      document.addEventListener(evt, unlockSpeech, { once: true, passive: true });
-    });
-
-    function setTalking(peerIndex) {
+    function setTalking(peerIndex, forceSpeak) {
       peers.forEach(function (p) {
         p.classList.remove("talking");
       });
       var peer = peers[peerIndex];
+      if (!peer) return;
       peer.classList.add("talking");
-      // Audio-only callouts — no under-name caption text
-      speakLine(peerIndex, peer.getAttribute("data-line") || "");
+      if (forceSpeak || radioLive) {
+        speakLine(peerIndex, peer.getAttribute("data-line") || "");
+      }
     }
 
-    // Speak initial talking peer once speech is allowed and card is visible
-    if ("IntersectionObserver" in window) {
-      var radioIo = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          radioInView = e.isIntersecting;
-          if (!radioInView) {
-            try { window.speechSynthesis.cancel(); } catch (err) { /* ignore */ }
-          } else if (speechUnlocked) {
-            var talking = radioVisual.querySelector(".peer.talking");
-            var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
-            if (tIdx < 0) tIdx = idx;
-            var line = peers[tIdx].getAttribute("data-line");
-            speakLine(tIdx, line);
-          }
-        });
-      }, { threshold: 0.35 });
-      radioIo.observe(radioVisual);
-    } else {
-      radioInView = true;
+    function startRadio() {
+      if (radioLive) return;
+      radioLive = true;
+      if (listenBtn) {
+        listenBtn.classList.add("is-live");
+        listenBtn.setAttribute("aria-pressed", "true");
+        listenBtn.textContent = "● Team radio live — speakers on";
+      }
+      if (radioNote) {
+        radioNote.textContent = "Alex, Jack, and Morgan are calling out mid-hunt. Unmute your device to hear them.";
+      }
+      // Speak immediately inside the user gesture (required by browsers)
+      var talking = radioVisual.querySelector(".peer.talking");
+      var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
+      if (tIdx < 0) tIdx = idx;
+      idx = tIdx;
+      setTalking(idx, true);
+      if (rotateTimer) clearInterval(rotateTimer);
+      rotateTimer = setInterval(function () {
+        idx = (idx + 1) % peers.length;
+        setTalking(idx, true);
+      }, 3800);
     }
 
-    setInterval(function () {
-      idx = (idx + 1) % peers.length;
-      setTalking(idx);
-    }, 3200);
-  } else if (peers.length) {
-    // No speech API — keep visual rotation only (names only, no caption lines)
-    var idxFallback = 1;
-    setInterval(function () {
-      peers.forEach(function (p) {
-        p.classList.remove("talking");
+    function stopRadio() {
+      radioLive = false;
+      if (rotateTimer) {
+        clearInterval(rotateTimer);
+        rotateTimer = null;
+      }
+      if (hasSpeech) {
+        try { window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+      }
+      if (listenBtn) {
+        listenBtn.classList.remove("is-live");
+        listenBtn.setAttribute("aria-pressed", "false");
+        listenBtn.textContent = "▶ Listen to team radio";
+      }
+      if (radioNote) {
+        radioNote.textContent = "Tap Listen — each investigator speaks through your speakers with a different voice.";
+      }
+    }
+
+    if (listenBtn) {
+      listenBtn.addEventListener("click", function () {
+        if (radioLive) stopRadio();
+        else startRadio();
       });
-      idxFallback = (idxFallback + 1) % peers.length;
-      peers[idxFallback].classList.add("talking");
-    }, 2800);
+    } else {
+      // Fallback: first interaction unlocks if no button
+      ["pointerdown", "keydown", "touchstart"].forEach(function (evt) {
+        document.addEventListener(evt, function () {
+          if (!radioLive) startRadio();
+        }, { once: true, passive: true });
+      });
+    }
+
+    // Visual rotation while muted (no speech until Listen)
+    setInterval(function () {
+      if (radioLive) return;
+      idx = (idx + 1) % peers.length;
+      peers.forEach(function (p) { p.classList.remove("talking"); });
+      peers[idx].classList.add("talking");
+    }, 3200);
+
+    // Pause speech when tab is hidden
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden && hasSpeech) {
+        try { window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+      }
+    });
   }
 
   // Normalize every App Store CTA (works even if markup drifts)
