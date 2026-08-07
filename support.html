@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GhostLab Support</title>
+  <meta name="description" content="Support for GhostLab (iOS investigation app). Contact jmiller@adkcyber.com for help with GhostLab, TestFlight, purchases, and account questions." />
+  <meta name="theme-color" content="#07090f" />
+  <link rel="canonical" href="https://ghostlab.icu/support.html" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <style>
+    :root {
+      --bg: #07090f;
+      --panel: #121824;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: rgba(255, 255, 255, 0.94);
+      --muted: rgba(255, 255, 255, 0.55);
+      --accent: #3dffa8;
+      --accent-dim: rgba(61, 255, 168, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #163528 0%, transparent 55%),
+                  radial-gradient(900px 500px at 100% 0%, #2a1840 0%, transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .top img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px rgba(199, 89, 242, 0.35);
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(61, 255, 168, 0.35);
+      border-radius: 999px;
+      padding: 6px 12px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 28px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 16px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+    .card p, .card li {
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+    .card ul {
+      margin: 0 0 8px;
+      padding-left: 1.2rem;
+    }
+    .card li { margin-bottom: 6px; }
+    a { color: var(--accent); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #062015;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 4px;
+      margin-right: 8px;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .email {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 1.05rem;
+      color: var(--text);
+      word-break: break-all;
+    }
+    footer {
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { margin-right: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <img src="assets/app-icon.png" width="48" height="48" alt="GhostLab" />
+      <div>
+        <div class="badge">Support</div>
+        <h1 style="margin:0;font-size:1.5rem">GhostLab Help</h1>
+      </div>
+    </div>
+    <p class="lede">
+      Questions about GhostLab, TestFlight, purchases, or privacy?
+      We’re a small team — email usually gets the fastest reply.
+    </p>
+
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Email support:</p>
+      <p class="email"><a href="mailto:jmiller@adkcyber.com">jmiller@adkcyber.com</a></p>
+      <p style="margin-top:14px">Please include your device model, iOS version, and GhostLab build number (Settings) when reporting a bug.</p>
+      <a class="btn" href="mailto:jmiller@adkcyber.com">Email support</a>
+      <a class="btn btn-ghost" href="index.html">Back to GhostLab</a>
+    </div>
+
+    <div class="card">
+      <h2>Common topics</h2>
+      <ul>
+        <li><strong>Purchases / GhostLab Pro</strong> — Restore Purchases in Settings. Managed by Apple StoreKit; we never see payment details.</li>
+        <li><strong>Microphone / speech</strong> — Enable in iOS Settings → GhostLab if Spirit Speak or recording fails.</li>
+        <li><strong>Team radio / PTT</strong> — Requires Wi‑Fi / local network permission; both phones on the same network work best.</li>
+        <li><strong>Privacy</strong> — Recordings stay on device. See our <a href="privacy.html">Privacy Policy</a>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Disclaimer</h2>
+      <p>GhostLab is for entertainment and experimental investigation only. No feature constitutes scientific evidence of the paranormal.</p>
+    </div>
+
+    <footer>
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <span>© Adirondack Cyber Security</span>
+    </footer>
+  </main>
+</body>
+</html>
