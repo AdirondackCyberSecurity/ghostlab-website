@@ -784,11 +784,27 @@
     }
     .peer {
       display: grid;
-      gap: 8px;
+      gap: 6px;
       justify-items: center;
       color: var(--muted);
       font-size: 0.75rem;
       font-weight: 600;
+      max-width: 96px;
+    }
+    .peer .peer-name {
+      letter-spacing: 0.02em;
+    }
+    .peer .peer-call {
+      min-height: 2.4em;
+      max-width: 9.5ch;
+      line-height: 1.25;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: transparent;
+      text-align: center;
+    }
+    .peer.talking .peer-call {
+      color: var(--warning);
     }
     .peer .avatar {
       width: 52px;

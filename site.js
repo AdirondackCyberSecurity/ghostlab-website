@@ -66,21 +66,141 @@
     }, 2600);
   }
 
+  // Team PTT radio demo — rotate peers and speak investigation callouts
   var peers = document.querySelectorAll("#radioVisual .peer");
-  if (peers.length) {
+  var radioVisual = document.getElementById("radioVisual");
+  if (peers.length && radioVisual && "speechSynthesis" in window) {
     var idx = 1;
+    var radioInView = false;
+    var speechUnlocked = false;
+    var peerVoices = [];
+    // Slight per-peer voice character so three investigators feel distinct
+    var voiceStyle = [
+      { rate: 1.02, pitch: 1.05 },
+      { rate: 0.96, pitch: 0.85 },
+      { rate: 1.0, pitch: 1.15 }
+    ];
+
+    function loadPeerVoices() {
+      var all = window.speechSynthesis.getVoices() || [];
+      var en = all.filter(function (v) {
+        return /^en/i.test(v.lang || "");
+      });
+      var pool = en.length ? en : all;
+      if (!pool.length) {
+        peerVoices = [];
+        return;
+      }
+      // Prefer distinct voices; fall back to cycling the pool
+      var preferred = pool.filter(function (v) {
+        var n = (v.name || "").toLowerCase();
+        return /samantha|alex|daniel|karen|moira|rishi|aaron|fred|siri|google|microsoft|enhanced|premium|neural/i.test(n);
+      });
+      var source = preferred.length >= 2 ? preferred : pool;
+      peerVoices = [
+        source[0] || pool[0],
+        source[1] || pool[Math.min(1, pool.length - 1)],
+        source[2] || pool[Math.min(2, pool.length - 1)]
+      ];
+    }
+    loadPeerVoices();
+    if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
+      window.speechSynthesis.onvoiceschanged = loadPeerVoices;
+    }
+
+    function speakLine(peerIndex, text) {
+      if (!speechUnlocked || !radioInView || !text) return;
+      try {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(text);
+        var style = voiceStyle[peerIndex % voiceStyle.length];
+        u.rate = style.rate;
+        u.pitch = style.pitch;
+        u.volume = 1;
+        if (peerVoices[peerIndex]) u.voice = peerVoices[peerIndex];
+        // Keep default English when the voice list is empty
+        if (!u.voice) u.lang = "en-US";
+        window.speechSynthesis.speak(u);
+      } catch (e) { /* ignore */ }
+    }
+
+    function unlockSpeech() {
+      if (speechUnlocked) return;
+      speechUnlocked = true;
+      var note = document.getElementById("radioNote");
+      if (note) {
+        note.textContent = "Live team radio — each investigator calls out what they’re seeing mid-hunt.";
+      }
+      // If IO hasn't fired yet, check visibility directly inside the gesture
+      if (!radioInView) {
+        var rect = radioVisual.getBoundingClientRect();
+        radioInView = rect.top < window.innerHeight && rect.bottom > 0;
+      }
+      // Speak inside the user gesture so browsers allow audio
+      if (radioInView) {
+        var talking = radioVisual.querySelector(".peer.talking");
+        var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
+        if (tIdx < 0) tIdx = idx;
+        speakLine(tIdx, peers[tIdx].getAttribute("data-line"));
+      }
+    }
+    ["pointerdown", "keydown", "touchstart"].forEach(function (evt) {
+      document.addEventListener(evt, unlockSpeech, { once: true, passive: true });
+    });
+
+    function setTalking(peerIndex) {
+      peers.forEach(function (p) {
+        p.classList.remove("talking");
+        var call = p.querySelector(".peer-call");
+        if (call) call.textContent = "";
+      });
+      var peer = peers[peerIndex];
+      peer.classList.add("talking");
+      var line = peer.getAttribute("data-line") || "ON AIR";
+      var activeCall = peer.querySelector(".peer-call");
+      if (activeCall) activeCall.textContent = line;
+      speakLine(peerIndex, line);
+    }
+
+    // Speak initial talking peer once speech is allowed and card is visible
+    if ("IntersectionObserver" in window) {
+      var radioIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          radioInView = e.isIntersecting;
+          if (!radioInView) {
+            try { window.speechSynthesis.cancel(); } catch (err) { /* ignore */ }
+          } else if (speechUnlocked) {
+            var talking = radioVisual.querySelector(".peer.talking");
+            var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
+            if (tIdx < 0) tIdx = idx;
+            var line = peers[tIdx].getAttribute("data-line");
+            speakLine(tIdx, line);
+          }
+        });
+      }, { threshold: 0.35 });
+      radioIo.observe(radioVisual);
+    } else {
+      radioInView = true;
+    }
+
+    setInterval(function () {
+      idx = (idx + 1) % peers.length;
+      setTalking(idx);
+    }, 3200);
+  } else if (peers.length) {
+    // No speech API — keep visual rotation only
+    var idxFallback = 1;
     setInterval(function () {
       peers.forEach(function (p) {
         p.classList.remove("talking");
-        var name = p.querySelector("span");
-        if (name && name.dataset.base) name.textContent = name.dataset.base;
+        var call = p.querySelector(".peer-call");
+        if (call) call.textContent = "";
       });
-      idx = (idx + 1) % peers.length;
-      peers[idx].classList.add("talking");
-      var s = peers[idx].querySelector("span");
-      if (s) {
-        if (!s.dataset.base) s.dataset.base = s.textContent;
-        s.textContent = "ON AIR";
+      idxFallback = (idxFallback + 1) % peers.length;
+      peers[idxFallback].classList.add("talking");
+      var activeCall = peers[idxFallback].querySelector(".peer-call");
+      if (activeCall) {
+        activeCall.textContent = peers[idxFallback].getAttribute("data-line") || "ON AIR";
       }
     }, 2800);
   }
