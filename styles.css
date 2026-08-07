@@ -755,6 +755,9 @@
       background: rgba(0, 0, 0, 0.35);
       padding: 22px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
     .radio-status {
       display: inline-flex;
@@ -850,11 +853,6 @@
       background: linear-gradient(180deg, #ffb06a 0%, var(--warning) 100%);
       color: #1a0d00;
       box-shadow: 0 0 0 1px rgba(255, 140, 64, 0.45), 0 10px 28px rgba(255, 140, 64, 0.22);
-    }
-    .radio-card {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
     }
 
     /* Modes / badges */
