@@ -545,7 +545,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
-    /* Free mode set has 7 cards — prefer even packing on mid widths */
+    /* Free mode set has 7 cards - prefer even packing on mid widths */
     .grid-modes-free {
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
@@ -1000,7 +1000,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* Showcase phone frames — cap height so tall screenshots don't blow layout */
+    /* Showcase phone frames - cap height so tall screenshots don't blow layout */
     .showcase {
       align-items: center;
     }

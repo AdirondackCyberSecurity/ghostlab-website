@@ -27,7 +27,7 @@
     });
   }
 
-  // Scroll reveal — keep hero CTAs usable even if this fails
+  // Scroll reveal - keep hero CTAs usable even if this fails
   var els = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -66,7 +66,7 @@
     }, 2600);
   }
 
-  // Team PTT radio demo — peers speak aloud through device speakers
+  // Team PTT radio demo - pre-recorded investigator calls with radio FX
   var peers = document.querySelectorAll("#radioVisual .peer");
   var radioVisual = document.getElementById("radioVisual");
   var listenBtn = document.getElementById("radioListenBtn");
@@ -75,128 +75,119 @@
   if (peers.length && radioVisual) {
     var idx = 1;
     var radioLive = false;
-    var peerVoices = [];
     var rotateTimer = null;
-    var hasSpeech = "speechSynthesis" in window;
+    var nextTimer = null;
+    var clips = {};       // "0-1" -> Audio
+    var variantFor = [1, 1, 1]; // next variant per peer (alternates 1/2)
+    var staticBed = null;
+    var currentClip = null;
 
-    // Distinct speaking styles per investigator (pitch/rate still differ if OS reuses a voice)
-    var voiceStyle = [
-      { rate: 1.06, pitch: 1.12 }, // Alex — brighter / quicker
-      { rate: 0.94, pitch: 0.82 }, // Jack — lower / radio grit
-      { rate: 1.0, pitch: 1.22 }   // Morgan — higher
-    ];
+    function clipSrc(peerIndex, variant) {
+      var peer = peers[peerIndex];
+      var base = peer ? peer.getAttribute("data-audio") : null;
+      return base ? base + "-" + variant + ".mp3" : null;
+    }
 
-    function loadPeerVoices() {
-      if (!hasSpeech) return;
-      var all = window.speechSynthesis.getVoices() || [];
-      var en = all.filter(function (v) {
-        return /^en(-|_|$)/i.test(v.lang || "") || /english/i.test(v.name || "");
-      });
-      var pool = en.length ? en : all.slice();
-      if (!pool.length) {
-        peerVoices = [];
-        return;
+    function getClip(peerIndex, variant) {
+      var key = peerIndex + "-" + variant;
+      if (!clips[key]) {
+        var src = clipSrc(peerIndex, variant);
+        if (!src) return null;
+        var a = new Audio(src);
+        a.preload = "auto";
+        clips[key] = a;
       }
-      // Prefer three different system voices when available
-      var preferredNames = [
-        /samantha|karen|moira|female|zira|siri.*female|google us english female/i,
-        /daniel|alex|fred|david|male|aaron|google us english male|microsoft david/i,
-        /moira|fiona|karen|tessa|victoria|siri|google uk|microsoft zira|neural/i
-      ];
-      peerVoices = [null, null, null];
-      preferredNames.forEach(function (re, i) {
-        var found = pool.find(function (v) { return re.test(v.name || ""); });
-        if (found) peerVoices[i] = found;
-      });
-      // Fill gaps with distinct remaining voices
-      var used = peerVoices.filter(Boolean).map(function (v) { return v.name; });
-      pool.forEach(function (v) {
-        for (var i = 0; i < 3; i++) {
-          if (!peerVoices[i] && used.indexOf(v.name) === -1) {
-            peerVoices[i] = v;
-            used.push(v.name);
-          }
-        }
-      });
-      for (var j = 0; j < 3; j++) {
-        if (!peerVoices[j]) peerVoices[j] = pool[j % pool.length];
+      return clips[key];
+    }
+
+    function preloadAll() {
+      for (var p = 0; p < peers.length; p++) {
+        getClip(p, 1);
+        getClip(p, 2);
+      }
+      if (!staticBed) {
+        staticBed = new Audio("assets/radio/static-bed.mp3");
+        staticBed.loop = true;
+        staticBed.volume = 0.18;
+        staticBed.preload = "auto";
       }
     }
 
-    if (hasSpeech) {
-      loadPeerVoices();
-      if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
-        window.speechSynthesis.onvoiceschanged = loadPeerVoices;
+    function stopCurrentClip() {
+      if (currentClip) {
+        try { currentClip.pause(); currentClip.currentTime = 0; } catch (e) { /* ignore */ }
+        currentClip.onended = null;
+        currentClip = null;
       }
-      // Chrome often loads voices async
-      setTimeout(loadPeerVoices, 250);
-      setTimeout(loadPeerVoices, 1000);
+      if (nextTimer) { clearTimeout(nextTimer); nextTimer = null; }
     }
 
-    function speakLine(peerIndex, text) {
-      if (!radioLive || !hasSpeech || !text) return;
-      try {
-        window.speechSynthesis.cancel();
-        // Chrome bug: cancel can swallow the next speak — brief defer helps
-        setTimeout(function () {
-          if (!radioLive) return;
-          loadPeerVoices();
-          var u = new SpeechSynthesisUtterance(text);
-          var style = voiceStyle[peerIndex % voiceStyle.length];
-          u.rate = style.rate;
-          u.pitch = style.pitch;
-          u.volume = 1;
-          u.lang = "en-US";
-          if (peerVoices[peerIndex]) u.voice = peerVoices[peerIndex];
-          window.speechSynthesis.speak(u);
-        }, 40);
-      } catch (e) { /* ignore */ }
-    }
-
-    function setTalking(peerIndex, forceSpeak) {
-      peers.forEach(function (p) {
-        p.classList.remove("talking");
-      });
+    function playPeer(peerIndex) {
+      if (!radioLive) return;
+      stopCurrentClip();
+      peers.forEach(function (p) { p.classList.remove("talking"); });
       var peer = peers[peerIndex];
       if (!peer) return;
       peer.classList.add("talking");
-      if (forceSpeak || radioLive) {
-        speakLine(peerIndex, peer.getAttribute("data-line") || "");
+
+      var variant = variantFor[peerIndex] || 1;
+      variantFor[peerIndex] = variant === 1 ? 2 : 1;
+      var clip = getClip(peerIndex, variant);
+      if (!clip) return;
+      currentClip = clip;
+      clip.currentTime = 0;
+      clip.onended = function () {
+        if (!radioLive) return;
+        // brief dead air between transmissions, like a real net
+        nextTimer = setTimeout(function () {
+          if (!radioLive) return;
+          idx = (idx + 1) % peers.length;
+          playPeer(idx);
+        }, 700 + Math.floor(Math.random() * 700));
+      };
+      var pr = clip.play();
+      if (pr && pr.catch) {
+        pr.catch(function () {
+          // Autoplay/network hiccup - keep the visual rotation alive
+          if (!radioLive) return;
+          nextTimer = setTimeout(function () {
+            if (!radioLive) return;
+            idx = (idx + 1) % peers.length;
+            playPeer(idx);
+          }, 3200);
+        });
       }
     }
 
     function startRadio() {
       if (radioLive) return;
       radioLive = true;
+      preloadAll();
       if (listenBtn) {
         listenBtn.classList.add("is-live");
         listenBtn.setAttribute("aria-pressed", "true");
-        listenBtn.textContent = "● Team radio live — speakers on";
+        listenBtn.textContent = "● Team radio live - speakers on";
       }
       if (radioNote) {
-        radioNote.textContent = "Alex, Jack, and Morgan are calling out mid-hunt. Unmute your device to hear them.";
+        radioNote.textContent = "Live from the field - Alex, Jack, and Morgan mid-hunt. Unmute your device.";
       }
-      // Speak immediately inside the user gesture (required by browsers)
+      if (staticBed) {
+        var sp = staticBed.play();
+        if (sp && sp.catch) sp.catch(function () { /* ignore */ });
+      }
+      // Start playback inside the user gesture (required by browsers)
       var talking = radioVisual.querySelector(".peer.talking");
       var tIdx = talking ? Array.prototype.indexOf.call(peers, talking) : idx;
       if (tIdx < 0) tIdx = idx;
       idx = tIdx;
-      setTalking(idx, true);
-      if (rotateTimer) clearInterval(rotateTimer);
-      rotateTimer = setInterval(function () {
-        idx = (idx + 1) % peers.length;
-        setTalking(idx, true);
-      }, 3800);
+      playPeer(idx);
     }
 
     function stopRadio() {
       radioLive = false;
-      if (rotateTimer) {
-        clearInterval(rotateTimer);
-        rotateTimer = null;
-      }
-      if (hasSpeech) {
-        try { window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
+      stopCurrentClip();
+      if (staticBed) {
+        try { staticBed.pause(); staticBed.currentTime = 0; } catch (e) { /* ignore */ }
       }
       if (listenBtn) {
         listenBtn.classList.remove("is-live");
@@ -204,11 +195,13 @@
         listenBtn.textContent = "▶ Listen to team radio";
       }
       if (radioNote) {
-        radioNote.textContent = "Tap Listen — each investigator speaks through your speakers with a different voice.";
+        radioNote.textContent = "Tap Listen - hear the team call out over the radio, each with their own voice. (Simulation)";
       }
     }
 
     if (listenBtn) {
+      // Warm the cache so the first tap is instant
+      listenBtn.addEventListener("pointerenter", preloadAll, { once: true });
       listenBtn.addEventListener("click", function () {
         if (radioLive) stopRadio();
         else startRadio();
@@ -222,7 +215,7 @@
       });
     }
 
-    // Visual rotation while muted (no speech until Listen)
+    // Visual rotation while muted (no audio until Listen)
     setInterval(function () {
       if (radioLive) return;
       idx = (idx + 1) % peers.length;
@@ -230,11 +223,9 @@
       peers[idx].classList.add("talking");
     }, 3200);
 
-    // Pause speech when tab is hidden
+    // Stop audio when tab is hidden
     document.addEventListener("visibilitychange", function () {
-      if (document.hidden && hasSpeech) {
-        try { window.speechSynthesis.cancel(); } catch (e) { /* ignore */ }
-      }
+      if (document.hidden && radioLive) stopRadio();
     });
   }
 
