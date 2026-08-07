@@ -5,10 +5,10 @@
   if (y) y.textContent = String(new Date().getFullYear());
 
   var nav = document.getElementById("nav");
-  var onScroll = function () {
+  function onScroll() {
     if (!nav) return;
     nav.classList.toggle("scrolled", window.scrollY > 12);
-  };
+  }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -27,6 +27,7 @@
     });
   }
 
+  // Scroll reveal — keep hero CTAs usable even if this fails
   var els = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -36,11 +37,17 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.08, rootMargin: "0px 0px -20px 0px" });
     els.forEach(function (el) { io.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add("in"); });
   }
+  // Safety: after 1.2s force-show all reveals (prevents invisible stuck state)
+  setTimeout(function () {
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) {
+      el.classList.add("in");
+    });
+  }, 1200);
 
   var ptt = document.getElementById("pttDemo");
   var chip = document.getElementById("pttChip");
@@ -52,8 +59,8 @@
       var label = ptt.querySelector(".stack");
       if (label) {
         label.innerHTML = live
-          ? '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>ON AIR'
-          : '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>TALK';
+          ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>ON AIR'
+          : '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>TALK';
       }
       chip.textContent = live ? "TRANSMITTING" : "HOLD TO TALK";
     }, 2600);
@@ -78,24 +85,19 @@
     }, 2800);
   }
 
-  // Canonical App Store listing — override if set before this script
+  // Normalize every App Store CTA (works even if markup drifts)
   var storeUrl = window.GHOSTLAB_APP_STORE_URL || APP_STORE_URL;
-  document.querySelectorAll('a[href*="apps.apple.com"], a.btn-apple, #appStoreBtn').forEach(function (a) {
-    a.href = storeUrl;
-    if (a.getAttribute("target") == null && a.classList.contains("btn-apple")) {
+  document.querySelectorAll("a.btn-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
+    a.setAttribute("href", storeUrl);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener noreferrer");
+  });
+  document.querySelectorAll("a.btn-primary").forEach(function (a) {
+    var t = (a.textContent || "").toLowerCase();
+    if (t.indexOf("app store") !== -1 || t.indexOf("unlock") !== -1) {
+      a.setAttribute("href", storeUrl);
       a.setAttribute("target", "_blank");
       a.setAttribute("rel", "noopener noreferrer");
-    }
-  });
-  // Pro unlock CTAs that still say App Store
-  document.querySelectorAll('a').forEach(function (a) {
-    var t = (a.textContent || "").trim().toLowerCase();
-    if (t.indexOf("app store") !== -1 || t.indexOf("unlock on the app store") !== -1) {
-      if (!a.getAttribute("href") || a.getAttribute("href").charAt(0) === "#") {
-        a.href = storeUrl;
-        a.setAttribute("target", "_blank");
-        a.setAttribute("rel", "noopener noreferrer");
-      }
     }
   });
 })();
