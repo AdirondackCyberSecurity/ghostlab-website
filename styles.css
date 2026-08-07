@@ -794,18 +794,6 @@
     .peer .peer-name {
       letter-spacing: 0.02em;
     }
-    .peer .peer-call {
-      min-height: 2.4em;
-      max-width: 9.5ch;
-      line-height: 1.25;
-      font-size: 0.68rem;
-      font-weight: 700;
-      color: transparent;
-      text-align: center;
-    }
-    .peer.talking .peer-call {
-      color: var(--warning);
-    }
     .peer .avatar {
       width: 52px;
       height: 52px;

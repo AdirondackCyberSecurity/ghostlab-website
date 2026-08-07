@@ -151,15 +151,11 @@
     function setTalking(peerIndex) {
       peers.forEach(function (p) {
         p.classList.remove("talking");
-        var call = p.querySelector(".peer-call");
-        if (call) call.textContent = "";
       });
       var peer = peers[peerIndex];
       peer.classList.add("talking");
-      var line = peer.getAttribute("data-line") || "ON AIR";
-      var activeCall = peer.querySelector(".peer-call");
-      if (activeCall) activeCall.textContent = line;
-      speakLine(peerIndex, line);
+      // Audio-only callouts — no under-name caption text
+      speakLine(peerIndex, peer.getAttribute("data-line") || "");
     }
 
     // Speak initial talking peer once speech is allowed and card is visible
@@ -188,20 +184,14 @@
       setTalking(idx);
     }, 3200);
   } else if (peers.length) {
-    // No speech API — keep visual rotation only
+    // No speech API — keep visual rotation only (names only, no caption lines)
     var idxFallback = 1;
     setInterval(function () {
       peers.forEach(function (p) {
         p.classList.remove("talking");
-        var call = p.querySelector(".peer-call");
-        if (call) call.textContent = "";
       });
       idxFallback = (idxFallback + 1) % peers.length;
       peers[idxFallback].classList.add("talking");
-      var activeCall = peers[idxFallback].querySelector(".peer-call");
-      if (activeCall) {
-        activeCall.textContent = peers[idxFallback].getAttribute("data-line") || "ON AIR";
-      }
     }, 2800);
   }
 
