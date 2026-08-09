@@ -28,7 +28,11 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -47,6 +51,9 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      /* Keep content clear of the notch / rounded corners on viewport-fit=cover devices */
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
     }
 
     img { max-width: 100%; display: block; }
@@ -118,7 +125,8 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      height: var(--nav-h);
+      height: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+      padding-top: env(safe-area-inset-top, 0px);
       display: flex;
       align-items: center;
       backdrop-filter: blur(18px) saturate(140%);
@@ -178,8 +186,10 @@
     @media (min-width: 880px) {
       .nav-cta { display: inline-flex; }
     }
+    /* Hide low-priority links in the cramped horizontal bar,
+       but keep them available inside the opened mobile menu */
     @media (max-width: 760px) {
-      .nav-links .hide-sm { display: none; }
+      .nav-links:not(.open) .hide-sm { display: none; }
     }
 
     /* Buttons */
@@ -1188,7 +1198,7 @@
     /* Footer */
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 0 56px;
+      padding: 40px 0 calc(56px + env(safe-area-inset-bottom, 0px));
       margin-top: 24px;
     }
     .footer-inner {
@@ -1290,6 +1300,11 @@
       .nav-links a {
         padding: 12px 14px;
         border-radius: 10px;
+      }
+      .nav-links {
+        inset: calc(var(--nav-h) + env(safe-area-inset-top, 0px)) 12px auto;
+        max-height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 24px);
+        overflow-y: auto;
       }
     }
 
@@ -1394,4 +1409,26 @@ main .team-panel {
 .home-strip-cta {
   width: min(var(--max), calc(100% - 40px));
   margin: 0 auto 56px;
+}
+
+/* ---------- Mobile display fixes ---------- */
+
+/* Older browsers without aspect-ratio: give the phone mockup an explicit height
+   so the screen doesn't collapse to zero */
+@supports not (aspect-ratio: 9 / 19.2) {
+  .phone { height: calc(min(290px, 72vw) * 2.133); }
+  .phone-float-b { height: calc(min(220px, 52vw) * 2.133); }
+  .gallery figure { height: 0; padding-bottom: 177.7%; }
+  .gallery figure img { position: absolute; inset: 0; }
+}
+
+/* Comfortable tap targets on touch screens (footer + breadcrumb links) */
+@media (pointer: coarse) {
+  footer ul { gap: 2px; }
+  footer ul a,
+  .page-hero .crumb a {
+    display: inline-block;
+    padding: 10px 0;
+  }
+  .footer-bottom { padding-bottom: 8px; }
 }

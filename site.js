@@ -25,6 +25,18 @@
         btn.setAttribute("aria-expanded", "false");
       });
     });
+    function closeMenu() {
+      if (!links.classList.contains("open")) return;
+      links.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    }
+    document.addEventListener("pointerdown", function (e) {
+      if (!links.contains(e.target) && !btn.contains(e.target)) closeMenu();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+    window.addEventListener("scroll", closeMenu, { passive: true });
   }
 
   // Scroll reveal - keep hero CTAs usable even if this fails
