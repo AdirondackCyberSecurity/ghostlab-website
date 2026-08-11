@@ -1496,6 +1496,9 @@ main .team-panel {
   font-size: 0.9rem;
   line-height: 1.6;
 }
+.tutorial-chapters span {
+  color: var(--text);
+}
 .tutorial-chapters a {
   color: var(--text);
   text-decoration: none;
