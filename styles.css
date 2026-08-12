@@ -504,6 +504,16 @@
       gap: 12px;
       margin-bottom: 28px;
     }
+    .hero-actions .btn {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    @media (max-width: 560px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; flex: 1 1 auto; }
+    }
     .trust-row {
       display: flex;
       flex-wrap: wrap;
