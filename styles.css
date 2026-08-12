@@ -1,5 +1,5 @@
 :root {
-      --bg: #07090f;
+      --bg: #0A0D14;
       --bg-elevated: #0c1018;
       --panel: rgba(18, 24, 36, 0.72);
       --panel-solid: #121824;
@@ -48,7 +48,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: var(--font);
-      background: var(--bg);
+      background: #0A0D14;
       color: var(--text);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
@@ -63,50 +63,36 @@
     a:hover { text-decoration: underline; }
     button { font-family: inherit; }
 
-    /* Ambient field */
+    /* Ambient field: page gradient + InvestigateGhostBackdrop.png + vignette */
     .ambient {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
+      background: linear-gradient(180deg, #0D121F 0%, #05080F 52%, #0F0A1A 100%);
     }
-    .ambient::before {
-      content: "";
+    .ambient-backdrop {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(900px 500px at 12% -8%, rgba(61, 255, 168, 0.14), transparent 55%),
-        radial-gradient(700px 480px at 92% 8%, rgba(199, 89, 242, 0.16), transparent 50%),
-        radial-gradient(600px 400px at 50% 100%, rgba(61, 255, 168, 0.06), transparent 55%);
+      background-image: url("assets/investigate-ghost-backdrop.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0.62;
+      pointer-events: none;
     }
-    .orb {
+    .ambient-vignette {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.55;
-      animation: drift 18s ease-in-out infinite alternate;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.18) 42%, rgba(0, 0, 0, 0) 72%);
+      mix-blend-mode: multiply;
     }
-    .orb-a {
-      width: 340px; height: 340px;
-      left: -80px; top: 20%;
-      background: rgba(61, 255, 168, 0.18);
-    }
-    .orb-b {
-      width: 420px; height: 420px;
-      right: -120px; top: 40%;
-      background: rgba(199, 89, 242, 0.16);
-      animation-delay: -6s;
-    }
-    .orb-c {
-      width: 280px; height: 280px;
-      left: 40%; bottom: 5%;
-      background: rgba(61, 255, 168, 0.08);
-      animation-delay: -11s;
-    }
-    @keyframes drift {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(24px, -30px, 0) scale(1.08); }
+    @media (max-width: 430px) and (orientation: portrait) {
+      .ambient-backdrop {
+        background-position: center 30%;
+      }
     }
     .grain {
       position: fixed;
