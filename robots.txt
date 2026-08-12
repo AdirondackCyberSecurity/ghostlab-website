@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ghostlab.icu/sitemap.xml
+Sitemap: https://ghostlab.icu/sitemap.txt
