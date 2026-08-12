@@ -1432,6 +1432,88 @@ main .team-panel {
   border: 0;
 }
 
+/* Click-to-load YouTube facade (no third-party until play) */
+.video-facade-btn {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: #0a0d14;
+  cursor: pointer;
+  color: #f00;
+}
+.video-facade-btn:focus { outline: none; }
+.video-facade-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 2px rgba(61, 255, 168, 0.35);
+}
+.video-facade-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.2s ease, transform 0.35s ease;
+}
+.video-facade-btn:hover .video-facade-poster,
+.video-facade-btn:focus-visible .video-facade-poster {
+  filter: brightness(1.08);
+  transform: scale(1.02);
+}
+.video-facade-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.55));
+}
+.video-facade-btn:hover .video-facade-play,
+.video-facade-btn:focus-visible .video-facade-play {
+  transform: scale(1.06);
+  filter: drop-shadow(0 10px 28px rgba(61, 255, 168, 0.25));
+}
+.video-facade.is-playing .video-facade-btn { display: none; }
+
+.tutorial-cta {
+  width: min(880px, 100%);
+  margin: 22px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.tutorial-chapters {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.tutorial-chapters span {
+  color: var(--text);
+}
+.tutorial-chapters a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.tutorial-chapters a:hover {
+  color: var(--accent);
+  border-bottom-color: rgba(61, 255, 168, 0.45);
+  text-decoration: none;
+}
+.tutorial-chapters .tutorial-yt {
+  color: var(--muted);
+}
+.tutorial-chapters .tutorial-yt:hover { color: var(--accent); }
+
 /* ---------- Mobile display fixes ---------- */
 
 /* Older browsers without aspect-ratio: give the phone mockup an explicit height
