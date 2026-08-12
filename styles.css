@@ -1,5 +1,5 @@
 :root {
-      --bg: #07090f;
+      --bg: #0A0D14;
       --bg-elevated: #0c1018;
       --panel: rgba(18, 24, 36, 0.72);
       --panel-solid: #121824;
@@ -48,7 +48,7 @@
       margin: 0;
       min-height: 100vh;
       font-family: var(--font);
-      background: var(--bg);
+      background: #0A0D14;
       color: var(--text);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
@@ -63,50 +63,36 @@
     a:hover { text-decoration: underline; }
     button { font-family: inherit; }
 
-    /* Ambient field */
+    /* Ambient field: page gradient + InvestigateGhostBackdrop.png + vignette */
     .ambient {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
       overflow: hidden;
+      background: linear-gradient(180deg, #0D121F 0%, #05080F 52%, #0F0A1A 100%);
     }
-    .ambient::before {
-      content: "";
+    .ambient-backdrop {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(900px 500px at 12% -8%, rgba(61, 255, 168, 0.14), transparent 55%),
-        radial-gradient(700px 480px at 92% 8%, rgba(199, 89, 242, 0.16), transparent 50%),
-        radial-gradient(600px 400px at 50% 100%, rgba(61, 255, 168, 0.06), transparent 55%);
+      background-image: url("assets/investigate-ghost-backdrop.png");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0.62;
+      pointer-events: none;
     }
-    .orb {
+    .ambient-vignette {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.55;
-      animation: drift 18s ease-in-out infinite alternate;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.18) 42%, rgba(0, 0, 0, 0) 72%);
+      mix-blend-mode: multiply;
     }
-    .orb-a {
-      width: 340px; height: 340px;
-      left: -80px; top: 20%;
-      background: rgba(61, 255, 168, 0.18);
-    }
-    .orb-b {
-      width: 420px; height: 420px;
-      right: -120px; top: 40%;
-      background: rgba(199, 89, 242, 0.16);
-      animation-delay: -6s;
-    }
-    .orb-c {
-      width: 280px; height: 280px;
-      left: 40%; bottom: 5%;
-      background: rgba(61, 255, 168, 0.08);
-      animation-delay: -11s;
-    }
-    @keyframes drift {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(24px, -30px, 0) scale(1.08); }
+    @media (max-width: 430px) and (orientation: portrait) {
+      .ambient-backdrop {
+        background-position: center 30%;
+      }
     }
     .grain {
       position: fixed;
@@ -412,11 +398,121 @@
       h1 { max-width: none; }
     }
     .hero-copy .lede { margin-bottom: 28px; }
+    .hero-lede {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      max-width: 38ch;
+      font-size: clamp(1.02rem, 1.45vw, 1.15rem);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+    .hero-lede-tools,
+    .hero-lede-privacy {
+      display: block;
+    }
+    .hero-lede-tools {
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 500;
+    }
+    .hero-lede-privacy {
+      color: var(--muted);
+      font-size: 0.95em;
+      font-weight: 500;
+    }
+    .hero-price {
+      margin: 20px 0 0;
+      max-width: 100%;
+    }
+    .hero-price-link {
+      display: grid;
+      gap: 4px;
+      width: fit-content;
+      max-width: 100%;
+      padding: 14px 18px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(199, 89, 242, 0.42);
+      background:
+        linear-gradient(145deg, rgba(199, 89, 242, 0.2), rgba(199, 89, 242, 0.05) 55%, rgba(12, 16, 24, 0.35)),
+        rgba(18, 24, 36, 0.65);
+      color: inherit;
+      text-decoration: none;
+      box-shadow: 0 0 0 1px rgba(199, 89, 242, 0.08), 0 12px 36px rgba(0, 0, 0, 0.28);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+    .hero-price-link:hover {
+      text-decoration: none;
+      border-color: rgba(199, 89, 242, 0.65);
+      background:
+        linear-gradient(145deg, rgba(199, 89, 242, 0.26), rgba(199, 89, 242, 0.08) 55%, rgba(12, 16, 24, 0.4)),
+        rgba(18, 24, 36, 0.72);
+    }
+    .hero-price-label {
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: #e4a8ff;
+    }
+    .hero-price-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8px 14px;
+      margin-top: 2px;
+    }
+    .hero-price-amount {
+      font-family: inherit;
+      font-weight: 800;
+      font-size: clamp(2.35rem, 5.2vw, 3.15rem);
+      letter-spacing: -0.06em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      color: var(--text);
+      text-shadow: 0 0 28px rgba(199, 89, 242, 0.28);
+    }
+    .hero-price-lifetime {
+      font-size: clamp(1.12rem, 2.2vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .hero-price-meta {
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    @media (max-width: 520px) {
+      .hero-price-link {
+        padding: 12px 14px 14px;
+        background:
+          linear-gradient(145deg, rgba(199, 89, 242, 0.24), rgba(199, 89, 242, 0.08) 55%, rgba(10, 13, 20, 0.78)),
+          rgba(10, 13, 20, 0.88);
+        box-shadow: 0 0 0 1px rgba(199, 89, 242, 0.12), 0 14px 40px rgba(0, 0, 0, 0.45);
+      }
+      .hero-price-lifetime { width: 100%; }
+      .hero-price-amount {
+        font-size: clamp(2.5rem, 12vw, 3.1rem);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 0 28px rgba(199, 89, 242, 0.28);
+      }
+    }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 28px;
+    }
+    .hero-actions .btn {
+      flex: 1 1 0;
+      min-width: 0;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+    @media (max-width: 560px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { width: 100%; flex: 1 1 auto; }
     }
     .trust-row {
       display: flex;
