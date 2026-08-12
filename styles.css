@@ -235,6 +235,12 @@
         0 8px 28px rgba(61, 255, 168, 0.28),
         0 10px 32px rgba(0, 0, 0, 0.35);
     }
+    .nav-links .nav-cta.btn:hover,
+    .nav-links .nav-cta.btn:focus,
+    .nav-links .nav-cta.btn:focus-visible,
+    .nav-links a.nav-cta.btn:hover,
+    .nav-links a.nav-cta.btn:focus,
+    .nav-links a.nav-cta.btn:focus-visible,
     header .nav-actions a.nav-cta.btn:hover,
     header .nav-actions a.nav-cta.btn:focus,
     header .nav-actions a.nav-cta.btn:focus-visible,
