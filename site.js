@@ -247,14 +247,14 @@
 
   // Normalize every App Store CTA (works even if markup drifts)
   var storeUrl = window.GHOSTLAB_APP_STORE_URL || APP_STORE_URL;
-  document.querySelectorAll("a.btn-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
+  document.querySelectorAll("a.btn-apple, a#appStoreBtn, a.nav-cta, a[href*='apps.apple.com']").forEach(function (a) {
     a.setAttribute("href", storeUrl);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
-  document.querySelectorAll("a.btn-primary").forEach(function (a) {
+  document.querySelectorAll("a.btn-primary, a.nav-cta").forEach(function (a) {
     var t = (a.textContent || "").toLowerCase();
-    if (t.indexOf("app store") !== -1 || t.indexOf("unlock") !== -1) {
+    if (t.indexOf("app store") !== -1 || t.indexOf("unlock") !== -1 || t.indexOf("get the app") !== -1) {
       a.setAttribute("href", storeUrl);
       a.setAttribute("target", "_blank");
       a.setAttribute("rel", "noopener noreferrer");

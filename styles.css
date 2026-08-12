@@ -476,10 +476,11 @@
       margin-top: 2px;
     }
     .hero-price-amount {
-      font-family: var(--mono);
+      font-family: inherit;
       font-weight: 800;
       font-size: clamp(2.35rem, 5.2vw, 3.15rem);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.06em;
+      font-variant-numeric: tabular-nums;
       line-height: 1;
       color: var(--text);
       text-shadow: 0 0 28px rgba(199, 89, 242, 0.28);
