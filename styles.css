@@ -189,39 +189,39 @@
       background: rgba(255, 255, 255, 0.05);
       text-decoration: none;
     }
-    /* Sticky App Store CTA lives outside the hamburger so it never vanishes */
+    /*
+      Hope QA (corrected): desktop black-on-white contrast is fine.
+      Real bug was `.nav-cta { display:none }` below 761px. CTA lives in
+      .nav-actions (outside hamburger) and must stay visible at all widths.
+    */
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
     }
-    /*
-      Bulletproof nav CTA chrome (Chance/Jack):
-      - brand green primary, dark label always opaque
-      - never hidden under 761px (lives in .nav-actions)
-      - beats .nav-links a / :hover muted cascade in every state
-      - -webkit-text-fill-color locks Safari text fill
-    */
-    .nav-links .nav-cta.btn,
-    .nav-links a.nav-cta.btn,
-    header .nav-actions a.nav-cta.btn,
-    header .nav-actions a.nav-cta.btn.btn-primary,
-    header .nav-actions a.nav-cta.btn.btn-apple,
-    header .nav-links a.nav-cta.btn,
-    header .nav-links a.nav-cta.btn.btn-primary,
-    header .nav-links a.nav-cta.btn.btn-apple,
+    /* Kill any legacy hide rule; keep compact CTA under 761px */
+    .nav-cta,
+    a.nav-cta,
     header a.nav-cta.btn {
       display: inline-flex !important;
       visibility: visible !important;
       opacity: 1 !important;
+    }
+    /* Black-on-white button chrome; beat .nav-links a muted color if nested */
+    .nav-links .nav-cta.btn,
+    .nav-links a.nav-cta.btn,
+    header .nav-actions a.nav-cta.btn,
+    header .nav-links a.nav-cta.btn,
+    header a.nav-cta.btn.btn-apple,
+    header a.nav-cta.btn {
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: #042016 !important;
-      -webkit-text-fill-color: #042016 !important;
-      background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%) !important;
-      background-color: var(--accent) !important;
+      color: #000 !important;
+      -webkit-text-fill-color: #000 !important;
+      background: #fff !important;
+      background-color: #fff !important;
       font-weight: 700;
       font-size: 0.88rem;
       padding: 10px 16px;
@@ -229,11 +229,7 @@
       border: none !important;
       text-decoration: none !important;
       filter: none !important;
-      mix-blend-mode: normal !important;
-      box-shadow:
-        0 0 0 1px rgba(61, 255, 168, 0.45),
-        0 8px 28px rgba(61, 255, 168, 0.28),
-        0 10px 32px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.35);
     }
     .nav-links .nav-cta.btn:hover,
     .nav-links .nav-cta.btn:focus,
@@ -250,35 +246,28 @@
     header a.nav-cta.btn:hover,
     header a.nav-cta.btn:focus,
     header a.nav-cta.btn:focus-visible {
-      color: #042016 !important;
-      -webkit-text-fill-color: #042016 !important;
-      background: linear-gradient(180deg, #7affcb 0%, #54ffb4 100%) !important;
-      background-color: #54ffb4 !important;
+      color: #000 !important;
+      -webkit-text-fill-color: #000 !important;
+      background: #f2f2f2 !important;
+      background-color: #f2f2f2 !important;
       filter: none !important;
       opacity: 1 !important;
       text-decoration: none !important;
-      box-shadow:
-        0 0 0 1px rgba(61, 255, 168, 0.55),
-        0 10px 34px rgba(61, 255, 168, 0.35),
-        0 12px 36px rgba(0, 0, 0, 0.4);
     }
     header .nav-actions a.nav-cta.btn:focus-visible,
-    header .nav-links a.nav-cta.btn:focus-visible,
     header a.nav-cta.btn:focus-visible {
-      outline: 2px solid #fff;
+      outline: 2px solid var(--accent);
       outline-offset: 3px;
     }
     header .nav-actions a.nav-cta.btn svg,
-    header .nav-links a.nav-cta.btn svg,
     header a.nav-cta.btn svg {
-      color: #042016 !important;
-      -webkit-text-fill-color: #042016 !important;
+      color: #000 !important;
+      -webkit-text-fill-color: #000 !important;
       fill: currentColor;
       opacity: 1 !important;
     }
     @media (max-width: 760px) {
       header .nav-actions a.nav-cta.btn,
-      header .nav-links a.nav-cta.btn,
       header a.nav-cta.btn {
         padding: 8px 12px;
         font-size: 0.8rem;
