@@ -189,61 +189,103 @@
       background: rgba(255, 255, 255, 0.05);
       text-decoration: none;
     }
-    /* Sticky App Store CTA lives outside the hamburger so it never vanishes */
+    /*
+      Nav download CTA:
+      - Real bug was `.nav-cta { display:none }` below 761px.
+      - Bar CTA always visible in .nav-actions; menu also gets a full-chrome CTA.
+      - Accent primary for prominence (dark text on mint), never muted link styles.
+    */
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
     }
-    /*
-      Bulletproof nav CTA chrome:
-      - accent primary (readable dark text on neon green)
-      - always display:inline-flex (never hidden under 761px)
-      - beats .nav-links a muted color cascade even if markup moves
-    */
-    header .nav-actions a.nav-cta.btn,
-    header a.nav-cta.btn.btn-primary,
-    header a.nav-cta.btn.btn-apple {
+    /* Bar CTA always visible; exclude .nav-cta-menu (drawer-only) */
+    .nav-actions .nav-cta,
+    header .nav-actions a.nav-cta.btn {
       display: inline-flex !important;
       visibility: visible !important;
       opacity: 1 !important;
+    }
+    /* Menu CTA only when the mobile drawer is open */
+    .nav-cta-menu,
+    header .nav-links a.nav-cta.nav-cta-menu {
+      display: none !important;
+    }
+    @media (max-width: 760px) {
+      .nav-links.open .nav-cta-menu,
+      header .nav-links.open a.nav-cta.nav-cta-menu {
+        display: inline-flex !important;
+        width: 100%;
+        margin-top: 6px;
+        justify-content: center;
+        padding: 12px 16px !important;
+        font-size: 0.92rem !important;
+        border-radius: 12px !important;
+      }
+    }
+    .nav-links .nav-cta.btn,
+    .nav-links a.nav-cta.btn,
+    header .nav-actions a.nav-cta.btn,
+    header .nav-links a.nav-cta.btn,
+    header a.nav-cta.btn {
       align-items: center;
       justify-content: center;
       gap: 8px;
       color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
       background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%) !important;
+      background-color: var(--accent) !important;
       font-weight: 700;
       font-size: 0.88rem;
       padding: 10px 16px;
       border-radius: 12px;
-      border: none;
+      border: none !important;
       text-decoration: none !important;
-      filter: none;
+      filter: none !important;
       box-shadow:
         0 0 0 1px rgba(61, 255, 168, 0.45),
         0 8px 28px rgba(61, 255, 168, 0.28),
         0 10px 32px rgba(0, 0, 0, 0.35);
     }
+    .nav-links .nav-cta.btn:hover,
+    .nav-links .nav-cta.btn:focus,
+    .nav-links .nav-cta.btn:focus-visible,
+    .nav-links a.nav-cta.btn:hover,
+    .nav-links a.nav-cta.btn:focus,
+    .nav-links a.nav-cta.btn:focus-visible,
     header .nav-actions a.nav-cta.btn:hover,
-    header a.nav-cta.btn.btn-primary:hover,
-    header a.nav-cta.btn.btn-apple:hover {
+    header .nav-actions a.nav-cta.btn:focus,
+    header .nav-actions a.nav-cta.btn:focus-visible,
+    header .nav-links a.nav-cta.btn:hover,
+    header .nav-links a.nav-cta.btn:focus,
+    header .nav-links a.nav-cta.btn:focus-visible,
+    header a.nav-cta.btn:hover,
+    header a.nav-cta.btn:focus,
+    header a.nav-cta.btn:focus-visible {
       color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
       background: linear-gradient(180deg, #7affcb 0%, #54ffb4 100%) !important;
-      filter: none;
+      background-color: #54ffb4 !important;
+      filter: none !important;
+      opacity: 1 !important;
       text-decoration: none !important;
-      box-shadow:
-        0 0 0 1px rgba(61, 255, 168, 0.55),
-        0 10px 34px rgba(61, 255, 168, 0.35),
-        0 12px 36px rgba(0, 0, 0, 0.4);
+    }
+    header .nav-actions a.nav-cta.btn:focus-visible,
+    header a.nav-cta.btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
     }
     header .nav-actions a.nav-cta.btn svg,
     header a.nav-cta.btn svg {
       color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
       fill: currentColor;
+      opacity: 1 !important;
     }
     @media (max-width: 760px) {
-      header .nav-actions a.nav-cta.btn {
+      header .nav-actions a.nav-cta.btn:not(.nav-cta-menu) {
         padding: 8px 12px;
         font-size: 0.8rem;
         border-radius: 10px;
@@ -305,36 +347,42 @@
     .video-frame.reveal,
     .video-facade.reveal,
     .workflow-step.reveal,
-    .workflow-section .section-head.reveal,
+    .workflow-section .reveal,
     .hero-actions .btn {
       opacity: 1 !important;
       transform: none !important;
     }
     .btn-sm { padding: 10px 16px; font-size: 0.88rem; border-radius: 12px; }
 
-    /*
-      Section rhythm: consistent ~72px bands (was 88; felt like empty acres;
-      uneven 64/40 workflow dips read as unfinished). Soft collapse only on
-      homepage stacked bands so trust → download → disclaimer don’t double.
-    */
+    /* Inner pages keep the original breathing room */
     .section {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 72px 0;
+      padding: 88px 0;
     }
     .section-sm { padding: 56px 0; }
-    /* Homepage: prevent adjacent .section paddings from stacking to ~144px */
+    /*
+      Homepage-only rhythm (Chance): ~56-64px bands so stacked sections
+      don’t read as empty acres. Hero keeps its own padding.
+    */
+    /* Homepage: even ~56px bands (strip → workflow → explore stay consistent) */
+    body.home .section {
+      padding: 56px 0;
+    }
+    body.home .section.section-sm {
+      padding: 48px 0;
+    }
     body.home main > .section + .section {
-      padding-top: 36px;
+      padding-top: 24px;
     }
     body.home main > .section.section-sm + .section,
     body.home main > .section + .section.section-sm {
-      padding-top: 28px;
+      padding-top: 20px;
     }
     @media (max-width: 760px) {
-      .section { padding: 56px 0; }
-      .section-sm { padding: 44px 0; }
-      body.home main > .section + .section { padding-top: 28px; }
+      body.home .section { padding: 48px 0; }
+      body.home .section.section-sm { padding: 40px 0; }
+      body.home main > .section + .section { padding-top: 20px; }
     }
     .eyebrow {
       display: inline-flex;
@@ -1370,6 +1418,17 @@
       opacity: 1;
       transform: none;
     }
+    /*
+      Hope QA: Tonight’s session must never render as an empty/stretched band.
+      Re-assert after .reveal so cascade cannot hide workflow if JS is late.
+    */
+    .workflow-step.reveal,
+    .workflow-section .reveal,
+    .workflow-step,
+    .workflow-section .section-head {
+      opacity: 1 !important;
+      transform: none !important;
+    }
 
     /* Mobile menu */
     .menu-btn {
@@ -1513,14 +1572,16 @@ main .team-panel {
   margin: 0 auto 40px;
 }
 
-/* Homepage investigator workflow: equal-height flow with progress rail */
-.workflow-section {
-  /* Match global .section 72px so there is no uneven 64/40 dip before Explore */
-  padding-top: 72px;
-  padding-bottom: 72px;
+/* Homepage investigator workflow: match home .section 56px (no 64/40 dip) */
+body.home .workflow-section {
+  padding-top: 56px;
+  padding-bottom: 56px;
 }
-.workflow-section .section-head {
-  margin-bottom: 28px;
+body.home main > .workflow-section + .section {
+  padding-top: 24px; /* soft pair into Explore without uneven short bottom */
+}
+body.home .workflow-section .section-head {
+  margin-bottom: 22px;
 }
 .workflow-rail {
   position: relative;
@@ -1528,19 +1589,19 @@ main .team-panel {
 .workflow-rail::before {
   content: "";
   position: absolute;
-  top: 44px;
-  left: 4%;
-  right: 4%;
+  top: 48px;
+  left: 6%;
+  right: 6%;
   height: 2px;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(61, 255, 168, 0.05),
-    rgba(61, 255, 168, 0.45) 20%,
-    rgba(61, 255, 168, 0.45) 80%,
-    rgba(61, 255, 168, 0.05)
+    rgba(61, 255, 168, 0.08),
+    rgba(61, 255, 168, 0.55) 18%,
+    rgba(61, 255, 168, 0.55) 82%,
+    rgba(61, 255, 168, 0.08)
   );
-  box-shadow: 0 0 16px rgba(61, 255, 168, 0.25);
+  box-shadow: 0 0 18px rgba(61, 255, 168, 0.28);
   pointer-events: none;
   z-index: 0;
 }
@@ -1550,7 +1611,7 @@ main .team-panel {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 24px;
   align-items: stretch;
   position: relative;
   z-index: 1;
@@ -1561,37 +1622,46 @@ main .team-panel {
   flex-direction: column;
   height: 100%;
   min-height: 100%;
-  padding: 22px 20px 24px;
+  padding: 24px 22px 26px;
   border-radius: var(--radius);
-  border: 1px solid rgba(61, 255, 168, 0.24);
+  border: 1px solid rgba(61, 255, 168, 0.22);
   background:
-    linear-gradient(180deg, rgba(61, 255, 168, 0.1) 0%, transparent 44%),
-    rgba(12, 16, 24, 0.92);
+    linear-gradient(165deg, rgba(61, 255, 168, 0.12) 0%, transparent 46%),
+    linear-gradient(180deg, rgba(18, 24, 36, 0.96), rgba(10, 13, 20, 0.92));
   box-shadow:
-    0 0 0 1px rgba(61, 255, 168, 0.06) inset,
-    0 18px 40px rgba(0, 0, 0, 0.35);
+    0 0 0 1px rgba(61, 255, 168, 0.05) inset,
+    0 20px 44px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+/* Soft accent on step 01 so the flow has an entry point */
+.workflow-step:first-child {
+  border-color: rgba(61, 255, 168, 0.42);
+  box-shadow:
+    0 0 0 1px rgba(61, 255, 168, 0.12) inset,
+    0 20px 44px rgba(0, 0, 0, 0.42),
+    0 0 40px rgba(61, 255, 168, 0.14);
 }
 .workflow-step:hover {
-  border-color: rgba(61, 255, 168, 0.45);
+  border-color: rgba(61, 255, 168, 0.5);
   box-shadow:
-    0 0 0 1px rgba(61, 255, 168, 0.14) inset,
-    0 20px 48px rgba(0, 0, 0, 0.42),
-    0 0 36px rgba(61, 255, 168, 0.12);
-  transform: translateY(-2px);
+    0 0 0 1px rgba(61, 255, 168, 0.16) inset,
+    0 22px 52px rgba(0, 0, 0, 0.45),
+    0 0 42px rgba(61, 255, 168, 0.16);
+  transform: translateY(-3px);
 }
-/* Arrow connectors between cards (desktop flow) */
+/* Desktop connectors between steps */
 .workflow-step:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 42px;
-  left: calc(100% + 3px);
-  width: calc(22px - 6px);
+  top: 46px;
+  left: calc(100% + 4px);
+  width: calc(24px - 8px);
   height: 2px;
-  background: linear-gradient(90deg, rgba(61, 255, 168, 0.7), rgba(61, 255, 168, 0.15));
-  box-shadow: 0 0 12px rgba(61, 255, 168, 0.4);
+  background: linear-gradient(90deg, rgba(61, 255, 168, 0.75), rgba(61, 255, 168, 0.12));
+  box-shadow: 0 0 12px rgba(61, 255, 168, 0.45);
   pointer-events: none;
   z-index: 2;
 }
@@ -1600,29 +1670,29 @@ main .team-panel {
   align-items: center;
   justify-content: center;
   width: fit-content;
-  min-width: 2.4rem;
-  padding: 4px 10px;
-  margin-bottom: 14px;
+  min-width: 2.6rem;
+  padding: 5px 11px;
+  margin-bottom: 16px;
   border-radius: 999px;
   font-family: var(--mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   color: #042016;
   background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%);
-  box-shadow: 0 0 0 1px rgba(61, 255, 168, 0.35), 0 6px 18px rgba(61, 255, 168, 0.2);
+  box-shadow: 0 0 0 1px rgba(61, 255, 168, 0.4), 0 8px 22px rgba(61, 255, 168, 0.28);
 }
 .workflow-icon {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-bottom: 14px;
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: 13px;
   color: var(--accent);
-  background: var(--accent-dim);
-  border: 1px solid rgba(61, 255, 168, 0.28);
-  box-shadow: 0 0 20px rgba(61, 255, 168, 0.12);
+  background: rgba(61, 255, 168, 0.1);
+  border: 1px solid rgba(61, 255, 168, 0.3);
+  box-shadow: 0 0 22px rgba(61, 255, 168, 0.14);
   animation: workflow-glow 3.6s ease-in-out infinite;
 }
 .workflow-step:nth-child(2) .workflow-icon { animation-delay: 0.4s; }
@@ -1630,7 +1700,7 @@ main .team-panel {
 .workflow-step:nth-child(4) .workflow-icon { animation-delay: 1.2s; }
 @keyframes workflow-glow {
   0%, 100% { box-shadow: 0 0 16px rgba(61, 255, 168, 0.1); }
-  50% { box-shadow: 0 0 26px rgba(61, 255, 168, 0.28); }
+  50% { box-shadow: 0 0 28px rgba(61, 255, 168, 0.3); }
 }
 .workflow-icon svg {
   width: 22px;
@@ -1638,21 +1708,22 @@ main .team-panel {
 }
 .workflow-step strong {
   display: block;
-  font-size: 1.08rem;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  font-size: 1.22rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 10px;
   color: var(--text);
 }
 .workflow-step p {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.4;
   flex: 1;
 }
 @media (max-width: 900px) {
   .workflow-rail::before { display: none; }
-  .workflow-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .workflow-steps { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .workflow-step:not(:last-child)::after { display: none; }
   .workflow-step::before {
     content: "";
@@ -1667,10 +1738,10 @@ main .team-panel {
   .workflow-step { padding-left: 22px; }
 }
 @media (max-width: 520px) {
-  .workflow-steps { grid-template-columns: 1fr; gap: 12px; }
-  .workflow-section {
-    padding-top: 56px;
-    padding-bottom: 56px;
+  .workflow-steps { grid-template-columns: 1fr; gap: 14px; }
+  body.home .workflow-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 }
 
