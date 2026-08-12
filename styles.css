@@ -190,9 +190,10 @@
       text-decoration: none;
     }
     /*
-      Hope QA (corrected): desktop black-on-white contrast is fine.
-      Real bug was `.nav-cta { display:none }` below 761px. CTA lives in
-      .nav-actions (outside hamburger) and must stay visible at all widths.
+      Nav download CTA:
+      - Real bug was `.nav-cta { display:none }` below 761px.
+      - Bar CTA always visible in .nav-actions; menu also gets a full-chrome CTA.
+      - Accent primary for prominence (dark text on mint), never muted link styles.
     */
     .nav-actions {
       display: flex;
@@ -200,28 +201,42 @@
       gap: 10px;
       flex-shrink: 0;
     }
-    /* Kill any legacy hide rule; keep compact CTA under 761px */
-    .nav-cta,
-    a.nav-cta,
-    header a.nav-cta.btn {
+    /* Bar CTA always visible; exclude .nav-cta-menu (drawer-only) */
+    .nav-actions .nav-cta,
+    header .nav-actions a.nav-cta.btn {
       display: inline-flex !important;
       visibility: visible !important;
       opacity: 1 !important;
     }
-    /* Black-on-white button chrome; beat .nav-links a muted color if nested */
+    /* Menu CTA only when the mobile drawer is open */
+    .nav-cta-menu,
+    header .nav-links a.nav-cta.nav-cta-menu {
+      display: none !important;
+    }
+    @media (max-width: 760px) {
+      .nav-links.open .nav-cta-menu,
+      header .nav-links.open a.nav-cta.nav-cta-menu {
+        display: inline-flex !important;
+        width: 100%;
+        margin-top: 6px;
+        justify-content: center;
+        padding: 12px 16px !important;
+        font-size: 0.92rem !important;
+        border-radius: 12px !important;
+      }
+    }
     .nav-links .nav-cta.btn,
     .nav-links a.nav-cta.btn,
     header .nav-actions a.nav-cta.btn,
     header .nav-links a.nav-cta.btn,
-    header a.nav-cta.btn.btn-apple,
     header a.nav-cta.btn {
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: #000 !important;
-      -webkit-text-fill-color: #000 !important;
-      background: #fff !important;
-      background-color: #fff !important;
+      color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
+      background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%) !important;
+      background-color: var(--accent) !important;
       font-weight: 700;
       font-size: 0.88rem;
       padding: 10px 16px;
@@ -229,7 +244,10 @@
       border: none !important;
       text-decoration: none !important;
       filter: none !important;
-      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.35);
+      box-shadow:
+        0 0 0 1px rgba(61, 255, 168, 0.45),
+        0 8px 28px rgba(61, 255, 168, 0.28),
+        0 10px 32px rgba(0, 0, 0, 0.35);
     }
     .nav-links .nav-cta.btn:hover,
     .nav-links .nav-cta.btn:focus,
@@ -246,29 +264,28 @@
     header a.nav-cta.btn:hover,
     header a.nav-cta.btn:focus,
     header a.nav-cta.btn:focus-visible {
-      color: #000 !important;
-      -webkit-text-fill-color: #000 !important;
-      background: #f2f2f2 !important;
-      background-color: #f2f2f2 !important;
+      color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
+      background: linear-gradient(180deg, #7affcb 0%, #54ffb4 100%) !important;
+      background-color: #54ffb4 !important;
       filter: none !important;
       opacity: 1 !important;
       text-decoration: none !important;
     }
     header .nav-actions a.nav-cta.btn:focus-visible,
     header a.nav-cta.btn:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid #fff;
       outline-offset: 3px;
     }
     header .nav-actions a.nav-cta.btn svg,
     header a.nav-cta.btn svg {
-      color: #000 !important;
-      -webkit-text-fill-color: #000 !important;
+      color: #042016 !important;
+      -webkit-text-fill-color: #042016 !important;
       fill: currentColor;
       opacity: 1 !important;
     }
     @media (max-width: 760px) {
-      header .nav-actions a.nav-cta.btn,
-      header a.nav-cta.btn {
+      header .nav-actions a.nav-cta.btn:not(.nav-cta-menu) {
         padding: 8px 12px;
         font-size: 0.8rem;
         border-radius: 10px;
@@ -348,23 +365,24 @@
       Homepage-only rhythm (Chance): ~56-64px bands so stacked sections
       don’t read as empty acres. Hero keeps its own padding.
     */
+    /* Homepage: even ~56px bands (strip → workflow → explore stay consistent) */
     body.home .section {
-      padding: 60px 0;
+      padding: 56px 0;
     }
     body.home .section.section-sm {
       padding: 48px 0;
     }
     body.home main > .section + .section {
-      padding-top: 28px;
+      padding-top: 24px;
     }
     body.home main > .section.section-sm + .section,
     body.home main > .section + .section.section-sm {
       padding-top: 20px;
     }
     @media (max-width: 760px) {
-      body.home .section { padding: 52px 0; }
+      body.home .section { padding: 48px 0; }
       body.home .section.section-sm { padding: 40px 0; }
-      body.home main > .section + .section { padding-top: 24px; }
+      body.home main > .section + .section { padding-top: 20px; }
     }
     .eyebrow {
       display: inline-flex;
@@ -1554,13 +1572,13 @@ main .team-panel {
   margin: 0 auto 40px;
 }
 
-/* Homepage investigator workflow: connected numbered rail + equal-height steps */
+/* Homepage investigator workflow: match home .section 56px (no 64/40 dip) */
 body.home .workflow-section {
   padding-top: 56px;
-  padding-bottom: 32px; /* pair into Explore so the band doesn’t dip then balloon */
+  padding-bottom: 56px;
 }
 body.home main > .workflow-section + .section {
-  padding-top: 24px;
+  padding-top: 24px; /* soft pair into Explore without uneven short bottom */
 }
 body.home .workflow-section .section-head {
   margin-bottom: 22px;
@@ -1705,7 +1723,7 @@ body.home .workflow-section .section-head {
 }
 @media (max-width: 900px) {
   .workflow-rail::before { display: none; }
-  .workflow-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .workflow-steps { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .workflow-step:not(:last-child)::after { display: none; }
   .workflow-step::before {
     content: "";
@@ -1720,10 +1738,10 @@ body.home .workflow-section .section-head {
   .workflow-step { padding-left: 22px; }
 }
 @media (max-width: 520px) {
-  .workflow-steps { grid-template-columns: 1fr; gap: 12px; }
+  .workflow-steps { grid-template-columns: 1fr; gap: 14px; }
   body.home .workflow-section {
-    padding-top: 52px;
-    padding-bottom: 52px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 }
 
