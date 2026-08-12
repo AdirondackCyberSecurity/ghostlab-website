@@ -32,6 +32,8 @@
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
       text-size-adjust: 100%;
+      /* Sticky nav offset for hash links / focus (e.g. tutorial video) */
+      scroll-padding-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top, 0px));
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -183,9 +185,23 @@
       text-decoration: none;
     }
     .nav-cta { display: none; }
-    /* Align with menu breakpoint so Get Pro never vanishes between 761–879px */
+    /* Align with menu breakpoint so Download CTA never vanishes between 761–879px */
     @media (min-width: 761px) {
       .nav-cta { display: inline-flex; }
+    }
+    /* Beat .nav-links a muted styles so the download CTA keeps button chrome */
+    .nav-links .nav-cta.btn {
+      color: #000;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .nav-links .nav-cta.btn:hover {
+      color: #000;
+      background: #fff;
+      filter: brightness(0.96);
     }
     /* Hide low-priority links in the cramped horizontal bar,
        but keep them available inside the opened mobile menu */
@@ -259,6 +275,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      width: fit-content;
+      max-width: 100%;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.08em;
@@ -303,7 +321,9 @@
       gap: 12px;
       margin-bottom: 40px;
       max-width: 640px;
+      justify-items: start;
     }
+    .section-head .eyebrow { margin-bottom: 0; }
     .section-head p { color: var(--muted); margin: 0; font-size: 1.05rem; }
 
     /* Hero */
@@ -563,14 +583,23 @@
     }
     /* Free mode set has 7 cards - prefer even packing on mid widths */
     .grid-modes-free {
+      display: grid;
+      gap: 14px;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    /* Tutorial walkthrough: 5 chapter cards */
+    .tutorial-chapters-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
     @media (max-width: 900px) {
       .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
       .grid-modes-free { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 560px) {
-      .grid-3, .grid-2, .grid-4, .grid-modes-free { grid-template-columns: 1fr; }
+      .grid-3, .grid-2, .grid-4, .grid-modes-free,
+      .tutorial-chapters-grid { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -1417,6 +1446,57 @@ main .team-panel {
   margin: 0 auto 56px;
 }
 
+/* Homepage investigator workflow band */
+.workflow-section {
+  padding-top: 64px;
+  padding-bottom: 40px;
+}
+.workflow-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  counter-reset: none;
+}
+.workflow-step {
+  position: relative;
+  padding: 22px 20px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(18, 24, 36, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.workflow-step .workflow-n {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.workflow-step strong {
+  display: block;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.workflow-step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+@media (max-width: 900px) {
+  .workflow-steps { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .workflow-steps { grid-template-columns: 1fr; }
+}
+
 /* Tutorial video embed — aspect-ratio first; padding fallback never uses min() */
 .video-frame {
   position: relative;
@@ -1547,10 +1627,12 @@ main .team-panel {
 .tutorial-video-section {
   padding-top: 20px;
   padding-bottom: 40px;
+  scroll-margin-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top, 0px));
 }
 .tutorial-chapters-section {
   padding-top: 28px;
   padding-bottom: 48px;
+  scroll-margin-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top, 0px));
 }
 .tutorial-cta {
   width: min(880px, 100%);
