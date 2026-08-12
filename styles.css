@@ -146,8 +146,8 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: flex-start;
+      gap: 16px;
     }
     .brand {
       display: flex;
@@ -169,6 +169,11 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-left: auto;
+    }
+    @media (max-width: 760px) {
+      /* Links leave the flex flow when closed; keep CTA + menu pinned right */
+      .nav-actions { margin-left: auto; }
     }
     .nav-links a {
       color: var(--muted);
@@ -184,24 +189,65 @@
       background: rgba(255, 255, 255, 0.05);
       text-decoration: none;
     }
-    .nav-cta { display: none; }
-    /* Align with menu breakpoint so Download CTA never vanishes between 761–879px */
-    @media (min-width: 761px) {
-      .nav-cta { display: inline-flex; }
+    /* Sticky App Store CTA lives outside the hamburger so it never vanishes */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
     }
-    /* Beat .nav-links a muted styles so the download CTA keeps button chrome */
-    .nav-links .nav-cta.btn {
-      color: #000;
+    /*
+      Bulletproof nav CTA chrome:
+      - accent primary (readable dark text on neon green)
+      - always display:inline-flex (never hidden under 761px)
+      - beats .nav-links a muted color cascade even if markup moves
+    */
+    header .nav-actions a.nav-cta.btn,
+    header a.nav-cta.btn.btn-primary,
+    header a.nav-cta.btn.btn-apple {
+      display: inline-flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #042016 !important;
+      background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%) !important;
       font-weight: 700;
       font-size: 0.88rem;
       padding: 10px 16px;
       border-radius: 12px;
-      background: #fff;
+      border: none;
+      text-decoration: none !important;
+      filter: none;
+      box-shadow:
+        0 0 0 1px rgba(61, 255, 168, 0.45),
+        0 8px 28px rgba(61, 255, 168, 0.28),
+        0 10px 32px rgba(0, 0, 0, 0.35);
     }
-    .nav-links .nav-cta.btn:hover {
-      color: #000;
-      background: #fff;
-      filter: brightness(0.96);
+    header .nav-actions a.nav-cta.btn:hover,
+    header a.nav-cta.btn.btn-primary:hover,
+    header a.nav-cta.btn.btn-apple:hover {
+      color: #042016 !important;
+      background: linear-gradient(180deg, #7affcb 0%, #54ffb4 100%) !important;
+      filter: none;
+      text-decoration: none !important;
+      box-shadow:
+        0 0 0 1px rgba(61, 255, 168, 0.55),
+        0 10px 34px rgba(61, 255, 168, 0.35),
+        0 12px 36px rgba(0, 0, 0, 0.4);
+    }
+    header .nav-actions a.nav-cta.btn svg,
+    header a.nav-cta.btn svg {
+      color: #042016 !important;
+      fill: currentColor;
+    }
+    @media (max-width: 760px) {
+      header .nav-actions a.nav-cta.btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        border-radius: 10px;
+      }
     }
     /* Hide low-priority links in the cramped horizontal bar,
        but keep them available inside the opened mobile menu */
@@ -258,19 +304,38 @@
     .page-hero.reveal,
     .video-frame.reveal,
     .video-facade.reveal,
+    .workflow-step.reveal,
+    .workflow-section .section-head.reveal,
     .hero-actions .btn {
       opacity: 1 !important;
       transform: none !important;
     }
     .btn-sm { padding: 10px 16px; font-size: 0.88rem; border-radius: 12px; }
 
-    /* Layout helpers */
+    /*
+      Section rhythm: consistent ~72px bands (was 88; felt like empty acres;
+      uneven 64/40 workflow dips read as unfinished). Soft collapse only on
+      homepage stacked bands so trust → download → disclaimer don’t double.
+    */
     .section {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 88px 0;
+      padding: 72px 0;
     }
     .section-sm { padding: 56px 0; }
+    /* Homepage: prevent adjacent .section paddings from stacking to ~144px */
+    body.home main > .section + .section {
+      padding-top: 36px;
+    }
+    body.home main > .section.section-sm + .section,
+    body.home main > .section + .section.section-sm {
+      padding-top: 28px;
+    }
+    @media (max-width: 760px) {
+      .section { padding: 56px 0; }
+      .section-sm { padding: 44px 0; }
+      body.home main > .section + .section { padding-top: 28px; }
+    }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -318,8 +383,8 @@
     }
     .section-head {
       display: grid;
-      gap: 12px;
-      margin-bottom: 40px;
+      gap: 10px;
+      margin-bottom: 28px;
       max-width: 640px;
       justify-items: start;
     }
@@ -330,19 +395,19 @@
     .hero {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 48px 0 72px;
+      padding: 36px 0 48px;
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 48px;
+      gap: 40px;
       align-items: center;
-      min-height: calc(100vh - var(--nav-h) - 40px);
+      min-height: calc(100vh - var(--nav-h) - 80px);
     }
     @media (max-width: 960px) {
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding-top: 28px;
-        gap: 40px;
+        padding: 24px 0 36px;
+        gap: 32px;
       }
       h1 { max-width: none; }
     }
@@ -536,11 +601,12 @@
       border-block: 1px solid var(--border);
       background: rgba(12, 16, 24, 0.55);
       backdrop-filter: blur(8px);
+      margin-block: 8px;
     }
     .strip-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 22px 0;
+      padding: 18px 0;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
@@ -1193,7 +1259,7 @@
     /* CTA */
     .final-cta {
       text-align: center;
-      padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 28px);
+      padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 28px);
       border-radius: 28px;
       border: 1px solid rgba(61, 255, 168, 0.2);
       background:
@@ -1316,12 +1382,15 @@
       border-radius: 12px;
       place-items: center;
       cursor: pointer;
+      flex-shrink: 0;
     }
     @media (max-width: 760px) {
       .menu-btn { display: grid; }
+      .nav-inner { gap: 12px; }
       .nav-links {
         position: fixed;
-        inset: var(--nav-h) 12px auto;
+        inset: calc(var(--nav-h) + env(safe-area-inset-top, 0px)) 12px auto;
+        margin-left: 0;
         background: rgba(12, 16, 24, 0.96);
         border: 1px solid var(--border);
         border-radius: 16px;
@@ -1330,16 +1399,14 @@
         align-items: stretch;
         display: none;
         box-shadow: var(--shadow);
+        max-height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 24px);
+        overflow-y: auto;
+        z-index: 60;
       }
       .nav-links.open { display: flex; }
       .nav-links a {
         padding: 12px 14px;
         border-radius: 10px;
-      }
-      .nav-links {
-        inset: calc(var(--nav-h) + env(safe-area-inset-top, 0px)) 12px auto;
-        max-height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 24px);
-        overflow-y: auto;
       }
     }
 
@@ -1443,13 +1510,39 @@ main .team-panel {
 }
 .home-strip-cta {
   width: min(var(--max), calc(100% - 40px));
-  margin: 0 auto 56px;
+  margin: 0 auto 40px;
 }
 
-/* Homepage investigator workflow band */
+/* Homepage investigator workflow: equal-height flow with progress rail */
 .workflow-section {
-  padding-top: 64px;
-  padding-bottom: 40px;
+  /* Match global .section 72px so there is no uneven 64/40 dip before Explore */
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+.workflow-section .section-head {
+  margin-bottom: 28px;
+}
+.workflow-rail {
+  position: relative;
+}
+.workflow-rail::before {
+  content: "";
+  position: absolute;
+  top: 44px;
+  left: 4%;
+  right: 4%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(61, 255, 168, 0.05),
+    rgba(61, 255, 168, 0.45) 20%,
+    rgba(61, 255, 168, 0.45) 80%,
+    rgba(61, 255, 168, 0.05)
+  );
+  box-shadow: 0 0 16px rgba(61, 255, 168, 0.25);
+  pointer-events: none;
+  z-index: 0;
 }
 .workflow-steps {
   list-style: none;
@@ -1457,47 +1550,131 @@ main .team-panel {
   padding: 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-  counter-reset: none;
+  gap: 22px;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
 }
 .workflow-step {
   position: relative;
-  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  padding: 22px 20px 24px;
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: rgba(18, 24, 36, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(61, 255, 168, 0.24);
+  background:
+    linear-gradient(180deg, rgba(61, 255, 168, 0.1) 0%, transparent 44%),
+    rgba(12, 16, 24, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(61, 255, 168, 0.06) inset,
+    0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.workflow-step:hover {
+  border-color: rgba(61, 255, 168, 0.45);
+  box-shadow:
+    0 0 0 1px rgba(61, 255, 168, 0.14) inset,
+    0 20px 48px rgba(0, 0, 0, 0.42),
+    0 0 36px rgba(61, 255, 168, 0.12);
+  transform: translateY(-2px);
+}
+/* Arrow connectors between cards (desktop flow) */
+.workflow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 42px;
+  left: calc(100% + 3px);
+  width: calc(22px - 6px);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(61, 255, 168, 0.7), rgba(61, 255, 168, 0.15));
+  box-shadow: 0 0 12px rgba(61, 255, 168, 0.4);
+  pointer-events: none;
+  z-index: 2;
 }
 .workflow-step .workflow-n {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 2.4rem;
+  padding: 4px 10px;
+  margin-bottom: 14px;
+  border-radius: 999px;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  color: #042016;
+  background: linear-gradient(180deg, #63ffc0 0%, var(--accent) 100%);
+  box-shadow: 0 0 0 1px rgba(61, 255, 168, 0.35), 0 6px 18px rgba(61, 255, 168, 0.2);
+}
+.workflow-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 14px;
+  border-radius: 12px;
   color: var(--accent);
-  margin-bottom: 12px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(61, 255, 168, 0.28);
+  box-shadow: 0 0 20px rgba(61, 255, 168, 0.12);
+  animation: workflow-glow 3.6s ease-in-out infinite;
+}
+.workflow-step:nth-child(2) .workflow-icon { animation-delay: 0.4s; }
+.workflow-step:nth-child(3) .workflow-icon { animation-delay: 0.8s; }
+.workflow-step:nth-child(4) .workflow-icon { animation-delay: 1.2s; }
+@keyframes workflow-glow {
+  0%, 100% { box-shadow: 0 0 16px rgba(61, 255, 168, 0.1); }
+  50% { box-shadow: 0 0 26px rgba(61, 255, 168, 0.28); }
+}
+.workflow-icon svg {
+  width: 22px;
+  height: 22px;
 }
 .workflow-step strong {
   display: block;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
+  color: var(--text);
 }
 .workflow-step p {
   margin: 0;
   color: var(--muted);
   font-size: 0.92rem;
   line-height: 1.45;
+  flex: 1;
 }
 @media (max-width: 900px) {
-  .workflow-steps { grid-template-columns: repeat(2, 1fr); }
+  .workflow-rail::before { display: none; }
+  .workflow-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .workflow-step:not(:last-child)::after { display: none; }
+  .workflow-step::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+    width: 3px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--accent), rgba(61, 255, 168, 0.15));
+  }
+  .workflow-step { padding-left: 22px; }
 }
 @media (max-width: 520px) {
-  .workflow-steps { grid-template-columns: 1fr; }
+  .workflow-steps { grid-template-columns: 1fr; gap: 12px; }
+  .workflow-section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
 }
 
-/* Tutorial video embed — aspect-ratio first; padding fallback never uses min() */
+/* Tutorial video embed: aspect-ratio first; padding fallback never uses min() */
 .video-frame {
   position: relative;
   width: min(880px, 100%);

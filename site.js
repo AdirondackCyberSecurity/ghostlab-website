@@ -42,7 +42,7 @@
   // Scroll reveal - keep hero CTAs / video usable even if this fails
   var els = document.querySelectorAll(".reveal");
   // Critical above-the-fold media: never wait on the observer
-  document.querySelectorAll(".page-hero.reveal, .video-frame.reveal, .video-facade.reveal, .final-cta.reveal").forEach(function (el) {
+  document.querySelectorAll(".page-hero.reveal, .video-frame.reveal, .video-facade.reveal, .final-cta.reveal, .workflow-step.reveal, .workflow-section .section-head.reveal").forEach(function (el) {
     el.classList.add("in");
   });
   if ("IntersectionObserver" in window) {
