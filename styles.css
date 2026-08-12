@@ -203,6 +203,8 @@
       - beats .nav-links a / :hover muted cascade in every state
       - -webkit-text-fill-color locks Safari text fill
     */
+    .nav-links .nav-cta.btn,
+    .nav-links a.nav-cta.btn,
     header .nav-actions a.nav-cta.btn,
     header .nav-actions a.nav-cta.btn.btn-primary,
     header .nav-actions a.nav-cta.btn.btn-apple,
@@ -333,7 +335,7 @@
     .video-frame.reveal,
     .video-facade.reveal,
     .workflow-step.reveal,
-    .workflow-section .section-head.reveal,
+    .workflow-section .reveal,
     .hero-actions .btn {
       opacity: 1 !important;
       transform: none !important;
@@ -1402,6 +1404,17 @@
     .reveal.in {
       opacity: 1;
       transform: none;
+    }
+    /*
+      Hope QA: Tonight’s session must never render as an empty/stretched band.
+      Re-assert after .reveal so cascade cannot hide workflow if JS is late.
+    */
+    .workflow-step.reveal,
+    .workflow-section .reveal,
+    .workflow-step,
+    .workflow-section .section-head {
+      opacity: 1 !important;
+      transform: none !important;
     }
 
     /* Mobile menu */
