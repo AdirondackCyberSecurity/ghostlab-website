@@ -1,5 +1,6 @@
 (function () {
   var APP_STORE_URL = "https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317";
+  var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab";
 
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
@@ -245,20 +246,16 @@
     });
   }
 
-  // Normalize every App Store CTA (works even if markup drifts)
-  var storeUrl = window.GHOSTLAB_APP_STORE_URL || APP_STORE_URL;
-  document.querySelectorAll("a.btn-apple, a#appStoreBtn, a.nav-cta, a[href*='apps.apple.com']").forEach(function (a) {
-    a.setAttribute("href", storeUrl);
+  // Normalize official store CTAs to hardcoded URLs. Do not read window hooks.
+  document.querySelectorAll("a.btn-apple, a.store-badge-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
+    a.setAttribute("href", APP_STORE_URL);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
-  document.querySelectorAll("a.btn-primary, a.nav-cta").forEach(function (a) {
-    var t = (a.textContent || "").toLowerCase();
-    if (t.indexOf("app store") !== -1 || t.indexOf("unlock") !== -1 || t.indexOf("get the app") !== -1) {
-      a.setAttribute("href", storeUrl);
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener noreferrer");
-    }
+  document.querySelectorAll("a.btn-play, a.store-badge-play, a#playStoreBtn, a[href*='play.google.com']").forEach(function (a) {
+    a.setAttribute("href", PLAY_STORE_URL);
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener noreferrer");
   });
 
   // Click-to-load YouTube facade (privacy: no embed until user activates)
