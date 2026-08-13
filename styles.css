@@ -293,6 +293,33 @@
       -webkit-user-select: none;
       user-select: none;
     }
+    /* Official store badges: unstyled image links, no pill chrome */
+    .store-badge {
+      display: inline-block;
+      line-height: 0;
+      text-decoration: none;
+      background: none;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      flex: 0 0 auto;
+    }
+    .store-badge:hover,
+    .store-badge:active {
+      opacity: 0.92;
+      transform: none;
+      filter: none;
+      text-decoration: none;
+    }
+    .store-badge img {
+      display: block;
+      height: 40px;
+      width: auto;
+    }
+    .store-badge-play img {
+      height: 40px;
+    }
     /* CTAs / critical media visible even if scroll-reveal JS is slow/unavailable */
     .hero-copy.reveal,
     .final-cta.reveal,
@@ -302,7 +329,9 @@
     .workflow-step.reveal,
     .workflow-section .section-head.reveal,
     .hero-actions .btn,
-    .store-row .btn {
+    .store-row .btn,
+    .hero-actions .store-badge,
+    .store-row .store-badge {
       opacity: 1 !important;
       transform: none !important;
     }
@@ -512,6 +541,7 @@
     .store-row {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 12px;
     }
     .hero-actions {
@@ -519,19 +549,41 @@
     }
     .hero-actions .btn,
     .store-row .btn {
-      flex: 1 1 11.5rem;
+      flex: 0 0 auto;
       min-width: 0;
       justify-content: center;
       box-sizing: border-box;
     }
-    .hero-actions .btn-ghost {
-      flex: 1 1 14rem;
+    .hero-actions .store-badge,
+    .store-row .store-badge {
+      flex: 0 0 auto;
+    }
+    .hero-actions .btn-ghost,
+    .store-row .btn-ghost {
+      flex: 0 0 auto;
+      height: 40px;
+      padding: 0 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      border-radius: 8px;
+      white-space: nowrap;
     }
     @media (max-width: 560px) {
       .hero-actions,
-      .store-row { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn,
-      .store-row .btn { width: 100%; flex: 1 1 auto; }
+      .store-row { flex-direction: column; align-items: flex-start; }
+      .hero-actions .store-badge,
+      .store-row .store-badge {
+        width: auto;
+        align-self: flex-start;
+      }
+      .final-cta .hero-actions {
+        align-items: center;
+      }
+      .final-cta .hero-actions .store-badge,
+      .final-cta .hero-actions .btn-ghost {
+        align-self: center;
+      }
     }
     #download {
       scroll-margin-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top, 0px));

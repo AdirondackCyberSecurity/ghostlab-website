@@ -247,12 +247,12 @@
   }
 
   // Normalize official store CTAs to hardcoded URLs. Do not read window hooks.
-  document.querySelectorAll("a.btn-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
+  document.querySelectorAll("a.btn-apple, a.store-badge-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
     a.setAttribute("href", APP_STORE_URL);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
-  document.querySelectorAll("a.btn-play, a#playStoreBtn, a[href*='play.google.com']").forEach(function (a) {
+  document.querySelectorAll("a.btn-play, a.store-badge-play, a#playStoreBtn, a[href*='play.google.com']").forEach(function (a) {
     a.setAttribute("href", PLAY_STORE_URL);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
