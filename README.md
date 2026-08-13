@@ -1,6 +1,6 @@
 # GhostLab marketing site
 
-Public marketing site for **GhostLab** (iOS paranormal investigation toolkit).
+Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal investigation toolkit).
 
 **Production:** https://ghostlab.icu  
 **Repo:** AdirondackCyberSecurity/ghostlab-website
@@ -60,6 +60,15 @@ Point App Store Connect → Support URL to:
 
 `https://ghostlab.icu/support.html`
 
+Google Play Console → Support URL (same page):
+
+`https://ghostlab.icu/support.html`
+
 Privacy Policy URL:
 
 `https://ghostlab.icu/privacy.html`
+
+## Store listings
+
+- **App Store:** https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317
+- **Google Play:** https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab

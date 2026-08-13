@@ -175,13 +175,15 @@
       background: rgba(255, 255, 255, 0.05);
       text-decoration: none;
     }
-    /* Sticky App Store CTA lives outside the hamburger so it never vanishes */
+    /* Sticky Get the app CTA lives outside the hamburger so it never vanishes */
     .nav-actions {
       display: flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
     }
+    /* Store links live in the mobile menu only; desktop uses the download band */
+    .nav-store { display: none; }
     /*
       Bulletproof nav CTA chrome:
       - accent primary (readable dark text on neon green)
@@ -272,12 +274,19 @@
       border: 1px solid var(--border);
     }
     .btn-ghost:hover { border-color: rgba(255, 255, 255, 0.16); background: rgba(255, 255, 255, 0.07); }
-    .btn-apple {
+    .btn-apple,
+    .btn-play {
       background: #fff;
       color: #000;
     }
-    .btn-apple svg { width: 18px; height: 18px; pointer-events: none; flex-shrink: 0; }
-    .btn-apple, .btn-primary {
+    .btn-apple svg,
+    .btn-play svg {
+      width: 18px;
+      height: 18px;
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+    .btn-apple, .btn-play, .btn-primary {
       position: relative;
       z-index: 5;
       cursor: pointer;
@@ -292,7 +301,8 @@
     .video-facade.reveal,
     .workflow-step.reveal,
     .workflow-section .section-head.reveal,
-    .hero-actions .btn {
+    .hero-actions .btn,
+    .store-row .btn {
       opacity: 1 !important;
       transform: none !important;
     }
@@ -498,21 +508,33 @@
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 0 28px rgba(199, 89, 242, 0.28);
       }
     }
-    .hero-actions {
+    .hero-actions,
+    .store-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+    .hero-actions {
       margin-bottom: 28px;
     }
-    .hero-actions .btn {
-      flex: 1 1 0;
+    .hero-actions .btn,
+    .store-row .btn {
+      flex: 1 1 11.5rem;
       min-width: 0;
       justify-content: center;
       box-sizing: border-box;
     }
+    .hero-actions .btn-ghost {
+      flex: 1 1 14rem;
+    }
     @media (max-width: 560px) {
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn { width: 100%; flex: 1 1 auto; }
+      .hero-actions,
+      .store-row { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn,
+      .store-row .btn { width: 100%; flex: 1 1 auto; }
+    }
+    #download {
+      scroll-margin-top: calc(var(--nav-h) + 12px + env(safe-area-inset-top, 0px));
     }
     .trust-row {
       display: flex;
@@ -1504,6 +1526,12 @@
         padding: 12px 14px;
         border-radius: 10px;
       }
+      .nav-links.open .nav-store { display: block; }
+      .nav-links.open .nav-store:not(.nav-store + .nav-store) {
+        border-top: 1px solid var(--border);
+        margin-top: 8px;
+        padding-top: 16px;
+      }
     }
 
 
@@ -1915,6 +1943,14 @@ main .team-panel {
   align-items: center;
   gap: 12px;
   text-align: center;
+}
+.tutorial-cta .store-row {
+  width: 100%;
+  max-width: 520px;
+  justify-content: center;
+}
+.pro-shell-copy .store-row {
+  margin-top: 4px;
 }
 .tutorial-yt {
   color: var(--accent);
