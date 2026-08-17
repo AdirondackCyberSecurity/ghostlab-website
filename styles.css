@@ -817,11 +817,11 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
-    /* Free mode set has 7 cards - prefer even packing on mid widths */
+    /* Investigate home: six tiles in a 3x2 like the app */
     .grid-modes-free {
       display: grid;
       gap: 14px;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
     }
     /* Tutorial walkthrough: 5 chapter cards */
     .tutorial-chapters-grid {
@@ -1182,17 +1182,21 @@
       color: var(--faint);
     }
     .section-label + .grid-4,
+    .section-label + .grid-3,
     .section-label + .grid-2,
     .section-label + .grid-modes-free,
+    .section-label + .card,
     .section-label + .gate-panels {
       margin-bottom: 40px;
     }
-    #modes .section-label + .grid-2 {
+    #modes .section-label + .grid-3:last-of-type {
       margin-bottom: 0;
     }
     .section-label + .section-label,
     .grid-4 + .section-label,
+    .grid-3 + .section-label,
     .grid-modes-free + .section-label,
+    .card + .section-label,
     .grid-2 + .section-label {
       margin-top: 8px;
     }
