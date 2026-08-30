@@ -1,0 +1,68 @@
+[
+  {
+    "id": "toolkit",
+    "name": "GhostLab: Paranormal Toolkit",
+    "tagline": "EMF, EVP, spirit box and SLS in one field kit.",
+    "appStoreID": "6791637317",
+    "urlScheme": "spectralevp",
+    "customProductPageID": null,
+    "icon": "SphereIconToolkit",
+    "symbol": "waveform.badge.magnifyingglass",
+    "available": true
+  },
+  {
+    "id": "tarot",
+    "name": "GhostLab: Tarot",
+    "tagline": "Daily pulls and full spreads, read card by card.",
+    "appStoreID": "6786883691",
+    "urlScheme": "ghostlabtarot",
+    "customProductPageID": null,
+    "icon": "SphereIconTarot",
+    "symbol": "rectangle.portrait.on.rectangle.portrait.angled",
+    "available": true
+  },
+  {
+    "id": "nightglide",
+    "name": "GhostLab: Night Glide",
+    "tagline": "A talking board that answers one letter at a time.",
+    "appStoreID": "6801326852",
+    "urlScheme": "ghostlabnightglide",
+    "customProductPageID": null,
+    "icon": "SphereIconNightGlide",
+    "symbol": "hand.point.up.left.and.text",
+    "available": true
+  },
+  {
+    "id": "palmistry",
+    "name": "GhostLab: Palmistry",
+    "tagline": "Point a camera at your hand and follow the lines.",
+    "appStoreID": "6805166646",
+    "urlScheme": "ghostlabpalmistry",
+    "customProductPageID": null,
+    "icon": "SphereIconPalmistry",
+    "symbol": "hand.raised.fingers.spread",
+    "available": true
+  },
+  {
+    "id": "eightball",
+    "name": "GhostLab: Eight Ball",
+    "tagline": "Ask a question and let the chamber settle.",
+    "appStoreID": "6806469437",
+    "urlScheme": "ghostlabeightball",
+    "customProductPageID": null,
+    "icon": "SphereIconEightBall",
+    "symbol": "circle.circle",
+    "available": true
+  },
+  {
+    "id": "oracle",
+    "name": "GhostLab: Oracle",
+    "tagline": "Five field sets. Free-form plates, not tarot.",
+    "appStoreID": "6806843737",
+    "urlScheme": "ghostlaboracle",
+    "customProductPageID": null,
+    "icon": "SphereIconOracle",
+    "symbol": "rectangle.portrait.on.rectangle.angled",
+    "available": true
+  }
+]
