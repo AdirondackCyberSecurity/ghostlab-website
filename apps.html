@@ -82,6 +82,11 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: var(--muted);
     }
+    .sphere-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
     .sphere-note {
       margin-top: 26px;
       font-size: 0.9rem;
@@ -138,11 +143,14 @@
             <div class="sphere-body">
               <h3>GhostLab: Paranormal Toolkit</h3>
               <p>EMF, EVP, spirit box and SLS in one field kit. Team push-to-talk for crew hunts.</p>
-              <a class="sphere-status live" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">On the App Store</a>
+              <span class="sphere-links">
+                <a class="sphere-status live" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a class="sphere-status live" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
+              </span>
             </div>
           </article>
 
-          <!-- Upcoming apps: on approval, swap the span for an <a class="sphere-status live" data-store-keep href="https://apps.apple.com/us/app/<slug>/id<appStoreID>" ...>On the App Store</a> -->
+          <!-- Upcoming apps: on approval, swap the span for a .sphere-links wrapper holding the App Store link (and Google Play once an Android build ships), each marked data-store-keep -->
           <article class="sphere-card reveal">
             <img class="sphere-icon" src="assets/sphere/tarot.png" width="72" height="72" alt="GhostLab: Tarot icon" />
             <div class="sphere-body">
