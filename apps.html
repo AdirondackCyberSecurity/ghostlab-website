@@ -85,8 +85,12 @@
     .sphere-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      align-items: center;
+      gap: 10px;
     }
+    /* Match the hero: the official badges carry their own artwork, so the
+       card only has to give them room to sit side by side. */
+    .sphere-links .store-badge img { display: block; }
     .sphere-note {
       margin-top: 26px;
       font-size: 0.9rem;
@@ -143,10 +147,14 @@
             <div class="sphere-body">
               <h3>GhostLab: Paranormal Toolkit</h3>
               <p>EMF, EVP, spirit box and SLS in one field kit. Team push-to-talk for crew hunts.</p>
-              <span class="sphere-links">
-                <a class="sphere-status live" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
-                <a class="sphere-status live" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
-              </span>
+              <div class="sphere-links">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get it on Google Play" />
+                </a>
+              </div>
             </div>
           </article>
 
