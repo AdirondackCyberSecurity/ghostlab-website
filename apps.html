@@ -82,15 +82,23 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: var(--muted);
     }
-    .sphere-links {
-      display: flex;
-      flex-wrap: wrap;
+    /* The Toolkit card uses the site's standard .store-row so the official
+       badges inherit the hero's styling and stay visible inside a .reveal card.
+       The card body is narrower than the hero, so the pair is kept on one line
+       and allowed to shrink together: each badge keeps its natural width as a
+       flex-basis and they scale by the same factor, so their heights stay
+       matched. The site-wide rule that stacks .store-row under 560px is
+       overridden here, since these two belong side by side at any width. */
+    .sphere-card .store-row {
+      flex-direction: row;
+      flex-wrap: nowrap;
       align-items: center;
       gap: 10px;
+      margin-top: 2px;
     }
-    /* Match the hero: the official badges carry their own artwork, so the
-       card only has to give them room to sit side by side. */
-    .sphere-links .store-badge img { display: block; }
+    .sphere-card .store-badge-apple { flex: 0 1 120px; }
+    .sphere-card .store-badge-play { flex: 0 1 135px; }
+    .sphere-card .store-badge img { width: 100%; height: auto; }
     .sphere-note {
       margin-top: 26px;
       font-size: 0.9rem;
@@ -147,7 +155,7 @@
             <div class="sphere-body">
               <h3>GhostLab: Paranormal Toolkit</h3>
               <p>EMF, EVP, spirit box and SLS in one field kit. Team push-to-talk for crew hunts.</p>
-              <div class="sphere-links">
+              <div class="store-row">
                 <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
                   <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download on the App Store" />
                 </a>
