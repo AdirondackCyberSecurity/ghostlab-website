@@ -1,4 +1,5 @@
 https://ghostlab.icu/
+https://ghostlab.icu/apps.html
 https://ghostlab.icu/team.html
 https://ghostlab.icu/modes.html
 https://ghostlab.icu/tools.html
@@ -9,3 +10,4 @@ https://ghostlab.icu/privacy.html
 https://ghostlab.icu/privacy-tarot.html
 https://ghostlab.icu/privacy-nightglide.html
 https://ghostlab.icu/privacy-palmistry.html
+https://ghostlab.icu/privacy-oracle.html
