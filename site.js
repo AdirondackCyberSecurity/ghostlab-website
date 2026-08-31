@@ -247,12 +247,13 @@
   }
 
   // Normalize official store CTAs to hardcoded URLs. Do not read window hooks.
-  document.querySelectorAll("a.btn-apple, a.store-badge-apple, a#appStoreBtn, a[href*='apps.apple.com']").forEach(function (a) {
+  // Links marked data-store-keep are left alone - the Sphere page points at sibling apps.
+  document.querySelectorAll("a.btn-apple:not([data-store-keep]), a.store-badge-apple:not([data-store-keep]), a#appStoreBtn:not([data-store-keep]), a[href*='apps.apple.com']:not([data-store-keep])").forEach(function (a) {
     a.setAttribute("href", APP_STORE_URL);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
-  document.querySelectorAll("a.btn-play, a.store-badge-play, a#playStoreBtn, a[href*='play.google.com']").forEach(function (a) {
+  document.querySelectorAll("a.btn-play:not([data-store-keep]), a.store-badge-play:not([data-store-keep]), a#playStoreBtn:not([data-store-keep]), a[href*='play.google.com']:not([data-store-keep])").forEach(function (a) {
     a.setAttribute("href", PLAY_STORE_URL);
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
