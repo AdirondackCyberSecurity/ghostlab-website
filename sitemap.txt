@@ -1,5 +1,6 @@
 https://ghostlab.icu/
 https://ghostlab.icu/apps.html
+https://ghostlab.icu/upcoming.html
 https://ghostlab.icu/team.html
 https://ghostlab.icu/modes.html
 https://ghostlab.icu/tools.html
