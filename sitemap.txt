@@ -12,3 +12,4 @@ https://ghostlab.icu/privacy-tarot.html
 https://ghostlab.icu/privacy-nightglide.html
 https://ghostlab.icu/privacy-palmistry.html
 https://ghostlab.icu/privacy-oracle.html
+https://ghostlab.icu/privacy-eightball.html

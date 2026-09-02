@@ -247,7 +247,7 @@
   }
 
   // Normalize official store CTAs to hardcoded URLs. Do not read window hooks.
-  // Links marked data-store-keep are left alone - the Sphere page points at sibling apps.
+  // Links marked data-store-keep are left alone so the apps page can point at sibling store listings.
   document.querySelectorAll("a.btn-apple:not([data-store-keep]), a.store-badge-apple:not([data-store-keep]), a#appStoreBtn:not([data-store-keep]), a[href*='apps.apple.com']:not([data-store-keep])").forEach(function (a) {
     a.setAttribute("href", APP_STORE_URL);
     a.setAttribute("target", "_blank");

@@ -10,6 +10,8 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | Path | Purpose |
 |------|---------|
 | `/` | Home |
+| `/apps.html` | GhostLab apps (Toolkit, Divination, Night Glide, Palmistry) |
+| `/upcoming.html` | Apps on their way to the App Store |
 | `/team.html` | Team PTT |
 | `/modes.html` | Capture modes (free vs Pro) |
 | `/tools.html` | Tools free vs Pro + toolkit |
