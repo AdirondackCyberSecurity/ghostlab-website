@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GhostLab: Divination</title>
+  <meta name="description" content="Tarot, five oracle plate sets, and an eight ball in your browser. Pull a card, deal a plate, or shake for yes or no. Entertainment only. Notes stay on your device." />
+  <meta name="theme-color" content="#0a0d14" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://ghostlab.icu/divination/" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="icons/favicon.png" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Divination" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ghostlab.icu/divination/" />
+  <meta property="og:title" content="GhostLab: Divination" />
+  <meta property="og:description" content="Tarot, five oracle plate sets, and an eight ball. Pull a card, deal a plate, or shake for yes or no. Entertainment only." />
+  <meta property="og:image" content="https://ghostlab.icu/divination/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css?v=20260912a" />
+  <link rel="preload" href="data/fielddeck.json" as="fetch" crossorigin />
+  <link rel="preload" href="data/oracledecks.json" as="fetch" crossorigin />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <main id="app" aria-live="polite">
+    <div class="screen"><div class="empty">Setting up the bench.</div></div>
+  </main>
+  <noscript><div class="screen"><div class="empty">GhostLab: Divination needs JavaScript. The shuffle and the readings run in your browser and nowhere else.</div></div></noscript>
+  <script src="engine.js?v=20260912a"></script>
+  <script src="app.js?v=20260912a"></script>
+</body>
+</html>
