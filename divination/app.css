@@ -481,6 +481,21 @@ textarea.input { min-height: 74px; line-height: 1.45; }
 .gate p { font-size: 15.5px; line-height: 1.55; margin-top: 14px; }
 .gate .wordmark { font-family: var(--serif); font-size: 40px; font-weight: 700; margin-top: 6px; }
 
+/* Ad slot (sits above the tab bar, only when ads are wanted and a unit is configured) */
+.adslot { position: fixed; left: 0; right: 0; bottom: calc(var(--tab-h) + env(safe-area-inset-bottom, 0px)); z-index: 39; display: flex; justify-content: center; align-items: center;
+  min-height: 52px; max-height: 100px; overflow: hidden; background: #0a0d14; border-top: 1px solid var(--border); }
+.adslot ins { display: block; width: 100%; max-width: var(--col); min-height: 50px; }
+.adslot .adlabel { position: absolute; left: 8px; top: 2px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.16em; color: var(--faint); text-transform: uppercase; }
+.screen.with-ad { padding-bottom: calc(var(--tab-h) + 100px + 28px + env(safe-area-inset-bottom, 0px)); }
+.pro-card { border-color: rgba(var(--magenta-rgb), 0.4); background: linear-gradient(160deg, rgba(var(--magenta-rgb), 0.12), var(--panel)); }
+.pro-card .price { font-family: var(--serif); font-size: 26px; }
+.pro-card .price small { font-family: var(--font); font-size: 13px; color: var(--muted); margin-left: 6px; }
+.key-row { display: flex; gap: 8px; }
+.key-row .input { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; }
+.toolkit-card { display: flex; gap: 14px; align-items: center; border-color: rgba(var(--accent-rgb), 0.3); }
+.toolkit-card img { width: 56px; height: 56px; border-radius: 13px; flex: 0 0 auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+.toolkit-card .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+
 /* Toast */
 .toast { position: fixed; left: 50%; bottom: calc(var(--tab-h) + 18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 70;
   background: #101724; border: 1px solid rgba(var(--accent-rgb), 0.4); color: var(--text); padding: 10px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); animation: fadeIn 0.2s; white-space: nowrap; }

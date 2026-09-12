@@ -49,16 +49,30 @@
 
   // ---------- Storage ----------
   const KEY = "ghostlab.divination.v1";
+
+  // ---------- Monetization ----------
+  // AdSense uses the same publisher as AdMob. `slot` is a display unit's
+  // data-ad-slot from AdSense > Ads > By ad unit. While it is empty no ad
+  // markup is rendered and the AdSense script is never loaded.
+  const ADS = { client: "ca-pub-7306834109695370", slot: "" };
+  // Lemon Squeezy one-time unlock. `checkout` is the product's checkout URL;
+  // `productId` pins a validated key to this product. Empty checkout hides the
+  // buy button and leaves only the key field.
+  const PRO = { price: "$4.99", checkout: "", productId: null, validateUrl: "https://api.lemonsqueezy.com/v1/licenses/validate", revalidateDays: 7 };
+  const TOOLKIT = { appStore: "https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317", play: "https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" };
   const DEFAULTS = {
     settings: { reversalsOn: true, voice: "clinical", instrumentOn: false, showShuffleReceipt: true, sound: true, acceptedDisclaimerVersion: 0, didPickVoice: false, ballFinish: "classic", oracleDeck: "field" },
     dailies: {}, experiments: [], sittings: [], ball: { lastIndex: null, count: 0 },
+    pro: { key: null, validatedAt: null },
   };
   let state;
   function load() {
     try { const raw = localStorage.getItem(KEY); state = raw ? JSON.parse(raw) : structuredClone(DEFAULTS); } catch (e) { state = structuredClone(DEFAULTS); }
     state.settings = Object.assign({}, DEFAULTS.settings, state.settings || {});
-    for (const k of ["dailies", "experiments", "sittings", "ball"]) if (state[k] == null) state[k] = structuredClone(DEFAULTS[k]);
+    for (const k of ["dailies", "experiments", "sittings", "ball", "pro"]) if (state[k] == null) state[k] = structuredClone(DEFAULTS[k]);
   }
+  const isPro = () => !!(state.pro && state.pro.key);
+  const adsWanted = () => !isPro() && !!ADS.slot;
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* private mode: keep going in memory */ } }
   const S = () => state.settings;
 
@@ -95,7 +109,71 @@
       case "ball": screen.append(BallScreen()); break;
       case "more": screen.append(MoreScreen()); break;
     }
-    app.append(screen, TabBar());
+    if (adsWanted()) { screen.classList.add("with-ad"); app.append(screen, AdSlot(), TabBar()); }
+    else app.append(screen, TabBar());
+  }
+  let adScriptLoaded = false;
+  function ensureAdScript() {
+    if (adScriptLoaded) return; adScriptLoaded = true;
+    window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.requestNonPersonalizedAds = 1;
+    const s = document.createElement("script"); s.async = true; s.crossOrigin = "anonymous";
+    s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.client}`; document.head.append(s);
+  }
+  function AdSlot() {
+    ensureAdScript();
+    const ins = el("ins", { class: "adsbygoogle", style: "display:block", "data-ad-client": ADS.client, "data-ad-slot": ADS.slot, "data-ad-format": "horizontal", "data-full-width-responsive": "false" });
+    const box = el("div", { class: "adslot", role: "complementary", "aria-label": "Advertisement" }, el("span", { class: "adlabel" }, "Ad"), ins);
+    requestAnimationFrame(() => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* blocked or not yet approved */ } });
+    return box;
+  }
+
+  // ---------- Pro unlock (Lemon Squeezy license keys) ----------
+  async function validateKey(key) {
+    const res = await fetch(PRO.validateUrl, { method: "POST", headers: { Accept: "application/json" }, body: new URLSearchParams({ license_key: key }) });
+    const j = await res.json();
+    if (!j.valid) throw Object.assign(new Error(j.error || "That key is not valid."), { definitive: true });
+    if (PRO.productId && j.meta && String(j.meta.product_id) !== String(PRO.productId)) throw Object.assign(new Error("That key belongs to a different product."), { definitive: true });
+    if (j.license_key && ["disabled", "expired"].includes(j.license_key.status)) throw Object.assign(new Error("That key is no longer active."), { definitive: true });
+    return j;
+  }
+  async function revalidateIfDue() {
+    if (!isPro() || !navigator.onLine) return;
+    const age = Date.now() - new Date(state.pro.validatedAt || 0).getTime();
+    if (age < PRO.revalidateDays * 86400000) return;
+    try { await validateKey(state.pro.key); state.pro.validatedAt = new Date().toISOString(); save(); }
+    catch (e) { if (e.definitive) { state.pro = { key: null, validatedAt: null }; save(); render(); } }
+  }
+  function ProCard() {
+    const box = el("div", { class: "panel pro-card" });
+    const draw = () => {
+      box.innerHTML = "";
+      if (isPro()) {
+        const k = state.pro.key; const masked = k.length > 8 ? k.slice(0, 4) + "\u2026" + k.slice(-4) : k;
+        box.append(el("div", { class: "panel-head" }, el("div", { class: "glyph magenta" }, svg("shield")), el("div", {}, el("div", { class: "eyebrow magenta" }, "Pro"), el("h3", {}, "Pro is unlocked in this browser."))),
+          el("p", { class: "muted small" }, "The ads are gone. Everything in the app was already yours. Keep your key: it unlocks Pro again on another device or after clearing site data."),
+          el("div", { class: "row", style: "margin-top:12px" }, el("code", { class: "mono small grow" }, masked), el("button", { class: "btn btn-ghost btn-sm", onclick: () => { if (!confirm("Remove the key from this browser? You can enter it again any time.")) return; state.pro = { key: null, validatedAt: null }; save(); render(); } }, "Remove key")));
+        return;
+      }
+      const input = el("input", { class: "input grow", type: "text", placeholder: "Paste your license key", autocomplete: "off", spellcheck: "false", "aria-label": "License key" });
+      const status = el("p", { class: "small", style: "margin-top:8px;min-height:1.2em" });
+      const unlock = el("button", { class: "btn btn-magenta btn-sm", onclick: async () => {
+        const key = input.value.trim(); if (!key) { status.textContent = "Paste the key from your receipt first."; return; }
+        unlock.disabled = true; status.style.color = ""; status.textContent = "Checking the key.";
+        try { await validateKey(key); state.pro = { key, validatedAt: new Date().toISOString() }; save(); toast("Pro is unlocked."); render(); }
+        catch (e) { status.style.color = "var(--danger)"; status.textContent = e.definitive ? e.message : "Could not reach the key server. Check your connection and try again."; unlock.disabled = false; }
+      } }, "Unlock");
+      box.append(el("div", { class: "panel-head" }, el("div", { class: "glyph magenta" }, svg("shield")), el("div", {}, el("div", { class: "eyebrow magenta" }, "Pro"), el("h3", {}, "Remove the ads"))),
+        el("div", { class: "price" }, PRO.price, el("small", {}, "one time. Yours forever.")),
+        el("p", { class: "muted small", style: "margin:6px 0 12px" }, "Every spread, every oracle set and the eight ball stay free with ads. Pro only takes the ads away. No subscription, no account."),
+        PRO.checkout ? el("a", { class: "btn btn-primary btn-block", href: PRO.checkout, target: "_blank", rel: "noopener" }, "Remove the ads") : el("p", { class: "faint tiny" }, "Checkout opens soon. If you already have a key, enter it below."),
+        el("div", { class: "label", style: "margin-top:14px" }, "Already have a key?"), el("div", { class: "key-row" }, input, unlock), status);
+    };
+    draw(); return box;
+  }
+  function ToolkitCard() {
+    return el("div", { class: "panel toolkit-card" }, el("img", { src: "../assets/sphere/toolkit.png", alt: "", loading: "lazy" }),
+      el("div", { class: "grow" }, el("div", { class: "eyebrow" }, "From GhostLab"), el("h3", {}, "Paranormal Toolkit"), el("p", { class: "muted small", style: "margin-top:3px" }, "The field kit for night hunts: EMF, EVP, spirit box, Spirit Speak, and SLS. Free on the App Store and Google Play."),
+        el("div", { class: "badges" }, el("a", { class: "btn btn-outline btn-sm", href: TOOLKIT.appStore, target: "_blank", rel: "noopener" }, "App Store"), el("a", { class: "btn btn-outline btn-sm", href: TOOLKIT.play, target: "_blank", rel: "noopener" }, "Google Play"))));
   }
   function TabBar() {
     return el("nav", { class: "tabbar", "aria-label": "Sections" }, el("div", { class: "tabbar-inner" },
@@ -198,7 +276,7 @@
           el("div", { class: "art" }, el("div", { class: "ball-mini", style: `background: radial-gradient(circle at 32% 28%, ${f.shellLit}, ${f.shellMid} 55%, ${f.shellDeep})` }, el("span", {}, "8"))),
           el("div", { class: "grow" }, el("h3", {}, "Eight Ball"), el("p", {}, "Ask yes or no, then shake.")),
           el("span", { class: "chev" }, svg("chev")))),
-      el("p", { class: "footer-line", style: "margin-top:26px" }, "Entertainment only. Everything here is free."),
+      el("p", { class: "footer-line", style: "margin-top:26px" }, adsWanted() ? "Entertainment only. Everything here is free with ads." : "Entertainment only. Everything here is free."),
       InstallHint());
   }
   function InstallHint() {
@@ -610,6 +688,8 @@
       moreRow("lens", "How the reading works", "The shuffle, the voices, The Instrument, and the rules.", "guide"),
       moreRow("cap", "Learning", "Fool's Journey, suits, and how to ask a question.", "learning"),
       moreRow("info", "About", "What this is, and what it is not.", "about"),
+      ProCard(),
+      ToolkitCard(),
       InstallHint(),
       el("p", { class: "footer-line" }, "Entertainment only. Adirondack Cyber Security."));
   }
@@ -618,6 +698,7 @@
     const row = (t, s, key) => el("div", { class: "toggle-row" }, el("div", {}, el("div", { class: "t" }, t), el("div", { class: "s" }, s)), Switch(S()[key], (v) => { S()[key] = v; save(); }));
     box.append(backRow("More", () => { ui.moreView = "menu"; go("more"); }), pageHead("GhostLab", "Settings", "Same cards. Three registers."),
       el("div", { class: "panel" }, el("div", { class: "label" }, "Reader"), VoicePicker(S().voice, (v) => { S().voice = v; S().didPickVoice = true; save(); render(); })),
+      ProCard(),
       el("div", { class: "panel" },
         row("Reversals", "One extra random bit at deal time. Never on The Instrument.", "reversalsOn"),
         row("Include The Instrument", "A 79th card about the method, the observer, or contamination.", "instrumentOn"),
@@ -683,7 +764,8 @@
   }
   function AboutView() {
     return el("div", { class: "stack" }, backRow("More", () => { ui.moreView = "menu"; go("more"); }), pageHead("GhostLab", "About"),
-      el("div", { class: "panel" }, el("div", { class: "reading" }, el("p", {}, "GhostLab: Divination is three instruments on one bench: tarot, oracle plates, and an eight ball. Bring a question, pull a card, deal a plate, or shake for yes or no."), el("p", {}, "Everything runs in your browser. Your readings and notes never leave this device. There is no account, no server of ours, and nothing to buy."))),
+      el("div", { class: "panel" }, el("div", { class: "reading" }, el("p", {}, "GhostLab: Divination is three instruments on one bench: tarot, oracle plates, and an eight ball. Bring a question, pull a card, deal a plate, or shake for yes or no."), el("p", {}, "Everything runs in your browser. Your readings and notes never leave this device. There is no account and no server of ours. The free version shows ads; a one-time Pro key removes them."))),
+      ToolkitCard(),
       el("div", { class: "panel tight" }, el("div", { class: "label" }, "Web app"), el("p", { class: "muted small" }, "Add it to your Home Screen and it opens full screen, works offline, and keeps your notes between visits."), InstallHint()),
       el("div", { class: "panel tight" }, el("div", { class: "label" }, "Links"), el("div", { class: "stack-sm small" }, el("a", { href: "../privacy-tarot.html" }, "Privacy policy"), el("br"), el("a", { href: "../support.html" }, "Support"), el("br"), el("a", { href: "../apps.html" }, "The GhostLab apps"))),
       el("p", { class: "footer-line" }, "Entertainment and experimental investigation only. Adirondack Cyber Security."));
@@ -712,6 +794,7 @@
     Deck.load(deck); Oracle.load(oracle);
     fromHash();
     if (S().acceptedDisclaimerVersion < 1) showGate("gate");
+    revalidateIfDue();
     if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
   }
   boot().catch((e) => { app.innerHTML = ""; app.append(el("div", { class: "screen" }, el("div", { class: "empty" }, "The deck could not load. Check your connection and reload."))); console.error(e); });
