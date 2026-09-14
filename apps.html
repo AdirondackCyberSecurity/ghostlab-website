@@ -106,6 +106,47 @@
       font-size: 0.9rem;
       color: var(--muted);
     }
+    .sphere-card:has(.qr-row) { flex-wrap: wrap; }
+    .qr-row {
+      flex: 1 1 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 4px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .qr-tile {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .qr-tile img {
+      display: block;
+      width: 128px;
+      height: 128px;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+    }
+    .qr-tile figcaption {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .qr-hint {
+      flex: 1 1 160px;
+      margin: 0;
+      align-self: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
@@ -165,6 +206,17 @@
                   <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get it on Google Play" />
                 </a>
               </div>
+            </div>
+            <div class="qr-row" aria-label="Scan to install on your phone">
+              <figure class="qr-tile">
+                <img src="assets/store/qr/app-store.svg" width="128" height="128" alt="QR code for GhostLab: Paranormal Toolkit on the App Store" loading="lazy" />
+                <figcaption>App Store</figcaption>
+              </figure>
+              <figure class="qr-tile">
+                <img src="assets/store/qr/google-play.svg" width="128" height="128" alt="QR code for GhostLab: Paranormal Toolkit on Google Play" loading="lazy" />
+                <figcaption>Google Play</figcaption>
+              </figure>
+              <p class="qr-hint">Reading this on a computer? Point your phone camera at a code and the store opens.</p>
             </div>
           </article>
 
