@@ -11,7 +11,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 |------|---------|
 | `/` | Home |
 | `/apps.html` | GhostLab apps (Toolkit, Divination, Night Glide, Palmistry) |
-| `/upcoming.html` | Apps on their way to the App Store |
+| `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/team.html` | Team PTT |
 | `/modes.html` | Capture modes (free vs Pro) |
 | `/tools.html` | Tools free vs Pro + toolkit |
@@ -19,6 +19,8 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/pro.html` | GhostLab Pro |
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
+
+Primary nav is Apps, Comparison, Team PTT, Modes, Tools, Gallery, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
 
 ## Hosting
 
