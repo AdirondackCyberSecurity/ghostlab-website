@@ -2039,40 +2039,144 @@ main .team-panel {
   .gallery figure img { position: absolute; inset: 0; }
 }
 
-/* Comparison page: table, fit cards, FAQ */
-.page-hero.compare-hero h1 { max-width: 22ch; }
-.compare-answer {
-  max-width: 72ch;
+/* Comparison page: denser rhythm + contrast lead */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
-.compare-answer p {
+.page-hero.compare-hero h1 { max-width: 22ch; }
+body.compare-page .page-hero {
+  padding: 22px 0 0;
+}
+body.compare-page .page-hero .lede {
+  margin-top: 10px;
+  max-width: 52ch;
+  font-size: 1.05rem;
+}
+body.compare-page main > .page-hero + .section,
+body.compare-page main > .section:first-of-type {
+  padding-top: 18px;
+}
+body.compare-page .section { padding: 28px 0; }
+body.compare-page .section-sm { padding: 18px 0 28px; }
+body.compare-page .section-head {
+  margin-bottom: 14px;
+  gap: 6px;
+}
+body.compare-page .section-head h2 {
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+}
+body.compare-page .card {
+  padding: 16px 18px;
+}
+body.compare-page .card:hover { transform: none; }
+body.compare-page .final-cta {
+  padding: 22px 20px;
+  border-radius: var(--radius);
+}
+body.compare-page .final-cta h2 { max-width: none; }
+body.compare-page .final-cta .lede {
+  margin: 8px auto 16px;
+  font-size: 0.98rem;
+}
+body.compare-page footer { margin-top: 8px; padding-top: 28px; }
+
+.compare-contrast {
+  align-items: stretch;
+}
+.contrast-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100%;
+}
+.contrast-card .eyebrow { margin-bottom: 0; }
+.contrast-card h2,
+.contrast-card h3 {
+  font-size: 1.2rem;
   margin: 0;
+}
+.contrast-ghostlab {
+  border-color: rgba(61, 255, 168, 0.28);
+  background:
+    radial-gradient(420px 180px at 0% 0%, rgba(61, 255, 168, 0.1), transparent 62%),
+    var(--panel);
+}
+.contrast-ghosttube {
+  border-color: var(--border);
+  background: var(--panel);
+}
+.contrast-ghosttube .eyebrow {
+  background: rgba(255, 255, 255, 0.06);
   color: var(--muted);
-  font-size: 1.02rem;
+  border-color: var(--border);
+}
+.compare-lead ul,
+.fit-card ul {
+  margin: 0;
+  padding-left: 1.15em;
+  color: var(--muted);
+  display: grid;
+  gap: 7px;
+  font-size: 0.95rem;
+}
+.compare-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.compare-chip {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(12, 16, 24, 0.72);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.compare-chip strong { color: var(--text); font-weight: 700; }
+.compare-chip-gl {
+  border-color: rgba(61, 255, 168, 0.28);
+  background: var(--accent-dim);
+  color: var(--text);
+}
+.compare-note {
+  margin: 12px 0 0;
+  color: var(--faint);
+  font-size: 0.82rem;
 }
 .compare-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   background: var(--panel);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 .compare-table {
   width: 100%;
-  min-width: 640px;
+  min-width: 620px;
   border-collapse: collapse;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
 }
 .compare-table th,
 .compare-table td {
-  padding: 14px 16px;
+  padding: 9px 12px;
   text-align: left;
   vertical-align: top;
   border-bottom: 1px solid var(--border);
 }
 .compare-table thead th {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2083,29 +2187,15 @@ main .team-panel {
   font-weight: 600;
   color: var(--text);
   white-space: nowrap;
-  width: 18%;
+  width: 16%;
 }
 .compare-table td { color: var(--muted); }
 .compare-table tbody tr:last-child th,
 .compare-table tbody tr:last-child td { border-bottom: none; }
 .compare-table .col-ghostlab { color: var(--text); }
-.fit-card ul,
-.faq-item p + p { margin-top: 10px; }
-.fit-card ul {
-  margin: 0;
-  padding-left: 1.15em;
-  color: var(--muted);
-  display: grid;
-  gap: 8px;
-}
-.faq-list {
-  display: grid;
-  gap: 12px;
-}
-.faq-item h3 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-}
+.faq-list { display: grid; gap: 10px; }
+.faq-item h3 { margin: 0 0 6px; font-size: 1rem; }
+.faq-item p { font-size: 0.92rem; }
 
 /* Comfortable tap targets on touch screens (footer + breadcrumb links) */
 @media (pointer: coarse) {
