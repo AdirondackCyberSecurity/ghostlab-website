@@ -1635,7 +1635,8 @@ main .team-panel {
 .page-hero .crumb a { color: var(--muted); }
 .page-hero .crumb a:hover { color: var(--accent); }
 .page-hero .crumb span { opacity: 0.5; }
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a[aria-current="page"] {
   color: var(--text);
   background: rgba(255, 255, 255, 0.06);
 }
@@ -2036,6 +2037,74 @@ main .team-panel {
   .phone-float-b { height: calc(min(220px, 52vw) * 2.133); }
   .gallery figure { height: 0; padding-bottom: 177.7%; }
   .gallery figure img { position: absolute; inset: 0; }
+}
+
+/* Comparison page: table, fit cards, FAQ */
+.page-hero.compare-hero h1 { max-width: 22ch; }
+.compare-answer {
+  max-width: 72ch;
+}
+.compare-answer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+.compare-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.compare-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.compare-table th,
+.compare-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.compare-table thead th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: rgba(0, 0, 0, 0.22);
+}
+.compare-table tbody th {
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  width: 18%;
+}
+.compare-table td { color: var(--muted); }
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td { border-bottom: none; }
+.compare-table .col-ghostlab { color: var(--text); }
+.fit-card ul,
+.faq-item p + p { margin-top: 10px; }
+.fit-card ul {
+  margin: 0;
+  padding-left: 1.15em;
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+}
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+.faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
 }
 
 /* Comfortable tap targets on touch screens (footer + breadcrumb links) */
