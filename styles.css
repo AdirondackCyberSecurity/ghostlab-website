@@ -2086,6 +2086,17 @@ body.compare-page .final-cta .lede {
   margin: 8px auto 16px;
   font-size: 0.98rem;
 }
+body.compare-page .final-cta .hero-actions {
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+body.compare-page .final-cta .hero-actions .store-badge {
+  align-self: center;
+}
 body.compare-page footer { margin-top: 8px; padding-top: 28px; }
 
 .compare-contrast {
