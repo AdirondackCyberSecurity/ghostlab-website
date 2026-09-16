@@ -493,9 +493,14 @@ body.ads-on .screen { padding-bottom: calc(var(--tab-h) + 100px + 28px + env(saf
 .pro-card .price small { font-family: var(--font); font-size: 13px; color: var(--muted); margin-left: 6px; }
 .key-row { display: flex; gap: 8px; }
 .key-row .input { font-family: var(--mono); font-size: 14px; letter-spacing: 0.04em; }
-.toolkit-card { display: flex; gap: 14px; align-items: center; border-color: rgba(var(--accent-rgb), 0.3); }
-.toolkit-card img { width: 56px; height: 56px; border-radius: 13px; flex: 0 0 auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
-.toolkit-card .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.toolkit-card { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; border-color: rgba(var(--accent-rgb), 0.3); }
+.toolkit-card .toolkit-icon { width: 56px; height: 56px; border-radius: 13px; flex: 0 0 auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); }
+/* Badges sit on their own row: at 375px the two of them need more width than
+   what is left beside the icon, and shrinking them is not ours to do. */
+.toolkit-card .badges { display: flex; gap: 10px; flex-wrap: wrap; flex: 1 0 100%; margin-top: 10px; }
+.store-badge { display: inline-block; line-height: 0; flex: 0 0 auto; text-decoration: none; background: none; border: 0; padding: 0; border-radius: 0; box-shadow: none; }
+.store-badge:hover, .store-badge:active { opacity: 0.92; transform: none; }
+.store-badge img { display: block; height: 40px; width: auto; }
 
 /* Toast */
 .toast { position: fixed; left: 50%; bottom: calc(var(--tab-h) + 18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 70;

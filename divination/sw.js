@@ -1,13 +1,16 @@
 /* GhostLab: Divination service worker.
    Shell and data are precached so the bench opens offline. Card art is
    cached the first time it is seen. Bump VERSION with every deploy. */
-const VERSION = "divination-20260916d";
+const VERSION = "divination-20260916e";
 const SHELL = [
-  "./", "index.html", "app.css?v=20260916d", "engine.js?v=20260916d", "app.js?v=20260916d", "manifest.webmanifest",
+  "./", "index.html", "app.css?v=20260916e", "engine.js?v=20260916e", "app.js?v=20260916e", "manifest.webmanifest",
   "data/fielddeck.json", "data/oracledecks.json",
   "cards/CardBack.webp", "cards/Instrument.webp",
   "icons/icon-192.png", "icons/icon-512.png", "icons/favicon.png",
   "audio/chamber_slosh.wav", "audio/chamber_settle.wav",
+  // The store badges are images inside links: uncached, they leave the Toolkit
+  // card holding two invisible anchors when the app opens offline. 17KB for both.
+  "../assets/store/download-on-the-app-store.svg", "../assets/store/get-it-on-google-play.png",
 ];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));

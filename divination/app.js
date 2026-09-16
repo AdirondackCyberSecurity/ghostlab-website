@@ -189,9 +189,16 @@
     draw(); return box;
   }
   function ToolkitCard() {
-    return el("div", { class: "panel toolkit-card" }, el("img", { src: "../assets/sphere/toolkit.png", alt: "", loading: "lazy" }),
-      el("div", { class: "grow" }, el("div", { class: "eyebrow" }, "From GhostLab"), el("h3", {}, "Paranormal Toolkit"), el("p", { class: "muted small", style: "margin-top:3px" }, "The field kit for night hunts: EMF, EVP, spirit box, Spirit Speak, and SLS. Free on the App Store and Google Play."),
-        el("div", { class: "badges" }, el("a", { class: "btn btn-outline btn-sm", href: TOOLKIT.appStore, target: "_blank", rel: "noopener" }, "App Store"), el("a", { class: "btn btn-outline btn-sm", href: TOOLKIT.play, target: "_blank", rel: "noopener" }, "Google Play"))));
+    // Apple's and Google's own badge artwork, the same files the rest of the site
+    // serves. Both are trademarks with rules attached: they keep their supplied
+    // proportions and wording, and they get no button chrome of ours.
+    const badge = (href, cls, src, w, alt) => el("a", { class: "store-badge " + cls, href, target: "_blank", rel: "noopener noreferrer" },
+      el("img", { src, width: w, height: 40, alt, loading: "lazy" }));
+    return el("div", { class: "panel toolkit-card" }, el("img", { class: "toolkit-icon", src: "../assets/sphere/toolkit.png", alt: "", loading: "lazy" }),
+      el("div", { class: "grow" }, el("div", { class: "eyebrow" }, "From GhostLab"), el("h3", {}, "Paranormal Toolkit"), el("p", { class: "muted small", style: "margin-top:3px" }, "The field kit for night hunts: EMF, EVP, spirit box, Spirit Speak, and SLS. Free on the App Store and Google Play.")),
+      el("div", { class: "badges" },
+        badge(TOOLKIT.appStore, "store-badge-apple", "../assets/store/download-on-the-app-store.svg", 120, "Download on the App Store"),
+        badge(TOOLKIT.play, "store-badge-play", "../assets/store/get-it-on-google-play.png", 135, "Get it on Google Play")));
   }
   function TabBar() {
     return el("nav", { class: "tabbar", "aria-label": "Sections" }, el("div", { class: "tabbar-inner" },
