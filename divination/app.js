@@ -58,7 +58,7 @@
   // Lemon Squeezy one-time unlock. `checkout` is the product's checkout URL;
   // `productId` pins a validated key to this product. Empty checkout hides the
   // buy button and leaves only the key field.
-  const PRO = { price: "$4.99", checkout: "", productId: null, validateUrl: "https://api.lemonsqueezy.com/v1/licenses/validate", revalidateDays: 7 };
+  const PRO = { price: "$4.99", checkout: "https://adkcyber.lemonsqueezy.com/checkout/buy/6cf3b718-5c37-4161-af08-774cda977d77", productId: 1366468, validateUrl: "https://api.lemonsqueezy.com/v1/licenses/validate", revalidateDays: 7 };
   const TOOLKIT = { appStore: "https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317", play: "https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" };
   const DEFAULTS = {
     settings: { reversalsOn: true, voice: "clinical", instrumentOn: false, showShuffleReceipt: true, sound: true, acceptedDisclaimerVersion: 0, didPickVoice: false, ballFinish: "classic", oracleDeck: "field" },
@@ -148,7 +148,8 @@
   async function validateKey(key) {
     const res = await fetch(PRO.validateUrl, { method: "POST", headers: { Accept: "application/json" }, body: new URLSearchParams({ license_key: key }) });
     const j = await res.json();
-    if (!j.valid) throw Object.assign(new Error(j.error || "That key is not valid."), { definitive: true });
+    // The API's own wording ("license_key not found.") is machine text; say it plainly instead.
+    if (!j.valid) throw Object.assign(new Error("That key is not valid. Check it against your receipt."), { definitive: true });
     if (PRO.productId && j.meta && String(j.meta.product_id) !== String(PRO.productId)) throw Object.assign(new Error("That key belongs to a different product."), { definitive: true });
     if (j.license_key && ["disabled", "expired"].includes(j.license_key.status)) throw Object.assign(new Error("That key is no longer active."), { definitive: true });
     return j;
