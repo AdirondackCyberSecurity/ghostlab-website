@@ -109,8 +109,8 @@
       case "ball": screen.append(BallScreen()); break;
       case "more": screen.append(MoreScreen()); break;
     }
-    if (adsWanted()) { screen.classList.add("with-ad"); app.append(screen, AdSlot(), TabBar()); }
-    else app.append(screen, TabBar());
+    app.append(screen, TabBar());
+    syncAdSlot();
   }
   let adScriptLoaded = false;
   function ensureAdScript() {
@@ -119,12 +119,29 @@
     const s = document.createElement("script"); s.async = true; s.crossOrigin = "anonymous";
     s.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADS.client}`; document.head.append(s);
   }
-  function AdSlot() {
+  // The banner is fixed to the bottom of the viewport, so it lives on the body
+  // rather than inside #app and survives every re-render. render() wipes #app on
+  // each tap, and a fresh ins there would mean a fresh ad request for picking a
+  // voice or dealing again: one request per session is what Google expects.
+  let adNode = null;
+  function syncAdSlot() {
+    if (!adsWanted()) { if (adNode) { adNode.remove(); adNode = null; } showAd(false); return; }
+    if (adNode) return;
     ensureAdScript();
     const ins = el("ins", { class: "adsbygoogle", style: "display:block", "data-ad-client": ADS.client, "data-ad-slot": ADS.slot, "data-ad-format": "horizontal", "data-full-width-responsive": "false" });
-    const box = el("div", { class: "adslot", role: "complementary", "aria-label": "Advertisement" }, el("span", { class: "adlabel" }, "Ad"), ins);
+    adNode = el("div", { class: "adslot empty", role: "complementary", "aria-label": "Advertisement" }, el("span", { class: "adlabel" }, "Ad"), ins);
+    document.body.append(adNode);
+    // The banner stays hidden until Google says it filled the slot. Added to the
+    // Home Screen the app opens offline as often as not, and an empty labelled
+    // box pinned over the tab bar — with the screen padded to clear it — is the
+    // one thing an installed app must never show.
+    new MutationObserver(() => showAd(ins.getAttribute("data-ad-status") === "filled"))
+      .observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
     requestAnimationFrame(() => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* blocked or not yet approved */ } });
-    return box;
+  }
+  function showAd(on) {
+    if (adNode) adNode.classList.toggle("empty", !on);
+    document.body.classList.toggle("ads-on", !!on && !!adNode);
   }
 
   // ---------- Pro unlock (Lemon Squeezy license keys) ----------

@@ -486,7 +486,8 @@ textarea.input { min-height: 74px; line-height: 1.45; }
   min-height: 52px; max-height: 100px; overflow: hidden; background: #0a0d14; border-top: 1px solid var(--border); }
 .adslot ins { display: block; width: 100%; max-width: var(--col); min-height: 50px; }
 .adslot .adlabel { position: absolute; left: 8px; top: 2px; font-family: var(--mono); font-size: 8px; letter-spacing: 0.16em; color: var(--faint); text-transform: uppercase; }
-.screen.with-ad { padding-bottom: calc(var(--tab-h) + 100px + 28px + env(safe-area-inset-bottom, 0px)); }
+.adslot.empty { display: none; }
+body.ads-on .screen { padding-bottom: calc(var(--tab-h) + 100px + 28px + env(safe-area-inset-bottom, 0px)); }
 .pro-card { border-color: rgba(var(--magenta-rgb), 0.4); background: linear-gradient(160deg, rgba(var(--magenta-rgb), 0.12), var(--panel)); }
 .pro-card .price { font-family: var(--serif); font-size: 26px; }
 .pro-card .price small { font-family: var(--font); font-size: 13px; color: var(--muted); margin-left: 6px; }
