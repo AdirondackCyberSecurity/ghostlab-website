@@ -1,0 +1,3 @@
+# Apps only. The iOS and Android apps run AdMob on the personal Google account;
+# the website's ads.txt names the ADK Cyber account, which sells the web ads.
+google.com, pub-7306834109695370, DIRECT, f08c47fec0942fa0
