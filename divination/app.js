@@ -54,7 +54,7 @@
   // AdSense uses the same publisher as AdMob. `slot` is a display unit's
   // data-ad-slot from AdSense > Ads > By ad unit. While it is empty no ad
   // markup is rendered and the AdSense script is never loaded.
-  const ADS = { client: "ca-pub-7306834109695370", slot: "" };
+  const ADS = { client: "ca-pub-5993751805943606", slot: "" };
   // Lemon Squeezy one-time unlock. `checkout` is the product's checkout URL;
   // `productId` pins a validated key to this product. Empty checkout hides the
   // buy button and leaves only the key field.
