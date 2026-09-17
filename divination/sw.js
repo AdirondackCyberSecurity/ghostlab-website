@@ -1,7 +1,7 @@
 /* GhostLab: Divination service worker.
    Shell and data are precached so the bench opens offline. Card art is
    cached the first time it is seen. Bump VERSION with every deploy. */
-const VERSION = "divination-20260916e";
+const VERSION = "divination-20260917a";
 const SHELL = [
   "./", "index.html", "app.css?v=20260916e", "engine.js?v=20260916e", "app.js?v=20260916e", "manifest.webmanifest",
   "data/fielddeck.json", "data/oracledecks.json",

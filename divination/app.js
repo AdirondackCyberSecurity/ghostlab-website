@@ -129,18 +129,29 @@
     if (adNode) return;
     ensureAdScript();
     const ins = el("ins", { class: "adsbygoogle", style: "display:block", "data-ad-client": ADS.client, "data-ad-slot": ADS.slot, "data-ad-format": "horizontal", "data-full-width-responsive": "false" });
-    adNode = el("div", { class: "adslot empty", role: "complementary", "aria-label": "Advertisement" }, el("span", { class: "adlabel" }, "Ad"), ins);
+    adNode = el("div", { class: "adslot pending", role: "complementary", "aria-label": "Advertisement" }, el("span", { class: "adlabel" }, "Ad"), ins);
     document.body.append(adNode);
-    // The banner stays hidden until Google says it filled the slot. Added to the
-    // Home Screen the app opens offline as often as not, and an empty labelled
-    // box pinned over the tab bar — with the screen padded to clear it — is the
-    // one thing an installed app must never show.
-    new MutationObserver(() => showAd(ins.getAttribute("data-ad-status") === "filled"))
-      .observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
-    requestAnimationFrame(() => { try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* blocked or not yet approved */ } });
+    // The banner stays invisible until Google says it filled the slot. Added to
+    // the Home Screen the app opens offline as often as not, and an empty
+    // labelled box pinned over the tab bar — with the screen padded to clear it —
+    // is the one thing an installed app must never show. While it waits the
+    // wrapper is `pending` (visibility:hidden), never display:none: Google sizes
+    // a responsive unit from the ins's rendered width, and a display:none parent
+    // gives it availableWidth=0, so it throws and never requests an ad. The slot
+    // is position:fixed, so the hidden box takes no document space and the
+    // screen padding still waits for `filled`.
+    new MutationObserver(() => {
+      const status = ins.getAttribute("data-ad-status");
+      if (status === "filled") showAd(true);
+      else if (status === "unfilled") showAd(false);
+    }).observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
+    requestAnimationFrame(() => {
+      try { (window.adsbygoogle = window.adsbygoogle || []).push({}); }
+      catch (e) { console.warn("[ads] adsbygoogle.push failed:", e && e.message ? e.message : e); showAd(false); }
+    });
   }
   function showAd(on) {
-    if (adNode) adNode.classList.toggle("empty", !on);
+    if (adNode) { adNode.classList.remove("pending"); adNode.classList.toggle("empty", !on); }
     document.body.classList.toggle("ads-on", !!on && !!adNode);
   }
 
