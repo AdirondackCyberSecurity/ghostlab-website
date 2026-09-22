@@ -394,45 +394,61 @@
     .hero-eyebrow-row {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 10px 14px;
+      flex-wrap: nowrap;
+      gap: 10px;
       margin-bottom: 16px;
     }
-    .hero-eyebrow-row .eyebrow { margin-bottom: 0; }
+    .hero-eyebrow-row .eyebrow {
+      margin-bottom: 0;
+      flex: 0 1 auto;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .hero-social {
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      flex: 0 0 auto;
     }
+    /* Brand marks keep their own colors; no tinted tile behind them. */
     .social-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
+      line-height: 0;
       border-radius: 50%;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      opacity: 0.92;
+      transition: opacity 0.2s ease, transform 0.2s ease;
       -webkit-tap-highlight-color: transparent;
     }
-    .social-link svg { display: block; width: 18px; height: 18px; }
+    .social-link svg { display: block; width: 22px; height: 22px; }
     .social-link:hover,
     .social-link:focus-visible {
-      color: var(--accent);
-      background: var(--accent-dim);
-      border-color: var(--border-strong);
-      transform: translateY(-2px);
+      opacity: 1;
+      transform: translateY(-2px) scale(1.06);
+    }
+    .social-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
     @media (prefers-reduced-motion: reduce) {
       .social-link { transition: none; }
       .social-link:hover,
       .social-link:focus-visible { transform: none; }
     }
-    @media (max-width: 520px) {
-      .social-link { width: 32px; height: 32px; }
-      .social-link svg { width: 17px; height: 17px; }
+    /* Keep the icons beside "Android" on narrow screens by scaling the row down. */
+    @media (max-width: 620px) {
+      .hero-eyebrow-row { gap: 8px; }
+      .hero-eyebrow-row .eyebrow { font-size: 0.68rem; padding: 5px 10px; letter-spacing: 0.06em; }
+      .hero-social { gap: 6px; }
+      .hero-social .social-link svg { width: 19px; height: 19px; }
+    }
+    @media (max-width: 400px) {
+      .hero-eyebrow-row .eyebrow { font-size: 0.62rem; padding: 5px 9px; letter-spacing: 0.04em; }
+      .hero-social { gap: 5px; }
+      .hero-social .social-link svg { width: 17px; height: 17px; }
     }
     h1, h2, h3 { letter-spacing: -0.03em; line-height: 1.12; margin: 0; }
     h1 {
