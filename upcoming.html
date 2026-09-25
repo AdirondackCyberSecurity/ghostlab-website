@@ -84,6 +84,19 @@
       border: 1px solid rgba(255, 255, 255, 0.14);
       color: var(--muted);
     }
+    .sphere-card .store-row {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      margin-top: 2px;
+    }
+    .sphere-card .store-badge-play { flex: 0 1 135px; }
+    .sphere-card .store-badge img { width: 100%; height: auto; }
+    /* A card with one live store and one pending: the badge and the pill
+       wrap onto separate lines when the card is too narrow for both. */
+    .sphere-card .store-row.store-row-split { flex-wrap: wrap; }
+    .sphere-card .store-row .sphere-status { flex: 0 0 auto; white-space: nowrap; }
+    .sphere-status .keep-case { text-transform: none; }
     .sphere-note {
       margin-top: 26px;
       font-size: 0.9rem;
@@ -128,7 +141,7 @@
       <header class="page-hero reveal">
         <div class="crumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Apps</a> <span>/</span> Upcoming</div>
         <h1>Upcoming apps</h1>
-        <p class="lede">Four more GhostLab apps on their way. Each one turns into a download link here the day Apple approves it.</p>
+        <p class="lede">Four more GhostLab apps on their way. Each one turns into a download link here the day Apple approves it. Dead Channel is already on Google Play.</p>
       </header>
 
       <section class="section" id="roster">
@@ -149,7 +162,12 @@
             <div class="sphere-body">
               <h3>GhostLab: Dead Channel</h3>
               <p>A spirit box built from eight voice banks. Ask your question out loud, then listen for broken words and whispers.</p>
-              <span class="sphere-status soon">On the way</span>
+              <div class="store-row store-row-split">
+                <a class="store-badge store-badge-play" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab.signal&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get GhostLab: Dead Channel on Google Play" />
+                </a>
+                <span class="sphere-status soon"><span class="keep-case">iOS</span> coming soon</span>
+              </div>
             </div>
           </article>
 
