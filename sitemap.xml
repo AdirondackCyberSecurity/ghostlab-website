@@ -91,6 +91,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://ghostlab.icu/privacy-spiritdetector.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ghostlab.icu/privacy-signal.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://ghostlab.icu/upcoming.html</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>weekly</changefreq>
