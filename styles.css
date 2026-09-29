@@ -498,6 +498,14 @@
       h1 { max-width: none; }
     }
     .hero-copy .lede { margin-bottom: 28px; }
+    /* The home headline is a long all-caps line: run it smaller and wider than
+       the default h1 so the store buttons stay above the fold. */
+    .hero-copy h1 {
+      font-size: clamp(2rem, 3.6vw, 3.1rem);
+      max-width: 20ch;
+      text-wrap: balance;
+    }
+    .hero-copy h1 .nowrap { white-space: nowrap; }
     .hero-lede {
       display: grid;
       gap: 10px;
