@@ -71,7 +71,19 @@
     }
     .sd-price { margin: 0; color: var(--muted); font-size: 0.92rem; }
     .sd-price strong { color: var(--accent); }
-    .sd-hero-shot { width: 100%; max-width: 300px; justify-self: center; }
+    /* The whole home screen is far taller than the copy beside it, and
+       centring the two left a tall gap above the breadcrumb. Show the top
+       of the screen (figure, name, tagline) at about the copy's height and
+       fade the rest out. */
+    .sd-hero-shot {
+      width: 100%;
+      max-width: 280px;
+      height: 430px;
+      justify-self: center;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+      mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    }
     .showcase-copy .eyebrow { margin-bottom: 12px; }
     #details .card a { white-space: nowrap; }
     .sd-cta-icon {
