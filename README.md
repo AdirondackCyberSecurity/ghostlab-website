@@ -13,14 +13,14 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/apps.html` | GhostLab apps (Toolkit, Divination, Night Glide, Palmistry) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
+| `/dead-channel.html` | GhostLab: Dead Channel (spirit box app). Replaced Gallery; `/gallery.html` now redirects here |
 | `/modes.html` | Capture modes (free vs Pro) |
 | `/tools.html` | Tools free vs Pro + toolkit |
-| `/gallery.html` | Screenshots |
 | `/pro.html` | GhostLab Pro |
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
 
-Primary nav is Apps, Comparison, Spirit Detector, Modes, Tools, Gallery, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
+Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
 
 ## Hosting
 

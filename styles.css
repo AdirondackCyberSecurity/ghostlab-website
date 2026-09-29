@@ -242,13 +242,22 @@
     @media (max-width: 760px) {
       .nav-links:not(.open) .hide-sm { display: none; }
     }
-    /* A full bar needs about 900px since Team PTT became Spirit Detector.
-       Between the phone menu and that, tighten the links and let Gallery
-       go (it stays in the footer and the phone menu) rather than wrap. */
+    /* Seven links (Spirit Detector and Dead Channel among them) need about
+       945px at full padding. Between the phone menu and that, the links
+       tighten in two steps and all seven still fit down to about 785px.
+       Below 810px the hide-sm link (Tools, or Modes on the Tools page) steps
+       out of the bar rather than wrap. It stays in the footer and the phone
+       menu. */
     .nav-links a { white-space: nowrap; }
     @media (min-width: 761px) and (max-width: 960px) {
       .nav-links { gap: 2px; }
       .nav-links a { padding: 8px; }
+    }
+    @media (min-width: 761px) and (max-width: 900px) {
+      .nav-inner { gap: 10px; }
+      .nav-links a { padding: 8px 5px; font-size: 0.86rem; }
+    }
+    @media (min-width: 761px) and (max-width: 810px) {
       .nav-links:not(.open) .hide-sm { display: none; }
     }
 
