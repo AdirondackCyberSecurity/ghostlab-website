@@ -242,6 +242,15 @@
     @media (max-width: 760px) {
       .nav-links:not(.open) .hide-sm { display: none; }
     }
+    /* A full bar needs about 900px since Team PTT became Spirit Detector.
+       Between the phone menu and that, tighten the links and let Gallery
+       go (it stays in the footer and the phone menu) rather than wrap. */
+    .nav-links a { white-space: nowrap; }
+    @media (min-width: 761px) and (max-width: 960px) {
+      .nav-links { gap: 2px; }
+      .nav-links a { padding: 8px; }
+      .nav-links:not(.open) .hide-sm { display: none; }
+    }
 
     /* Buttons */
     .btn {

@@ -12,7 +12,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/` | Home |
 | `/apps.html` | GhostLab apps (Toolkit, Divination, Night Glide, Palmistry) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
-| `/team.html` | Team PTT |
+| `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
 | `/modes.html` | Capture modes (free vs Pro) |
 | `/tools.html` | Tools free vs Pro + toolkit |
 | `/gallery.html` | Screenshots |
@@ -20,7 +20,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
 
-Primary nav is Apps, Comparison, Team PTT, Modes, Tools, Gallery, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
+Primary nav is Apps, Comparison, Spirit Detector, Modes, Tools, Gallery, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
 
 ## Hosting
 
