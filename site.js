@@ -5,7 +5,38 @@
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
-  // All Hallows theme window is Oct 24 to 31, local time. Hidden after Oct 31.
+  // Calendar date in America/New_York as a YYYYMMDD number, so date windows
+  // flip at midnight ET for every visitor instead of at their own midnight.
+  function easternDay(d) {
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"
+      }).formatToParts(d);
+      var v = {};
+      parts.forEach(function (part) { v[part.type] = part.value; });
+      return Number(v.year) * 10000 + Number(v.month) * 100 + Number(v.day);
+    } catch (e) {
+      // No time zone support: EDT (UTC-4) covers the whole Oct 1 to Nov 1 window.
+      var t = new Date(d.getTime() - 4 * 3600000);
+      return t.getUTCFullYear() * 10000 + (t.getUTCMonth() + 1) * 100 + t.getUTCDate();
+    }
+  }
+  var TODAY_ET = easternDay(new Date());
+  // Halloween sale and All Hallows themes: Oct 14 to Oct 31, 2026, inclusive, ET.
+  var SALE_START = 20261014;
+  var SALE_END = 20261031;
+  var SALE_ON = TODAY_ET >= SALE_START && TODAY_ET <= SALE_END;
+
+  // Pages carry both versions of each price line. The regular copy shows by
+  // default (and with JavaScript off); the sale copy only shows in the window.
+  if (SALE_ON) {
+    document.querySelectorAll("[data-sale-off]").forEach(function (el) { el.hidden = true; });
+    document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
+  }
+
+  // All Hallows themes run Oct 14 to Oct 31, 2026 in all three GhostLab apps,
+  // on America/New_York dates. Before Oct 14 the strip counts down, Oct 14 to 30
+  // it shows days left, Oct 31 it says "Ends tonight", and from Nov 1 it is gone.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
     var DISMISS_KEY = "ghostlab.hallows.dismissed";
@@ -15,33 +46,27 @@
 
     var wrap = document.querySelector(".wrap");
     if (!wrap) return;
+    if (TODAY_ET > SALE_END) return;
 
-    var now = new Date();
-    var year = now.getFullYear();
-    var today = new Date(year, now.getMonth(), now.getDate());
-    var arrive = new Date(year, 9, 24);
-    var endExclusive = new Date(year, 10, 1);
-    function daysUntil(target) {
-      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    function dayIndex(n) {
+      return Date.UTC(Math.floor(n / 10000), Math.floor(n / 100) % 100 - 1, n % 100) / 86400000;
     }
-    if (today.getTime() >= endExclusive.getTime()) return;
-
-    var untilArrive = daysUntil(arrive);
     var message;
-    if (untilArrive > 0) {
-      var untilLabel = untilArrive === 1 ? "1\u00a0day" : untilArrive + "\u00a0days";
-      message = "All Hallows theme arrives Oct\u00a024. " + untilLabel + " to go. Dead Channel and Spirit Detector, Oct\u00a024 to\u00a031 only.";
+    if (TODAY_ET < SALE_START) {
+      var until = dayIndex(SALE_START) - dayIndex(TODAY_ET);
+      var untilLabel = until === 1 ? "1\u00a0day" : until + "\u00a0days";
+      message = "All Hallows themes arrive Oct\u00a014 in Paranormal Toolkit, Dead Channel and Spirit Detector, through Oct\u00a031. " + untilLabel + " to go.";
+    } else if (TODAY_ET < SALE_END) {
+      var left = dayIndex(SALE_END) - dayIndex(TODAY_ET) + 1;
+      message = "All Hallows themes and Halloween sale prices are live in all three GhostLab apps. Ends Oct\u00a031, " + left + "\u00a0days left.";
     } else {
-      var left = daysUntil(endExclusive);
-      if (left < 1) return;
-      var leftLabel = left === 1 ? "1\u00a0day left" : left + "\u00a0days left";
-      message = "Ends at midnight Oct\u00a031. " + leftLabel + ". All Hallows theme in Dead Channel and Spirit Detector.";
+      message = "Ends tonight. Last day for All Hallows themes and Halloween sale prices in all three GhostLab apps.";
     }
 
     var banner = document.createElement("aside");
     banner.className = "hallows-banner";
     banner.setAttribute("role", "region");
-    banner.setAttribute("aria-label", "All Hallows theme");
+    banner.setAttribute("aria-label", "All Hallows themes");
 
     var text = document.createElement("p");
     text.className = "hallows-banner-text";
