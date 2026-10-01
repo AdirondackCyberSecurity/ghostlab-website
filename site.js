@@ -5,6 +5,69 @@
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
+  // All Hallows theme window is Oct 24–31, local time. Hidden after Oct 31.
+  // Dismissal lasts for this tab session only.
+  (function mountHallowsBanner() {
+    var DISMISS_KEY = "ghostlab.hallows.dismissed";
+    try {
+      if (window.sessionStorage && sessionStorage.getItem(DISMISS_KEY) === "1") return;
+    } catch (e) { /* keep the banner if storage is blocked */ }
+
+    var wrap = document.querySelector(".wrap");
+    if (!wrap) return;
+
+    var now = new Date();
+    var year = now.getFullYear();
+    var today = new Date(year, now.getMonth(), now.getDate());
+    var arrive = new Date(year, 9, 24);
+    var endExclusive = new Date(year, 10, 1);
+    function daysUntil(target) {
+      return Math.round((target.getTime() - today.getTime()) / 86400000);
+    }
+    if (today.getTime() >= endExclusive.getTime()) return;
+
+    var untilArrive = daysUntil(arrive);
+    var message;
+    if (untilArrive > 0) {
+      var untilLabel = untilArrive === 1 ? "1 day" : untilArrive + " days";
+      message = "All Hallows theme arrives Oct 24 — " + untilLabel + ". Dead Channel and Spirit Detector, Oct 24–31 only.";
+    } else {
+      var left = daysUntil(endExclusive);
+      if (left < 1) return;
+      var leftLabel = left === 1 ? "1 day left" : left + " days left";
+      message = "Ends at midnight Oct 31 — " + leftLabel + ". All Hallows theme in Dead Channel and Spirit Detector.";
+    }
+
+    var banner = document.createElement("aside");
+    banner.className = "hallows-banner";
+    banner.setAttribute("role", "region");
+    banner.setAttribute("aria-label", "All Hallows theme");
+
+    var text = document.createElement("p");
+    text.className = "hallows-banner-text";
+    text.appendChild(document.createTextNode(message + " "));
+    var link = document.createElement("a");
+    link.href = "apps.html";
+    link.textContent = "See the apps";
+    text.appendChild(link);
+    banner.appendChild(text);
+
+    var dismiss = document.createElement("button");
+    dismiss.type = "button";
+    dismiss.className = "hallows-banner-dismiss";
+    dismiss.setAttribute("aria-label", "Dismiss All Hallows notice");
+    dismiss.textContent = "Dismiss";
+    dismiss.addEventListener("click", function () {
+      try { sessionStorage.setItem(DISMISS_KEY, "1"); } catch (e) { /* still hide it */ }
+      banner.remove();
+    });
+    banner.appendChild(dismiss);
+
+    var nav = document.getElementById("nav");
+    if (nav && nav.parentNode === wrap) nav.insertAdjacentElement("afterend", banner);
+    else wrap.insertBefore(banner, wrap.firstChild);
+  })();
+
   var nav = document.getElementById("nav");
   function onScroll() {
     if (!nav) return;

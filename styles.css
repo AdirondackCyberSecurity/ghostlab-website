@@ -136,6 +136,58 @@
       border-bottom-color: var(--border);
       background: rgba(7, 9, 15, 0.88);
     }
+    .hallows-banner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 12px auto 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px 8px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 140, 64, 0.4);
+      background: rgba(255, 140, 64, 0.1);
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+    .hallows-banner-text {
+      margin: 0;
+      flex: 1 1 auto;
+    }
+    .hallows-banner a {
+      color: var(--warning);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      white-space: nowrap;
+    }
+    .hallows-banner a:hover { color: var(--text); }
+    .hallows-banner-dismiss {
+      flex: 0 0 auto;
+      min-height: 32px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hallows-banner-dismiss:hover { background: rgba(255, 255, 255, 0.06); }
+    .hallows-banner a:focus-visible,
+    .hallows-banner-dismiss:focus-visible {
+      outline: 2px solid var(--warning);
+      outline-offset: 2px;
+    }
+    @media (max-width: 560px) {
+      .hallows-banner {
+        align-items: flex-start;
+        font-size: 0.84rem;
+      }
+      .hallows-banner a { white-space: normal; }
+    }
     .nav-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
