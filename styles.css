@@ -63,7 +63,8 @@
     a:hover { text-decoration: underline; }
     button { font-family: inherit; }
 
-    /* Ambient field: page gradient + InvestigateGhostBackdrop.png + vignette */
+    /* Ambient field: page gradient + ghost backdrop + vignette.
+       WebP is the default; the PNG stays for browsers that cannot use it. */
     .ambient {
       position: fixed;
       inset: 0;
@@ -76,6 +77,14 @@
       position: absolute;
       inset: 0;
       background-image: url("assets/investigate-ghost-backdrop.png");
+      background-image: -webkit-image-set(
+        url("assets/investigate-ghost-backdrop.webp") type("image/webp"),
+        url("assets/investigate-ghost-backdrop.png") type("image/png")
+      );
+      background-image: image-set(
+        url("assets/investigate-ghost-backdrop.webp") type("image/webp"),
+        url("assets/investigate-ghost-backdrop.png") type("image/png")
+      );
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
@@ -516,7 +525,7 @@
       h1 { max-width: none; }
     }
     .hero-copy .lede { margin-bottom: 28px; }
-    /* The home headline is a long all-caps line: run it smaller and wider than
+    /* The home headline is an all-caps line: run it smaller and wider than
        the default h1 so the store buttons stay above the fold. */
     .hero-copy h1 {
       font-size: clamp(2rem, 3.6vw, 3.1rem);
@@ -1539,6 +1548,48 @@
       max-width: 42ch;
     }
     .final-cta .hero-actions { justify-content: center; }
+    .download-family {
+      margin-top: 32px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 28px;
+      text-align: left;
+    }
+    .download-family-label {
+      grid-column: 1 / -1;
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+      text-align: center;
+    }
+    .download-family h3 {
+      font-size: 1.05rem;
+      margin: 0 0 6px;
+    }
+    .download-family p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 0 0 14px;
+      max-width: 36ch;
+    }
+    .download-family .hero-actions {
+      margin-bottom: 0;
+      justify-content: flex-start;
+    }
+    @media (max-width: 700px) {
+      .download-family {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .download-family p { margin-left: auto; margin-right: auto; }
+      .download-family .hero-actions { justify-content: center; }
+    }
 
     /* Disclaimer */
     .disclaimer {
