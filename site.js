@@ -5,6 +5,35 @@
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
+  // Calendar date in America/New_York as a YYYYMMDD number, so date windows
+  // flip at midnight ET for every visitor instead of at their own midnight.
+  function easternDay(d) {
+    try {
+      var parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit"
+      }).formatToParts(d);
+      var v = {};
+      parts.forEach(function (part) { v[part.type] = part.value; });
+      return Number(v.year) * 10000 + Number(v.month) * 100 + Number(v.day);
+    } catch (e) {
+      // No time zone support: EDT (UTC-4) covers the whole Oct 1 to Nov 1 window.
+      var t = new Date(d.getTime() - 4 * 3600000);
+      return t.getUTCFullYear() * 10000 + (t.getUTCMonth() + 1) * 100 + t.getUTCDate();
+    }
+  }
+  var TODAY_ET = easternDay(new Date());
+  // Halloween sale and All Hallows themes: Oct 14 to Oct 31, 2026, inclusive, ET.
+  var SALE_START = 20261014;
+  var SALE_END = 20261031;
+  var SALE_ON = TODAY_ET >= SALE_START && TODAY_ET <= SALE_END;
+
+  // Pages carry both versions of each price line. The regular copy shows by
+  // default (and with JavaScript off); the sale copy only shows in the window.
+  if (SALE_ON) {
+    document.querySelectorAll("[data-sale-off]").forEach(function (el) { el.hidden = true; });
+    document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
+  }
+
   // All Hallows theme window is Oct 24 to 31, local time. Hidden after Oct 31.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {

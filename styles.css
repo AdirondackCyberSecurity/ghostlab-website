@@ -136,6 +136,14 @@
       border-bottom-color: var(--border);
       background: rgba(7, 9, 15, 0.88);
     }
+    /* Halloween sale copy toggled by site.js. Keep hidden spans hidden even when a class sets display. */
+    [data-sale-on][hidden],
+    [data-sale-off][hidden] { display: none !important; }
+    .sale-note {
+      margin: 10px auto 0;
+      color: var(--warning);
+      font-weight: 600;
+    }
     .hallows-banner {
       width: min(var(--max), calc(100% - 40px));
       margin: 12px auto 0;
