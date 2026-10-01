@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Halloween Ghost Hunt Guide | GhostLab</title>
+  <meta name="description" content="A step-by-step Halloween ghost hunt with GhostLab. Map the room with Spirit Detector, run EMF and EVP in Paranormal Toolkit, then a Dead Channel session." />
+  <meta name="theme-color" content="#07090f" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://ghostlab.icu/halloween-ghost-hunt.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://ghostlab.icu/halloween-ghost-hunt.html" />
+  <meta property="og:site_name" content="GhostLab" />
+  <meta property="og:title" content="Halloween Ghost Hunt Guide | GhostLab" />
+  <meta property="og:description" content="A simple Halloween night plan with three GhostLab apps, plus a printable checklist. For fun and entertainment." />
+  <meta property="og:image" content="https://ghostlab.icu/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ghostlabicu" />
+  <meta name="twitter:title" content="Halloween Ghost Hunt Guide | GhostLab" />
+  <meta name="twitter:description" content="A simple Halloween night plan with three GhostLab apps, plus a printable checklist. For fun and entertainment." />
+  <meta name="twitter:image" content="https://ghostlab.icu/assets/og-image.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/app-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20261001-hallows" />
+  <style>
+    /* Halloween ghost hunt guide: scoped to this page */
+    .hh-kicker {
+      margin: 4px 0 6px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--warning);
+    }
+    /* Hero: copy on the left, three overlapping phones on the right.
+       Phone frame, notch and glow reuse the home hero's .phone styles. */
+    .hh-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 40px;
+      align-items: center;
+    }
+    .hh-hero .hero-eyebrow-row .hh-kicker { margin: 0; white-space: nowrap; }
+    .hh-hero h1 { max-width: 20ch; }
+    .hh-visual {
+      position: relative;
+      width: min(100%, 500px);
+      margin: 0 auto;
+      aspect-ratio: 1 / 1.16;
+    }
+    .hh-visual .phone-glow { left: 10%; top: 25%; }
+    .hh-visual .hh-phone {
+      position: absolute;
+      top: 50%;
+      margin: 0;
+    }
+    .hh-phone-1 { width: 48%; left: 0; z-index: 3; animation: hh-float-1 7s ease-in-out infinite; }
+    .hh-phone-2 { width: 43%; left: 30%; z-index: 2; opacity: 0.95; animation: hh-float-2 8.5s ease-in-out infinite; }
+    .hh-phone-3 { width: 39%; left: 56%; z-index: 1; opacity: 0.9; animation: hh-float-3 9.5s ease-in-out infinite; }
+    .hh-phone-2, .hh-phone-3 { border-radius: 36px; padding: 8px; }
+    .hh-phone-2 .phone-screen, .hh-phone-3 .phone-screen { border-radius: 29px; }
+    @keyframes hh-float-1 {
+      0%, 100% { transform: translateY(-50%); }
+      50% { transform: translateY(-50%) translateY(-14px); }
+    }
+    @keyframes hh-float-2 {
+      0%, 100% { transform: translateY(-52%) rotate(6deg); }
+      50% { transform: translateY(-52%) translateY(-12px) rotate(6deg); }
+    }
+    @keyframes hh-float-3 {
+      0%, 100% { transform: translateY(-54%) rotate(12deg); }
+      50% { transform: translateY(-54%) translateY(-10px) rotate(12deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hh-phone-1 { animation: none; transform: translateY(-50%); }
+      .hh-phone-2 { animation: none; transform: translateY(-52%) rotate(6deg); }
+      .hh-phone-3 { animation: none; transform: translateY(-54%) rotate(12deg); }
+    }
+    @media (max-width: 960px) {
+      .hh-hero { grid-template-columns: 1fr; gap: 28px; }
+      .hh-visual { width: min(100%, 460px); aspect-ratio: 1 / 1.2; }
+      .hh-phone-1 { border-radius: 34px; padding: 8px; }
+      .hh-phone-1 .phone-screen { border-radius: 27px; }
+      .hh-phone-2, .hh-phone-3 { border-radius: 28px; padding: 6px; }
+      .hh-phone-2 .phone-screen, .hh-phone-3 .phone-screen { border-radius: 23px; }
+      .hh-visual .phone-notch { top: 11px; height: 16px; }
+    }
+    .hh-hero .lede { max-width: 58ch; }
+    .hh-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .hh-hero-note { margin: 16px 0 0; color: var(--faint); font-size: 0.88rem; max-width: 60ch; }
+    .hh-print-btn { font: inherit; cursor: pointer; }
+    .hh-print-btn svg { width: 16px; height: 16px; }
+
+    .hh-steps { display: grid; gap: 22px; }
+    .hh-step {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 24px;
+      padding: clamp(22px, 3vw, 32px);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+    .hh-step-icon img { display: block; width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08); }
+    .hh-step-n {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 6px;
+    }
+    .hh-step h3 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+    .hh-step > div > p { color: var(--muted); margin: 12px 0 0; max-width: 64ch; }
+    .hh-step .feature-list { margin-top: 16px; }
+    .hh-req {
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border-radius: var(--radius-xs);
+      border: 1px solid rgba(255, 140, 64, 0.28);
+      background: rgba(255, 140, 64, 0.07);
+      color: var(--text);
+      font-size: 0.92rem;
+      max-width: 64ch;
+    }
+    .hh-req strong { color: var(--warning); }
+    .hh-store {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 16px;
+      margin-top: 20px;
+    }
+    .hh-price { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .hh-price strong { color: var(--accent); }
+
+    .hh-timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; max-width: 720px; }
+    .hh-timeline li {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--muted);
+    }
+    .hh-timeline b { font-family: var(--mono); font-weight: 700; color: var(--accent); font-size: 0.88rem; }
+
+    .hh-checklist-wrap {
+      padding: clamp(22px, 3vw, 32px);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--panel);
+    }
+    .hh-checklist-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+    .hh-checklist-head p { margin: 8px 0 0; color: var(--muted); }
+    .hh-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 20px; margin: 0 0 24px; }
+    .hh-fields span { display: block; border-bottom: 1px solid var(--border); padding: 6px 0 10px; color: var(--muted); font-size: 0.9rem; }
+    .hh-checklist-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .hh-checklist-cols h3 { font-size: 1rem; margin-bottom: 10px; color: var(--accent); }
+    .hh-checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .hh-checklist label { display: flex; gap: 10px; align-items: flex-start; color: var(--text); font-size: 0.95rem; cursor: pointer; }
+    .hh-checklist input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin: 2px 0 0;
+      accent-color: var(--accent);
+    }
+    .hh-notes-lines { margin-top: 24px; }
+    .hh-notes-lines h3 { font-size: 1rem; margin-bottom: 6px; color: var(--accent); }
+    .hh-notes-lines div { border-bottom: 1px solid var(--border); height: 30px; }
+
+    .hh-faq { display: grid; gap: 10px; max-width: 820px; }
+    .hh-faq details {
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      padding: 0 18px;
+    }
+    .hh-faq summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 0;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .hh-faq summary::-webkit-details-marker { display: none; }
+    .hh-faq summary::after { content: "+"; color: var(--accent); font-family: var(--mono); }
+    .hh-faq details[open] summary::after { content: "\2212"; }
+    .hh-faq details p { margin: 0 0 16px; color: var(--muted); }
+
+    .hh-apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 8px; text-align: left; }
+    .hh-app {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .hh-app img.hh-app-icon { display: block; width: 56px; height: 56px; border-radius: 13px; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08); }
+    .hh-app h3 { font-size: 1.05rem; }
+    .hh-app p { margin: 0; color: var(--muted); font-size: 0.9rem; flex: 1; }
+    .hh-app .hh-store { margin-top: 6px; }
+    .hh-support { margin: 22px 0 0; color: var(--muted); font-size: 0.92rem; text-align: center; }
+
+    @media (max-width: 860px) {
+      .hh-apps, .hh-checklist-cols { grid-template-columns: 1fr; }
+      .hh-fields { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hh-step { grid-template-columns: 1fr; gap: 14px; }
+      .hh-timeline li { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* Print: the Print buttons print the checklist only, black on white,
+       on one page. Everything else on the page is hidden. */
+    .hh-print-only { display: none; }
+    @media print {
+      @page { size: auto; margin: 12mm; }
+      html, body { background: #fff !important; color: #000 !important; }
+      body { font-size: 10.5pt; }
+      .ambient, .grain, header.nav, footer, .hh-noprint, main > *:not(#checklist) { display: none !important; }
+      body * { color: #000 !important; -webkit-text-fill-color: #000 !important; text-shadow: none !important; box-shadow: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      #checklist { padding: 0 !important; width: 100% !important; }
+      .hh-checklist-wrap { background: #fff !important; border: 0 !important; padding: 0 !important; }
+      .hh-print-only { display: block; }
+      .hh-print-title { font-size: 9pt; margin: 0 0 4pt; }
+      .hh-checklist-head { margin-bottom: 12pt; }
+      .hh-checklist-head h2 { font-size: 18pt; }
+      .hh-fields { grid-template-columns: repeat(3, 1fr) !important; margin-bottom: 14pt; }
+      .hh-fields span, .hh-notes-lines div { border-bottom: 1px solid #000 !important; }
+      .hh-checklist-cols { grid-template-columns: repeat(3, 1fr) !important; gap: 14pt; }
+      .hh-checklist-cols h3, .hh-notes-lines h3 { font-size: 11pt; }
+      .hh-checklist { gap: 5pt; }
+      .hh-checklist label { font-size: 10pt; }
+      .hh-checklist input {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 11pt;
+        height: 11pt;
+        border: 1.5px solid #000;
+        border-radius: 2pt;
+        background: #fff;
+      }
+      .hh-checklist input:checked { background: #000; }
+      .hh-notes-lines div { height: 24pt; }
+      .hh-print-foot { margin: 14pt 0 0; font-size: 8.5pt; }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need all three apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Each app works on its own. Paranormal Toolkit covers EMF and EVP for free on iPhone, iPad and Android. Add Spirit Detector if you have a LiDAR iPhone or iPad Pro, and Dead Channel if you want a separate spirit box app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which devices can run Spirit Detector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "iPhone 12 Pro or a later Pro model, or an iPad Pro from 2020 on, running iOS 17 or later. It needs the LiDAR scanner, so it does not run on other iPhones and is not available on Android."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do the apps cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Paranormal Toolkit is free to download, and EMF and Classic EVP stay free. GhostLab Pro is $9.99 one time. Dead Channel is free for 48 hours, then $7.99 once. Spirit Detector is free for 48 hours, then $4.99 once. None of them are subscriptions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I start the free trials?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Spirit Detector trial starts with your first scan, and the Dead Channel trial starts when you begin it. Each lasts 48 hours. If you want to use them on Halloween night without buying, start them no more than two days before."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the apps detect ghosts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The apps log sensor readings, record audio, map surfaces and play sound. They do not detect, measure or prove anything paranormal. GhostLab is for entertainment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is a good place to hunt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anywhere you have permission to be and that is safe to walk around at night. Your own home, a friend's basement or an old building whose owner says yes all work well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I get help with the apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Visit GhostLab support for help with any of the apps."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://ghostlab.icu/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Halloween ghost hunt",
+      "item": "https://ghostlab.icu/halloween-ghost-hunt.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-backdrop"></div>
+    <div class="ambient-vignette"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="assets/app-icon.png" width="40" height="40" alt="GhostLab app icon" />
+          <span>GhostLab</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="apps.html">Apps</a>
+          <a href="ghostlab-vs-ghosttube.html">Comparison</a>
+          <a href="spirit-detector.html">Spirit Detector</a>
+          <a href="dead-channel.html">Dead Channel</a>
+          <a href="modes.html">Modes</a>
+          <a class="hide-sm" href="tools.html">Tools</a>
+          <a href="pro.html">Pro</a>
+          <a class="nav-store" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="nav-store" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-primary btn-sm nav-cta" href="#download">Get the app</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <header class="page-hero hh-hero reveal">
+        <div class="hh-hero-copy">
+          <div class="crumb"><a href="index.html">Home</a> <span>/</span> Halloween ghost hunt</div>
+          <div class="hero-eyebrow-row">
+            <p class="hh-kicker">Halloween 2026</p>
+            <div class="hero-social" aria-label="GhostLab on social media">
+              <a class="social-link social-instagram" href="https://www.instagram.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="gl-ig-hero" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD521"/><stop offset=".25" stop-color="#F50000"/><stop offset=".5" stop-color="#B900B4"/><stop offset=".75" stop-color="#7B2FFE"/><stop offset="1" stop-color="#4C63D2"/></linearGradient></defs><path fill="url(#gl-ig-hero)" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+              </a>
+              <a class="social-link social-tiktok" href="https://www.tiktok.com/@ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25F4EE" transform="translate(-1.15,-1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FE2C55" transform="translate(1.15,1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-youtube" href="https://www.youtube.com/@signalandnoise44" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-facebook" href="https://www.facebook.com/share/1KgDDwaJGv" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.4" fill="#FFFFFF"/><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" fill="#0866FF"/></svg>
+              </a>
+              <a class="social-link social-x" href="https://x.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on X" title="X">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" fill="#FFFFFF"/></svg>
+              </a>
+            </div>
+          </div>
+          <h1>Your Halloween Ghost Hunt step by step.</h1>
+          <p class="lede">A simple plan for Halloween night with the three GhostLab apps. Map the room with Spirit Detector, log EMF readings and record EVP audio with Paranormal Toolkit, then run a spirit box session with Dead Channel. Bring a friend, get permission, and have fun with it.</p>
+          <div class="hh-hero-actions">
+            <a class="btn btn-primary" href="#checklist">Jump to the checklist</a>
+            <button type="button" class="btn btn-ghost hh-print-btn" data-print>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
+              Print the checklist
+            </button>
+          </div>
+          <p class="hh-hero-note">For fun and entertainment. The apps log readings, record audio, map surfaces and play sound. They do not detect or prove anything.</p>
+        </div>
+        <div class="hh-visual reveal" style="transition-delay:0.12s">
+          <div class="phone-glow" aria-hidden="true"></div>
+          <div class="phone hh-phone hh-phone-1">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <img src="assets/home.jpg?v=205" alt="GhostLab: Paranormal Toolkit Investigate home screen with the six tiles: EMF, EVP, Spirit Box, Spirit Speak, Music Box and SLS" width="414" height="900" />
+            </div>
+          </div>
+          <div class="phone hh-phone hh-phone-2">
+            <div class="phone-screen">
+              <img src="assets/deadchannel/session.webp" alt="GhostLab: Dead Channel session screen with the Stop button and session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider" width="923" height="2000" />
+            </div>
+          </div>
+          <div class="phone hh-phone hh-phone-3">
+            <div class="phone-screen">
+              <img src="assets/spiritdetector/home.webp" alt="GhostLab: Spirit Detector home screen with a standing figure drawn in green dots above the app name and a Start scanning button" width="923" height="2000" />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="section section-sm" id="prep" aria-labelledby="prep-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">Before you go</div>
+          <h2 id="prep-heading">Get ready in daylight.</h2>
+          <p>Sort these out before it gets dark.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+            </div>
+            <h3>Get permission</h3>
+            <p>Only hunt where you are allowed to be. Ask the owner or manager first. Many parks and cemeteries close at dusk, so check the posted hours. If anyone asks you to leave, leave.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon warning" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>
+            </div>
+            <h3>Stay safe</h3>
+            <p>Wear sturdy shoes and a warm layer, carry a flashlight, and watch your step on stairs and uneven ground. Skip abandoned or damaged buildings. If something feels unsafe, call it a night.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 2 6 5.5"/></svg>
+            </div>
+            <h3>Bring a friend</h3>
+            <p>Never go alone. Tell someone who is staying home where you will be and when you expect to be back. Agree on a time to check in.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3"/><path d="M7 10.5v3M10.5 10.5v3"/></svg>
+            </div>
+            <h3>Charge your phone</h3>
+            <p>Start with a full battery and bring a power bank and cable. Scanning, the flashlight and long recordings all use battery quickly.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon magenta" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
+            </div>
+            <h3>Pack headphones</h3>
+            <p>Headphones make quiet recordings much easier to hear on playback. Keep one ear free while you walk around so you can still hear the room.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></svg>
+            </div>
+            <h3>Take notes</h3>
+            <p>Bring a notebook and pen, or use a notes app. Write down the time, the room and anything you notice, like a draft, a creaky floor or a car going by.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="plan" aria-labelledby="plan-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">The plan</div>
+          <h2 id="plan-heading">Three steps for Halloween night.</h2>
+          <p>Each app works on its own. Use all three in this order, or skip any step you do not have the app or device for.</p>
+        </div>
+
+        <div class="hh-steps">
+          <article class="hh-step reveal" id="step-1">
+            <div class="hh-step-icon"><img src="assets/spiritdetector/app-icon.png" width="64" height="64" alt="GhostLab: Spirit Detector app icon" /></div>
+            <div>
+              <p class="hh-step-n">Step 1</p>
+              <h3>Map the room with Spirit Detector</h3>
+              <p class="hh-req"><strong>Needs a LiDAR scanner.</strong> Spirit Detector runs on iPhone 12 Pro or a later Pro model, or an iPad Pro from 2020 on, with iOS 17 or later. It is not available on Android. If nobody in your group has one, go straight to Step 2.</p>
+              <p>Spirit Detector uses the LiDAR scanner to draw the room as dots, one measured distance at a time. Do this first, before you turn the lights down, so you have a record of the doorways, stairs and furniture to plan around and check against later.</p>
+              <ul class="feature-list">
+                <li>Hold the phone at chest height and let the room fill in for a few seconds before you move</li>
+                <li>Turn slowly. Fast turns smear the map</li>
+                <li>Tap Freeze to stop adding dots, then walk around what you have</li>
+                <li>Tap Record for a short video of each room. It saves to the Library</li>
+                <li>Glass, mirrors and dark paint can confuse the scanner, and people walking through leave trails. That is normal for LiDAR</li>
+              </ul>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-detector/id6814905065" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Spirit Detector on the App Store" />
+                </a>
+                <p class="hh-price"><strong>48 hours free</strong>, then $4.99 once. iPhone Pro and iPad Pro only.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="hh-step reveal" id="step-2">
+            <div class="hh-step-icon"><img src="assets/sphere/toolkit.png" width="64" height="64" alt="GhostLab: Paranormal Toolkit app icon" /></div>
+            <div>
+              <p class="hh-step-n">Step 2</p>
+              <h3>Run EMF and EVP sessions in Paranormal Toolkit</h3>
+              <p>Open GhostLab: Paranormal Toolkit and start with the EMF tile. It reads the phone's magnetometer and shows the level on green to red LED bars. Then switch to Classic EVP, which records clean microphone audio for you to play back later.</p>
+              <ul class="feature-list">
+                <li>Take an EMF reading in each room before you start, so you know what normal looks like there</li>
+                <li>Outlets, wiring, appliances, speakers and other phones all move the meter. Note where they are</li>
+                <li>Walk slowly and write down the time and place whenever the reading changes</li>
+                <li>For EVP, ask everyone to stay still and quiet. Say the time and your name at the start of each recording</li>
+                <li>Ask a short question, then wait 20 to 30 seconds in silence before the next one</li>
+                <li>Call out your own noises, like "that was me" or "car outside", so playback is easier</li>
+                <li>Keep each recording to about 5 minutes. Short clips are easier to review</li>
+              </ul>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Paranormal Toolkit on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get GhostLab: Paranormal Toolkit on Google Play" />
+                </a>
+                <p class="hh-price"><strong>EMF and Classic EVP are free.</strong> GhostLab Pro is $9.99 one time.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="hh-step reveal" id="step-3">
+            <div class="hh-step-icon"><img src="assets/sphere/deadchannel.png" width="64" height="64" alt="GhostLab: Dead Channel app icon" /></div>
+            <div>
+              <p class="hh-step-n">Step 3</p>
+              <h3>Do a Dead Channel spirit box session</h3>
+              <p>GhostLab: Dead Channel is a spirit box app. It sweeps through eight banks of recorded voice clips, breaths and static, a few at a time with silence in between, chosen at random. The app never uses the microphone, so it does not hear your questions. Everyone listens and decides for themselves what they heard.</p>
+              <ul class="feature-list">
+                <li>Turn the volume up with the side buttons and tap Start</li>
+                <li>Ask one short question out loud, then stay quiet for about 30 seconds</li>
+                <li>The phone taps and the screen flashes red when it plays a longer clip. Read the session clock out loud when that happens</li>
+                <li>Everyone writes down what they heard before anyone says it out loud. Then compare notes</li>
+                <li>Run a second phone or voice recorder if you want your questions on tape. Dead Channel saves only its own audio</li>
+                <li>Tap Stop. The session saves to the Library so you can play it back later</li>
+              </ul>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-dead-channel/id6814995715" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Dead Channel on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab.signal" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get GhostLab: Dead Channel on Google Play" />
+                </a>
+                <p class="hh-price"><strong>48 hours free</strong>, then $7.99 once. iPhone, iPad and Android.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="timing" aria-labelledby="timing-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">Timing</div>
+          <h2 id="timing-heading">A simple 90 minute night.</h2>
+          <p>Halloween is on a Saturday this year. Visit the location in daylight first, then start after dark.</p>
+        </div>
+        <ol class="hh-timeline reveal">
+          <li><b>0:00</b><span>Walk the location with the lights on. Agree on which rooms you will use.</span></li>
+          <li><b>0:10</b><span>Step 1. Map each room with Spirit Detector and record a short video.</span></li>
+          <li><b>0:25</b><span>Step 2. EMF readings in each room, then EVP recordings of about 5 minutes each.</span></li>
+          <li><b>0:55</b><span>Step 3. A Dead Channel session of 10 to 15 minutes.</span></li>
+          <li><b>1:15</b><span>Pack up, count heads, and leave the place the way you found it.</span></li>
+          <li><b>Later</b><span>Play back the recordings with headphones and line up your notes by time.</span></li>
+        </ol>
+      </section>
+
+      <section class="section section-sm" id="after" aria-labelledby="after-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">After the hunt</div>
+          <h2 id="after-heading">Review it together.</h2>
+          <p>Play back your EVP clips and the Dead Channel session with headphones, and go through everyone's notes side by side. Most odd sounds and readings have an everyday cause, like wiring, a phone, a pipe or someone shifting their weight. Working out the cause is part of the fun. Share your setup and tag @ghostlabicu.</p>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="checklist" aria-labelledby="checklist-heading">
+        <div class="hh-checklist-wrap reveal">
+          <p class="hh-print-title hh-print-only">GhostLab Halloween ghost hunt checklist · ghostlab.icu/halloween-ghost-hunt.html</p>
+          <div class="hh-checklist-head">
+            <div>
+              <div class="eyebrow hh-noprint">Printable checklist</div>
+              <h2 id="checklist-heading">Halloween night checklist</h2>
+              <p>Check the boxes on screen, or print it and bring it with you.</p>
+            </div>
+            <button type="button" class="btn btn-primary hh-print-btn hh-noprint" data-print>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg>
+              Print checklist
+            </button>
+          </div>
+          <div class="hh-fields">
+            <span>Location:</span>
+            <span>Date and start time:</span>
+            <span>Team:</span>
+          </div>
+          <div class="hh-checklist-cols">
+            <div>
+              <h3>Before you leave</h3>
+              <ul class="hh-checklist">
+                <li><label><input type="checkbox" /> Permission from the owner or manager</label></li>
+                <li><label><input type="checkbox" /> Someone at home knows where we are and when we will be back</label></li>
+                <li><label><input type="checkbox" /> At least one friend coming along</label></li>
+                <li><label><input type="checkbox" /> Phone charged to 100%</label></li>
+                <li><label><input type="checkbox" /> Power bank and cable</label></li>
+                <li><label><input type="checkbox" /> Flashlight with fresh batteries</label></li>
+                <li><label><input type="checkbox" /> Headphones</label></li>
+                <li><label><input type="checkbox" /> Notebook and pen</label></li>
+                <li><label><input type="checkbox" /> Sturdy shoes and a warm layer</label></li>
+                <li><label><input type="checkbox" /> Apps installed and opened once at home</label></li>
+              </ul>
+            </div>
+            <div>
+              <h3>On site</h3>
+              <ul class="hh-checklist">
+                <li><label><input type="checkbox" /> Walk the rooms with the lights on</label></li>
+                <li><label><input type="checkbox" /> Step 1: Spirit Detector map of each room (LiDAR iPhone or iPad Pro)</label></li>
+                <li><label><input type="checkbox" /> Step 2: EMF reading in each room</label></li>
+                <li><label><input type="checkbox" /> Step 2: EVP recordings, about 5 minutes each</label></li>
+                <li><label><input type="checkbox" /> Step 3: Dead Channel session, 10 to 15 minutes</label></li>
+                <li><label><input type="checkbox" /> Time and room written down for every note</label></li>
+                <li><label><input type="checkbox" /> Battery check halfway through</label></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Wrap up</h3>
+              <ul class="hh-checklist">
+                <li><label><input type="checkbox" /> Everyone accounted for</label></li>
+                <li><label><input type="checkbox" /> All gear packed</label></li>
+                <li><label><input type="checkbox" /> Location left the way we found it</label></li>
+                <li><label><input type="checkbox" /> Checked in with the person at home</label></li>
+                <li><label><input type="checkbox" /> Recordings played back with headphones</label></li>
+              </ul>
+            </div>
+          </div>
+          <div class="hh-notes-lines">
+            <h3>Notes</h3>
+            <div></div><div></div><div></div><div></div><div></div><div></div>
+          </div>
+          <p class="hh-print-foot hh-print-only">For entertainment only. GhostLab apps log readings, record audio, map surfaces and play sound. They do not detect or prove anything. Hunt safely, and only where you have permission to be.</p>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="faq" aria-labelledby="faq-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">FAQ</div>
+          <h2 id="faq-heading">Common questions.</h2>
+        </div>
+        <div class="hh-faq reveal">
+          <details>
+            <summary>Do I need all three apps?</summary>
+            <p>No. Each app works on its own. Paranormal Toolkit covers EMF and EVP for free on iPhone, iPad and Android. Add Spirit Detector if you have a LiDAR iPhone or iPad Pro, and Dead Channel if you want a separate spirit box app.</p>
+          </details>
+          <details>
+            <summary>Which devices can run Spirit Detector?</summary>
+            <p>iPhone 12 Pro or a later Pro model, or an iPad Pro from 2020 on, running iOS 17 or later. It needs the LiDAR scanner, so it does not run on other iPhones and is not available on Android.</p>
+          </details>
+          <details>
+            <summary>How much do the apps cost?</summary>
+            <p>Paranormal Toolkit is free to download, and EMF and Classic EVP stay free. GhostLab Pro is $9.99 one time. Dead Channel is free for 48 hours, then $7.99 once. Spirit Detector is free for 48 hours, then $4.99 once. None of them are subscriptions.</p>
+          </details>
+          <details>
+            <summary>When should I start the free trials?</summary>
+            <p>The Spirit Detector trial starts with your first scan, and the Dead Channel trial starts when you begin it. Each lasts 48 hours. If you want to use them on Halloween night without buying, start them no more than two days before.</p>
+          </details>
+          <details>
+            <summary>Can the apps detect ghosts?</summary>
+            <p>No. The apps log sensor readings, record audio, map surfaces and play sound. They do not detect, measure or prove anything paranormal. GhostLab is for entertainment.</p>
+          </details>
+          <details>
+            <summary>Where is a good place to hunt?</summary>
+            <p>Anywhere you have permission to be and that is safe to walk around at night. Your own home, a friend's basement or an old building whose owner says yes all work well.</p>
+          </details>
+          <details>
+            <summary>Where can I get help with the apps?</summary>
+            <p>Visit <a href="https://adirondackcybersecurity.github.io/ghostlab-support/" target="_blank" rel="noopener noreferrer">GhostLab support</a> for help with any of the apps.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="download">
+        <div class="final-cta reveal">
+          <h2>Get the apps before Halloween.</h2>
+          <p class="lede">Install them at home, open each one once, and learn the controls before Halloween night.</p>
+          <div class="hh-apps">
+            <div class="hh-app">
+              <img class="hh-app-icon" src="assets/spiritdetector/app-icon.png" width="56" height="56" alt="GhostLab: Spirit Detector app icon" />
+              <h3>GhostLab: Spirit Detector</h3>
+              <p>LiDAR room mapping. iPhone 12 Pro or later Pro models and iPad Pro (2020 on). 48 hours free, then $4.99 once.</p>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-detector/id6814905065" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Spirit Detector on the App Store" />
+                </a>
+              </div>
+            </div>
+            <div class="hh-app">
+              <img class="hh-app-icon" src="assets/sphere/toolkit.png" width="56" height="56" alt="GhostLab: Paranormal Toolkit app icon" />
+              <h3>GhostLab: Paranormal Toolkit</h3>
+              <p>EMF, EVP and spirit box tools. iPhone, iPad and Android. Free to start, Pro is $9.99 one time.</p>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Paranormal Toolkit on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get GhostLab: Paranormal Toolkit on Google Play" />
+                </a>
+              </div>
+            </div>
+            <div class="hh-app">
+              <img class="hh-app-icon" src="assets/sphere/deadchannel.png" width="56" height="56" alt="GhostLab: Dead Channel app icon" />
+              <h3>GhostLab: Dead Channel</h3>
+              <p>Spirit box app with eight voice banks. iPhone, iPad and Android. 48 hours free, then $7.99 once.</p>
+              <div class="hh-store">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-dead-channel/id6814995715" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg" width="120" height="40" alt="Download GhostLab: Dead Channel on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab.signal" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png" width="135" height="40" alt="Get GhostLab: Dead Channel on Google Play" />
+                </a>
+              </div>
+            </div>
+          </div>
+          <p class="hh-support">Questions? <a href="https://adirondackcybersecurity.github.io/ghostlab-support/" target="_blank" rel="noopener noreferrer">Visit GhostLab support</a>.</p>
+        </div>
+      </section>
+
+      <section class="section section-sm">
+        <div class="disclaimer reveal">
+          <strong>For entertainment only.</strong>
+          GhostLab apps log sensor readings, record audio, map surfaces and play sound. Nothing in them detects, measures or proves anything paranormal, and no reading or sound is scientific evidence of anything. Please hunt safely, and only where you have permission to be.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/app-icon.png" width="44" height="44" alt="" />
+          <div>
+            <strong>GhostLab</strong>
+            <p>Paranormal investigation toolkit for iPhone, iPad, and Android. Built by Adirondack Cyber Security.</p>
+            <div class="footer-social" aria-label="GhostLab on social media">
+              <a class="social-link social-instagram" href="https://www.instagram.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="gl-ig-footer" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD521"/><stop offset=".25" stop-color="#F50000"/><stop offset=".5" stop-color="#B900B4"/><stop offset=".75" stop-color="#7B2FFE"/><stop offset="1" stop-color="#4C63D2"/></linearGradient></defs><path fill="url(#gl-ig-footer)" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+              </a>
+              <a class="social-link social-tiktok" href="https://www.tiktok.com/@ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25F4EE" transform="translate(-1.15,-1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FE2C55" transform="translate(1.15,1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-youtube" href="https://www.youtube.com/@signalandnoise44" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-facebook" href="https://www.facebook.com/share/1KgDDwaJGv" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.4" fill="#FFFFFF"/><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" fill="#0866FF"/></svg>
+              </a>
+              <a class="social-link social-x" href="https://x.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on X" title="X">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" fill="#FFFFFF"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="ghostlab-vs-ghosttube.html">Comparison</a></li>
+            <li><a href="modes.html">Capture modes</a></li>
+            <li><a href="spirit-detector.html">Spirit Detector</a></li>
+            <li><a href="dead-channel.html">Dead Channel</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="pro.html">GhostLab Pro</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://linktr.ee/ghostlabicu" target="_blank" rel="noopener noreferrer">Socials</a></li>
+            <li><a href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="mailto:jmiller@adkcyber.com">jmiller@adkcyber.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Adirondack Cyber Security · GhostLab</span>
+        <span>Entertainment &amp; experimental investigation only</span>
+      </div>
+    </footer>
+  </div>
+  <script src="site.js?v=20261001-hallows"></script>
+  <script src="halloween-ghost-hunt.js"></script>
+</body>
+</html>

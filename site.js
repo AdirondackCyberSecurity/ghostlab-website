@@ -5,7 +5,7 @@
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
-  // All Hallows theme window is Oct 24–31, local time. Hidden after Oct 31.
+  // All Hallows theme window is Oct 24 to 31, local time. Hidden after Oct 31.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
     var DISMISS_KEY = "ghostlab.hallows.dismissed";
@@ -29,13 +29,13 @@
     var untilArrive = daysUntil(arrive);
     var message;
     if (untilArrive > 0) {
-      var untilLabel = untilArrive === 1 ? "1 day" : untilArrive + " days";
-      message = "All Hallows theme arrives Oct 24 — " + untilLabel + ". Dead Channel and Spirit Detector, Oct 24–31 only.";
+      var untilLabel = untilArrive === 1 ? "1\u00a0day" : untilArrive + "\u00a0days";
+      message = "All Hallows theme arrives Oct\u00a024. " + untilLabel + " to go. Dead Channel and Spirit Detector, Oct\u00a024 to\u00a031 only.";
     } else {
       var left = daysUntil(endExclusive);
       if (left < 1) return;
-      var leftLabel = left === 1 ? "1 day left" : left + " days left";
-      message = "Ends at midnight Oct 31 — " + leftLabel + ". All Hallows theme in Dead Channel and Spirit Detector.";
+      var leftLabel = left === 1 ? "1\u00a0day left" : left + "\u00a0days left";
+      message = "Ends at midnight Oct\u00a031. " + leftLabel + ". All Hallows theme in Dead Channel and Spirit Detector.";
     }
 
     var banner = document.createElement("aside");
@@ -46,9 +46,16 @@
     var text = document.createElement("p");
     text.className = "hallows-banner-text";
     text.appendChild(document.createTextNode(message + " "));
+    // Every page except the Halloween guide points the strip at the guide.
+    var onGuide = /\/halloween-ghost-hunt(\.html)?$/.test(window.location.pathname);
     var link = document.createElement("a");
-    link.href = "apps.html";
-    link.textContent = "See the apps";
+    if (onGuide) {
+      link.href = "apps.html";
+      link.textContent = "See the apps";
+    } else {
+      link.href = "/halloween-ghost-hunt.html";
+      link.textContent = "See the Halloween hunt plan\u00a0\u2192";
+    }
     text.appendChild(link);
     banner.appendChild(text);
 
