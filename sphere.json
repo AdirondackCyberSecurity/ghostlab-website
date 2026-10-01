@@ -19,7 +19,7 @@
     "customProductPageID": null,
     "icon": "SphereIconTarot",
     "symbol": "rectangle.portrait.on.rectangle.portrait.angled",
-    "available": true
+    "available": false
   },
   {
     "id": "nightglide",
@@ -30,7 +30,7 @@
     "customProductPageID": null,
     "icon": "SphereIconNightGlide",
     "symbol": "hand.point.up.left.and.text",
-    "available": true
+    "available": false
   },
   {
     "id": "palmistry",
@@ -41,6 +41,6 @@
     "customProductPageID": null,
     "icon": "SphereIconPalmistry",
     "symbol": "hand.raised.fingers.spread",
-    "available": true
+    "available": false
   }
 ]

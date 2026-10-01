@@ -10,7 +10,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | Path | Purpose |
 |------|---------|
 | `/` | Home |
-| `/apps.html` | GhostLab apps (Toolkit, Divination, Night Glide, Palmistry) |
+| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
 | `/dead-channel.html` | GhostLab: Dead Channel (spirit box app). Replaced Gallery; `/gallery.html` now redirects here |
@@ -20,7 +20,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
 
-Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` still exists but is no longer in the primary nav (Jack: it overlaps Apps).
+Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` redirects to `apps.html` and is `noindex`. Night Glide, Tarot, Palmistry, Eight Ball, Oracle, and Divination are retired: their pages stay reachable for old store links, send `noindex`, and are not in the sitemap.
 
 ## Hosting
 
