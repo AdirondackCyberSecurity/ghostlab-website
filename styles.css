@@ -401,6 +401,7 @@
     }
     /* CTAs / critical media visible even if scroll-reveal JS is slow/unavailable */
     .hero-copy.reveal,
+    .hh-visual.reveal,
     .final-cta.reveal,
     .page-hero.reveal,
     .video-frame.reveal,
@@ -846,6 +847,74 @@
     @keyframes float-y-rot {
       0%, 100% { transform: rotate(8deg) translateY(0); }
       50% { transform: rotate(8deg) translateY(-12px); }
+    }
+
+    /* Three overlapping phones. Used by the home hero, and safe for a guide
+       page that marks up the same .hh-visual / .hh-phone classes. These rules
+       are more specific than .phone so they do not change single-phone mockups
+       or the .phone-float-b hide-under-960px behavior. */
+    .hh-visual {
+      position: relative;
+      width: min(100%, 500px);
+      margin: 0 auto;
+      aspect-ratio: 1 / 1.16;
+    }
+    .hh-visual .phone-glow { left: 10%; top: 25%; }
+    .hh-visual .hh-phone {
+      position: absolute;
+      top: 50%;
+      margin: 0;
+    }
+    .hh-visual .hh-phone-1 {
+      width: 48%;
+      left: 0;
+      z-index: 3;
+      animation: hh-float-1 7s ease-in-out infinite;
+    }
+    .hh-visual .hh-phone-2 {
+      width: 43%;
+      left: 30%;
+      z-index: 2;
+      opacity: 0.95;
+      animation: hh-float-2 8.5s ease-in-out infinite;
+    }
+    .hh-visual .hh-phone-3 {
+      width: 39%;
+      left: 56%;
+      z-index: 1;
+      opacity: 0.9;
+      animation: hh-float-3 9.5s ease-in-out infinite;
+    }
+    .hh-visual .hh-phone-2,
+    .hh-visual .hh-phone-3 { border-radius: 36px; padding: 8px; }
+    .hh-visual .hh-phone-2 .phone-screen,
+    .hh-visual .hh-phone-3 .phone-screen { border-radius: 29px; }
+    @keyframes hh-float-1 {
+      0%, 100% { transform: translateY(-50%); }
+      50% { transform: translateY(-50%) translateY(-14px); }
+    }
+    @keyframes hh-float-2 {
+      0%, 100% { transform: translateY(-52%) rotate(6deg); }
+      50% { transform: translateY(-52%) translateY(-12px) rotate(6deg); }
+    }
+    @keyframes hh-float-3 {
+      0%, 100% { transform: translateY(-54%) rotate(12deg); }
+      50% { transform: translateY(-54%) translateY(-10px) rotate(12deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hh-visual .hh-phone-1 { animation: none; transform: translateY(-50%); }
+      .hh-visual .hh-phone-2 { animation: none; transform: translateY(-52%) rotate(6deg); }
+      .hh-visual .hh-phone-3 { animation: none; transform: translateY(-54%) rotate(12deg); }
+    }
+    @media (max-width: 960px) {
+      .hh-visual { width: min(100%, 460px); aspect-ratio: 1 / 1.2; }
+      .hh-visual .hh-phone-1 { border-radius: 34px; padding: 8px; }
+      .hh-visual .hh-phone-1 .phone-screen { border-radius: 27px; }
+      .hh-visual .hh-phone-2,
+      .hh-visual .hh-phone-3 { border-radius: 28px; padding: 6px; }
+      .hh-visual .hh-phone-2 .phone-screen,
+      .hh-visual .hh-phone-3 .phone-screen { border-radius: 23px; }
+      .hh-visual .phone-notch { top: 11px; height: 16px; }
     }
 
     /* Floating PTT badge on hero */
@@ -2232,6 +2301,9 @@ main .team-panel {
 @supports not (aspect-ratio: 9 / 19.2) {
   .phone { height: calc(min(290px, 72vw) * 2.133); }
   .phone-float-b { height: calc(min(220px, 52vw) * 2.133); }
+  /* Percentage-width phones size from the visual, not the 290px single-phone height. */
+  .hh-visual .phone { height: auto; }
+  .hh-visual { height: 580px; }
   .gallery figure { height: 0; padding-bottom: 177.7%; }
   .gallery figure img { position: absolute; inset: 0; }
 }
