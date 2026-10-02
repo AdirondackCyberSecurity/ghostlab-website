@@ -586,8 +586,8 @@
       h1 { max-width: none; }
     }
     .hero-copy .lede { margin-bottom: 28px; }
-    /* The home headline is an all-caps line: run it smaller and wider than
-       the default h1 so the store buttons stay above the fold. */
+    /* The home headline runs smaller and wider than the default h1 so the
+       store buttons stay above the fold. */
     .hero-copy h1 {
       font-size: clamp(2rem, 3.6vw, 3.1rem);
       max-width: 20ch;
@@ -614,6 +614,20 @@
     .hero-lede-privacy {
       color: var(--muted);
       font-size: 0.95em;
+      font-weight: 500;
+    }
+    .hero-lede-sale {
+      display: block;
+      color: #e4a8ff;
+      font-weight: 700;
+    }
+    /* Home hero: Download free button, store badges on the row below, then the rating line. */
+    .hero-actions.hero-cta { margin-bottom: 14px; }
+    .hero-actions.hero-badges { margin-bottom: 12px; }
+    .hero-proof {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 0.9rem;
       font-weight: 500;
     }
     .hero-price {
