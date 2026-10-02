@@ -621,8 +621,7 @@
       color: #e4a8ff;
       font-weight: 700;
     }
-    /* Home hero: Download free button, store badges on the row below, then the rating line. */
-    .hero-actions.hero-cta { margin-bottom: 14px; }
+    /* Home hero: store badges under the price line, then the rating line. */
     .hero-actions.hero-badges { margin-bottom: 12px; }
     .hero-proof {
       margin: 0 0 22px;
