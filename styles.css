@@ -616,11 +616,6 @@
       font-size: 0.95em;
       font-weight: 500;
     }
-    .hero-lede-sale {
-      display: block;
-      color: #e4a8ff;
-      font-weight: 700;
-    }
     /* Home hero: store badges under the price line, then the rating line. */
     .hero-actions.hero-badges { margin-bottom: 12px; }
     .hero-proof {
