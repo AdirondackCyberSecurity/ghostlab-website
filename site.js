@@ -197,7 +197,7 @@
     function clipSrc(peerIndex, variant) {
       var peer = peers[peerIndex];
       var base = peer ? peer.getAttribute("data-audio") : null;
-      return base ? base + "-" + variant + ".mp3" : null;
+      return base ? base + "-" + variant + ".mp3?v=20261002-cache" : null;
     }
 
     function getClip(peerIndex, variant) {
@@ -218,7 +218,7 @@
         getClip(p, 2);
       }
       if (!staticBed) {
-        staticBed = new Audio("assets/radio/static-bed.mp3");
+        staticBed = new Audio("assets/radio/static-bed.mp3?v=20261002-cache");
         staticBed.loop = true;
         staticBed.volume = 0.18;
         staticBed.preload = "auto";
