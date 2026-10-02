@@ -76,14 +76,14 @@
     .ambient-backdrop {
       position: absolute;
       inset: 0;
-      background-image: url("assets/investigate-ghost-backdrop.png");
+      background-image: url("assets/investigate-ghost-backdrop.png?v=20261002-cache");
       background-image: -webkit-image-set(
-        url("assets/investigate-ghost-backdrop.webp") type("image/webp"),
-        url("assets/investigate-ghost-backdrop.png") type("image/png")
+        url("assets/investigate-ghost-backdrop.webp?v=20261002-cache") type("image/webp"),
+        url("assets/investigate-ghost-backdrop.png?v=20261002-cache") type("image/png")
       );
       background-image: image-set(
-        url("assets/investigate-ghost-backdrop.webp") type("image/webp"),
-        url("assets/investigate-ghost-backdrop.png") type("image/png")
+        url("assets/investigate-ghost-backdrop.webp?v=20261002-cache") type("image/webp"),
+        url("assets/investigate-ghost-backdrop.png?v=20261002-cache") type("image/png")
       );
       background-size: cover;
       background-position: center center;

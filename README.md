@@ -20,11 +20,13 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
 
-Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` redirects to `apps.html` and is `noindex`. Night Glide, Tarot, Palmistry, Eight Ball, Oracle, and Divination are retired: their pages stay reachable for old store links, send `noindex`, and are not in the sitemap.
+Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` redirects to `apps.html` and is `noindex`. Night Glide, Palmistry, Eight Ball, Oracle, and Divination are retired: their pages stay reachable for old store links, send `noindex`, and are not in the sitemap. `/privacy-tarot.html` is a `noindex` refresh stub to `/privacy.html` (GitHub Pages cannot send a 301).
 
 ## Hosting
 
-GitHub Pages serves from the `main` branch root (static HTML/CSS/JS).
+GitHub Pages serves from the `main` branch root (static HTML/CSS/JS). It ignores `_headers` files and sends `Cache-Control: max-age=600` on every response. Do not add a headers file expecting the origin to honor it.
+
+Static files under `/assets/`, plus `styles.css`, `site.js`, and `halloween-ghost-hunt.js`, are referenced with a `?v=` query string so a long Cloudflare edge and browser TTL is safe. When you change one of those files, bump its `?v=` in the same commit. A few screenshots already use `?v=205`. Leave Caching level on **Standard** so the query string stays in the cache key.
 
 Custom domain: **ghostlab.icu** (see `CNAME`).
 

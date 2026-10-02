@@ -1,3 +1,0 @@
-# The live GhostLab apps (Paranormal Toolkit, Dead Channel, and Spirit Detector)
-# do not serve ads and authorize no ad sellers.
-# ads.txt is separate and applies to the website, not these apps.

@@ -205,11 +205,11 @@
     // proportions and wording, and they get no button chrome of ours.
     const badge = (href, cls, src, w, alt) => el("a", { class: "store-badge " + cls, href, target: "_blank", rel: "noopener noreferrer" },
       el("img", { src, width: w, height: 40, alt, loading: "lazy" }));
-    return el("div", { class: "panel toolkit-card" }, el("img", { class: "toolkit-icon", src: "../assets/sphere/toolkit.png", alt: "", loading: "lazy" }),
+    return el("div", { class: "panel toolkit-card" }, el("img", { class: "toolkit-icon", src: "../assets/sphere/toolkit.png?v=20261002-cache", alt: "", loading: "lazy" }),
       el("div", { class: "grow" }, el("div", { class: "eyebrow" }, "From GhostLab"), el("h3", {}, "Paranormal Toolkit"), el("p", { class: "muted small", style: "margin-top:3px" }, "The field kit for night hunts: EMF, EVP, spirit box, Spirit Speak, and SLS. Free on the App Store and Google Play.")),
       el("div", { class: "badges" },
-        badge(TOOLKIT.appStore, "store-badge-apple", "../assets/store/download-on-the-app-store.svg", 120, "Download on the App Store"),
-        badge(TOOLKIT.play, "store-badge-play", "../assets/store/get-it-on-google-play.png", 135, "Get it on Google Play")));
+        badge(TOOLKIT.appStore, "store-badge-apple", "../assets/store/download-on-the-app-store.svg?v=20261002-cache", 120, "Download on the App Store"),
+        badge(TOOLKIT.play, "store-badge-play", "../assets/store/get-it-on-google-play.png?v=20261002-cache", 135, "Get it on Google Play")));
   }
   function TabBar() {
     return el("nav", { class: "tabbar", "aria-label": "Sections" }, el("div", { class: "tabbar-inner" },
@@ -803,7 +803,7 @@
       el("div", { class: "panel" }, el("div", { class: "reading" }, el("p", {}, "GhostLab: Divination is three instruments on one bench: tarot, oracle plates, and an eight ball. Bring a question, pull a card, deal a plate, or shake for yes or no."), el("p", {}, "Everything runs in your browser. Your readings and notes never leave this device. There is no account and no server of ours. The free version shows ads; a one-time Pro key removes them."))),
       ToolkitCard(),
       el("div", { class: "panel tight" }, el("div", { class: "label" }, "Web app"), el("p", { class: "muted small" }, "Add it to your Home Screen and it opens full screen, works offline, and keeps your notes between visits."), InstallHint()),
-      el("div", { class: "panel tight" }, el("div", { class: "label" }, "Links"), el("div", { class: "stack-sm small" }, el("a", { href: "../privacy-tarot.html" }, "Privacy policy"), el("br"), el("a", { href: "../support.html" }, "Support"), el("br"), el("a", { href: "../apps.html" }, "The GhostLab apps"))),
+      el("div", { class: "panel tight" }, el("div", { class: "label" }, "Links"), el("div", { class: "stack-sm small" }, el("a", { href: "../privacy.html" }, "Privacy policy"), el("br"), el("a", { href: "../support.html" }, "Support"), el("br"), el("a", { href: "../apps.html" }, "The GhostLab apps"))),
       el("p", { class: "footer-line" }, "Entertainment and experimental investigation only. Adirondack Cyber Security."));
   }
 
