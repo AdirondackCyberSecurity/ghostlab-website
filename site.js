@@ -34,10 +34,11 @@
     document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
   }
 
-  // All Hallows themes run Oct 14 to Oct 31, 2026 in all three GhostLab apps,
-  // on America/New_York dates. Before Oct 14 the strip is a themes-only notice
-  // (no countdown, no sale wording), Oct 14 to 30 it shows days left, Oct 31 it
-  // says "Ends tonight", and from Nov 1 it is gone.
+  // All Hallows strip, on America/New_York dates. The All Hallows updates went
+  // out early (Oct 6, 2026), so before Oct 14 the strip is an updates-only
+  // notice: rolling out as store reviews clear, with no store date, no
+  // countdown and no sale or price wording. Oct 14 to 30 it shows days left,
+  // Oct 31 it says "Ends tonight", and from Nov 1 it is gone.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
     var DISMISS_KEY = "ghostlab.hallows.dismissed";
@@ -54,8 +55,8 @@
     }
     var message;
     if (TODAY_ET < SALE_START) {
-      // Themes-only notice. No countdown, no sale or price wording before Oct 14 ET.
-      message = "All Hallows themes arrive Oct\u00a014 in Paranormal Toolkit, Dead Channel and Spirit Detector, through Oct\u00a031.";
+      // Updates-only notice. No store date, no countdown, no sale or price wording before Oct 14 ET.
+      message = "GhostLab All Hallows updates are out early for Paranormal Toolkit, Dead Channel and Spirit Detector, rolling out as store reviews clear.";
     } else if (TODAY_ET < SALE_END) {
       var left = dayIndex(SALE_END) - dayIndex(TODAY_ET) + 1;
       message = "All Hallows themes and Halloween sale prices are live in all three GhostLab apps. Ends Oct\u00a031, " + left + "\u00a0days left.";
