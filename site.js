@@ -34,11 +34,12 @@
     document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
   }
 
-  // All Hallows strip, on America/New_York dates. The All Hallows updates went
-  // out early (Oct 6, 2026), so before Oct 14 the strip is an updates-only
-  // notice: rolling out as store reviews clear, with no store date, no
-  // countdown and no sale or price wording. Oct 14 to 30 it shows days left,
-  // Oct 31 it says "Ends tonight", and from Nov 1 it is gone.
+  // All Hallows strip, on America/New_York dates. Before Oct 14 the strip
+  // describes All Hallows as an optional Halloween skin (seasonal look; switch
+  // back in Settings), notes the updates are out early and rolling out as
+  // store reviews clear, and keeps no store date, countdown, sale or price
+  // wording. Oct 14 to 30 it shows days left, Oct 31 it says "Ends tonight",
+  // and from Nov 1 it is gone.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
     var DISMISS_KEY = "ghostlab.hallows.dismissed";
@@ -55,8 +56,8 @@
     }
     var message;
     if (TODAY_ET < SALE_START) {
-      // Updates-only notice. No store date, no countdown, no sale or price wording before Oct 14 ET.
-      message = "GhostLab All Hallows updates are out early for Paranormal Toolkit, Dead Channel and Spirit Detector, rolling out as store reviews clear.";
+      // Optional-skin notice. No store date, no countdown, no sale or price wording before Oct 14 ET.
+      message = "All Hallows is an optional Halloween skin for Paranormal Toolkit, Dead Channel and Spirit Detector. It changes the seasonal look; switch back to the classic look in Settings. Updates are out early, rolling out as store reviews clear.";
     } else if (TODAY_ET < SALE_END) {
       var left = dayIndex(SALE_END) - dayIndex(TODAY_ET) + 1;
       message = "All Hallows themes and Halloween sale prices are live in all three GhostLab apps. Ends Oct\u00a031, " + left + "\u00a0days left.";
