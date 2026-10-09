@@ -1,5 +1,5 @@
 # GhostLab security contact (RFC 9116)
-Contact: mailto:jmiller@adkcyber.com
+Contact: mailto:ghostlabsupport@inkboxmail.com
 Expires: 2027-09-11T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://ghostlab.icu/.well-known/security.txt
