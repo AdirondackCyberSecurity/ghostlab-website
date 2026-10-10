@@ -1705,6 +1705,16 @@
       color: var(--faint);
       text-align: center;
     }
+    .download-family-icon {
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 0 0 12px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: #05070d;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
     .download-family h3 {
       font-size: 1.05rem;
       margin: 0 0 6px;
@@ -1725,6 +1735,7 @@
         text-align: center;
       }
       .download-family p { margin-left: auto; margin-right: auto; }
+      .download-family-icon { margin-left: auto; margin-right: auto; }
       .download-family .hero-actions { justify-content: center; }
     }
 
