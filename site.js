@@ -22,8 +22,9 @@
     }
   }
   var TODAY_ET = easternDay(new Date());
-  // Halloween sale and All Hallows themes: Oct 14 to Oct 31, 2026, inclusive, ET.
-  var SALE_START = 20261014;
+  // Halloween sale: Oct 24 to Oct 31, 2026, inclusive, ET (00:00 Oct 24 through
+  // 23:59:59 Oct 31). Hidden from Nov 1 00:00 ET.
+  var SALE_START = 20261024;
   var SALE_END = 20261031;
   var SALE_ON = TODAY_ET >= SALE_START && TODAY_ET <= SALE_END;
 
@@ -34,11 +35,11 @@
     document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
   }
 
-  // All Hallows strip, on America/New_York dates. Before Oct 14 the strip
+  // All Hallows strip, on America/New_York dates. Before Oct 24 the strip
   // describes All Hallows as an optional Halloween skin (seasonal look; switch
   // back in Settings), notes the updates are out early and rolling out as
   // store reviews clear, and keeps no store date, countdown, sale or price
-  // wording. Oct 14 to 30 it shows days left, Oct 31 it says "Ends tonight",
+  // wording. Oct 24 to 30 it shows days left, Oct 31 it says "Ends tonight",
   // and from Nov 1 it is gone.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
@@ -56,7 +57,7 @@
     }
     var message;
     if (TODAY_ET < SALE_START) {
-      // Optional-skin notice. No store date, no countdown, no sale or price wording before Oct 14 ET.
+      // Optional-skin notice. No store date, no countdown, no sale or price wording before Oct 24 ET.
       message = "All Hallows is an optional Halloween skin for Paranormal Toolkit, Dead Channel and Spirit Detector. It changes the seasonal look; switch back to the classic look in Settings. Updates are out early, rolling out as store reviews clear.";
     } else if (TODAY_ET < SALE_END) {
       var left = dayIndex(SALE_END) - dayIndex(TODAY_ET) + 1;
