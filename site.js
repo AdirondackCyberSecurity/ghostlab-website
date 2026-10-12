@@ -22,25 +22,15 @@
     }
   }
   var TODAY_ET = easternDay(new Date());
-  // Halloween sale: Oct 24 to Oct 31, 2026, inclusive, ET (00:00 Oct 24 through
-  // 23:59:59 Oct 31). Hidden from Nov 1 00:00 ET.
-  var SALE_START = 20261024;
-  var SALE_END = 20261031;
-  var SALE_ON = TODAY_ET >= SALE_START && TODAY_ET <= SALE_END;
+  // All Hallows optional-skin strip shows through Oct 31, 2026 ET and is
+  // hidden from Nov 1 00:00 ET. The Halloween sale was cancelled, so there is
+  // no sale gate, sale copy or countdown.
+  var HALLOWS_END = 20261031;
 
-  // Pages carry both versions of each price line. The regular copy shows by
-  // default (and with JavaScript off); the sale copy only shows in the window.
-  if (SALE_ON) {
-    document.querySelectorAll("[data-sale-off]").forEach(function (el) { el.hidden = true; });
-    document.querySelectorAll("[data-sale-on]").forEach(function (el) { el.hidden = false; });
-  }
-
-  // All Hallows strip, on America/New_York dates. Before Oct 24 the strip
-  // describes All Hallows as an optional Halloween skin (seasonal look; switch
-  // back in Settings), notes the updates are out early and rolling out as
-  // store reviews clear, and keeps no store date, countdown, sale or price
-  // wording. Oct 24 to 30 it shows days left, Oct 31 it says "Ends tonight",
-  // and from Nov 1 it is gone.
+  // All Hallows strip, on America/New_York dates. It describes All Hallows as
+  // an optional Halloween skin (seasonal look; switch back in Settings) and
+  // notes the updates are out early, rolling out as store reviews clear.
+  // No store date, countdown, sale or price wording. From Nov 1 it is gone.
   // Dismissal lasts for this tab session only.
   (function mountHallowsBanner() {
     var DISMISS_KEY = "ghostlab.hallows.dismissed";
@@ -50,21 +40,9 @@
 
     var wrap = document.querySelector(".wrap");
     if (!wrap) return;
-    if (TODAY_ET > SALE_END) return;
+    if (TODAY_ET > HALLOWS_END) return;
 
-    function dayIndex(n) {
-      return Date.UTC(Math.floor(n / 10000), Math.floor(n / 100) % 100 - 1, n % 100) / 86400000;
-    }
-    var message;
-    if (TODAY_ET < SALE_START) {
-      // Optional-skin notice. No store date, no countdown, no sale or price wording before Oct 24 ET.
-      message = "All Hallows is an optional Halloween skin for Paranormal Toolkit, Dead Channel and Spirit Detector. It changes the seasonal look; switch back to the classic look in Settings. Updates are out early, rolling out as store reviews clear.";
-    } else if (TODAY_ET < SALE_END) {
-      var left = dayIndex(SALE_END) - dayIndex(TODAY_ET) + 1;
-      message = "All Hallows themes and Halloween sale prices are live in all three GhostLab apps. Ends Oct\u00a031, " + left + "\u00a0days left.";
-    } else {
-      message = "Ends tonight. Last day for All Hallows themes and Halloween sale prices in all three GhostLab apps.";
-    }
+    var message = "All Hallows is an optional Halloween skin for Paranormal Toolkit, Dead Channel and Spirit Detector. It changes the seasonal look; switch back to the classic look in Settings. Updates are out early, rolling out as store reviews clear.";
 
     var banner = document.createElement("aside");
     banner.className = "hallows-banner";
