@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["VPV4CVFJYL.com.adkcyber.spectralevp"],
+        "components": [
+          { "/": "/t/*", "comment": "GhostLab hunt tag links" },
+          { "/": "/t", "comment": "GhostLab hunt tag links without the trailing slash" }
+        ]
+      }
+    ]
+  }
+}

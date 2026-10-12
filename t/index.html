@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-src https://www.openstreetmap.org; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>A tagged spot · GhostLab</title>
+  <meta name="description" content="A spot a friend tagged in GhostLab." />
+  <meta property="og:title" content="A spot tagged in GhostLab" />
+  <meta property="og:description" content="Open it in GhostLab to see the pin on your Haunts map." />
+  <meta property="og:image" content="https://ghostlab.icu/assets/og-image.png" />
+  <meta name="theme-color" content="#07090f" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png?v=20261002-cache" />
+  <style>
+    :root {
+      --bg: #07090f;
+      --panel: #121824;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: rgba(255, 255, 255, 0.94);
+      --muted: rgba(255, 255, 255, 0.6);
+      --accent: #3dffa8;
+      --accent-dim: rgba(61, 255, 168, 0.12);
+      --friend: #ffb840;
+      --warn: #ff8c40;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #163528 0%, transparent 55%),
+                  radial-gradient(900px 500px at 100% 0%, #2a1840 0%, transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    main { max-width: 640px; margin: 0 auto; padding: 40px 16px 64px; }
+    .top { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .top img { width: 44px; height: 44px; border-radius: 11px; }
+    .kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+    h1 { font-size: clamp(1.6rem, 6vw, 2.1rem); margin: 4px 0 6px; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+    .by { color: var(--muted); margin: 0 0 18px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 18px; margin-bottom: 14px; }
+    .card h2 { margin: 0 0 8px; font-size: 1rem; }
+    .card p { color: var(--muted); margin: 0 0 8px; }
+    .note { color: var(--text); white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
+    .meta { font-size: 0.9rem; color: var(--muted); margin: 0; }
+    .coords { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--text); }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; background: var(--accent); color: #062015; font-weight: 700; font-size: 1rem;
+      text-decoration: none; border: none; border-radius: 12px; padding: 14px 18px; margin-top: 10px; cursor: pointer;
+    }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .row .btn { margin-top: 10px; }
+    .map { width: 100%; height: 280px; border: 0; border-radius: 12px; display: block; margin-top: 10px; background: #0d1119; }
+    .warn { color: var(--warn); }
+    .store-badge { display: inline-block; line-height: 0; margin: 10px 12px 0 0; }
+    .store-badge img { display: block; height: 40px; width: auto; }
+    footer { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+    footer a { color: var(--accent); margin-right: 14px; }
+    a { color: var(--accent); }
+    [hidden] { display: none !important; }
+    @media (max-width: 380px) { .row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="top">
+      <img src="/assets/app-icon.png?v=20261002-cache" width="44" height="44" alt="GhostLab" />
+      <div class="kicker">Tagged spot</div>
+    </div>
+
+    <section id="tag" hidden>
+      <h1 id="title"></h1>
+      <p class="by" id="by"></p>
+
+      <div class="card" id="state-card" hidden>
+        <p class="warn" id="state" style="margin:0"></p>
+      </div>
+
+      <div class="card" id="note-card" hidden>
+        <p class="note" id="note"></p>
+      </div>
+
+      <div class="card">
+        <p class="meta"><span class="coords" id="coords"></span></p>
+        <p class="meta" id="accuracy"></p>
+        <p class="meta" id="expiry"></p>
+        <button class="btn btn-ghost" id="show-map" type="button">Show the map here</button>
+        <p class="meta" id="map-note" style="margin-top:8px">The map loads from OpenStreetMap, which then sees this spot.</p>
+        <iframe class="map" id="map" title="Map of the tagged spot" hidden referrerpolicy="no-referrer"></iframe>
+        <div class="row">
+          <a class="btn btn-ghost" id="apple-maps" href="#" rel="noopener noreferrer">Apple Maps</a>
+          <a class="btn btn-ghost" id="google-maps" href="#" rel="noopener noreferrer">Google Maps</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Open it in GhostLab</h2>
+        <p>The tag lands on your Haunts map next to the haunted places and your own sessions.</p>
+        <a class="btn" id="open-app" href="#">Open in GhostLab</a>
+        <p style="margin-top:12px">No GhostLab yet? It's free on iPhone. GhostLab on Android can't open tags yet; the map buttons above work on any phone.</p>
+        <a class="store-badge" data-store-keep href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
+          <img src="/assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download on the App Store" />
+        </a>
+      </div>
+
+      <div class="card">
+        <p style="margin:0">This page reads the tag from the link itself. The spot never reaches ghostlab.icu, and anyone holding this link can see it, so forward it only to people you trust. Only visit places you're allowed to be.</p>
+      </div>
+    </section>
+
+    <section id="broken" hidden>
+      <h1>This tag link is incomplete</h1>
+      <p class="by">Part of the link went missing, often because a message app cut it short. Ask your friend to share the tag again.</p>
+      <a class="btn btn-ghost" href="/">Go to GhostLab</a>
+    </section>
+
+    <footer>
+      <a href="/">Home</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/support.html">Support</a>
+      <span>© Adirondack Cyber Security</span>
+    </footer>
+  </main>
+  <script src="/t/t.js?v=20261012"></script>
+</body>
+</html>
