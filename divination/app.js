@@ -727,7 +727,7 @@
       ProCard(),
       ToolkitCard(),
       InstallHint(),
-      el("p", { class: "footer-line" }, "Entertainment only. Adirondack Cyber Security."));
+      el("p", { class: "footer-line" }, "Entertainment only. Signal x Noise."));
   }
   function SettingsView() {
     const box = el("div", { class: "stack" });
@@ -804,7 +804,7 @@
       ToolkitCard(),
       el("div", { class: "panel tight" }, el("div", { class: "label" }, "Web app"), el("p", { class: "muted small" }, "Add it to your Home Screen and it opens full screen, works offline, and keeps your notes between visits."), InstallHint()),
       el("div", { class: "panel tight" }, el("div", { class: "label" }, "Links"), el("div", { class: "stack-sm small" }, el("a", { href: "../privacy.html" }, "Privacy policy"), el("br"), el("a", { href: "../support.html" }, "Support"), el("br"), el("a", { href: "../apps.html" }, "The GhostLab apps"))),
-      el("p", { class: "footer-line" }, "Entertainment and experimental investigation only. Adirondack Cyber Security."));
+      el("p", { class: "footer-line" }, "Entertainment and experimental investigation only. Signal x Noise."));
   }
 
   // ---------- Disclaimer gate ----------
