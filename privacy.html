@@ -1,178 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GhostLab Privacy Policy</title>
-<link rel="canonical" href="https://ghostlab.icu/privacy.html">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://ghostlab.icu/privacy.html">
-<meta property="og:title" content="GhostLab Privacy Policy">
-<meta property="og:description" content="How GhostLab: Paranormal Toolkit handles your data: no accounts, no advertising, recordings stay on your device, plus the one affiliate purchase signal.">
-<meta property="og:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="GhostLab Privacy Policy">
-<meta name="twitter:description" content="How GhostLab: Paranormal Toolkit handles your data: no accounts, no advertising, recordings stay on your device, plus the one affiliate purchase signal.">
-<meta name="twitter:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache">
-<style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
-    line-height: 1.6; color: #1d1d1f; background: #fff;
-  }
-  @media (prefers-color-scheme: dark) {
-    body { color: #e8e8ed; background: #161617; }
-    a { color: #7ab8ff; }
-  }
-  h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
-  h2 { font-size: 1.25rem; margin-top: 2.2rem; border-bottom: 1px solid rgba(128,128,128,.35); padding-bottom: .3rem; }
-  .updated { color: #86868b; font-size: .95rem; margin-top: 0; }
-  ul { padding-left: 1.3rem; }
-  li { margin: .35rem 0; }
-</style>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GhostLab Privacy Policy</title>
+  <link rel="canonical" href="https://ghostlab.icu/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ghostlab.icu/privacy.html">
+  <meta property="og:title" content="GhostLab Privacy Policy">
+  <meta property="og:description" content="How GhostLab: Paranormal Toolkit handles your data: no accounts, no advertising, recordings stay on your device, plus the one affiliate purchase signal.">
+  <meta property="og:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GhostLab Privacy Policy">
+  <meta name="twitter:description" content="How GhostLab: Paranormal Toolkit handles your data: no accounts, no advertising, recordings stay on your device, plus the one affiliate purchase signal.">
+  <meta name="twitter:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache">
+  <meta name="theme-color" content="#07090f" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20261002-cache" />
+  <link rel="apple-touch-icon" href="assets/app-icon.png?v=20261002-cache" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20261009-icons" />
+  <style>
+    .legal-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .legal-tabs a { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 600; }
+    .legal-tabs a:hover { color: var(--text); border-color: var(--border-strong); }
+    .legal-tabs a.active { color: #062015; background: var(--accent); border-color: var(--accent); }
+    .legal { max-width: 760px; margin: 0 auto 72px; padding: 32px 28px; background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); line-height: 1.7; color: var(--text); }
+    .legal h2 { font-size: 1.2rem; margin: 2rem 0 .6rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border); }
+    .legal h2:first-child { margin-top: 0; }
+    .legal p, .legal li { color: rgba(255,255,255,.82); }
+    .legal ul { padding-left: 1.25rem; }
+    .legal li { margin: .45rem 0; }
+    .legal a { color: var(--accent); }
+    .legal strong { color: var(--text); }
+    .legal .note { border-left: 3px solid var(--accent); background: var(--accent-dim); padding: .8rem 1rem; border-radius: var(--radius-xs); margin: 0 0 1.4rem; }
+    .legal-updated { color: var(--muted); font-size: .95rem; margin-top: 10px; }
+    @media (max-width: 800px) { .legal { margin: 0 20px 56px; } }
+    @media (max-width: 600px) { .legal { padding: 22px 18px; border-radius: var(--radius-sm); } }
+  </style>
 </head>
 <body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-backdrop"></div>
+    <div class="ambient-vignette"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
 
-<p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
-<h1>GhostLab Privacy Policy</h1>
-<p class="updated">Effective date: October 12, 2026 · Applies to “GhostLab: Paranormal Toolkit” on iOS and Android (formerly SpectralEVP)</p>
+  <div class="wrap">
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="assets/app-icon.png?v=20261002-cache" width="40" height="40" alt="GhostLab app icon" />
+          <span>GhostLab</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="apps.html">Apps</a>
+          <a href="ghostlab-vs-ghosttube.html">Comparison</a>
+          <a href="spirit-detector.html">Spirit Detector</a>
+          <a href="dead-channel.html">Dead Channel</a>
+          <a class="hide-sm" href="modes.html">Modes</a>
+          <a href="tools.html">Tools</a>
+          <a href="pro.html">Pro</a>
+          <a class="nav-store" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="nav-store" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-primary btn-sm nav-cta" href="index.html#download">Get the app</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
 
-<p>GhostLab is built to be private by design. There are no user accounts, no advertising, and no servers
-of our own. Your investigation recordings, videos, notes, and settings are stored only on your device
-unless <em>you</em> choose to export or share them. The one piece of information that leaves your phone
-on its own is a purchase-attribution signal that credits the creator who referred a sale, described
-under <a href="#affiliate">Affiliate attribution</a> below.</p>
+    <main id="top">
+      <header class="page-hero">
+        <div class="crumb"><a href="index.html">Home</a> <span>/</span> Legal <span>/</span> Privacy Policy</div>
+        <h1>GhostLab Privacy Policy</h1>
+        <p class="legal-updated">Effective date: October 12, 2026 · Applies to “GhostLab: Paranormal Toolkit” on iOS and Android (formerly SpectralEVP)</p>
+        <nav class="legal-tabs" aria-label="Legal documents"><a href="terms.html">Terms of Use</a><a href="community-guidelines.html">Community Guidelines</a><a href="privacy.html" class="active" aria-current="page">Privacy Policy</a><a href="copyright.html">Copyright Policy</a></nav>
+      </header>
 
-<h2>Summary</h2>
-<ul>
-  <li><strong>Your recordings stay with you.</strong> Nothing you record in GhostLab is transmitted to us.</li>
-  <li><strong>No accounts and no advertising.</strong> We never build an advertising profile of you and we
-      never sell your information.</li>
-  <li><strong>Everything stays on your device</strong> unless you export, share, or save it somewhere yourself.</li>
-  <li><strong>One exception:</strong> when you buy GhostLab Pro, an app-scoped device identifier and the
-      details of that purchase go to our affiliate partner so the right creator gets paid.</li>
-  <li><strong>Map tags go only where you send them.</strong> A tag you share travels inside the link or
-      straight to your teammates’ phones. GhostLab has no server that receives or stores your tags or
-      their locations. See <a href="#tags">Map tags you share</a>.</li>
-</ul>
+      <article class="legal">
+        <p>GhostLab is built to be private by design. There are no user accounts, no advertising, and no servers
+        of our own. Your investigation recordings, videos, notes, and settings are stored only on your device
+        unless <em>you</em> choose to export or share them. The one piece of information that leaves your phone
+        on its own is a purchase-attribution signal that credits the creator who referred a sale, described
+        under <a href="#affiliate">Affiliate attribution</a> below.</p>
 
-<h2>Data the app uses on your device</h2>
-<p>GhostLab asks your phone for permission to use the following, strictly to power the features described.
-All of this processing happens on your own device:</p>
-<ul>
-  <li><strong>Microphone</strong> - records EVP investigation sessions and powers Spirit Speak Live Chat.
-      Recordings are saved to the app’s on-device Library.</li>
-  <li><strong>Speech recognition</strong> - Spirit Speak uses Apple’s speech recognition to loosely match
-      spoken questions to dictionary words. Depending on your device settings, Apple may process speech
-      audio on its servers to provide recognition; see
-      <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>. GhostLab itself never
-      receives or stores this audio off-device.</li>
-  <li><strong>Camera</strong> - provides the low-light overlay, Motion-Grid, SLS body-tracking view, and
-      optional session video recording. Video is saved with the investigation on this device.</li>
-  <li><strong>Photos (add only)</strong> - only when you tap “Save to Photos,” the app writes a video to
-      your Photos library. GhostLab cannot read your existing photos.</li>
-  <li><strong>Location (while using the app)</strong> - shows haunted places near you, logs compass
-      heading, and tags where a session was recorded so it can appear on your in-app map. While the
-      “Tag my spot” screen is open, it also finds the spot you are tagging, and may ask for precise
-      location for that moment only. Location stays on your device unless you share a tag.</li>
-  <li><strong>Motion &amp; Fitness (barometer)</strong> - reads barometric pressure during sessions to log
-      environmental pressure trends alongside your recordings.</li>
-  <li><strong>Local network (Team mode)</strong> - offline Multipeer connectivity shares session tags,
-      map tags and live levels directly between nearby investigators’ phones. This is peer-to-peer on your local
-      network; nothing passes through the internet or any server.</li>
-  <li><strong>Nearby Interaction (ultra-wideband)</strong> - measures distance to a second U1-capable
-      device used as a trigger object during investigations.</li>
-  <li><strong>Apple Watch companion</strong> - start/stop/tag commands sync between your Watch and iPhone
-      via Apple’s WatchConnectivity, device-to-device.</li>
-</ul>
-<p>You can decline or revoke any permission in your device settings; the related feature simply won’t function.</p>
+        <h2>Summary</h2>
+        <ul>
+          <li><strong>Your recordings stay with you.</strong> Nothing you record in GhostLab is transmitted to us.</li>
+          <li><strong>No accounts and no advertising.</strong> We never build an advertising profile of you and we
+              never sell your information.</li>
+          <li><strong>Everything stays on your device</strong> unless you export, share, or save it somewhere yourself.</li>
+          <li><strong>One exception:</strong> when you buy GhostLab Pro, an app-scoped device identifier and the
+              details of that purchase go to our affiliate partner so the right creator gets paid.</li>
+          <li><strong>Map tags go only where you send them.</strong> A tag you share travels inside the link or
+              straight to your teammates’ phones. GhostLab has no server that receives or stores your tags or
+              their locations. See <a href="#tags">Map tags you share</a>.</li>
+        </ul>
 
-<h2 id="tags">Map tags you share</h2>
-<p>GhostLab for iPhone lets you tag a spot on the Haunts map and share it with friends. Sharing and opening
-tags is for people 18 and older, and the app asks you to confirm your age and agree to the
-<a href="terms.html">Terms of Use</a> before your first share or opened tag.</p>
-<ul>
-  <li><strong>What a tag holds:</strong> the spot’s coordinates and how accurate the GPS fix was, the name,
-      note and icon you gave it, when you made it, when friends’ copies expire, a display name if you chose
-      one, and a public key that marks the tag as coming from your phone.</li>
-  <li><strong>Where it goes:</strong> your tags are stored on your device. When you share one, it travels
-      inside the link you send (for example in Messages) or directly to teammates’ phones in Team mode.
-      GhostLab has no server that receives, stores or reads tags.</li>
-  <li><strong>The tag page:</strong> a tag link opens ghostlab.icu/t/, which reads the tag in the
-      recipient’s browser from the part of the link after “#”. Browsers never send that part to a server,
-      so our website host sees an ordinary page visit (such as IP address and browser type) without the tag.
-      If the recipient taps “Show the map here”, the map loads from OpenStreetMap, which then receives the
-      spot’s location. The Apple Maps and Google Maps buttons hand the spot to those services.</li>
-  <li><strong>Your tag key:</strong> the first time you make a tag, GhostLab creates a random key on your
-      phone and keeps it in the device Keychain. Only its public half goes out, inside your tags, so
-      friends can tell your tags apart and block you if they want to. It isn’t linked to your name, your
-      Apple ID or any account.</li>
-  <li><strong>Forwarding:</strong> anyone who has your link can see the spot and pass it on. A link
-      can’t be recalled once it is sent.</li>
-  <li><strong>Reports:</strong> “Report” opens an email to GhostLab support in your own mail app with the
-      tag’s link attached, which includes its location. We use what you send only to review the report
-      and keep it only as long as we need to deal with it and any legal duty it raises.</li>
-  <li><strong>Kept on your device:</strong> tags friends sent you, the senders you blocked, and your age
-      confirmation and agreement. None of it is sent to us, our affiliate partner or anyone else.</li>
-</ul>
+        <h2>Data the app uses on your device</h2>
+        <p>GhostLab asks your phone for permission to use the following, strictly to power the features described.
+        All of this processing happens on your own device:</p>
+        <ul>
+          <li><strong>Microphone</strong> - records EVP investigation sessions and powers Spirit Speak Live Chat.
+              Recordings are saved to the app’s on-device Library.</li>
+          <li><strong>Speech recognition</strong> - Spirit Speak uses Apple’s speech recognition to loosely match
+              spoken questions to dictionary words. Depending on your device settings, Apple may process speech
+              audio on its servers to provide recognition; see
+              <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>. GhostLab itself never
+              receives or stores this audio off-device.</li>
+          <li><strong>Camera</strong> - provides the low-light overlay, Motion-Grid, SLS body-tracking view, and
+              optional session video recording. Video is saved with the investigation on this device.</li>
+          <li><strong>Photos (add only)</strong> - only when you tap “Save to Photos,” the app writes a video to
+              your Photos library. GhostLab cannot read your existing photos.</li>
+          <li><strong>Location (while using the app)</strong> - shows haunted places near you, logs compass
+              heading, and tags where a session was recorded so it can appear on your in-app map. While the
+              “Tag my spot” screen is open, it also finds the spot you are tagging, and may ask for precise
+              location for that moment only. Location stays on your device unless you share a tag.</li>
+          <li><strong>Motion &amp; Fitness (barometer)</strong> - reads barometric pressure during sessions to log
+              environmental pressure trends alongside your recordings.</li>
+          <li><strong>Local network (Team mode)</strong> - offline Multipeer connectivity shares session tags,
+              map tags and live levels directly between nearby investigators’ phones. This is peer-to-peer on your local
+              network; nothing passes through the internet or any server.</li>
+          <li><strong>Nearby Interaction (ultra-wideband)</strong> - measures distance to a second U1-capable
+              device used as a trigger object during investigations.</li>
+          <li><strong>Apple Watch companion</strong> - start/stop/tag commands sync between your Watch and iPhone
+              via Apple’s WatchConnectivity, device-to-device.</li>
+        </ul>
+        <p>You can decline or revoke any permission in your device settings; the related feature simply won’t function.</p>
 
-<h2>Purchases</h2>
-<p>The optional GhostLab Pro lifetime unlock is processed entirely by Apple through the App Store or by
-Google through Google Play. We never see or store your name, payment details, or billing information.
-Your entitlement is verified on-device through Apple’s StoreKit or Google Play Billing.</p>
+        <h2 id="tags">Map tags you share</h2>
+        <p>GhostLab for iPhone lets you tag a spot on the Haunts map and share it with friends. Sharing and opening
+        tags is for people 18 and older, and the app asks you to confirm your age and agree to the
+        <a href="terms.html">Terms of Use</a> before your first share or opened tag.</p>
+        <ul>
+          <li><strong>What a tag holds:</strong> the spot’s coordinates and how accurate the GPS fix was, the name,
+              note and icon you gave it, when you made it, when friends’ copies expire, a display name if you chose
+              one, and a public key that marks the tag as coming from your phone.</li>
+          <li><strong>Where it goes:</strong> your tags are stored on your device. When you share one, it travels
+              inside the link you send (for example in Messages) or directly to teammates’ phones in Team mode.
+              GhostLab has no server that receives, stores or reads tags.</li>
+          <li><strong>The tag page:</strong> a tag link opens ghostlab.icu/t/, which reads the tag in the
+              recipient’s browser from the part of the link after “#”. Browsers never send that part to a server,
+              so our website host sees an ordinary page visit (such as IP address and browser type) without the tag.
+              If the recipient taps “Show the map here”, the map loads from OpenStreetMap, which then receives the
+              spot’s location. The Apple Maps and Google Maps buttons hand the spot to those services.</li>
+          <li><strong>Your tag key:</strong> the first time you make a tag, GhostLab creates a random key on your
+              phone and keeps it in the device Keychain. Only its public half goes out, inside your tags, so
+              friends can tell your tags apart and block you if they want to. It isn’t linked to your name, your
+              Apple ID or any account.</li>
+          <li><strong>Forwarding:</strong> anyone who has your link can see the spot and pass it on. A link
+              can’t be recalled once it is sent.</li>
+          <li><strong>Reports:</strong> “Report” opens an email to GhostLab support in your own mail app with the
+              tag’s link attached, which includes its location. We use what you send only to review the report
+              and keep it only as long as we need to deal with it and any legal duty it raises.</li>
+          <li><strong>Kept on your device:</strong> tags friends sent you, the senders you blocked, and your age
+              confirmation and agreement. None of it is sent to us, our affiliate partner or anyone else.</li>
+        </ul>
 
-<h2 id="affiliate">Affiliate attribution</h2>
-<p>Creators who recommend GhostLab earn a share of the sales they bring in. To work out which creator
-referred a purchase, GhostLab includes the
-<a href="https://gomarketme.co/privacy">GoMarketMe</a> affiliate SDK. On first launch and again when a
-Pro purchase completes, it sends the following to GoMarketMe:</p>
-<ul>
-  <li>An app-scoped device identifier. On iOS this is Apple’s <em>identifier for vendor</em>, which is
-      unique to GhostLab on your device and resets when you delete the app. Android uses an equivalent
-      installation identifier.</li>
-  <li>Basic device information: model, operating system version, screen size, language, and country.</li>
-  <li>Details of the purchase itself: the product, price, currency, transaction identifier, and time.</li>
-</ul>
-<p>GhostLab does not use the Apple advertising identifier or the Android advertising ID, and it never asks
-for permission to track you across other companies’ apps and websites. This information is used to
-credit an affiliate and to report sales totals. It is not used to show you advertising, it is not
-combined with data from other apps, and it is never sold. GoMarketMe processes it on our behalf under
-their <a href="https://gomarketme.co/privacy">privacy policy</a>.</p>
+        <h2>Purchases</h2>
+        <p>The optional GhostLab Pro lifetime unlock is processed entirely by Apple through the App Store or by
+        Google through Google Play. We never see or store your name, payment details, or billing information.
+        Your entitlement is verified on-device through Apple’s StoreKit or Google Play Billing.</p>
 
-<h2>Data sharing</h2>
-<p>We do not sell or rent personal data to anyone. The only information shared with a third party is the
-affiliate attribution described above, which goes to GoMarketMe so creators can be paid. Apple and Google
-handle your payment and tell us only whether you own Pro.</p>
-<p>Everything else leaves your device only through actions you take yourself: exporting a session package,
-generating and sharing a PDF report, saving a video to Photos, sharing a map tag link with people you
-choose, or sharing tags with nearby teammates in Team mode.</p>
+        <h2 id="affiliate">Affiliate attribution</h2>
+        <p>Creators who recommend GhostLab earn a share of the sales they bring in. To work out which creator
+        referred a purchase, GhostLab includes the
+        <a href="https://gomarketme.co/privacy">GoMarketMe</a> affiliate SDK. On first launch and again when a
+        Pro purchase completes, it sends the following to GoMarketMe:</p>
+        <ul>
+          <li>An app-scoped device identifier. On iOS this is Apple’s <em>identifier for vendor</em>, which is
+              unique to GhostLab on your device and resets when you delete the app. Android uses an equivalent
+              installation identifier.</li>
+          <li>Basic device information: model, operating system version, screen size, language, and country.</li>
+          <li>Details of the purchase itself: the product, price, currency, transaction identifier, and time.</li>
+        </ul>
+        <p>GhostLab does not use the Apple advertising identifier or the Android advertising ID, and it never asks
+        for permission to track you across other companies’ apps and websites. This information is used to
+        credit an affiliate and to report sales totals. It is not used to show you advertising, it is not
+        combined with data from other apps, and it is never sold. GoMarketMe processes it on our behalf under
+        their <a href="https://gomarketme.co/privacy">privacy policy</a>.</p>
 
-<h2>Data retention and deletion</h2>
-<p>All sessions, recordings, and settings live in the app’s storage on your device. Delete any session
-from the Library, or delete the app to remove everything at once. We hold no copies of any of it.</p>
-<p>Your own map tags stay on your device until you delete them. Tags friends sent you leave your map
-when they expire and are removed from your device then. A tag you take off your map is kept as a hidden
-record so the same link doesn’t put it back; deleting the app removes these too.</p>
-<p>The affiliate attribution records held by GoMarketMe are kept while they are needed to calculate
-creator payouts and to meet tax and accounting obligations. You can ask us to delete them at any time.
-See <a href="data-deletion.html">Data deletion requests</a> for how to do that.</p>
+        <h2>Data sharing</h2>
+        <p>We do not sell or rent personal data to anyone. The only information shared with a third party is the
+        affiliate attribution described above, which goes to GoMarketMe so creators can be paid. Apple and Google
+        handle your payment and tell us only whether you own Pro.</p>
+        <p>Everything else leaves your device only through actions you take yourself: exporting a session package,
+        generating and sharing a PDF report, saving a video to Photos, sharing a map tag link with people you
+        choose, or sharing tags with nearby teammates in Team mode.</p>
 
-<h2>Children</h2>
-<p>GhostLab is rated 9+ for infrequent horror/fear themes and is not directed at children under 13.
-We do not knowingly collect personal information from anyone, including children. Sharing and opening
-map tags is for people 18 and older.</p>
+        <h2>Data retention and deletion</h2>
+        <p>All sessions, recordings, and settings live in the app’s storage on your device. Delete any session
+        from the Library, or delete the app to remove everything at once. We hold no copies of any of it.</p>
+        <p>Your own map tags stay on your device until you delete them. Tags friends sent you leave your map
+        when they expire and are removed from your device then. A tag you take off your map is kept as a hidden
+        record so the same link doesn’t put it back; deleting the app removes these too.</p>
+        <p>The affiliate attribution records held by GoMarketMe are kept while they are needed to calculate
+        creator payouts and to meet tax and accounting obligations. You can ask us to delete them at any time.
+        See <a href="data-deletion.html">Data deletion requests</a> for how to do that.</p>
 
-<h2>Changes to this policy</h2>
-<p>If a future update ever changes how data is handled, we will update this page and note it in the
-App Store and Google Play release notes before the change takes effect.</p>
+        <h2>Children</h2>
+        <p>GhostLab is rated 9+ for infrequent horror/fear themes and is not directed at children under 13.
+        We do not knowingly collect personal information from anyone, including children. Sharing and opening
+        map tags is for people 18 and older.</p>
 
-<h2>Contact</h2>
-<p>Questions about privacy in GhostLab: <a href="mailto:ghostlabsupport@inkboxmail.com">ghostlabsupport@inkboxmail.com</a></p>
+        <h2>Changes to this policy</h2>
+        <p>If a future update ever changes how data is handled, we will update this page and note it in the
+        App Store and Google Play release notes before the change takes effect.</p>
 
+        <h2>Contact</h2>
+        <p>Questions about privacy in GhostLab: <a href="mailto:ghostlabsupport@inkboxmail.com">ghostlabsupport@inkboxmail.com</a></p>
+      </article>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/app-icon.png?v=20261002-cache" width="44" height="44" alt="" />
+          <div>
+            <strong>GhostLab</strong>
+            <p>Paranormal investigation toolkit for iPhone, iPad, and Android. Built by Adirondack Cyber Security.</p>
+            <div class="footer-social" aria-label="GhostLab on social media">
+              <a class="social-link social-instagram" href="https://www.instagram.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="gl-ig-footer" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD521"/><stop offset=".25" stop-color="#F50000"/><stop offset=".5" stop-color="#B900B4"/><stop offset=".75" stop-color="#7B2FFE"/><stop offset="1" stop-color="#4C63D2"/></linearGradient></defs><path fill="url(#gl-ig-footer)" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+              </a>
+              <a class="social-link social-tiktok" href="https://www.tiktok.com/@ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25F4EE" transform="translate(-1.15,-1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FE2C55" transform="translate(1.15,1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-youtube" href="https://www.youtube.com/@signalandnoise44" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-facebook" href="https://www.facebook.com/share/1KgDDwaJGv" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.4" fill="#FFFFFF"/><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" fill="#0866FF"/></svg>
+              </a>
+              <a class="social-link social-x" href="https://x.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on X" title="X">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" fill="#FFFFFF"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="ghostlab-vs-ghosttube.html">Comparison</a></li>
+            <li><a href="modes.html">Capture modes</a></li>
+            <li><a href="spirit-detector.html">Spirit Detector</a></li>
+            <li><a href="dead-channel.html">Dead Channel</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="pro.html">GhostLab Pro</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://linktr.ee/ghostlabicu" target="_blank" rel="noopener noreferrer">Socials</a></li>
+            <li><a href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            <li><a href="mailto:ghostlabsupport@inkboxmail.com">ghostlabsupport@inkboxmail.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Use</a></li>
+            <li><a href="community-guidelines.html">Community Guidelines</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="copyright.html">Copyright Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Adirondack Cyber Security · GhostLab</span>
+        <span>Entertainment &amp; experimental investigation only</span>
+      </div>
+    </footer>
+  </div>
+  </div>
+  <script src="site.js?v=20261012-nosale"></script>
 </body>
 </html>
