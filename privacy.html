@@ -40,7 +40,7 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab Privacy Policy</h1>
-<p class="updated">Effective date: September 16, 2026 · Applies to “GhostLab: Paranormal Toolkit” on iOS and Android (formerly SpectralEVP)</p>
+<p class="updated">Effective date: October 12, 2026 · Applies to “GhostLab: Paranormal Toolkit” on iOS and Android (formerly SpectralEVP)</p>
 
 <p>GhostLab is built to be private by design. There are no user accounts, no advertising, and no servers
 of our own. Your investigation recordings, videos, notes, and settings are stored only on your device
@@ -56,6 +56,9 @@ under <a href="#affiliate">Affiliate attribution</a> below.</p>
   <li><strong>Everything stays on your device</strong> unless you export, share, or save it somewhere yourself.</li>
   <li><strong>One exception:</strong> when you buy GhostLab Pro, an app-scoped device identifier and the
       details of that purchase go to our affiliate partner so the right creator gets paid.</li>
+  <li><strong>Map tags go only where you send them.</strong> A tag you share travels inside the link or
+      straight to your teammates’ phones. GhostLab has no server that receives or stores your tags or
+      their locations. See <a href="#tags">Map tags you share</a>.</li>
 </ul>
 
 <h2>Data the app uses on your device</h2>
@@ -74,12 +77,13 @@ All of this processing happens on your own device:</p>
   <li><strong>Photos (add only)</strong> - only when you tap “Save to Photos,” the app writes a video to
       your Photos library. GhostLab cannot read your existing photos.</li>
   <li><strong>Location (while using the app)</strong> - shows haunted places near you, logs compass
-      heading, and tags where a session was recorded so it can appear on your in-app map. Location stays
-      in the session files on your device.</li>
+      heading, and tags where a session was recorded so it can appear on your in-app map. While the
+      “Tag my spot” screen is open, it also finds the spot you are tagging, and may ask for precise
+      location for that moment only. Location stays on your device unless you share a tag.</li>
   <li><strong>Motion &amp; Fitness (barometer)</strong> - reads barometric pressure during sessions to log
       environmental pressure trends alongside your recordings.</li>
-  <li><strong>Local network (Team mode)</strong> - offline Multipeer connectivity shares session tags and
-      live levels directly between nearby investigators’ phones. This is peer-to-peer on your local
+  <li><strong>Local network (Team mode)</strong> - offline Multipeer connectivity shares session tags,
+      map tags and live levels directly between nearby investigators’ phones. This is peer-to-peer on your local
       network; nothing passes through the internet or any server.</li>
   <li><strong>Nearby Interaction (ultra-wideband)</strong> - measures distance to a second U1-capable
       device used as a trigger object during investigations.</li>
@@ -87,6 +91,35 @@ All of this processing happens on your own device:</p>
       via Apple’s WatchConnectivity, device-to-device.</li>
 </ul>
 <p>You can decline or revoke any permission in your device settings; the related feature simply won’t function.</p>
+
+<h2 id="tags">Map tags you share</h2>
+<p>GhostLab for iPhone lets you tag a spot on the Haunts map and share it with friends. Sharing and opening
+tags is for people 18 and older, and the app asks you to confirm your age and agree to the
+<a href="terms.html">Terms of Use</a> before your first share or opened tag.</p>
+<ul>
+  <li><strong>What a tag holds:</strong> the spot’s coordinates and how accurate the GPS fix was, the name,
+      note and icon you gave it, when you made it, when friends’ copies expire, a display name if you chose
+      one, and a public key that marks the tag as coming from your phone.</li>
+  <li><strong>Where it goes:</strong> your tags are stored on your device. When you share one, it travels
+      inside the link you send (for example in Messages) or directly to teammates’ phones in Team mode.
+      GhostLab has no server that receives, stores or reads tags.</li>
+  <li><strong>The tag page:</strong> a tag link opens ghostlab.icu/t/, which reads the tag in the
+      recipient’s browser from the part of the link after “#”. Browsers never send that part to a server,
+      so our website host sees an ordinary page visit (such as IP address and browser type) without the tag.
+      If the recipient taps “Show the map here”, the map loads from OpenStreetMap, which then receives the
+      spot’s location. The Apple Maps and Google Maps buttons hand the spot to those services.</li>
+  <li><strong>Your tag key:</strong> the first time you make a tag, GhostLab creates a random key on your
+      phone and keeps it in the device Keychain. Only its public half goes out, inside your tags, so
+      friends can tell your tags apart and block you if they want to. It isn’t linked to your name, your
+      Apple ID or any account.</li>
+  <li><strong>Forwarding:</strong> anyone who has your link can see the spot and pass it on. A link
+      can’t be recalled once it is sent.</li>
+  <li><strong>Reports:</strong> “Report” opens an email to GhostLab support in your own mail app with the
+      tag’s link attached, which includes its location. We use what you send only to review the report
+      and keep it only as long as we need to deal with it and any legal duty it raises.</li>
+  <li><strong>Kept on your device:</strong> tags friends sent you, the senders you blocked, and your age
+      confirmation and agreement. None of it is sent to us, our affiliate partner or anyone else.</li>
+</ul>
 
 <h2>Purchases</h2>
 <p>The optional GhostLab Pro lifetime unlock is processed entirely by Apple through the App Store or by
@@ -116,19 +149,23 @@ their <a href="https://gomarketme.co/privacy">privacy policy</a>.</p>
 affiliate attribution described above, which goes to GoMarketMe so creators can be paid. Apple and Google
 handle your payment and tell us only whether you own Pro.</p>
 <p>Everything else leaves your device only through actions you take yourself: exporting a session package,
-generating and sharing a PDF report, saving a video to Photos, or sharing tags with nearby teammates
-in Team mode.</p>
+generating and sharing a PDF report, saving a video to Photos, sharing a map tag link with people you
+choose, or sharing tags with nearby teammates in Team mode.</p>
 
 <h2>Data retention and deletion</h2>
 <p>All sessions, recordings, and settings live in the app’s storage on your device. Delete any session
 from the Library, or delete the app to remove everything at once. We hold no copies of any of it.</p>
+<p>Your own map tags stay on your device until you delete them. Tags friends sent you leave your map
+when they expire and are removed from your device then. A tag you take off your map is kept as a hidden
+record so the same link doesn’t put it back; deleting the app removes these too.</p>
 <p>The affiliate attribution records held by GoMarketMe are kept while they are needed to calculate
 creator payouts and to meet tax and accounting obligations. You can ask us to delete them at any time.
 See <a href="data-deletion.html">Data deletion requests</a> for how to do that.</p>
 
 <h2>Children</h2>
 <p>GhostLab is rated 9+ for infrequent horror/fear themes and is not directed at children under 13.
-We do not knowingly collect personal information from anyone, including children.</p>
+We do not knowingly collect personal information from anyone, including children. Sharing and opening
+map tags is for people 18 and older.</p>
 
 <h2>Changes to this policy</h2>
 <p>If a future update ever changes how data is handled, we will update this page and note it in the
