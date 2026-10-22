@@ -624,6 +624,7 @@
       font-size: 0.9rem;
       font-weight: 500;
     }
+    .hero-proof:has(+ .hero-proof) { margin-bottom: 4px; }
     .hero-price {
       margin: 20px 0 0;
       max-width: 100%;
