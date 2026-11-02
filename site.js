@@ -5,6 +5,50 @@
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
 
+  // Quiet Hours strip. Approved copy, no sale and no date window.
+  // Dismissal lasts for this tab session only.
+  (function mountQuietHoursBanner() {
+    var DISMISS_KEY = "ghostlab.quiet-hours.dismissed";
+    try {
+      if (window.sessionStorage && sessionStorage.getItem(DISMISS_KEY) === "1") return;
+    } catch (e) { /* keep the banner if storage is blocked */ }
+
+    var path = window.location.pathname || "";
+    if (/\/quiet-hours(\.html)?$/.test(path)) return;
+
+    var wrap = document.querySelector(".wrap");
+    if (!wrap) return;
+
+    var banner = document.createElement("aside");
+    banner.className = "quiet-banner";
+    banner.setAttribute("role", "region");
+    banner.setAttribute("aria-label", "The Quiet Hours");
+
+    var text = document.createElement("p");
+    text.className = "quiet-banner-text";
+    var link = document.createElement("a");
+    link.href = "quiet-hours.html";
+    link.textContent = "The Quiet Hours";
+    text.appendChild(link);
+    text.appendChild(document.createTextNode(". Map the room, ask your question, and keep the session with three GhostLab instruments. You decide what it means."));
+    banner.appendChild(text);
+
+    var dismiss = document.createElement("button");
+    dismiss.type = "button";
+    dismiss.className = "quiet-banner-dismiss";
+    dismiss.setAttribute("aria-label", "Dismiss Quiet Hours notice");
+    dismiss.textContent = "Dismiss";
+    dismiss.addEventListener("click", function () {
+      try { sessionStorage.setItem(DISMISS_KEY, "1"); } catch (e) { /* still hide it */ }
+      banner.remove();
+    });
+    banner.appendChild(dismiss);
+
+    var nav = document.getElementById("nav");
+    if (nav && nav.parentNode === wrap) nav.insertAdjacentElement("afterend", banner);
+    else wrap.insertBefore(banner, wrap.firstChild);
+  })();
+
   var nav = document.getElementById("nav");
   function onScroll() {
     if (!nav) return;
