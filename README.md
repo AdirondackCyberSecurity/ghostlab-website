@@ -12,6 +12,9 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/` | Home |
 | `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
+| `/spirit-box-apps.html` | Spirit box apps compared (EchoVox, Spirit Talker, GhostTube, Dead Channel, Toolkit) |
+| `/quiet-hours.html` | The Quiet Hours: map it, ask it, keep it |
+| `/halloween-ghost-hunt.html` | Your first ghost hunt (URL kept; redirect later) |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
 | `/dead-channel.html` | GhostLab: Dead Channel (spirit box app). Replaced Gallery; `/gallery.html` now redirects here |
 | `/modes.html` | Capture modes (free vs Pro) |
