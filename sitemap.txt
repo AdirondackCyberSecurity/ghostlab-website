@@ -14,4 +14,5 @@ https://ghostlab.icu/support.html
 https://ghostlab.icu/privacy.html
 https://ghostlab.icu/data-deletion.html
 https://ghostlab.icu/privacy-spiritdetector.html
+https://ghostlab.icu/privacy-spiritvision.html
 https://ghostlab.icu/privacy-signal.html
