@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GhostLab: Spirit Vision Privacy Policy</title>
+<meta name="description" content="How GhostLab: Spirit Vision handles your words, sensor readings, recordings and purchases, and what goes to its AI services, Anthropic and Runware.">
+<link rel="canonical" href="https://ghostlab.icu/privacy-spiritvision.html">
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+    line-height: 1.6; color: #1d1d1f; background: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e8e8ed; background: #161617; }
+    a { color: #7ab8ff; }
+  }
+  h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.25rem; margin-top: 2.2rem; border-bottom: 1px solid rgba(128,128,128,.35); padding-bottom: .3rem; }
+  .updated { color: #86868b; font-size: .95rem; margin-top: 0; }
+  ul { padding-left: 1.3rem; }
+  li { margin: .35rem 0; }
+</style>
+</head>
+<body>
+
+<p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
+<h1>GhostLab: Spirit Vision Privacy Policy</h1>
+<p class="updated">Effective date: November 5, 2026 · Applies to the iOS app “GhostLab: Spirit Vision”</p>
+
+<p>Spirit Vision is an experimental, AI-powered investigative tool. To generate an image during a
+session, it sends a text summary of the moment to GhostLab’s server and two outside AI services.
+This page says exactly what that summary holds, who receives it, and what stays on your phone. The
+app asks your permission before your first session, and you can withdraw it in Settings.</p>
+
+<h2>Summary</h2>
+<ul>
+  <li><strong>Your voice stays on your iPhone.</strong> Speech is turned into text on the device. No audio leaves the phone.</li>
+  <li><strong>Your recordings and snapshots stay on your iPhone</strong> unless you share them.</li>
+  <li><strong>During a session, text goes to AI services.</strong> Your words and sensor readings go to Anthropic, and an image description goes to Runware.</li>
+  <li><strong>GhostLab does not store your words.</strong> They pass through our server and are never written to its logs or storage.</li>
+  <li><strong>The camera and your location are never used.</strong></li>
+  <li><strong>No ads, no analytics and no tracking.</strong> We do not sell personal data.</li>
+  <li><strong>No sign-in.</strong> The app uses a random account number that names nobody.</li>
+</ul>
+
+<h2>What is sent during a session</h2>
+<p>Nothing is sent until you agree, and nothing is sent outside a session. During a session, each
+time a question or a sensor change calls for a vision, the app sends:</p>
+<ul>
+  <li>the words of your question, as text</li>
+  <li>in Sensor &amp; Ask, the last words spoken nearby that weren’t a question, as text, which may
+      include names or anything else said in the room</li>
+  <li>the names of sounds the phone recognised, such as a knock or footsteps</li>
+  <li>the sensor change that set it off, such as a shift in the magnetic field, motion or air pressure</li>
+  <li>the place you chose in the app, your local time and your time zone offset</li>
+  <li>a short written memory of the session so far, which the phone holds and sends back with each moment</li>
+</ul>
+
+<h2>Who receives it</h2>
+<ul>
+  <li><strong>GhostLab’s server</strong>, which runs on <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>,
+      receives everything above and passes it on. It keeps none of your words. Short-lived service
+      logs record that a vision happened, what it cost, and a one-word label for it. Cloudflare
+      handles your IP address to carry the connection, and we do not store it.</li>
+  <li><strong><a href="https://www.anthropic.com/legal/privacy">Anthropic</a></strong> receives
+      everything above, so that its Claude model can plan each image. Anthropic says it deletes API
+      inputs and outputs within 30 days, and may keep them longer where its usage policy or the law
+      requires. <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-data">Anthropic’s retention page</a>
+      has the details.</li>
+  <li><strong><a href="https://runware.ai/">Runware</a></strong> receives the image description
+      Claude writes, which can include words or a name from your session, and generates the image
+      from it. Runware says it does not use API data to train models and does not keep generated
+      images long term. <a href="https://runware.ai/docs/platform/zero-data-retention">Runware’s data page</a>
+      has the details.</li>
+</ul>
+<p>If you’d rather not share this, press <strong>Not now</strong> when the app asks, or choose
+<strong>Stop sharing</strong> in Settings. Sessions need sharing to bring visions, and everything
+else in the app keeps working.</p>
+
+<h2>What GhostLab keeps</h2>
+<p>To enforce each plan’s daily limits, and to keep pack balances safe across a reinstall, our
+server keeps a small record for each account:</p>
+<ul>
+  <li>a random account number, made by the app and kept in your iCloud Keychain</li>
+  <li>a public key from Apple’s App Attest, which proves requests come from a real device running this app</li>
+  <li>today’s count of visions used and what they cost us</li>
+  <li>your plan, its renewal date and Apple’s transaction numbers for your purchases</li>
+  <li>your vision pack balance</li>
+</ul>
+<p>This record holds no name, email address, words or pictures. It stays while your account is in
+use. To have it deleted, email us at the address below with your App Store order number if you
+bought something.</p>
+
+<h2>The microphone and sensors</h2>
+<ul>
+  <li>During a session the app measures how loud the room is and recognises sounds, on the device.</li>
+  <li>In Sensor &amp; Ask it turns speech into text using Apple’s on-device speech recognition.</li>
+  <li>When you record a session, the room’s sound is saved in that recording on your phone.</li>
+  <li>Motion, magnetic and pressure readings drive the smoke and the readings on screen.</li>
+  <li>If you turn off a permission in iOS Settings, the app shows that reading as off.</li>
+</ul>
+
+<h2>Data the app keeps on your device</h2>
+<ul>
+  <li><strong>Snapshots and recordings</strong> are saved in the app’s Library. Like other app
+      documents, they are included in your device backup. Deleting an item, or the app, removes them.</li>
+  <li><strong>Settings</strong>, such as your chosen place and whether you agreed to sharing, stay on the device.</li>
+  <li><strong>Your account number</strong> stays in your iCloud Keychain, so it can outlast deleting the app.</li>
+</ul>
+
+<h2>Sharing and Photos</h2>
+<ul>
+  <li>Saving to Photos uses add-only access. The app cannot see anything already in your photo library.</li>
+  <li>The share sheet sends a capture wherever you choose. Once it leaves the app, whoever
+      receives it decides what happens to it.</li>
+</ul>
+
+<h2>Purchases</h2>
+<p>Subscriptions and vision packs are handled by Apple through the App Store. The app passes Apple’s
+signed record of each purchase to our server, which reads the product, dates and transaction
+numbers from it. We receive no name, email address or payment details. Apple tells our server about
+refunds so that it can adjust your plan or pack balance.</p>
+
+<h2>What we do not do</h2>
+<ul>
+  <li>We do not sell personal data.</li>
+  <li>We do not run analytics SDKs, advertising SDKs or trackers.</li>
+  <li>We do not upload your audio, recordings or snapshots.</li>
+  <li>We do not use the camera or your location.</li>
+</ul>
+
+<h2>Children</h2>
+<p>The app carries the age rating shown on its App Store page and is not meant for children. We do
+not knowingly collect personal information from children under 13. If you believe a child has used
+the app, contact us and we will delete the record for that account.</p>
+
+<h2>Changes</h2>
+<p>If our practices change, we will update this page and the effective date above before the
+change takes effect. If the list of AI services changes, the app will ask your permission again.</p>
+
+<h2>Contact</h2>
+<p>Privacy questions about GhostLab: Spirit Vision are welcome at
+<a href="mailto:ghostlabsupport@inkboxmail.com">ghostlabsupport@inkboxmail.com</a>. GhostLab apps are published by
+ADK Cyber / Jack Miller.</p>
+
+</body>
+</html>
