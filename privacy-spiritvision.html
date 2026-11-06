@@ -34,50 +34,72 @@
 
 <p>Spirit Vision is an experimental, AI-powered investigative tool. To generate an image during a
 session, it sends a text summary of the moment to GhostLab’s server and two outside AI services.
-This page says exactly what that summary holds, who receives it, and what stays on your phone. The
-app asks your permission before your first session, and you can withdraw it in Settings.</p>
+This page says what that summary holds, who receives it, what GhostLab keeps, and what stays on your
+phone. The app asks your permission before your first session, and you can withdraw it in Settings.</p>
 
 <h2>Summary</h2>
 <ul>
-  <li><strong>Your voice stays on your iPhone.</strong> Sounds are recognised on the device, and no audio leaves the phone.</li>
-  <li><strong>Your recordings and snapshots stay on your iPhone</strong> unless you share them.</li>
+  <li><strong>The app never sends audio.</strong> Sounds are recognised on the device, and only their names go out, never the words anyone says.</li>
+  <li><strong>Your recordings and snapshots stay on your iPhone</strong> unless you share them or your iPhone backs them up to iCloud. GhostLab and the AI services never receive them.</li>
   <li><strong>During a session, text goes to AI services.</strong> Sensor readings and the names of sounds go to Anthropic, and an image description goes to Runware.</li>
-  <li><strong>GhostLab does not store what is sent.</strong> It passes through our server and is never written to its storage.</li>
+  <li><strong>GhostLab keeps very little of what is sent.</strong> Your sound names, sensor changes, chosen place, local time and session memory pass through our server and are never written to its storage. Our server stores your time zone offset with your daily count, and its short-lived logs note how often the sensors were firing and whether you seemed to be in a car, indoors or outdoors.</li>
   <li><strong>The camera is never used, and your location stays on your phone.</strong> During a session the app uses it to tell whether you seem to be in a car, indoors or outdoors, and only that one word is sent.</li>
   <li><strong>No ads, no analytics and no tracking.</strong> We do not sell personal data.</li>
   <li><strong>No sign-in.</strong> The app uses a random account number that names nobody.</li>
 </ul>
 
 <h2>What is sent during a session</h2>
-<p>Nothing is sent until you agree, and nothing is sent outside a session. During a session, each
-time a sensor change calls for a vision, the app sends:</p>
+<p>Nothing about your session is sent until you agree, and none of it is sent outside a session.
+During a session, each time a sensor change calls for a vision, the app sends:</p>
 <ul>
-  <li>the names of sounds the phone recognised, such as a knock or footsteps</li>
-  <li>the sensor change that set it off, such as a shift in the magnetic field, motion or air pressure</li>
+  <li>the names of sounds the phone recognised from a fixed list, such as a knock, footsteps, whispering, crying, a scream, laughter, singing, a baby crying or children’s voices, with how sure the phone was and how long ago each one happened. The names never include the words anyone says</li>
+  <li>the sensor change that set it off, such as a shift in the magnetic field, motion or air pressure, or a rise in loudness in decibels</li>
+  <li>how fast the sensors have been firing lately, as a level from 0 to 3</li>
   <li>whether the phone seems to be in a car, indoors or outdoors, worked out on the phone</li>
   <li>the place you chose in the app, your local time and your time zone offset</li>
-  <li>a short written memory of the session so far, which the phone holds and sends back with each moment</li>
+  <li>a short written memory of the session so far, the last six moments with their times and one-word labels, and the kinds of vision already shown. The phone holds these only for the session and sends them with each moment</li>
 </ul>
+<p>Each request also carries your account number and an App Attest signature to GhostLab’s server,
+which does not pass them on.</p>
+
+<h2>What is sent outside a session</h2>
+<p>When the app starts up and each time a session starts, it contacts GhostLab’s server with your
+account number, a proof from Apple’s App Attest, your time zone offset and, if you have a plan or a
+purchase still going through, Apple’s signed record of it, so the app can check your plan and show
+what you have left today. The first of these contacts starts the record described under What
+GhostLab keeps. They happen before you agree to sharing and carry on if you stop sharing, and they
+go only to GhostLab’s server.</p>
 
 <h2>Who receives it</h2>
 <ul>
   <li><strong>GhostLab’s server</strong>, which runs on <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>,
-      receives everything above and passes it on. It keeps none of it. Short-lived service
-      logs record that a vision happened, what it cost, and a one-word label for it. Cloudflare
-      handles your IP address to carry the connection, and we do not store it.</li>
+      receives everything above. It uses your time zone offset to start your daily limit at your
+      own midnight, and it passes the session summary on to Anthropic. The offset is saved in your
+      account’s record, described below. Nothing else from the session summary is saved, except
+      that short-lived service logs note whether the phone seemed to be in a car, indoors or
+      outdoors. Those logs also record that a vision happened, what it cost, how long it took, your
+      plan, the kind of vision, a one-word label for it, how many visions the session has had, how
+      often the sensors had been firing, and technical details about how the vision was made.
+      Cloudflare handles your IP address to carry the connection, and its short-lived request logs
+      for our service may hold it. We do not use it for anything.</li>
   <li><strong><a href="https://www.anthropic.com/legal/privacy">Anthropic</a></strong> receives
-      everything above, so that its Claude model can plan each image. Anthropic says it deletes API
+      the session summary, except your time zone offset, account number and App Attest signature,
+      so that its Claude model can plan each image. Anthropic says it deletes API
       inputs and outputs within 30 days, and may keep them longer where its usage policy or the law
       requires. <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-data">Anthropic’s retention page</a>
       has the details.</li>
   <li><strong><a href="https://runware.ai/">Runware</a></strong> receives the image description
-      Claude writes, and generates the image from it. Runware says it does not use API data to train models and does not keep generated
-      images long term. <a href="https://runware.ai/docs/platform/zero-data-retention">Runware’s data page</a>
+      Claude writes, and generates the image from it. Runware says it does not use API data to train
+      models. Each image comes straight back through our server to your phone, and neither Runware
+      nor GhostLab is left holding an image file from our requests. We have not set up Runware’s
+      optional Zero Data Retention, so Runware may keep the image description and request details
+      under its standard terms. <a href="https://runware.ai/docs/platform/zero-data-retention">Runware’s data page</a>
       has the details.</li>
 </ul>
 <p>If you’d rather not share this, press <strong>Not now</strong> when the app asks, or choose
-<strong>Stop sharing</strong> in Settings. Sessions need sharing to bring visions, and everything
-else in the app keeps working.</p>
+<strong>Stop sharing</strong> in Settings. A running session ends when you close Settings, and a
+vision can still be sent until then. Sessions need sharing to bring visions, and everything else in
+the app keeps working.</p>
 
 <h2>What GhostLab keeps</h2>
 <p>To enforce each plan’s daily limits, and to keep pack balances safe across a reinstall, our
@@ -85,28 +107,32 @@ server keeps a small record for each account:</p>
 <ul>
   <li>a random account number, made by the app and kept in your iCloud Keychain</li>
   <li>a public key from Apple’s App Attest, which proves requests come from a real device running this app</li>
-  <li>today’s count of visions used and what they cost us</li>
+  <li>the current day’s date, your time zone offset, the count of visions used that day and what they cost us</li>
+  <li>the date you first used the service</li>
   <li>your plan, its renewal date and Apple’s transaction numbers for your purchases</li>
   <li>your vision pack balance</li>
+  <li>a mark on any purchase Apple has refunded or revoked</li>
 </ul>
-<p>This record holds no name, email address or pictures. It stays while your account is in
-use. To have it deleted, email us at the address below with your App Store order number if you
-bought something.</p>
+<p>For a subscription, the daily count is kept under Apple’s original transaction number. This
+record holds no name, email address or pictures. We do not delete it on a schedule, and deleting
+the app does not remove it, so it stays after you stop using the app. If you bought something, email
+us at the address below with your App Store order number and we will delete it. If you never bought
+anything, nothing in the record lets us tell it is yours, so we cannot find it from an email.</p>
 
 <h2>The microphone, sensors and location</h2>
 <ul>
-  <li>During a session the app measures how loud the room is and recognises sounds, on the device.</li>
-  <li>When you record a session, the room’s sound is saved in that recording on your phone.</li>
+  <li>With your permission, the app measures how loud the room is, on the device, whenever it is open, so the smoke and the SOUND reading can react. This happens even when no session is running, and it keeps no audio unless you press record. During a session the app also recognises sounds, on the device.</li>
+  <li>When you record a session, the room’s sound, voices included, is saved in that recording on your phone until you share it or your iPhone backs it up.</li>
   <li>Motion, magnetic and pressure readings drive the smoke and the readings on screen.</li>
-  <li>With your permission, your location, your motion and whether you are on Wi-Fi tell the app if the phone seems to be in a car, indoors or outdoors. Location is read only during a session, is never stored and never leaves the phone.</li>
-  <li>If you turn off a permission in iOS Settings, the app shows that reading as off.</li>
+  <li>During a session, your location and motion, if you allow them, and whether you are on Wi-Fi, which needs no permission, tell the app if the phone seems to be in a car, indoors or outdoors. If you refuse location, the app can still send indoors when you are on Wi-Fi, or car when your motion shows a vehicle. Location is read only during a session, is never stored and never leaves the phone.</li>
+  <li>If you turn off the microphone or Motion &amp; Fitness in iOS Settings, the app shows the sound or air pressure reading as off. The motion and magnetic readings need no permission and stay on. Location has no reading on screen, so turning it off only changes how the app works out whether you are in a car, indoors or outdoors.</li>
 </ul>
 
 <h2>Data the app keeps on your device</h2>
 <ul>
   <li><strong>Snapshots and recordings</strong> are saved in the app’s Library. Like other app
       documents, they are included in your device backup. Deleting an item, or the app, removes them.</li>
-  <li><strong>Settings</strong>, such as your chosen place and whether you agreed to sharing, stay on the device.</li>
+  <li><strong>Settings and counts</strong>, such as whether you agreed to sharing, whether you have seen the tour, your App Attest key name, and the visions, days and dates the app counts to decide when to ask for a rating, stay on the device and are included in your device backup. Your chosen place is not saved.</li>
   <li><strong>Your account number</strong> stays in your iCloud Keychain, so it can outlast deleting the app.</li>
 </ul>
 
@@ -118,10 +144,14 @@ bought something.</p>
 </ul>
 
 <h2>Purchases</h2>
-<p>Subscriptions and vision packs are handled by Apple through the App Store. The app passes Apple’s
-signed record of each purchase to our server, which reads the product, dates and transaction
-numbers from it. We receive no name, email address or payment details. Apple tells our server about
-refunds so that it can adjust your plan or pack balance.</p>
+<p>Subscriptions and vision packs are handled by Apple through the App Store. The app gives Apple
+your random account number with each purchase, and Apple returns it in its signed record, so each
+purchase stays with your account. Apple can connect that number to your Apple Account. The app passes
+the signed record to our server when you buy, and again when the app starts up or a session starts
+while you have a plan. Our server reads the product, dates, transaction numbers and account number
+from it. We receive no name, email address or payment details. Apple tells our server when a purchase
+is refunded or revoked, or when a refund is reversed, so that it can adjust your plan or pack balance,
+and our server keeps a mark against that purchase.</p>
 
 <h2>What we do not do</h2>
 <ul>
@@ -134,7 +164,8 @@ refunds so that it can adjust your plan or pack balance.</p>
 <h2>Children</h2>
 <p>The app carries the age rating shown on its App Store page and is not meant for children. We do
 not knowingly collect personal information from children under 13. If you believe a child has used
-the app, contact us and we will delete the record for that account.</p>
+the app, contact us. We can find and delete a record when you give us an App Store order number for
+that account.</p>
 
 <h2>Changes</h2>
 <p>If our practices change, we will update this page and the effective date above before the
