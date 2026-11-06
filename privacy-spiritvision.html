@@ -30,12 +30,14 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Spirit Vision Privacy Policy</h1>
-<p class="updated">Effective date: November 5, 2026 · Applies to the iOS app “GhostLab: Spirit Vision”</p>
+<p class="updated">Effective date: November 5, 2026 · Applies to the iOS and Android apps “GhostLab: Spirit Vision”</p>
 
 <p>Spirit Vision is an experimental, AI-powered investigative tool. To generate an image during a
 session, it sends a text summary of the moment to GhostLab’s server and two outside AI services.
 This page says what that summary holds, who receives it, what GhostLab keeps, and what stays on your
 phone. The app asks your permission before your first session, and you can withdraw it in Settings.</p>
+<p>This page describes the iOS app first. If you use the Android app, read <a href="#android">On Android</a>
+as well: it says what is different there, including what Google receives.</p>
 
 <h2>Summary</h2>
 <ul>
@@ -181,6 +183,64 @@ server when a purchase is refunded or revoked, so that it can end the plan or ta
 off your balance, and our server keeps a mark against that purchase. If Apple reverses a plan’s
 refund, our server clears the mark and the plan returns. A reversed pack refund does not put the
 visions back.</p>
+
+<h2 id="android">On Android</h2>
+<p>The Android app sends the same session summary to the same services, under the same permission, and
+everything above applies to it, except for the differences below. Where this page mentions your
+iPhone, read your Android phone.</p>
+<ul>
+  <li><strong>Your account number.</strong> The app works it out on the phone from the Android ID, a number
+      Android gives this app on this phone, in a way that can’t be turned back into that number. The app
+      keeps it in its own storage and in Google Play services’ Block Store. Where your phone can encrypt
+      it end to end, the app also asks Block Store to back it up with your Google account. So it can
+      outlast deleting the app or clearing its storage, and it can reach a new phone restored from that
+      backup. It takes the place of the iCloud Keychain above.</li>
+  <li><strong>The proof that a request is real.</strong> In place of Apple’s App Attest, the app makes a key
+      in your phone’s secure hardware and asks Google’s Play Integrity service to vouch for it once. Play
+      Integrity checks the phone and this copy of the app, and our server asks Google to read the answer.
+      That answer says whether the app is ours and whether the phone is certified, and it comes with a hash
+      that ties it to your key. After that, the key signs each request, and our server keeps its public
+      key and a count of its requests in your account’s record. A key that doesn’t pass isn’t registered,
+      and that phone gets no visions.</li>
+  <li><strong>Google services.</strong> The app uses Google Play Billing, Play Integrity, Block Store and
+      Google Play’s rating card, all through Google Play services on your phone. Google handles what
+      passes through them under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+      The rating card doesn’t tell the app whether anyone rated it, and a rating or review left on Google Play
+      shows there like any other Play review. No session summary goes to
+      Google.</li>
+  <li><strong>What is sent outside a session.</strong> The app contacts our server when it starts or comes
+      to the front and each time a session starts, with your account number, your key’s signature, your
+      time zone offset and, if Google Play lists a plan or a purchase still going through, Google Play’s
+      purchase token for it. These contacts go only to our server. The first registers your key, which
+      also goes through Google as described above, and this happens before you agree to sharing.</li>
+  <li><strong>Purchases.</strong> Subscriptions and vision packs are handled by Google through Google Play.
+      The app gives Google your random account number with each purchase, and Google can connect it to your
+      Google account. The app passes Google Play’s purchase token to our server, and our server asks Google
+      about the purchase with it. Google tells our server the product, its state and dates, the order
+      numbers and the account number, and our server keeps your plan, its renewal date and order numbers,
+      and the purchase token for a plan. While you use the app, our server reads a plan from Google again
+      about once a day and when its renewal date passes, so a renewal counts even if the Play Store on
+      your phone is using another Google account. We receive no name, email address or card details. Google tells our server when a
+      purchase is refunded or revoked, so that it can end the plan or take the pack’s visions off your
+      balance, and our server keeps a mark against that purchase.</li>
+  <li><strong>Reporting an image.</strong> A flag beside each image lets you report it to us from inside the
+      app. A report sends the reason you pick, the kind of vision, its one-word label and a small copy of the
+      image to our server, which keeps the newest 500 reports so we can improve what the service may
+      show. The report we keep holds no account number. It is sent only if you choose to send it.</li>
+  <li><strong>The microphone, sensors and location.</strong> During a session, your location, if you allow
+      it, and whether you are on Wi-Fi tell the app if the phone seems to be in a car, indoors or
+      outdoors. Android has no motion source here. The app asks for location in the foreground only. If
+      you turn off the microphone in your phone’s Settings, the app shows the sound reading as off. The
+      motion, magnetic and air pressure readings need no permission and stay on.</li>
+  <li><strong>Data the app keeps on your phone.</strong> Snapshots, recordings, settings and counts stay on
+      the phone and are left out of Android’s device backup. Clearing the app’s storage or deleting the app
+      removes them. The app doesn’t save to your photo library. To keep a copy elsewhere, share it from the
+      Library through Android’s share sheet.</li>
+  <li><strong>Your rights and deleting your record.</strong> Where this page asks for your App Store order
+      number, send your Google Play order number, which starts with GPA and is in your Google Play receipt.
+      Cancel a subscription in Google Play under Payments and subscriptions.</li>
+  <li><strong>Age rating.</strong> The app carries the age rating shown on its Google Play page.</li>
+</ul>
 
 <h2>What we do not do</h2>
 <ul>
