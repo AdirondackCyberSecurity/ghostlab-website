@@ -1,6 +1,7 @@
 https://ghostlab.icu/
 https://ghostlab.icu/apps.html
 https://ghostlab.icu/spirit-vision.html
+https://ghostlab.icu/gridsight.html
 https://ghostlab.icu/spirit-detector.html
 https://ghostlab.icu/dead-channel.html
 https://ghostlab.icu/tutorial.html
@@ -16,4 +17,5 @@ https://ghostlab.icu/privacy.html
 https://ghostlab.icu/data-deletion.html
 https://ghostlab.icu/privacy-spiritdetector.html
 https://ghostlab.icu/privacy-spiritvision.html
+https://ghostlab.icu/privacy-gridsight.html
 https://ghostlab.icu/privacy-signal.html
