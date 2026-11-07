@@ -30,7 +30,7 @@
     link.href = "quiet-hours.html";
     link.textContent = "The Quiet Hours";
     text.appendChild(link);
-    text.appendChild(document.createTextNode(". Map the room, ask your question, and keep the session with three GhostLab instruments. You decide what it means."));
+    text.appendChild(document.createTextNode(". Map the room, ask your question, and keep the session with five GhostLab instruments. You decide what it means."));
     banner.appendChild(text);
 
     var dismiss = document.createElement("button");
