@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Spirit Vision - GhostLab</title>
+  <meta name="description" content="GhostLab: Spirit Vision is an experimental, AI-powered investigative tool that uses AI to generate images from your sensors. What each image means is yours to decide. Free to start, with plans from $1.99 a month." />
+  <meta name="theme-color" content="#07090f" />
+  <meta name="color-scheme" content="dark" />
+  <link rel="canonical" href="https://ghostlab.icu/spirit-vision.html" />
+  <meta name="apple-itunes-app" content="app-id=6829826059" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ghostlab.icu/spirit-vision.html" />
+  <meta property="og:title" content="GhostLab: Spirit Vision" />
+  <meta property="og:description" content="An experimental, AI-powered investigative tool that uses AI to generate images from your sensors. You decide what each image means." />
+  <meta property="og:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GhostLab: Spirit Vision" />
+  <meta name="twitter:description" content="An experimental, AI-powered investigative tool that uses AI to generate images from your sensors. You decide what each image means." />
+  <meta name="twitter:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20261002-cache" />
+  <link rel="apple-touch-icon" href="assets/app-icon.png?v=20261002-cache" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20261102-qh" />
+  <style>
+    /* Spirit Vision page - scoped to this page */
+    .sv-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+      gap: 48px;
+      align-items: center;
+    }
+    .sv-kicker {
+      margin: 4px 0 6px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    /* The app's title treatment: white into mint into violet. */
+    .sv-hero h1 {
+      width: fit-content;
+      max-width: 100%;
+      margin: 0;
+      font-size: clamp(2.5rem, 5.6vw, 3.8rem);
+      line-height: 1.05;
+      background: linear-gradient(90deg, #ffffff 0%, #b8ffe0 30%, var(--accent) 55%, #7fd6e8 75%, var(--magenta) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sv-tagline {
+      margin: 10px 0 0;
+      font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .sv-hero .lede { max-width: 52ch; }
+    .sv-hero-store {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 16px;
+      margin-top: 26px;
+    }
+    .sv-price { margin: 0; color: var(--muted); font-size: 0.92rem; flex: 1 1 100%; max-width: 52ch; }
+    .sv-price strong { color: var(--accent); }
+    /* The whole home screen is far taller than the copy beside it, and
+       centring the two left a tall gap above the breadcrumb. Show the top
+       of the screen (figure, name, tagline) at about the copy's height and
+       fade the rest out. */
+    .sv-hero-shot {
+      width: 100%;
+      max-width: 280px;
+      height: 430px;
+      justify-self: center;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+      mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    }
+    .showcase-copy .eyebrow { margin-bottom: 12px; }
+    #details .card a { white-space: nowrap; }
+    .sv-cta-icon {
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      box-shadow: 0 0 0 1px rgba(61, 255, 168, 0.35), 0 0 40px rgba(61, 255, 168, 0.25);
+    }
+    .sv-qr {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .sv-qr img {
+      flex: 0 0 auto;
+      width: 112px;
+      height: 112px;
+      border-radius: 10px;
+      background: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+    }
+    .sv-qr figcaption { font-size: 0.85rem; color: var(--muted); }
+    /* The site-wide Quiet Hours strip talks about asking questions, which this app has no part in. */
+    .quiet-banner { display: none; }
+    .sv-hero-shot img { aspect-ratio: auto; }
+    .showcase .sv-shot img, .sv-shot img { aspect-ratio: auto; }
+    .sv-shots {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .sv-shots .sv-shot { margin: 0; }
+    #places .section-head, #plans .section-head { margin-inline: auto; justify-items: center; text-align: center; }
+    .sv-note {
+      max-width: 68ch;
+      margin: 22px auto 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    .sv-plans { max-width: 760px; margin: 0 auto; }
+    .sv-plans .compare-table { min-width: 0; }
+    .sv-plans .compare-table td:nth-child(n+3) { white-space: nowrap; }
+    @media (max-width: 400px) {
+      .sv-plans .compare-table th, .sv-plans .compare-table td { padding-inline: 8px; }
+    }
+    @media (max-width: 760px) {
+      .sv-shots { grid-template-columns: minmax(0, 300px); justify-content: center; }
+    }
+    @media (max-width: 860px) {
+      .sv-hero { grid-template-columns: 1fr; gap: 32px; }
+      .sv-hero-shot { max-width: 260px; }
+    }
+    /* The code is for someone reading on a computer; a phone is already there. */
+    @media (max-width: 760px) {
+      .sv-qr { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-backdrop"></div>
+    <div class="ambient-vignette"></div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="assets/app-icon.png?v=20261002-cache" width="40" height="40" alt="GhostLab app icon" />
+          <span>GhostLab</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="apps.html">Apps</a>
+          <a href="ghostlab-vs-ghosttube.html">Comparison</a>
+          <a href="quiet-hours.html">Quiet Hours</a>
+          <a href="spirit-detector.html">Spirit Detector</a>
+          <a href="dead-channel.html">Dead Channel</a>
+          <a href="modes.html">Modes</a>
+          <a class="hide-sm" href="tools.html">Tools</a>
+          <a href="pro.html">Pro</a>
+          <a class="nav-store" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
+          <a class="nav-store" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-primary btn-sm nav-cta" href="#download">Get the app</a>
+          <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <header class="page-hero sv-hero reveal">
+        <div class="sv-hero-copy">
+          <div class="crumb"><a href="index.html">Home</a> <span>/</span> <a href="apps.html">Apps</a> <span>/</span> Spirit Vision</div>
+          <p class="sv-kicker">GhostLab</p>
+          <h1>Spirit Vision</h1>
+          <p class="sv-tagline">AI visions from your sensors.</p>
+          <p class="lede">GhostLab: Spirit Vision is an experimental, AI-powered investigative tool for your paranormal kit. It uses AI to generate images in the smoke from changes in your phone's motion, magnetic, pressure and sound readings, such as a knock or footsteps. What each image means to you is yours to decide.</p>
+          <div class="sv-hero-store">
+            <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-vision/id6829826059" target="_blank" rel="noopener noreferrer">
+              <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download GhostLab: Spirit Vision on the App Store" />
+            </a>
+            <p class="sv-price"><strong>Free to start:</strong> black smoke and 2 visions a day, with 5 on your first day. Plans start at $1.99 a month.</p>
+          </div>
+        </div>
+        <div class="shot-frame sv-hero-shot">
+          <img src="assets/spiritvision/void.webp?v=20261106-sv" width="923" height="2005" alt="Spirit Vision store image captioned AI-Powered by Your Sensors, You decide what it means. On the phone, a session is running and a generated image of an old tape deck on a carpet rises out of black smoke" />
+        </div>
+      </header>
+
+      <section class="section" id="session">
+        <div class="showcase reveal">
+          <div class="shot-frame sv-shot">
+            <img src="assets/spiritvision/plate.webp?v=20261106-sv" width="923" height="2005" alt="Spirit Vision store image captioned AI-Powered by Your Phone's Sensors, You decide what it means. The plate shows live EMF, motion, pressure and sound readings above the Start session button" loading="lazy" />
+          </div>
+          <div class="showcase-copy">
+            <div class="eyebrow">The session</div>
+            <h2>Start a session and set your phone down.</h2>
+            <p class="lede">The plate shows the magnetic field, motion, air pressure and sound as they change. A sharp change or a knock can bring a vision, and the image rises out of the smoke as a picture alone.</p>
+            <ul class="feature-list">
+              <li>Four live readings from your phone's own sensors</li>
+              <li>Images grow more intense as the sensors fire more often</li>
+              <li>It remembers what it showed earlier in a session</li>
+              <li>Ordinary things in the room move these readings too</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="places">
+        <div class="section-head reveal">
+          <div class="eyebrow">Places</div>
+          <h2>Black smoke and five places.</h2>
+          <p>Everyone starts in black smoke. Spirit Vision Pro opens the hallway, the graveyard, the abandoned warehouse, the abandoned house and the fiery landscape, each with its own smoke.</p>
+        </div>
+        <div class="sv-shots">
+          <figure class="shot-frame sv-shot reveal">
+            <img src="assets/spiritvision/hallway.webp?v=20261106-sv" width="923" height="2005" alt="Spirit Vision store image captioned Your Sensors Power the AI, You decide what it means. A generated image of a man at a dark doorway in a papered hallway appears in the smoke" loading="lazy" />
+          </figure>
+          <figure class="shot-frame sv-shot reveal">
+            <img src="assets/spiritvision/house.webp?v=20261106-sv" width="923" height="2005" alt="Spirit Vision store image captioned AI-Powered by Every Knock and Footstep, You decide what each image means. A generated image of a man on the stairs of an abandoned house" loading="lazy" />
+          </figure>
+          <figure class="shot-frame sv-shot reveal">
+            <img src="assets/spiritvision/graveyard.webp?v=20261106-sv" width="923" height="2005" alt="Spirit Vision store image captioned AI-Powered by Live Sensor Readings, You decide what each vision means. A generated image of a man in a long coat at a graveyard gate under the moon" loading="lazy" />
+          </figure>
+        </div>
+        <p class="sv-note">In black smoke, your location and motion show whether you're in a car, indoors or outside, so each vision suits where you are. A place you choose stays as you chose it.</p>
+      </section>
+
+      <section class="section workflow-section" id="run" aria-labelledby="run-heading">
+        <div class="section-head reveal">
+          <div class="eyebrow">Run a session</div>
+          <h2 id="run-heading">Four steps into the smoke.</h2>
+          <p>A picture takes about six seconds.</p>
+        </div>
+        <div class="workflow-rail">
+          <ol class="workflow-steps">
+            <li class="workflow-step reveal">
+              <span class="workflow-n" aria-hidden="true">01</span>
+              <span class="workflow-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m10 8.5 5.5 3.5-5.5 3.5z"/></svg>
+              </span>
+              <strong>Press Start session</strong>
+              <p>The first time, the app shows what goes to its AI services and asks your permission.</p>
+            </li>
+            <li class="workflow-step reveal" style="transition-delay:0.06s">
+              <span class="workflow-n" aria-hidden="true">02</span>
+              <span class="workflow-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+              </span>
+              <strong>Set your phone down</strong>
+              <p>Pick a spot in the room. The plate shows the readings as they change.</p>
+            </li>
+            <li class="workflow-step reveal" style="transition-delay:0.12s">
+              <span class="workflow-n" aria-hidden="true">03</span>
+              <span class="workflow-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 4 12 2.5-6h5"/></svg>
+              </span>
+              <strong>Watch the smoke</strong>
+              <p>A knock, footsteps or a sharp change in the readings can bring a vision.</p>
+            </li>
+            <li class="workflow-step reveal" style="transition-delay:0.18s">
+              <span class="workflow-n" aria-hidden="true">04</span>
+              <span class="workflow-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8.5 6 10 3.5h4L15.5 6"/></svg>
+              </span>
+              <strong>Keep what you see</strong>
+              <p>Snapshots carry the time and the readings. Record a whole session with the sound of the room. Both wait in the Library, ready to save or share.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="plans">
+        <div class="section-head reveal">
+          <div class="eyebrow">Plans</div>
+          <h2>Pick how many visions you want.</h2>
+          <p>Every paid plan opens the five places. Each one is monthly or yearly.</p>
+        </div>
+        <div class="compare-wrap sv-plans reveal">
+          <table class="compare-table">
+            <thead>
+              <tr><th scope="col">Plan</th><th scope="col">Visions a day</th><th scope="col">Monthly</th><th scope="col">Yearly</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Free</th><td>2, with 5 on your first day</td><td colspan="2">Free</td></tr>
+              <tr><th scope="row">Light</th><td>20</td><td>$1.99</td><td>$19.99</td></tr>
+              <tr><th scope="row">Plus</th><td>40</td><td>$3.99</td><td>$39.99</td></tr>
+              <tr><th scope="row">Heavy</th><td>75</td><td>$6.99</td><td>$74.99</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sv-note">Allowances count pictures, reset each day and never carry over. Heavy subscribers can add a pack when they run out: 25 visions for $0.99 or 100 for $2.99. Payment is charged to your Apple Account when you confirm. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period, and you can manage or cancel them in your Apple Account settings.</p>
+      </section>
+
+      <section class="section section-sm" id="details">
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            </div>
+            <h3>iPhone and iPad</h3>
+            <p>Runs on iOS 17 or later and needs an internet connection to generate images. No sign-in. Rated 12+ on the App Store.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
+            </div>
+            <h3>Your privacy</h3>
+            <p>With your permission, your sensor readings, the names of sounds the phone heard and whether you seem to be in a car, indoors or outside go to GhostLab's server and Anthropic, and an image description goes to Runware. No audio is sent, your location stays on your phone, and there are no ads and no tracking. <a href="privacy-spiritvision.html">Privacy policy</a></p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon warning" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>
+            </div>
+            <h3>Before you start</h3>
+            <p>Visions can be frightening, and some show the dead. The paranormal is still unproven, so please don't lean on a vision for big decisions or when you're grieving.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-sm" id="download">
+        <div class="final-cta reveal">
+          <img class="sv-cta-icon" src="assets/sphere/spiritvision.png?v=20261106-sv" width="88" height="88" alt="" />
+          <h2>Take it on your next investigation.</h2>
+          <p class="lede">GhostLab: Spirit Vision is on the App Store for iPhone and iPad. It's free to start, with plans from $1.99 a month, and it runs on its own next to GhostLab: Paranormal Toolkit or any other kit you carry.</p>
+          <div class="hero-actions">
+            <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-vision/id6829826059" target="_blank" rel="noopener noreferrer">
+              <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download GhostLab: Spirit Vision on the App Store" />
+            </a>
+            <a class="btn btn-ghost" href="privacy-spiritvision.html">Privacy policy</a>
+          </div>
+          <figure class="sv-qr">
+            <img src="assets/store/qr/spiritvision-app-store.svg?v=20261106-sv" width="128" height="128" alt="QR code for GhostLab: Spirit Vision on the App Store" loading="lazy" />
+            <figcaption>Reading this on a computer? Point your phone camera at the code and the App Store opens.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section-sm">
+        <div class="disclaimer reveal">
+          <strong>AI-powered by your sensors. You decide what it means.</strong>
+          An experimental, AI-powered tool for investigative experimentation. The paranormal is still unproven, so what each image means is yours to decide.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="assets/app-icon.png?v=20261002-cache" width="44" height="44" alt="" />
+          <div>
+            <strong>GhostLab</strong>
+            <p>Paranormal investigation toolkit for iPhone, iPad, and Android. Built by Adirondack Cyber Security.</p>
+            <div class="footer-social" aria-label="GhostLab on social media">
+              <a class="social-link social-instagram" href="https://www.instagram.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><defs><linearGradient id="gl-ig-footer" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FFD521"/><stop offset=".25" stop-color="#F50000"/><stop offset=".5" stop-color="#B900B4"/><stop offset=".75" stop-color="#7B2FFE"/><stop offset="1" stop-color="#4C63D2"/></linearGradient></defs><path fill="url(#gl-ig-footer)" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+              </a>
+              <a class="social-link social-tiktok" href="https://www.tiktok.com/@ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#25F4EE" transform="translate(-1.15,-1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FE2C55" transform="translate(1.15,1.15)"/><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-youtube" href="https://www.youtube.com/@Ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FFFFFF"/></svg>
+              </a>
+              <a class="social-link social-facebook" href="https://www.facebook.com/share/1KgDDwaJGv" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on Facebook" title="Facebook">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11.4" fill="#FFFFFF"/><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" fill="#0866FF"/></svg>
+              </a>
+              <a class="social-link social-x" href="https://x.com/ghostlabicu" target="_blank" rel="noopener noreferrer" aria-label="GhostLab on X" title="X">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" fill="#FFFFFF"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <ul>
+            <li><a href="ghostlab-vs-ghosttube.html">Comparison</a></li>
+            <li><a href="modes.html">Capture modes</a></li>
+            <li><a href="spirit-detector.html">Spirit Detector</a></li>
+            <li><a href="dead-channel.html">Dead Channel</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="pro.html">GhostLab Pro</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <ul>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="https://linktr.ee/ghostlabicu" target="_blank" rel="noopener noreferrer">Socials</a></li>
+            <li><a href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="mailto:ghostlabsupport@inkboxmail.com">ghostlabsupport@inkboxmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Adirondack Cyber Security · GhostLab</span>
+        <span>Entertainment &amp; experimental investigation only</span>
+      </div>
+    </footer>
+  </div>
+  <script src="site.js?v=20261106-five"></script>
+</body>
+</html>

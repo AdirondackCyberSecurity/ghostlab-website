@@ -54,6 +54,55 @@
     "image": "https://ghostlab.icu/assets/og-image.png?v=20261002-cache"
   }
   </script>
+  <style>
+    /* Home hero: five phones, one per app, Toolkit first. Scoped to .hh-five so
+       the three-phone guide page keeps the shared .hh-visual layout. */
+    @media (min-width: 961px) {
+      body.home .hero { grid-template-columns: 0.8fr 1.2fr; gap: 24px; }
+    }
+    .hh-visual.hh-five { width: min(100%, 680px); aspect-ratio: 1 / 0.72; }
+    .hh-visual.hh-five .phone-glow { left: 20%; top: 20%; }
+    .hh-visual.hh-five .hh-phone {
+      width: var(--w);
+      left: var(--l);
+      z-index: var(--z);
+      opacity: 1;
+      border-radius: 30px;
+      padding: 7px;
+      transform: translateY(var(--y)) rotate(var(--r));
+      animation: hh5-float var(--t) ease-in-out infinite;
+    }
+    .hh-visual.hh-five .hh-phone .phone-screen { border-radius: 24px; }
+    .hh-visual.hh-five .hh-phone-1 { --w: 30%; --l: 0%; --z: 5; --y: -50%; --r: -2deg; --t: 7s; }
+    .hh-visual.hh-five .hh-phone-2 { --w: 26%; --l: 21%; --z: 4; --y: -50%; --r: 1deg; --t: 8.5s; }
+    .hh-visual.hh-five .hh-phone-3 { --w: 24%; --l: 41%; --z: 3; --y: -51%; --r: 3deg; --t: 9.5s; }
+    .hh-visual.hh-five .hh-phone-4 { --w: 22%; --l: 59%; --z: 2; --y: -51%; --r: 5deg; --t: 8s; }
+    .hh-visual.hh-five .hh-phone-5 { --w: 20%; --l: 77%; --z: 1; --y: -52%; --r: 7deg; --t: 10s; }
+    @keyframes hh5-float {
+      0%, 100% { transform: translateY(var(--y)) rotate(var(--r)); }
+      50% { transform: translateY(var(--y)) translateY(-10px) rotate(var(--r)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hh-visual.hh-five .hh-phone { animation: none; }
+    }
+    @media (max-width: 960px) {
+      .hh-visual.hh-five { width: min(100%, 620px); aspect-ratio: 1 / 0.72; }
+    }
+    @media (max-width: 560px) {
+      .hh-visual.hh-five .hh-phone { border-radius: 20px; padding: 4px; }
+      .hh-visual.hh-five .hh-phone .phone-screen { border-radius: 16px; }
+      .hh-visual.hh-five .phone-notch { display: none; }
+    }
+    /* Explore: the two newest apps share the first row. */
+    .explore-card.explore-wide { grid-column: span 2; }
+    @media (max-width: 900px) {
+      .explore-card.explore-wide-tablet { grid-column: span 2; }
+    }
+    @media (max-width: 560px) {
+      .explore-card.explore-wide,
+      .explore-card.explore-wide-tablet { grid-column: auto; }
+    }
+  </style>
 </head>
 <body class="home">
   <div class="ambient" aria-hidden="true">
@@ -145,7 +194,7 @@
           </div>
         </div>
 
-        <div class="hh-visual reveal" style="transition-delay:0.12s">
+        <div class="hh-visual hh-five reveal" style="transition-delay:0.12s">
           <div class="phone-glow" aria-hidden="true"></div>
           <div class="phone hh-phone hh-phone-1">
             <div class="phone-notch" aria-hidden="true"></div>
@@ -155,12 +204,22 @@
           </div>
           <div class="phone hh-phone hh-phone-2">
             <div class="phone-screen">
-              <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" loading="lazy" decoding="async" />
+              <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" decoding="async" />
             </div>
           </div>
           <div class="phone hh-phone hh-phone-3">
             <div class="phone-screen">
-              <img src="assets/spiritdetector/home.webp?v=20261002-cache" alt="Spirit Detector home screen: a standing figure drawn in green dots above the name, a Scanner Online status, the 48 hour free trial, and a Start scanning button" width="923" height="2000" loading="lazy" decoding="async" />
+              <img src="assets/spiritvision/screen.webp?v=20261106-sv" alt="A Spirit Vision session: a generated image of an old tape deck on a carpet rises out of black smoke, with the session clock and a Stop button below" width="620" height="1347" decoding="async" />
+            </div>
+          </div>
+          <div class="phone hh-phone hh-phone-4">
+            <div class="phone-screen">
+              <img src="assets/spiritdetector/home.webp?v=20261002-cache" alt="Spirit Detector home screen: a standing figure drawn in green dots above the name, a Scanner Online status, the 48 hour free trial, and a Start scanning button" width="923" height="2000" decoding="async" />
+            </div>
+          </div>
+          <div class="phone hh-phone hh-phone-5">
+            <div class="phone-screen">
+              <img src="assets/gridsight/screen.webp?v=20261106-gs" alt="GridSight: rows of colored dots above the Virtual grid and Watch physical grid switch, a Start monitoring button and an event log of three breaks" width="620" height="1327" decoding="async" />
             </div>
           </div>
         </div>
@@ -229,6 +288,18 @@
           <p>Deep dives on each pillar - short path from “what is this?” to “I’m installing it.”</p>
         </div>
         <div class="explore-grid">
+          <a class="explore-card explore-wide reveal" href="spirit-vision.html">
+            <span class="kicker">New app · AI visions</span>
+            <h3>Spirit Vision</h3>
+            <p>An experimental, AI-powered investigative tool that uses AI to generate images from your sensors. What each image means is yours to decide.</p>
+            <span class="go">Meet Spirit Vision →</span>
+          </a>
+          <a class="explore-card explore-wide-tablet reveal" href="gridsight.html">
+            <span class="kicker">New app · Grid</span>
+            <h3>GridSight</h3>
+            <p>A grid of dots over your room that logs a break whenever something interrupts it. iPhone and Android.</p>
+            <span class="go">Meet GridSight →</span>
+          </a>
           <a class="explore-card reveal" href="spirit-detector.html">
             <span class="kicker">New app · LiDAR</span>
             <h3>Spirit Detector</h3>
@@ -327,6 +398,29 @@
               <div class="hero-actions">
                 <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-detector/id6814905065" target="_blank" rel="noopener noreferrer">
                   <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download GhostLab: Spirit Detector on the App Store" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <img class="download-family-icon" src="assets/sphere/spiritvision.png?v=20261106-sv" width="64" height="64" alt="Spirit Vision app icon" loading="lazy" />
+              <h3>Spirit Vision</h3>
+              <p>An experimental, AI-powered tool for iPhone and iPad.</p>
+              <div class="hero-actions">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-spirit-vision/id6829826059" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download GhostLab: Spirit Vision on the App Store" />
+                </a>
+              </div>
+            </div>
+            <div>
+              <img class="download-family-icon" src="assets/sphere/gridsight.png?v=20261106-gs" width="64" height="64" alt="GridSight app icon" loading="lazy" />
+              <h3>GridSight</h3>
+              <p>A grid of dots that logs every break, for iPhone and Android.</p>
+              <div class="hero-actions">
+                <a class="store-badge store-badge-apple" data-store-keep href="https://apps.apple.com/us/app/ghostlab-gridsight/id6829851073" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download GhostLab: GridSight on the App Store" />
+                </a>
+                <a class="store-badge store-badge-play" data-store-keep href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab.gridsight" target="_blank" rel="noopener noreferrer">
+                  <img src="assets/store/get-it-on-google-play.png?v=20261002-cache" width="135" height="40" alt="Get GhostLab: GridSight on Google Play" />
                 </a>
               </div>
             </div>
