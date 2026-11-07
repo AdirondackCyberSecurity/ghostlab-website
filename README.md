@@ -10,13 +10,13 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | Path | Purpose |
 |------|---------|
 | `/` | Home |
-| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel) |
+| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel, Spirit Vision, GridSight) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-box-apps.html` | Spirit box apps compared (EchoVox, Spirit Talker, GhostTube, Dead Channel, Toolkit) |
 | `/quiet-hours.html` | The Quiet Hours: map it, ask it, keep it |
 | `/halloween-ghost-hunt.html` | Your first ghost hunt (URL kept; redirect later) |
-| `/spirit-vision.html` | GhostLab: Spirit Vision (App Store only until Android is live on Play). Not in the primary nav or on `/apps.html` yet |
-| `/gridsight.html` | GhostLab: GridSight (App Store and Google Play). Not in the primary nav or on `/apps.html` yet |
+| `/spirit-vision.html` | GhostLab: Spirit Vision (App Store only until Android is live on Play) |
+| `/gridsight.html` | GhostLab: GridSight (App Store and Google Play) |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
 | `/dead-channel.html` | GhostLab: Dead Channel (spirit box app). Replaced Gallery; `/gallery.html` now redirects here |
 | `/modes.html` | Capture modes (free vs Pro) |
@@ -25,7 +25,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/support.html` | App Store support |
 | `/privacy.html` | Privacy policy |
 
-Primary nav is Apps, Comparison, Spirit Detector, Dead Channel, Modes, Tools, Pro. `upcoming.html` redirects to `apps.html` and is `noindex`. Night Glide, Palmistry, Eight Ball, Oracle, and Divination are retired: their pages stay reachable for old store links, send `noindex`, and are not in the sitemap. `/privacy-tarot.html` is a `noindex` refresh stub to `/privacy.html` (GitHub Pages cannot send a 301).
+Primary nav is Apps, Comparison, Quiet Hours, Spirit Detector, Dead Channel, Spirit Vision, GridSight, Modes, Tools, Pro. Below 1121px it collapses to the menu. `upcoming.html` redirects to `apps.html` and is `noindex`. Night Glide, Palmistry, Eight Ball, Oracle, and Divination are retired: their pages stay reachable for old store links, send `noindex`, and are not in the sitemap. `/privacy-tarot.html` is a `noindex` refresh stub to `/privacy.html` (GitHub Pages cannot send a 301).
 
 ## Hosting
 

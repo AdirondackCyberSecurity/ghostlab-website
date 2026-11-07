@@ -216,7 +216,7 @@
       gap: 6px;
       margin-left: auto;
     }
-    @media (max-width: 760px) {
+    @media (max-width: 1120px) {
       /* Links leave the flex flow when closed; keep CTA + menu pinned right */
       .nav-actions { margin-left: auto; }
     }
@@ -296,28 +296,16 @@
         border-radius: 10px;
       }
     }
-    /* Hide low-priority links in the cramped horizontal bar,
-       but keep them available inside the opened mobile menu */
-    @media (max-width: 760px) {
+    /* The menu shows every link; hide-sm only matters while it is closed */
+    @media (max-width: 1120px) {
       .nav-links:not(.open) .hide-sm { display: none; }
     }
-    /* Seven links (Spirit Detector and Dead Channel among them) need about
-       945px at full padding. Between the phone menu and that, the links
-       tighten in two steps and all seven still fit down to about 785px.
-       Below 810px the hide-sm link (Tools, or Modes on the Tools page) steps
-       out of the bar rather than wrap. It stays in the footer and the phone
-       menu. */
+    /* Ten links only fit the bar at tightened padding, so below 1121px the
+       phone menu takes over and every link stays one tap away. */
     .nav-links a { white-space: nowrap; }
-    @media (min-width: 761px) and (max-width: 960px) {
+    @media (min-width: 1121px) {
       .nav-links { gap: 2px; }
-      .nav-links a { padding: 8px; }
-    }
-    @media (min-width: 761px) and (max-width: 900px) {
-      .nav-inner { gap: 10px; }
-      .nav-links a { padding: 8px 5px; font-size: 0.86rem; }
-    }
-    @media (min-width: 761px) and (max-width: 810px) {
-      .nav-links:not(.open) .hide-sm { display: none; }
+      .nav-links a { padding: 8px 7px; font-size: 0.88rem; }
     }
 
     /* Buttons */
@@ -1848,7 +1836,7 @@
       cursor: pointer;
       flex-shrink: 0;
     }
-    @media (max-width: 760px) {
+    @media (max-width: 1120px) {
       .menu-btn { display: grid; }
       .nav-inner { gap: 12px; }
       .nav-links {
