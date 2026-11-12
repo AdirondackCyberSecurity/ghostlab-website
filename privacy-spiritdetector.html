@@ -6,7 +6,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GhostLab: Spirit Detector Privacy Policy</title>
-<meta name="description" content="How GhostLab: Spirit Detector handles the camera, the LiDAR scanner, your snapshots and recordings, and purchases. It collects no data about you.">
+<meta name="description" content="How GhostLab: Spirit Detector handles the camera, the LiDAR scanner, the microphone, your snapshots, recordings and rooms, purchases, and the usage statistics the app sends.">
 <link rel="canonical" href="https://ghostlab.icu/privacy-spiritdetector.html">
 <style>
   :root { color-scheme: light dark; }
@@ -30,19 +30,20 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Spirit Detector Privacy Policy</h1>
-<p class="updated">Effective date: September 22, 2026 · Applies to the iOS app “GhostLab: Spirit Detector”</p>
+<p class="updated">Effective date: November 12, 2026 · Applies to the iOS app “GhostLab: Spirit Detector”</p>
 
 <p>GhostLab: Spirit Detector draws what the LiDAR scanner on iPhone Pro and iPad Pro measures,
-as points of light and as a wire model of the room. It has no user accounts, no servers of our
-own, and it collects no data about you.</p>
+as points of light and as a wire model of the room. It has no user accounts and no servers of our
+own. It counts how the app is used through Google Analytics for Firebase, described under
+<a href="#usage-statistics">Usage statistics</a>, and never sends your scans, recordings or rooms.</p>
 
 <h2>Summary</h2>
 <ul>
-  <li><strong>No data is collected.</strong> Nothing you do in the app is sent to us or to anyone else.</li>
-  <li><strong>The camera is used only to measure the room.</strong> The app never saves the camera picture.</li>
-  <li><strong>The microphone is never used.</strong> Recordings are video only, and the app does not ask for microphone access.</li>
+  <li><strong>Usage statistics.</strong> The app counts how it is used through Google Analytics for Firebase. It never sends your scans, snapshots, recordings, sound, rooms or location, and it sends nothing in the European Economic Area, the United Kingdom or Switzerland.</li>
+  <li><strong>The camera measures the room.</strong> When you record, the app also keeps the camera video beside the scan, on your device.</li>
+  <li><strong>The microphone is used only while you record,</strong> so the recording has sound. You can turn sound off in the scan settings.</li>
   <li><strong>Your location is never used.</strong></li>
-  <li><strong>No ads, no analytics, and no tracking.</strong></li>
+  <li><strong>No ads and no tracking.</strong></li>
   <li><strong>No accounts and no sign-in.</strong></li>
 </ul>
 
@@ -52,25 +53,26 @@ readings to apps that have camera access. That is why Spirit Detector asks for t
 you start your first scan.</p>
 <ul>
   <li>Depth readings and camera frames are used live, on the device, to place and colour the dots.
-      The points you have scanned are held in memory while the app is open and are never written
-      to storage on their own.</li>
+      The points you have scanned are held in memory while the app is open, and are written to
+      storage only when you save a room with 3D Map.</li>
   <li>A snapshot or recording contains the dots and the wire model as you see them on screen,
-      coloured by distance, with a small GhostLab mark in the corner. The camera picture itself
-      is never part of it.</li>
+      coloured by distance, with a small GhostLab mark in the corner. A recording also keeps the
+      camera video and, unless you turn sound off, the sound from the microphone. A room saved with
+      3D Map keeps the points and the wire model of the room.</li>
   <li>If you decline camera access, or turn it off later in iOS Settings, the app cannot scan.
       Your Library and settings stay as they are.</li>
 </ul>
 
 <h2>Data the app keeps on your device</h2>
 <ul>
-  <li><strong>Snapshots and recordings</strong> — each one is saved in the app’s own Library, in
+  <li><strong>Snapshots, recordings, clips and rooms</strong>: each one is saved in the app’s own Library, in
       its storage on your device. Like other app documents, they are included in your device
       backup. Deleting an item in the Library, or deleting the app, removes them.</li>
-  <li><strong>Settings</strong> — your view (dots, mesh, or both), colour, dot size, glow, and
+  <li><strong>Settings</strong>: your view (dots, mesh, or both), colour, dot size, glow, and
       whether captures also go to Photos are kept on the device so the app opens the way you
       left it.</li>
-  <li><strong>Trial and purchase state</strong> — the time your 48-hour trial started and whether
-      you own the unlock are kept in this device’s keychain, so the app works offline. These
+  <li><strong>Trial and purchase state</strong>: the time your 48-hour trial started and what you
+      have bought are kept in this device’s keychain, so the app works offline. These
       entries stay on the device and are not synced to iCloud. iOS can keep keychain entries after
       an app is deleted, so the trial start may still be there if you reinstall.</li>
 </ul>
@@ -80,27 +82,42 @@ you start your first scan.</p>
   <li>Saving to Photos uses add-only access. The app can place a snapshot or recording in your
       photo library and cannot see anything already in it. It asks for this only when you tap
       Save to Photos in the Library or turn on Also save to Photos in Settings.</li>
-  <li>The share sheet sends a capture wherever you choose. Once it leaves the app, the app or
+  <li>The share sheet sends a capture, clip or room file wherever you choose. Once it leaves the app, the app or
       person you shared it with decides what happens to it.</li>
 </ul>
 
 <h2>Purchases</h2>
-<p>Spirit Detector is free for 48 hours from your first scan. After that, a one-time purchase
-unlocks it for good. Purchases are handled entirely by Apple through StoreKit and the App Store.
-We receive no payment details and nothing that identifies you. You can restore the unlock on a new
-device from the unlock screen.</p>
+<p>Spirit Detector is free for 48 hours from your first scan. After that, one-time purchases
+unlock it for good: Spirit Detector for the scanner, 3D Map &amp; Clips for rooms and clips, or Pro
+for both. Purchases are handled entirely by Apple through StoreKit and the App Store. We receive no
+payment details and nothing that identifies you. The usage statistics note which product was
+bought and its price, as described below. You can restore a purchase on a new device from the
+unlock screen.</p>
+
+<h2 id="usage-statistics">Usage statistics</h2>
+<p>GhostLab: Spirit Detector uses Google Analytics for Firebase to count how the app is used, so we can see how many people start a scan, use 3D Map, start the trial or unlock the app, and where they stop.</p>
+<p>It records:</p>
+<ul>
+  <li>What you do in the app, in general terms: starting a scan or 3D Map, saving a snapshot, recording, room or clip and how long it is, opening the share sheet and the kind of item you share (a snapshot, a recording, a clip or a room), the app you shared to when it is a well-known one such as TikTok or Messages, opening the unlock screen, starting a trial, and how a purchase ended, with the product, its price and currency.</li>
+  <li>An app-instance identifier that Firebase creates for Spirit Detector on your phone. It is not linked to your name, your Apple Account, or your phone’s advertising identifier, and it resets if you delete the app.</li>
+  <li>Basic device and app details: phone model, iOS version, app version, language, and country.</li>
+  <li>Your approximate area, such as your city and country, which Google works out from your IP address. Google Analytics does not store the IP address.</li>
+</ul>
+<p>It never records LiDAR readings, points or rooms, the camera picture, sound, your snapshots, recordings or clips, file names, anything you type, or your location from GPS. The app never asks to track you, leaves out the part of Firebase that can read the advertising identifier, and does not collect the iPhone’s vendor identifier either.</p>
+<p>In the European Economic Area, the United Kingdom, and Switzerland, the app does not send usage statistics.</p>
+<p>Google processes this information for us as a service provider. We have turned off Google’s options to use it for its own products or for advertising, and we do not link it to Google Ads. The recorded actions are kept for 2 months, and the identifier until 2 months after you last use the app. Then Google deletes them automatically. See also <a href="data-deletion.html">Data Deletion Requests</a>.</p>
 
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell personal data.</li>
-  <li>We do not run analytics SDKs, advertising SDKs, or trackers.</li>
+  <li>We do not run advertising SDKs or trackers. The app’s only analytics is the usage statistics described above.</li>
   <li>We do not upload your scans, snapshots, or recordings.</li>
-  <li>We do not record audio or use your location.</li>
+  <li>We do not use your location, and the app records sound only into your own recordings.</li>
 </ul>
 
 <h2>Children</h2>
 <p>The app carries the age rating shown on its App Store page. We do not knowingly collect
-personal information from children, and the app collects none from anyone.</p>
+personal information from children. The app’s usage statistics are described above.</p>
 
 <h2>Changes</h2>
 <p>If our practices change, we will update this page and the effective date above before the
