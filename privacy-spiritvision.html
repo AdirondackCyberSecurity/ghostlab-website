@@ -30,7 +30,7 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Spirit Vision Privacy Policy</h1>
-<p class="updated">Effective date: November 5, 2026 · Applies to the iOS and Android apps “GhostLab: Spirit Vision”</p>
+<p class="updated">Effective date: November 12, 2026 · Applies to the iOS and Android apps “GhostLab: Spirit Vision”</p>
 
 <p>Spirit Vision is an experimental, AI-powered investigative tool. To generate an image during a
 session, it sends a text summary of the moment to GhostLab’s server and two outside AI services.
@@ -46,7 +46,7 @@ as well: it says what is different there, including what Google receives.</p>
   <li><strong>During a session, text goes to AI services.</strong> Sensor changes, the names of sounds, whether you seem to be in a car, indoors or outdoors, the place you chose, your local time and a short memory of the session go to Anthropic, and an image description goes to Runware.</li>
   <li><strong>GhostLab keeps very little of what is sent.</strong> Your sound names, sensor changes, chosen place, local time and the written memory of the session pass through our server and are never written to its storage. Our server stores your time zone offset with your daily count, and its service logs, kept for up to 7 days, note how often the sensors were firing, whether you seemed to be in a car, indoors or outdoors, and the kind of vision with a one-word label.</li>
   <li><strong>The camera is never used, and the location your phone reads stays on your phone.</strong> During a session the app uses it to tell whether you seem to be in a car, indoors or outdoors, and only that one word is sent.</li>
-  <li><strong>No third-party ads, no analytics SDKs and no tracking.</strong> We do not sell personal data.</li>
+  <li><strong>No third-party ads and no tracking.</strong> We do not sell personal data. The Android app counts how the app is used through Google Analytics for Firebase, described under <a href="#android">On Android</a>; it never sends anything from a session.</li>
   <li><strong>No sign-in.</strong> The app uses a random account number that names nobody.</li>
 </ul>
 
@@ -206,8 +206,8 @@ iPhone, read your Android phone.</p>
       Google Play’s rating card, all through Google Play services on your phone. Google handles what
       passes through them under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
       The rating card doesn’t tell the app whether anyone rated it, and a rating or review left on Google Play
-      shows there like any other Play review. No session summary goes to
-      Google.</li>
+      shows there like any other Play review. No session summary goes to Google. The usage statistics described below go to Google Analytics for Firebase.</li>
+  <li><strong>Usage statistics.</strong> The Android app uses Google Analytics for Firebase to count how the app is used, so we can see how many people finish the tour, start a session, keep a recording or buy a plan, and where they stop. It is separate from the session summary and from your permission for it: it doesn’t wait for that permission and carries nothing from a session. It records what you do in the app in general terms (finishing the tour, starting a session and the place you chose, saving a recording and how long it ran, opening the share sheet and whether it was a snapshot or a recording, the app you shared to when it is a well-known one such as TikTok or YouTube, opening the plans or packs screen, and which plan or pack you bought or how the purchase ended, with its price and currency); an app-instance identifier that Firebase creates for Spirit Vision on your phone, which is not linked to your name, your Google account, your account number or the Android advertising ID, and resets if you delete the app or clear its storage; basic device and app details such as phone model, Android version, app version, language and country; and your approximate area, such as your city and country, which Google works out from your IP address. Google Analytics does not store the IP address. It never records sensor readings, sound names, the car, indoors or outdoors word, your local time, visions or their pictures, your recordings or snapshots, reports, or your location from GPS. Spirit Vision does not collect the Android advertising ID: the permission is removed from the app and collection is switched off. In the European Economic Area, the United Kingdom, and Switzerland, the Android app does not send usage statistics. Google processes this information for us as a service provider. We have turned off Google’s options to use it for its own products or for advertising, and we do not link it to Google Ads. The recorded actions are kept for 2 months, and the identifier until 2 months after you last use the app. Then Google deletes them automatically.</li>
   <li><strong>What is sent outside a session.</strong> The app contacts our server when it starts or comes
       to the front and each time a session starts, with your account number, your key’s signature, your
       time zone offset and, if Google Play lists a plan or a purchase still going through, Google Play’s
@@ -245,7 +245,7 @@ iPhone, read your Android phone.</p>
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell personal data.</li>
-  <li>We do not run analytics SDKs, advertising SDKs or trackers.</li>
+  <li>We do not run advertising SDKs or trackers. The Android app’s only analytics is the usage statistics described under On Android.</li>
   <li>We do not upload your audio, recordings or snapshots.</li>
   <li>We do not use the camera, and the location your phone reads never leaves it. Your IP address and time zone offset can still show a rough area, as described under Who receives it.</li>
 </ul>
@@ -279,6 +279,8 @@ After we delete your record, the app cannot get visions on your phones until you
 it, and using it again starts a new record.</p>
 <p>You can also complain to your local data protection authority. The app does no tracking, so it does
 not respond to Do Not Track signals.</p>
+
+<p>The Android app’s usage statistics carry no name, email address, order number or account number, so we have no way to find yours on request, and Delete my data does not reach them. Deleting the app, or clearing its storage, removes the identifier they are tied to, and Google deletes the recorded actions after 2 months and the identifier 2 months after you last use the app. In the European Economic Area, the United Kingdom, and Switzerland, the Android app does not send usage statistics.</p>
 
 <h2>Changes</h2>
 <p>If our practices change, we will update this page and the effective date above before the
