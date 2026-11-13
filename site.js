@@ -74,6 +74,9 @@
       if (!links.classList.contains("open")) return;
       links.classList.remove("open");
       btn.setAttribute("aria-expanded", "false");
+      links.querySelectorAll(".nav-drop[open]").forEach(function (drop) {
+        drop.removeAttribute("open");
+      });
     }
     document.addEventListener("pointerdown", function (e) {
       if (!links.contains(e.target) && !btn.contains(e.target)) closeMenu();
@@ -83,6 +86,39 @@
     });
     window.addEventListener("scroll", closeMenu, { passive: true });
   }
+
+  /* Closed <details> content is inert, so hover and keyboard focus have to
+     open it for real. Touch keeps the native summary toggle. */
+  var appsHoverDesktop = window.matchMedia("(min-width: 1121px) and (hover: hover)");
+  document.querySelectorAll(".nav-drop").forEach(function (drop) {
+    function desktop() { return appsHoverDesktop.matches; }
+    drop.addEventListener("mouseenter", function () {
+      if (desktop()) drop.setAttribute("open", "");
+    });
+    drop.addEventListener("mouseleave", function () {
+      if (!desktop() || drop.contains(document.activeElement)) return;
+      drop.removeAttribute("open");
+    });
+    drop.addEventListener("focusin", function () {
+      if (desktop()) drop.setAttribute("open", "");
+    });
+    drop.addEventListener("focusout", function (e) {
+      if (!desktop() || drop.contains(e.relatedTarget)) return;
+      drop.removeAttribute("open");
+    });
+    var summary = drop.querySelector("summary");
+    if (summary) {
+      summary.addEventListener("click", function (e) {
+        if (desktop()) e.preventDefault();
+      });
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll(".nav-drop[open]").forEach(function (drop) {
+      drop.removeAttribute("open");
+    });
+  });
 
   // Scroll reveal - keep hero CTAs / video usable even if this fails
   var els = document.querySelectorAll(".reveal");

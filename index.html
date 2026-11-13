@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>GhostLab - Paranormal Investigation Toolkit</title>
-  <meta name="description" content="GhostLab is the field-ready paranormal investigation toolkit for iPhone, iPad, and Android. Six Investigate tiles: EMF, EVP, Spirit Box, Spirit Speak, Music Box, and SLS. On-device, private, no ads." />
+  <title>GhostLab - Paranormal Investigation Apps</title>
+  <meta name="description" content="GhostLab apps for iPhone, iPad, and Android. Paranormal Toolkit, Dead Channel, Spirit Detector, Spirit Vision, and GridSight." />
   <meta name="theme-color" content="#07090f" />
   <meta name="color-scheme" content="dark" />
   <link rel="canonical" href="https://ghostlab.icu/" />
@@ -14,21 +14,21 @@
   <link rel="apple-touch-icon" href="assets/app-icon.png?v=20261002-cache" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ghostlab.icu/" />
-  <meta property="og:title" content="GhostLab - Paranormal Investigation Toolkit" />
-  <meta property="og:description" content="Six Investigate tiles: EMF, EVP, Spirit Box, Spirit Speak, Music Box, SLS. Built for field investigations." />
+  <meta property="og:title" content="GhostLab - Paranormal Investigation Apps" />
+  <meta property="og:description" content="Paranormal Toolkit, Dead Channel, Spirit Detector, Spirit Vision, and GridSight. Pick the app for the hunt." />
   <meta property="og:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="GhostLab - Paranormal Investigation Toolkit" />
-  <meta name="twitter:description" content="Six Investigate tiles: EMF, EVP, Spirit Box, Spirit Speak, Music Box, SLS. Built for field investigations." />
+  <meta name="twitter:title" content="GhostLab - Paranormal Investigation Apps" />
+  <meta name="twitter:description" content="Paranormal Toolkit, Dead Channel, Spirit Detector, Spirit Vision, and GridSight. Pick the app for the hunt." />
   <meta name="twitter:image" content="https://ghostlab.icu/assets/og-image.png?v=20261002-cache" />
   <meta name="apple-itunes-app" content="app-id=6791637317" />
   <link rel="alternate" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" title="GhostLab on Google Play" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261106-nav" />
+  <link rel="stylesheet" href="styles.css?v=20261112-nocta" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,7 +60,13 @@
     @media (min-width: 961px) {
       body.home .hero { grid-template-columns: 0.8fr 1.2fr; gap: 24px; }
     }
-    .hh-visual.hh-five { width: min(100%, 680px); aspect-ratio: 1 / 0.72; }
+    .hh-cluster {
+      display: flex;
+      flex-direction: column;
+      width: min(100%, 680px);
+      margin-inline: auto;
+    }
+    .hh-visual.hh-five { width: 100%; aspect-ratio: 1 / 0.72; }
     .hh-visual.hh-five .phone-glow { left: 20%; top: 20%; }
     .hh-visual.hh-five .hh-phone {
       width: var(--w);
@@ -82,11 +88,61 @@
       0%, 100% { transform: translateY(var(--y)) rotate(var(--r)); }
       50% { transform: translateY(var(--y)) translateY(-10px) rotate(var(--r)); }
     }
+    .hh-visual.hh-five a.hh-phone {
+      display: block;
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+    }
+    .hh-visual.hh-five a.hh-phone:hover,
+    .hh-visual.hh-five a.hh-phone:focus-visible {
+      z-index: 6;
+      text-decoration: none;
+      filter: brightness(1.12);
+      box-shadow:
+        var(--shadow),
+        0 0 0 1px rgba(61, 255, 168, 0.5),
+        0 0 42px rgba(61, 255, 168, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    .hh-visual.hh-five a.hh-phone:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .hh-tap {
+      margin: 18px 0 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    /* Toolkit phone: main Investigate home, then the All Hallows skin. */
+    .hh-visual.hh-five .hh-phone-1 .phone-screen img {
+      position: absolute;
+      inset: 0;
+    }
+    .hh-visual.hh-five .hh-phone-1 .hh-skin-hallows {
+      opacity: 0;
+      animation: hh-skin-fade 12s ease-in-out infinite;
+    }
+    @keyframes hh-skin-fade {
+      0%, 38% { opacity: 0; }
+      50%, 88% { opacity: 1; }
+      100% { opacity: 0; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hh-visual.hh-five .hh-phone { animation: none; }
+      .hh-visual.hh-five .hh-phone-1 .hh-skin-hallows {
+        animation: none;
+        display: none;
+      }
     }
     @media (max-width: 960px) {
-      .hh-visual.hh-five { width: min(100%, 620px); aspect-ratio: 1 / 0.72; }
+      .hh-cluster { width: min(100%, 620px); }
+      .hh-visual.hh-five { aspect-ratio: 1 / 0.72; }
+      /* Stacked hero: caption sits above the phones so it is on screen with them. */
+      .hh-tap { order: -1; margin: 0 0 12px; }
     }
     @media (max-width: 560px) {
       .hh-visual.hh-five .hh-phone { border-radius: 20px; padding: 4px; }
@@ -119,21 +175,23 @@
           <span>GhostLab</span>
         </a>
         <nav class="nav-links" id="navLinks">
-          <a href="apps.html">Apps</a>
+          <details class="nav-drop">
+            <summary>The Apps</summary>
+            <div class="nav-drop-panel">
+              <a href="modes.html">Toolkit</a>
+              <a href="dead-channel.html">Dead Channel</a>
+              <a href="spirit-detector.html">Spirit Detector</a>
+              <a href="spirit-vision.html">Spirit Vision</a>
+              <a href="gridsight.html">GridSight</a>
+              <a href="apps.html" class="nav-drop-all">All apps</a>
+            </div>
+          </details>
           <a href="ghostlab-vs-ghosttube.html">Comparison</a>
           <a href="quiet-hours.html">Quiet Hours</a>
-          <a href="spirit-detector.html">Spirit Detector</a>
-          <a href="dead-channel.html">Dead Channel</a>
-          <a href="spirit-vision.html">Spirit Vision</a>
-          <a href="gridsight.html">GridSight</a>
-          <a href="modes.html">Modes</a>
-          <a class="hide-sm" href="tools.html">Tools</a>
-          <a href="pro.html">Pro</a>
           <a class="nav-store" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">App Store</a>
           <a class="nav-store" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">Google Play</a>
         </nav>
         <div class="nav-actions">
-          <a class="btn btn-primary btn-sm nav-cta" href="#download">Get the app</a>
           <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
@@ -165,65 +223,48 @@
               </a>
             </div>
           </div>
-          <h1>Six Instruments<br />18 Pro Features</h1>
-          <div class="hero-price">
-            <a class="hero-price-link" href="pro.html">
-              <span class="hero-price-label">GhostLab Pro</span>
-              <span class="hero-price-main">
-                <span class="hero-price-amount">$9.99</span>
-                <span class="hero-price-lifetime">one-time for life</span>
-              </span>
-              <span class="hero-price-meta">All features. No subscription.</span>
-            </a>
-          </div>
+          <h1>Any kind of hunt.<br />A tool for it.</h1>
           <p class="lede hero-lede">
-            <span class="hero-lede-tools">EMF, EVP, Spirit Box, Spirit Speak, Music Box and SLS share one grid. Each tile shows what it measures. You decide what it means.</span>
-            <span class="hero-lede-privacy">No ads, no account. EMF, Classic EVP and Classic Scan stay free.</span>
+            <span class="hero-lede-tools">Spirit box, LiDAR, AI visions, a grid that logs every break, or the full Investigate kit.</span>
+            <span class="hero-lede-privacy">GhostLab has the app. You decide what it means.</span>
           </p>
-          <div class="hero-actions hero-badges">
-            <a class="store-badge store-badge-apple" id="appStoreBtn" href="https://apps.apple.com/us/app/ghostlab-paranormal-toolkit/id6791637317" target="_blank" rel="noopener noreferrer">
-              <img src="assets/store/download-on-the-app-store.svg?v=20261002-cache" width="120" height="40" alt="Download on the App Store" />
-            </a>
-            <a class="store-badge store-badge-play" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.adkcyber.ghostlab" target="_blank" rel="noopener noreferrer">
-              <img src="assets/store/get-it-on-google-play.png?v=20261002-cache" width="135" height="40" alt="Get it on Google Play" />
-            </a>
-          </div>
-          <!-- Ratings rechecked Nov 9, 2026. Play headline count beside the stars: 77 reviews. App Store display 4.6 from 34 (raw average 4.61), version 1.37. -->
-          <p class="hero-proof">Rated 4.8 out of 5 from 77 Google Play reviews</p>
-          <p class="hero-proof">Rated 4.6 out of 5 from 34 iOS App Store ratings</p>
-          <div class="trust-row">
-            <span>On-device recordings</span>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="apps.html">Browse the apps</a>
           </div>
         </div>
 
-        <div class="hh-visual hh-five reveal" style="transition-delay:0.12s">
-          <div class="phone-glow" aria-hidden="true"></div>
-          <div class="phone hh-phone hh-phone-1">
-            <div class="phone-notch" aria-hidden="true"></div>
-            <div class="phone-screen">
-              <img src="assets/home.jpg?v=205" alt="GhostLab Investigate home: floating logo, six tiles with EMF LED bars and a jointed SLS figure, and Verify under the grid" width="414" height="900" fetchpriority="high" />
-            </div>
+        <div class="hh-cluster">
+          <div class="hh-visual hh-five reveal" style="transition-delay:0.12s">
+            <div class="phone-glow" aria-hidden="true"></div>
+            <a class="phone hh-phone hh-phone-1" href="modes.html" aria-label="GhostLab: Paranormal Toolkit">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <img src="assets/home.jpg?v=205" alt="GhostLab Investigate home: floating logo, six tiles with EMF LED bars and a jointed SLS figure, and Verify under the grid" width="414" height="900" fetchpriority="high" />
+                <img class="hh-skin-hallows" src="assets/all-hallows-home.jpg?v=20261112" alt="GhostLab Investigate home in the All Hallows skin: ALL HALLOWS tag, painted tiles, oxblood and brass chrome, and Verify under the grid" width="414" height="900" decoding="async" />
+              </div>
+            </a>
+            <a class="phone hh-phone hh-phone-2" href="dead-channel.html" aria-label="GhostLab: Dead Channel">
+              <div class="phone-screen">
+                <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" decoding="async" />
+              </div>
+            </a>
+            <a class="phone hh-phone hh-phone-3" href="spirit-vision.html" aria-label="GhostLab: Spirit Vision">
+              <div class="phone-screen">
+                <img src="assets/spiritvision/screen.webp?v=20261106-sv" alt="A Spirit Vision session: a generated image of an old tape deck on a carpet rises out of black smoke, with the session clock and a Stop button below" width="620" height="1347" decoding="async" />
+              </div>
+            </a>
+            <a class="phone hh-phone hh-phone-4" href="spirit-detector.html" aria-label="GhostLab: Spirit Detector">
+              <div class="phone-screen">
+                <img src="assets/spiritdetector/home.webp?v=20261002-cache" alt="Spirit Detector home screen: a standing figure drawn in green dots above the name, a Scanner Online status, the 48 hour free trial, and a Start scanning button" width="923" height="2000" decoding="async" />
+              </div>
+            </a>
+            <a class="phone hh-phone hh-phone-5" href="gridsight.html" aria-label="GhostLab: GridSight">
+              <div class="phone-screen">
+                <img src="assets/gridsight/screen.webp?v=20261106-gs" alt="GridSight: rows of colored dots above the Virtual grid and Watch physical grid switch, a Start monitoring button and an event log of three breaks" width="620" height="1327" decoding="async" />
+              </div>
+            </a>
           </div>
-          <div class="phone hh-phone hh-phone-2">
-            <div class="phone-screen">
-              <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" decoding="async" />
-            </div>
-          </div>
-          <div class="phone hh-phone hh-phone-3">
-            <div class="phone-screen">
-              <img src="assets/spiritvision/screen.webp?v=20261106-sv" alt="A Spirit Vision session: a generated image of an old tape deck on a carpet rises out of black smoke, with the session clock and a Stop button below" width="620" height="1347" decoding="async" />
-            </div>
-          </div>
-          <div class="phone hh-phone hh-phone-4">
-            <div class="phone-screen">
-              <img src="assets/spiritdetector/home.webp?v=20261002-cache" alt="Spirit Detector home screen: a standing figure drawn in green dots above the name, a Scanner Online status, the 48 hour free trial, and a Start scanning button" width="923" height="2000" decoding="async" />
-            </div>
-          </div>
-          <div class="phone hh-phone hh-phone-5">
-            <div class="phone-screen">
-              <img src="assets/gridsight/screen.webp?v=20261106-gs" alt="GridSight: rows of colored dots above the Virtual grid and Watch physical grid switch, a Start monitoring button and an event log of three breaks" width="620" height="1327" decoding="async" />
-            </div>
-          </div>
+          <p class="hh-tap">Tap a phone to explore each app</p>
         </div>
       </section>
 
@@ -309,18 +350,18 @@
             <span class="go">Meet Spirit Detector →</span>
           </a>
           <a class="explore-card reveal" href="modes.html">
-            <span class="kicker">Modes</span>
-            <h3>Pick the right tile</h3>
+            <span class="kicker">Toolkit</span>
+            <h3>Paranormal Toolkit</h3>
             <p>Six Investigate tiles. EMF, Classic EVP, and Classic Scan stay free. Spirit Speak, Music Box, and SLS are Pro.</p>
-            <span class="go">See all modes →</span>
+            <span class="go">Open the Toolkit page →</span>
           </a>
-          <a class="explore-card reveal" href="tools.html">
+          <a class="explore-card reveal" href="modes.html#tools">
             <span class="kicker">Tools</span>
             <h3>Free tools. Pro instruments.</h3>
             <p>Torch, Knock, Verify, and Details stay free. Team, Estes, and Vigil wear PRO.</p>
             <span class="go">Open tools map →</span>
           </a>
-          <a class="explore-card pro reveal" href="pro.html">
+          <a class="explore-card pro reveal" href="modes.html#pro">
             <span class="kicker">$9.99 · one-time for life</span>
             <h3>GhostLab Pro</h3>
             <p>All features. No subscription. 48 hours of full Pro, then $9.99 one-time.</p>
@@ -469,13 +510,13 @@
           <ul>
             <li><a href="apps.html">The apps</a></li>
             <li><a href="ghostlab-vs-ghosttube.html">Comparison</a></li>
-            <li><a href="modes.html">Capture modes</a></li>
+            <li><a href="modes.html">Toolkit</a></li>
             <li><a href="spirit-detector.html">Spirit Detector</a></li>
             <li><a href="dead-channel.html">Dead Channel</a></li>
             <li><a href="spirit-vision.html">Spirit Vision</a></li>
             <li><a href="gridsight.html">GridSight</a></li>
-            <li><a href="tools.html">Tools</a></li>
-            <li><a href="pro.html">GhostLab Pro</a></li>
+            <li><a href="modes.html#tools">Tools</a></li>
+            <li><a href="modes.html#pro">GhostLab Pro</a></li>
           </ul>
         </div>
         <div>
@@ -496,6 +537,6 @@
       </div>
     </footer>
   </div>
-  <script src="site.js?v=20261106-five"></script>
+  <script src="site.js?v=20261112-apps"></script>
 </body>
 </html>
