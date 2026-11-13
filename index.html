@@ -117,8 +117,26 @@
       font-weight: 600;
       letter-spacing: -0.01em;
     }
+    /* Toolkit phone: main Investigate home, then the All Hallows skin. */
+    .hh-visual.hh-five .hh-phone-1 .phone-screen img {
+      position: absolute;
+      inset: 0;
+    }
+    .hh-visual.hh-five .hh-phone-1 .hh-skin-hallows {
+      opacity: 0;
+      animation: hh-skin-fade 12s ease-in-out infinite;
+    }
+    @keyframes hh-skin-fade {
+      0%, 38% { opacity: 0; }
+      50%, 88% { opacity: 1; }
+      100% { opacity: 0; }
+    }
     @media (prefers-reduced-motion: reduce) {
       .hh-visual.hh-five .hh-phone { animation: none; }
+      .hh-visual.hh-five .hh-phone-1 .hh-skin-hallows {
+        animation: none;
+        display: none;
+      }
     }
     @media (max-width: 960px) {
       .hh-cluster { width: min(100%, 620px); }
@@ -222,6 +240,7 @@
               <div class="phone-notch" aria-hidden="true"></div>
               <div class="phone-screen">
                 <img src="assets/home.jpg?v=205" alt="GhostLab Investigate home: floating logo, six tiles with EMF LED bars and a jointed SLS figure, and Verify under the grid" width="414" height="900" fetchpriority="high" />
+                <img class="hh-skin-hallows" src="assets/all-hallows-home.jpg?v=20261112" alt="GhostLab Investigate home in the All Hallows skin: ALL HALLOWS tag, painted tiles, oxblood and brass chrome, and Verify under the grid" width="414" height="900" decoding="async" />
               </div>
             </a>
             <a class="phone hh-phone hh-phone-2" href="dead-channel.html" aria-label="GhostLab: Dead Channel">
