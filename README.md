@@ -14,7 +14,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-box-apps.html` | Spirit box apps compared (EchoVox, Spirit Talker, GhostTube, Dead Channel, Toolkit) |
 | `/quiet-hours.html` | The Quiet Hours: map it, ask it, keep it |
-| `/halloween-ghost-hunt.html` | Your first ghost hunt (URL kept; redirect later) |
+| `/halloween-ghost-hunt.html` | Taken down 2026-11-16; redirects to the home page |
 | `/spirit-vision.html` | GhostLab: Spirit Vision (App Store only until Android is live on Play) |
 | `/gridsight.html` | GhostLab: GridSight (App Store and Google Play) |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
@@ -31,7 +31,7 @@ Primary nav is Apps, Comparison, Quiet Hours, Spirit Detector, Dead Channel, Spi
 
 GitHub Pages serves from the `main` branch root (static HTML/CSS/JS). It ignores `_headers` files and sends `Cache-Control: max-age=600` on every response. Do not add a headers file expecting the origin to honor it.
 
-Static files under `/assets/`, plus `styles.css`, `site.js`, and `halloween-ghost-hunt.js`, are referenced with a `?v=` query string so a long Cloudflare edge and browser TTL is safe. When you change one of those files, bump its `?v=` in the same commit. A few screenshots already use `?v=205`. Leave Caching level on **Standard** so the query string stays in the cache key.
+Static files under `/assets/`, plus `styles.css` and `site.js`, are referenced with a `?v=` query string so a long Cloudflare edge and browser TTL is safe. When you change one of those files, bump its `?v=` in the same commit. A few screenshots already use `?v=205`. Leave Caching level on **Standard** so the query string stays in the cache key.
 
 Custom domain: **ghostlab.icu** (see `CNAME`).
 
