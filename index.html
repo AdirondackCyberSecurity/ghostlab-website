@@ -149,6 +149,40 @@
       .hh-visual.hh-five .hh-phone .phone-screen { border-radius: 16px; }
       .hh-visual.hh-five .phone-notch { display: none; }
     }
+    /* Demon Box announcement. It takes the place of the site-wide Quiet Hours
+       strip on the home page only, so the strip site.js injects is hidden here. */
+    body.home .quiet-banner:not(.db-announce) { display: none; }
+    .quiet-banner.db-announce {
+      gap: 16px;
+      padding: 14px 18px;
+      border-color: rgba(242, 71, 89, 0.45);
+      background: linear-gradient(90deg, rgba(242, 71, 89, 0.16), rgba(242, 71, 89, 0.05));
+    }
+    .db-announce-icon {
+      flex: 0 0 auto;
+      width: 56px;
+      height: 56px;
+      border-radius: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .db-announce-quote {
+      margin: 0 0 6px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .db-announce-quote p { margin: 0; }
+    .db-announce-copy { margin: 0; color: rgba(255, 255, 255, 0.78); }
+    .quiet-banner.db-announce a { color: #ff8793; }
+    .quiet-banner.db-announce a:hover { color: var(--text); }
+    .db-announce-tag { color: var(--text); font-weight: 700; white-space: nowrap; }
+    @media (max-width: 560px) {
+      .quiet-banner.db-announce { gap: 12px; padding: 12px 14px; }
+      .db-announce-icon { width: 44px; height: 44px; border-radius: 10px; }
+      .db-announce-quote { font-size: 0.98rem; }
+    }
     /* Explore: the two newest apps share the first row. */
     .explore-card.explore-wide { grid-column: span 2; }
     @media (max-width: 900px) {
@@ -198,6 +232,17 @@
         </div>
       </div>
     </header>
+
+    <!-- Upcoming app announcement, in the spot the Quiet Hours strip had on this page -->
+    <aside class="quiet-banner db-announce" aria-label="Coming soon: GhostLab: Demon Box">
+      <img class="db-announce-icon" src="assets/sphere/demonbox.png?v=20261116-demonbox" width="56" height="56" alt="" />
+      <div class="quiet-banner-text">
+        <blockquote class="db-announce-quote">
+          <p>And lead us not into temptation,<br />But deliver us from evil.</p>
+        </blockquote>
+        <p class="db-announce-copy"><a href="apps.html#demon-box">GhostLab: Demon Box</a> is coming soon to the App Store and Google Play. <span class="db-announce-tag">Uncover the darkness.</span></p>
+      </div>
+    </aside>
 
     <main id="top">
       <!-- HERO -->
