@@ -106,6 +106,9 @@
     .sphere-card .store-row.store-row-split { flex-wrap: wrap; }
     .sphere-card .store-row .sphere-status { flex: 0 0 auto; white-space: nowrap; }
     .sphere-status .keep-case { text-transform: none; }
+    /* The home page links to #demon-box. A card that has not revealed yet sits
+       18px low (.reveal), so the jump would leave its top edge under the nav. */
+    #demon-box { scroll-margin-top: 18px; }
     .sphere-note {
       margin-top: 26px;
       font-size: 0.9rem;
@@ -197,7 +200,7 @@
       <header class="page-hero reveal">
         <div class="crumb"><a href="index.html">Home</a> <span>/</span> Apps</div>
         <h1>The GhostLab apps</h1>
-        <p class="lede">Five apps. Paranormal Toolkit, Dead Channel, and GridSight are on the App Store and Google Play. Spirit Detector is on the App Store, for iPhone Pro and iPad Pro. Spirit Vision is on the App Store now, with Google Play soon.</p>
+        <p class="lede">Five apps, with a sixth on the way. Paranormal Toolkit, Dead Channel, and GridSight are on the App Store and Google Play. Spirit Detector is on the App Store, for iPhone Pro and iPad Pro. Spirit Vision is on the App Store now, with Google Play soon. Demon Box is coming soon to both stores.</p>
       </header>
 
       <section class="section" id="roster">
@@ -329,6 +332,17 @@
             </div>
           </article>
 
+          <!-- Demon Box: upcoming. No store links until it is live; then swap the pill
+               for a store-row of badges marked data-store-keep. -->
+          <article class="sphere-card reveal" id="demon-box">
+            <img class="sphere-icon" src="assets/sphere/demonbox.png?v=20261116-demonbox" width="72" height="72" alt="GhostLab: Demon Box icon" />
+            <div class="sphere-body">
+              <h3>GhostLab: Demon Box</h3>
+              <p>Uncover the darkness. During a hunt, Demon Box reads your phone's sensors and records the room, and words appear inside a ring of runes as its voices speak them aloud. You decide what the words mean. Coming soon to the App Store and Google Play.</p>
+              <span class="sphere-status soon">Coming soon</span>
+            </div>
+          </article>
+
         </div>
 
         <p class="sphere-note">Each app works on its own, with no sign-in. Spirit Vision needs a connection: with your permission it sends sensor readings and the names of sounds to GhostLab's server and its AI services to generate each image. The others run on the device. For fun and experimentation.</p>
@@ -344,6 +358,7 @@
           <li><a href="privacy-signal.html">GhostLab: Dead Channel</a></li>
           <li><a href="privacy-spiritvision.html">GhostLab: Spirit Vision</a></li>
           <li><a href="privacy-gridsight.html">GhostLab: GridSight</a></li>
+          <li><a href="privacy-demonbox.html">GhostLab: Demon Box</a></li>
         </ul>
       </section>
     </main>

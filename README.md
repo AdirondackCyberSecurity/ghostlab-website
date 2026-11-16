@@ -10,7 +10,7 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | Path | Purpose |
 |------|---------|
 | `/` | Home |
-| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel, Spirit Vision, GridSight) |
+| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel, Spirit Vision, GridSight), plus Demon Box as coming soon (`#demon-box`, no store links yet) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-box-apps.html` | Spirit box apps compared (EchoVox, Spirit Talker, GhostTube, Dead Channel, Toolkit) |
 | `/quiet-hours.html` | The Quiet Hours: map it, ask it, keep it |

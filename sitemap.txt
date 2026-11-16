@@ -19,3 +19,4 @@ https://ghostlab.icu/privacy-spiritdetector.html
 https://ghostlab.icu/privacy-spiritvision.html
 https://ghostlab.icu/privacy-gridsight.html
 https://ghostlab.icu/privacy-signal.html
+https://ghostlab.icu/privacy-demonbox.html
