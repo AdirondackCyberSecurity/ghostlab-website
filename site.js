@@ -333,6 +333,33 @@
     a.setAttribute("target", "_blank");
     a.setAttribute("rel", "noopener noreferrer");
   });
+  // App Store campaign tokens. pt is GhostLab's App Store Connect provider token (the same for every
+  // link), ct names the page that sent the visitor. App Store Connect then credits first downloads
+  // and proceeds to that page. Only GhostLab apps get tokens; links to other developers' apps are
+  // left alone. Token scheme: ghostlab-growth/specs/ios-campaign-links.md.
+  (function addCampaignTokens() {
+    var PROVIDER_TOKEN = "129105815";
+    var GHOSTLAB_APP_IDS = ["6791637317", "6814995715", "6814905065", "6829826059", "6829851073", "6832658935"];
+    var PAGE_TOKENS = {
+      "": "site-home", "index": "site-home", "apps": "site-apps",
+      "dead-channel": "site-dead-channel", "spirit-detector": "site-spirit-detector",
+      "spirit-vision": "site-spirit-vision", "gridsight": "site-gridsight", "demon-box": "site-demon-box",
+      "ghostlab-vs-ghosttube": "site-compare", "spirit-box-apps": "site-compare"
+    };
+    var page = (window.location.pathname || "").replace(/^.*\//, "").replace(/\.html$/, "");
+    var ct = PAGE_TOKENS[page] || "site-other";
+    document.querySelectorAll("a[href*='apps.apple.com']").forEach(function (a) {
+      try {
+        var url = new URL(a.getAttribute("href"), window.location.href);
+        var id = (url.pathname.match(/\/id(\d+)/) || [])[1];
+        if (!id || GHOSTLAB_APP_IDS.indexOf(id) < 0) return;
+        url.searchParams.set("pt", PROVIDER_TOKEN);
+        url.searchParams.set("ct", ct);
+        url.searchParams.set("mt", "8");
+        a.setAttribute("href", url.toString());
+      } catch (e) { /* leave the link as it is */ }
+    });
+  })();
   document.querySelectorAll("a.btn-play:not([data-store-keep]), a.store-badge-play:not([data-store-keep]), a#playStoreBtn:not([data-store-keep]), a[href*='play.google.com']:not([data-store-keep])").forEach(function (a) {
     a.setAttribute("href", PLAY_STORE_URL);
     a.setAttribute("target", "_blank");
