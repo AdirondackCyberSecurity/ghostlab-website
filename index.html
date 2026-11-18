@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20261112-nocta" />
+  <link rel="stylesheet" href="styles.css?v=20261118-db" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,8 +55,8 @@
   }
   </script>
   <style>
-    /* Home hero: five phones, one per app, Toolkit first. Scoped to .hh-five so
-       the three-phone guide page keeps the shared .hh-visual layout. */
+    /* Home hero: six phones, one per app, Toolkit first and Demon Box third.
+       Scoped to .hh-six so the shared three-phone .hh-visual layout is untouched. */
     @media (min-width: 961px) {
       body.home .hero { grid-template-columns: 0.8fr 1.2fr; gap: 24px; }
     }
@@ -66,9 +66,9 @@
       width: min(100%, 680px);
       margin-inline: auto;
     }
-    .hh-visual.hh-five { width: 100%; aspect-ratio: 1 / 0.72; }
-    .hh-visual.hh-five .phone-glow { left: 20%; top: 20%; }
-    .hh-visual.hh-five .hh-phone {
+    .hh-visual.hh-six { width: 100%; aspect-ratio: 1 / 0.6; }
+    .hh-visual.hh-six .phone-glow { left: 20%; top: 20%; }
+    .hh-visual.hh-six .hh-phone {
       width: var(--w);
       left: var(--l);
       z-index: var(--z);
@@ -76,27 +76,30 @@
       border-radius: 30px;
       padding: 7px;
       transform: translateY(var(--y)) rotate(var(--r));
-      animation: hh5-float var(--t) ease-in-out infinite;
+      animation: hh6-float var(--t) ease-in-out infinite;
     }
-    .hh-visual.hh-five .hh-phone .phone-screen { border-radius: 24px; }
-    .hh-visual.hh-five .hh-phone-1 { --w: 30%; --l: 0%; --z: 5; --y: -50%; --r: -2deg; --t: 7s; }
-    .hh-visual.hh-five .hh-phone-2 { --w: 26%; --l: 21%; --z: 4; --y: -50%; --r: 1deg; --t: 8.5s; }
-    .hh-visual.hh-five .hh-phone-3 { --w: 24%; --l: 41%; --z: 3; --y: -51%; --r: 3deg; --t: 9.5s; }
-    .hh-visual.hh-five .hh-phone-4 { --w: 22%; --l: 59%; --z: 2; --y: -51%; --r: 5deg; --t: 8s; }
-    .hh-visual.hh-five .hh-phone-5 { --w: 20%; --l: 77%; --z: 1; --y: -52%; --r: 7deg; --t: 10s; }
-    @keyframes hh5-float {
+    .hh-visual.hh-six .hh-phone .phone-screen { border-radius: 24px; }
+    /* Phone 3 (Demon Box) gets a wider step than the others so its ring
+       and the Coming soon tag clear the Dead Channel phone. */
+    .hh-visual.hh-six .hh-phone-1 { --w: 24%; --l: 0%; --z: 6; --y: -50%; --r: -2deg; --t: 7s; }
+    .hh-visual.hh-six .hh-phone-2 { --w: 22%; --l: 15.5%; --z: 5; --y: -50%; --r: 0deg; --t: 8.5s; }
+    .hh-visual.hh-six .hh-phone-3 { --w: 21%; --l: 33.5%; --z: 4; --y: -51%; --r: 2deg; --t: 9.5s; }
+    .hh-visual.hh-six .hh-phone-4 { --w: 19.5%; --l: 49%; --z: 3; --y: -51%; --r: 4deg; --t: 8s; }
+    .hh-visual.hh-six .hh-phone-5 { --w: 18%; --l: 64.5%; --z: 2; --y: -52%; --r: 6deg; --t: 10s; }
+    .hh-visual.hh-six .hh-phone-6 { --w: 16.5%; --l: 80.5%; --z: 1; --y: -52%; --r: 8deg; --t: 9s; }
+    @keyframes hh6-float {
       0%, 100% { transform: translateY(var(--y)) rotate(var(--r)); }
       50% { transform: translateY(var(--y)) translateY(-10px) rotate(var(--r)); }
     }
-    .hh-visual.hh-five a.hh-phone {
+    .hh-visual.hh-six a.hh-phone {
       display: block;
       cursor: pointer;
       color: inherit;
       text-decoration: none;
     }
-    .hh-visual.hh-five a.hh-phone:hover,
-    .hh-visual.hh-five a.hh-phone:focus-visible {
-      z-index: 6;
+    .hh-visual.hh-six a.hh-phone:hover,
+    .hh-visual.hh-six a.hh-phone:focus-visible {
+      z-index: 7;
       text-decoration: none;
       filter: brightness(1.12);
       box-shadow:
@@ -105,9 +108,39 @@
         0 0 42px rgba(61, 255, 168, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
-    .hh-visual.hh-five a.hh-phone:focus-visible {
+    .hh-visual.hh-six a.hh-phone:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 3px;
+    }
+    .hh-visual.hh-six a.hh-phone-db:hover,
+    .hh-visual.hh-six a.hh-phone-db:focus-visible {
+      box-shadow:
+        var(--shadow),
+        0 0 0 1px rgba(242, 71, 89, 0.55),
+        0 0 42px rgba(242, 71, 89, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    /* Coming soon on the Demon Box phone. Phone 2 covers the left of this
+       phone, so the tag sits in the visible right part of the screen and
+       scales with the width of the phone group (cqi). Narrow groups show
+       only "Soon" so the tag never slips under the Dead Channel phone. */
+    .hh-visual.hh-six { container-type: inline-size; }
+    .hh-visual.hh-six .hh-phone-db .soon-tag {
+      position: absolute;
+      right: 4%;
+      bottom: 6.5%;
+      z-index: 4;
+      font-size: clamp(7px, 1.3cqi, 9px);
+      gap: 0.55em;
+      padding: 0.45em 0.8em;
+      letter-spacing: 0.06em;
+      background: rgba(30, 6, 10, 0.88);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+    }
+    .hh-visual.hh-six .hh-phone-db .soon-tag .dot { width: 0.55em; height: 0.55em; }
+    @container (max-width: 560px) {
+      .hh-visual.hh-six .hh-phone-db .soon-tag { bottom: 5%; }
+      .hh-visual.hh-six .hh-phone-db .soon-tag-long { display: none; }
     }
     .hh-tap {
       margin: 18px 0 0;
@@ -118,18 +151,18 @@
       letter-spacing: -0.01em;
     }
     @media (prefers-reduced-motion: reduce) {
-      .hh-visual.hh-five .hh-phone { animation: none; }
+      .hh-visual.hh-six .hh-phone { animation: none; }
     }
     @media (max-width: 960px) {
       .hh-cluster { width: min(100%, 620px); }
-      .hh-visual.hh-five { aspect-ratio: 1 / 0.72; }
+      .hh-visual.hh-six { aspect-ratio: 1 / 0.6; }
       /* Stacked hero: caption sits above the phones so it is on screen with them. */
       .hh-tap { order: -1; margin: 0 0 12px; }
     }
     @media (max-width: 560px) {
-      .hh-visual.hh-five .hh-phone { border-radius: 20px; padding: 4px; }
-      .hh-visual.hh-five .hh-phone .phone-screen { border-radius: 16px; }
-      .hh-visual.hh-five .phone-notch { display: none; }
+      .hh-visual.hh-six .hh-phone { border-radius: 20px; padding: 4px; }
+      .hh-visual.hh-six .hh-phone .phone-screen { border-radius: 16px; }
+      .hh-visual.hh-six .phone-notch { display: none; }
     }
     /* Demon Box announcement. It takes the place of the site-wide Quiet Hours
        strip on the home page only, so the strip site.js injects is hidden here. */
@@ -165,15 +198,15 @@
       .db-announce-icon { width: 44px; height: 44px; border-radius: 10px; }
       .db-announce-quote { font-size: 0.98rem; }
     }
-    /* Explore: the two newest apps share the first row. */
-    .explore-card.explore-wide { grid-column: span 2; }
+    /* Explore: the three newest apps share the first row. On the two-column
+       tablet grid, Demon Box spans the row so the nine cards stay even. */
     @media (max-width: 900px) {
       .explore-card.explore-wide-tablet { grid-column: span 2; }
     }
     @media (max-width: 560px) {
-      .explore-card.explore-wide,
       .explore-card.explore-wide-tablet { grid-column: auto; }
     }
+    .explore-card h3 .soon-tag { vertical-align: 3px; }
   </style>
 </head>
 <body class="home">
@@ -199,6 +232,7 @@
               <a href="spirit-detector.html">Spirit Detector</a>
               <a href="spirit-vision.html">Spirit Vision</a>
               <a href="gridsight.html">GridSight</a>
+              <a href="demon-box.html">Demon Box<span class="soon-tag soon-tag-sm">Coming soon</span></a>
               <a href="apps.html" class="nav-drop-all">All apps</a>
             </div>
           </details>
@@ -222,7 +256,7 @@
         <blockquote class="db-announce-quote">
           <p>And lead us not into temptation,<br />But deliver us from evil.</p>
         </blockquote>
-        <p class="db-announce-copy"><a href="apps.html#demon-box">GhostLab: Demon Box</a> is coming soon to the App Store and Google Play. <span class="db-announce-tag">Uncover the darkness.</span></p>
+        <p class="db-announce-copy"><a href="demon-box.html">GhostLab: Demon Box</a> is coming soon to the App Store and Google Play. <span class="db-announce-tag">Uncover the darkness.</span></p>
       </div>
     </aside>
 
@@ -261,7 +295,7 @@
         </div>
 
         <div class="hh-cluster">
-          <div class="hh-visual hh-five reveal" style="transition-delay:0.12s">
+          <div class="hh-visual hh-six reveal" style="transition-delay:0.12s">
             <div class="phone-glow" aria-hidden="true"></div>
             <a class="phone hh-phone hh-phone-1" href="modes.html" aria-label="GhostLab: Paranormal Toolkit">
               <div class="phone-notch" aria-hidden="true"></div>
@@ -274,17 +308,23 @@
                 <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" decoding="async" />
               </div>
             </a>
-            <a class="phone hh-phone hh-phone-3" href="spirit-vision.html" aria-label="GhostLab: Spirit Vision">
+            <a class="phone hh-phone hh-phone-3 hh-phone-db" href="demon-box.html" aria-label="GhostLab: Demon Box, coming soon">
+              <div class="phone-screen">
+                <img src="assets/demonbox/screen.webp?v=20261118-db" alt="A Demon Box hunt: the words BEHIND YOU inside a ring of runes, tagged MAG +18 µT, with the live EMF meter and an Edit and share button below" width="620" height="1347" decoding="async" />
+              </div>
+              <span class="soon-tag" aria-hidden="true"><span class="dot"></span><span class="soon-tag-long">Coming</span>soon</span>
+            </a>
+            <a class="phone hh-phone hh-phone-4" href="spirit-vision.html" aria-label="GhostLab: Spirit Vision">
               <div class="phone-screen">
                 <img src="assets/spiritvision/screen.webp?v=20261106-sv" alt="A Spirit Vision session: a generated image of an old tape deck on a carpet rises out of black smoke, with the session clock and a Stop button below" width="620" height="1347" decoding="async" />
               </div>
             </a>
-            <a class="phone hh-phone hh-phone-4" href="spirit-detector.html" aria-label="GhostLab: Spirit Detector">
+            <a class="phone hh-phone hh-phone-5" href="spirit-detector.html" aria-label="GhostLab: Spirit Detector">
               <div class="phone-screen">
                 <img src="assets/spiritdetector/home.webp?v=20261116p" alt="Spirit Detector home screen: a standing figure drawn in green dots above the name, a Scanner Online status and a Start scanning button" width="923" height="2000" decoding="async" />
               </div>
             </a>
-            <a class="phone hh-phone hh-phone-5" href="gridsight.html" aria-label="GhostLab: GridSight">
+            <a class="phone hh-phone hh-phone-6" href="gridsight.html" aria-label="GhostLab: GridSight">
               <div class="phone-screen">
                 <img src="assets/gridsight/screen.webp?v=20261106-gs" alt="GridSight: rows of colored dots above the Virtual grid and Watch physical grid switch, a Start monitoring button and an event log of three breaks" width="620" height="1327" decoding="async" />
               </div>
@@ -357,13 +397,19 @@
           <p>Deep dives on each pillar - short path from “what is this?” to “I’m installing it.”</p>
         </div>
         <div class="explore-grid">
-          <a class="explore-card explore-wide reveal" href="spirit-vision.html">
+          <a class="explore-card explore-wide-tablet reveal" href="demon-box.html">
+            <span class="kicker">New app · Spirit box</span>
+            <h3>Demon Box<span class="soon-tag soon-tag-sm">Coming soon</span></h3>
+            <p>Ask your question out loud and watch words rise inside a ring of runes as they are spoken back to you. You decide what they mean.</p>
+            <span class="go">Meet Demon Box →</span>
+          </a>
+          <a class="explore-card reveal" href="spirit-vision.html">
             <span class="kicker">New app · AI visions</span>
             <h3>Spirit Vision</h3>
             <p>An experimental, AI-powered investigative tool that uses AI to generate images from your sensors. What each image means is yours to decide.</p>
             <span class="go">Meet Spirit Vision →</span>
           </a>
-          <a class="explore-card explore-wide-tablet reveal" href="gridsight.html">
+          <a class="explore-card reveal" href="gridsight.html">
             <span class="kicker">New app · Grid</span>
             <h3>GridSight</h3>
             <p>A grid of dots over your room that logs a break whenever something interrupts it. iPhone and Android.</p>
@@ -541,6 +587,7 @@
             <li><a href="dead-channel.html">Dead Channel</a></li>
             <li><a href="spirit-vision.html">Spirit Vision</a></li>
             <li><a href="gridsight.html">GridSight</a></li>
+            <li><a href="demon-box.html">Demon Box</a><span class="soon-tag soon-tag-sm">Coming soon</span></li>
             <li><a href="modes.html#tools">Tools</a></li>
             <li><a href="modes.html#pro">GhostLab Pro</a></li>
           </ul>
