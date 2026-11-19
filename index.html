@@ -80,7 +80,7 @@
     }
     .hh-visual.hh-six .hh-phone .phone-screen { border-radius: 24px; }
     /* Phone 3 (Demon Box) gets a wider step than the others so its ring
-       and the Coming soon tag clear the Dead Channel phone. */
+       and the status tag clear the Dead Channel phone. */
     .hh-visual.hh-six .hh-phone-1 { --w: 24%; --l: 0%; --z: 6; --y: -50%; --r: -2deg; --t: 7s; }
     .hh-visual.hh-six .hh-phone-2 { --w: 22%; --l: 15.5%; --z: 5; --y: -50%; --r: 0deg; --t: 8.5s; }
     .hh-visual.hh-six .hh-phone-3 { --w: 21%; --l: 33.5%; --z: 4; --y: -51%; --r: 2deg; --t: 9.5s; }
@@ -120,27 +120,42 @@
         0 0 42px rgba(242, 71, 89, 0.42),
         inset 0 1px 0 rgba(255, 255, 255, 0.18);
     }
-    /* Coming soon on the Demon Box phone. Phone 2 covers the left of this
+    /* Status on the Demon Box phone. Phone 2 covers the left of this
        phone, so the tag sits in the visible right part of the screen and
-       scales with the width of the phone group (cqi). Narrow groups show
-       only "Soon" so the tag never slips under the Dead Channel phone. */
+       scales with the width of the phone group (cqi). Wide groups show
+       the full "Now on iOS · Android coming soon!" and wrap it inside that
+       visible strip. Narrow groups show "Now on iOS". */
     .hh-visual.hh-six { container-type: inline-size; }
     .hh-visual.hh-six .hh-phone-db .soon-tag {
       position: absolute;
       right: 4%;
       bottom: 6.5%;
       z-index: 4;
-      font-size: clamp(7px, 1.3cqi, 9px);
-      gap: 0.55em;
-      padding: 0.45em 0.8em;
-      letter-spacing: 0.06em;
+      max-width: 74%;
+      font-size: clamp(6px, 1.05cqi, 8px);
+      gap: 0.45em;
+      padding: 0.4em 0.55em;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      white-space: normal;
       background: rgba(30, 6, 10, 0.88);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     }
     .hh-visual.hh-six .hh-phone-db .soon-tag .dot { width: 0.55em; height: 0.55em; }
+    .hh-visual.hh-six .hh-phone-db .soon-tag-long,
+    .hh-visual.hh-six .hh-phone-db .soon-tag-short { min-width: 0; }
+    .hh-visual.hh-six .hh-phone-db .soon-tag-short { display: none; }
     @container (max-width: 560px) {
-      .hh-visual.hh-six .hh-phone-db .soon-tag { bottom: 5%; }
+      .hh-visual.hh-six .hh-phone-db .soon-tag {
+        bottom: 5%;
+        max-width: 76%;
+        white-space: nowrap;
+        font-size: clamp(5px, 1.5cqi, 8px);
+        letter-spacing: 0.03em;
+        padding: 0.35em 0.45em;
+      }
       .hh-visual.hh-six .hh-phone-db .soon-tag-long { display: none; }
+      .hh-visual.hh-six .hh-phone-db .soon-tag-short { display: inline; }
     }
     .hh-tap {
       margin: 18px 0 0;
@@ -232,7 +247,7 @@
               <a href="spirit-detector.html">Spirit Detector</a>
               <a href="spirit-vision.html">Spirit Vision</a>
               <a href="gridsight.html">GridSight</a>
-              <a href="demon-box.html">Demon Box<span class="soon-tag soon-tag-sm">Coming soon</span></a>
+              <a href="demon-box.html">Demon Box<span class="soon-tag soon-tag-sm">Now on iOS · Android coming soon!</span></a>
               <a href="apps.html" class="nav-drop-all">All apps</a>
             </div>
           </details>
@@ -249,14 +264,14 @@
       </div>
     </header>
 
-    <!-- Upcoming app announcement, in the spot the Quiet Hours strip had on this page -->
-    <aside class="quiet-banner db-announce" aria-label="Coming soon: GhostLab: Demon Box">
+    <!-- Demon Box is on the App Store. Android is still coming soon. Same spot the Quiet Hours strip had on this page. -->
+    <aside class="quiet-banner db-announce" aria-label="Now on iOS: GhostLab: Demon Box. Android coming soon">
       <img class="db-announce-icon" src="assets/sphere/demonbox.png?v=20261116-demonbox" width="56" height="56" alt="" />
       <div class="quiet-banner-text">
         <blockquote class="db-announce-quote">
           <p>And lead us not into temptation,<br />But deliver us from evil.</p>
         </blockquote>
-        <p class="db-announce-copy"><a href="demon-box.html">GhostLab: Demon Box</a> is coming soon to the App Store and Google Play. <span class="db-announce-tag">Uncover the darkness.</span></p>
+        <p class="db-announce-copy"><a href="demon-box.html">GhostLab: Demon Box</a> is now on the App Store for iPhone and iPad. Android coming soon. <span class="db-announce-tag">Uncover the darkness.</span></p>
       </div>
     </aside>
 
@@ -308,11 +323,11 @@
                 <img src="assets/deadchannel/session.webp?v=20261002-cache" alt="A Dead Channel session seven seconds in: the red Stop button with the session clock, Echo, Reverb and White noise buttons, and the Sweep rate slider from slow to fast" width="923" height="2000" decoding="async" />
               </div>
             </a>
-            <a class="phone hh-phone hh-phone-3 hh-phone-db" href="demon-box.html" aria-label="GhostLab: Demon Box, coming soon">
+            <a class="phone hh-phone hh-phone-3 hh-phone-db" href="demon-box.html" aria-label="GhostLab: Demon Box, now on iOS. Android coming soon">
               <div class="phone-screen">
                 <img src="assets/demonbox/screen.webp?v=20261118-db" alt="A Demon Box hunt: the words BEHIND YOU inside a ring of runes, tagged MAG +18 µT, with the live EMF meter and an Edit and share button below" width="620" height="1347" decoding="async" />
               </div>
-              <span class="soon-tag" aria-hidden="true"><span class="dot"></span><span class="soon-tag-long">Coming</span>soon</span>
+              <span class="soon-tag" aria-hidden="true"><span class="dot"></span><span class="soon-tag-long">Now on iOS · Android coming soon!</span><span class="soon-tag-short">Now on iOS</span></span>
             </a>
             <a class="phone hh-phone hh-phone-4" href="spirit-vision.html" aria-label="GhostLab: Spirit Vision">
               <div class="phone-screen">
@@ -399,7 +414,7 @@
         <div class="explore-grid">
           <a class="explore-card explore-wide-tablet reveal" href="demon-box.html">
             <span class="kicker">New app · Spirit box</span>
-            <h3>Demon Box<span class="soon-tag soon-tag-sm">Coming soon</span></h3>
+            <h3>Demon Box<span class="soon-tag soon-tag-sm">Now on iOS · Android coming soon!</span></h3>
             <p>Ask your question out loud and watch words rise inside a ring of runes as they are spoken back to you. You decide what they mean.</p>
             <span class="go">Meet Demon Box →</span>
           </a>
@@ -587,7 +602,7 @@
             <li><a href="dead-channel.html">Dead Channel</a></li>
             <li><a href="spirit-vision.html">Spirit Vision</a></li>
             <li><a href="gridsight.html">GridSight</a></li>
-            <li><a href="demon-box.html">Demon Box</a><span class="soon-tag soon-tag-sm">Coming soon</span></li>
+            <li><a href="demon-box.html">Demon Box</a><span class="soon-tag soon-tag-sm">Now on iOS · Android coming soon!</span></li>
             <li><a href="modes.html#tools">Tools</a></li>
             <li><a href="modes.html#pro">GhostLab Pro</a></li>
           </ul>
