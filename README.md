@@ -10,14 +10,14 @@ Public marketing site for **GhostLab** (iPhone, iPad, and Android paranormal inv
 | Path | Purpose |
 |------|---------|
 | `/` | Home |
-| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel, Spirit Vision, GridSight), plus Demon Box as coming soon (`#demon-box`, no store links yet, links to `/demon-box.html`) |
+| `/apps.html` | GhostLab apps (Paranormal Toolkit, Spirit Detector, Dead Channel, Spirit Vision, GridSight, Demon Box). Demon Box is on the App Store and Google Play (`#demon-box`, links to `/demon-box.html`) |
 | `/ghostlab-vs-ghosttube.html` | Comparison: GhostLab vs GhostTube |
 | `/spirit-box-apps.html` | Spirit box apps compared (EchoVox, Spirit Talker, GhostTube, Dead Channel, Toolkit) |
 | `/quiet-hours.html` | The Quiet Hours: map it, ask it, keep it |
 | `/halloween-ghost-hunt.html` | Taken down 2026-11-16; redirects to the home page |
 | `/spirit-vision.html` | GhostLab: Spirit Vision (App Store only until Android is live on Play) |
 | `/gridsight.html` | GhostLab: GridSight (App Store and Google Play) |
-| `/demon-box.html` | GhostLab: Demon Box, marked Coming soon with no store links until both stores approve it (then swap the tags for badges marked `data-store-keep`) |
+| `/demon-box.html` | GhostLab: Demon Box (App Store and Google Play). Store badges use `data-store-keep`. |
 | `/spirit-detector.html` | GhostLab: Spirit Detector (LiDAR app). Replaced Team PTT; `/team.html` now redirects here |
 | `/dead-channel.html` | GhostLab: Dead Channel (spirit box app). Replaced Gallery; `/gallery.html` now redirects here |
 | `/modes.html` | Capture modes (free vs Pro) |

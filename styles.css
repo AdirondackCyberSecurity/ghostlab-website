@@ -502,53 +502,6 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.45; transform: scale(0.75); }
     }
-    /* Demon Box status pill, in the app's red. Used on the home hero phone,
-       the Demon Box page, the Explore card, the Apps menu and the footers.
-       The label is longer than "Coming soon", so it may wrap. */
-    .soon-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      max-width: 100%;
-      font-size: 0.75rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: normal;
-      color: #ff8793;
-      background: rgba(242, 71, 89, 0.14);
-      border: 1px solid rgba(242, 71, 89, 0.42);
-      border-radius: 999px;
-      padding: 6px 12px;
-    }
-    .soon-tag .dot {
-      flex: 0 0 auto;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #f24759;
-      box-shadow: 0 0 10px #f24759;
-      animation: pulse-dot 1.8s ease-in-out infinite;
-    }
-    /* Small version beside a link in the Apps menu and the footers.
-       Tighter tracking, and the menu link may wrap, so the longer
-       status stays inside the dropdown and the phone menu. */
-    .soon-tag.soon-tag-sm {
-      gap: 0;
-      margin-left: 6px;
-      padding: 2px 7px;
-      font-size: 0.6rem;
-      letter-spacing: 0.02em;
-      line-height: 1.25;
-      vertical-align: 1px;
-      max-width: 100%;
-    }
-    .nav-drop-panel a:has(.soon-tag) { white-space: normal; }
-    @media (prefers-reduced-motion: reduce) {
-      .soon-tag .dot { animation: none; }
-    }
-
     /* Hero eyebrow + social row */
     .hero-eyebrow-row {
       display: flex;
