@@ -30,7 +30,7 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Demon Box Privacy Policy</h1>
-<p class="updated">Effective date: November 16, 2026 · Applies to the iOS and Android apps “GhostLab: Demon Box”</p>
+<p class="updated">Effective date: November 20, 2026 · Applies to the iOS and Android apps “GhostLab: Demon Box”</p>
 
 <p>GhostLab: Demon Box is a paranormal investigative tool. During a hunt it records the room, reads
 your phone’s sensors and shows words in a ring of runes, and voices on your phone speak them aloud.
@@ -47,7 +47,7 @@ Google Analytics for Firebase, described under <a href="#usage-statistics">Usage
   <li><strong>Speech recognition runs only on your phone.</strong> If your phone cannot recognize speech on the device, listening stays off.</li>
   <li><strong>Location is your choice.</strong> When you allow it, each hunt saves where it was recorded, and your phone’s map service is asked what kind of place you are in. See <a href="#location">Location</a>.</li>
   <li><strong>The camera is never used.</strong></li>
-  <li><strong>One purchase.</strong> Demon Box is a paid download with no in-app purchases.</li>
+  <li><strong>One unlock.</strong> Demon Box is a free download. The first 15 words in your hunts are free, and one purchase in the App Store or Google Play unlocks it for good. See <a href="#purchases">Purchases</a>.</li>
 </ul>
 
 <h2>The microphone</h2>
@@ -112,7 +112,10 @@ they stop.</p>
       it ran and roughly how many words were spoken in it (as a range, never the words), opening the
       share sheet and the kind of item (a clip, a recording, the hunt’s text or a backup), the app you
       shared to when it is a well-known one such as TikTok or YouTube, opening the Guide, the voice and
-      the language pack you pick, and when the app asks your phone to show the rating card.</li>
+      the language pack you pick, when the app asks your phone to show the rating card, opening the
+      unlock screen and where you opened it from, using your last free word, and buying the unlock.</li>
+  <li>When the unlock is bought, Firebase also notes the purchase itself: the product, its price and
+      the currency. It never receives your payment details or your Apple or Google account.</li>
   <li>An app-instance identifier that Firebase creates for Demon Box on your phone. It is not linked to
       your name, your Apple or Google account, or your phone’s advertising identifier. It resets if you
       delete the app, or on Android if you clear its data.</li>
@@ -171,11 +174,18 @@ Instagram, TikTok or YouTube first saves it to your Photos library, which the ap
 for, and then opens that app so you can post it. Once something leaves Demon Box, the app or person
 you shared it with decides what happens to it.</p>
 
-<h2>Purchases</h2>
-<p>Demon Box is a one-time paid download from the App Store or Google Play. It has no in-app
-purchases, no trial and no subscription, and the app does not contact the store about purchases.
-Apple or Google handles the payment, and we receive no payment details and nothing that identifies
-you.</p>
+<h2 id="purchases">Purchases</h2>
+<p>Demon Box is a free download. The first 15 words in your hunts are free. After that, starting a
+hunt needs the one-time unlock, bought in the App Store or Google Play. There is no subscription and
+no ads, and the Library stays open whether or not you buy. If you bought Demon Box on the App Store
+when it was a paid download, you keep everything without buying again.</p>
+<p>Apple or Google handles the payment, and we receive no payment details and nothing that identifies
+you. The app asks the store on your phone whether the unlock is owned, so it can open Demon Box and
+bring the unlock back with Restore Purchase.</p>
+<p>So that deleting and reinstalling the app does not start the free words again, the app keeps the
+count of free words used on your phone: on iPhone in the Keychain, and on Android in the app's own
+storage with a copy in Google's Block Store, which Android keeps with your Google account's backup.
+The count holds only a number.</p>
 
 <h2>Ratings</h2>
 <p>Now and then Demon Box may show Apple’s or Google’s own rating card. Apple or Google handles your
