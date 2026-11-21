@@ -30,16 +30,20 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Spirit Detector Privacy Policy</h1>
-<p class="updated">Effective date: November 16, 2026 · Applies to the iOS app “GhostLab: Spirit Detector”</p>
+<p class="updated">Effective date: November 21, 2026 · Applies to the iOS app “GhostLab: Spirit Detector”</p>
 
 <p>GhostLab: Spirit Detector draws what the LiDAR scanner on iPhone Pro and iPad Pro measures,
 as points of light and as a wire model of the room. It has no user accounts and no servers of our
 own. It counts how the app is used through Google Analytics for Firebase, described under
-<a href="#usage-statistics">Usage statistics</a>, and never sends your scans, recordings or rooms.</p>
+<a href="#usage-statistics">Usage statistics</a>, sends a report if it crashes, described under
+<a href="#crash-reports">Crash reports</a>, and never sends your scans, recordings or rooms.</p>
 
 <h2>Summary</h2>
 <ul>
   <li><strong>Usage statistics.</strong> The app counts how it is used through Google Analytics for Firebase. It never sends your scans, snapshots, recordings, sound, rooms or location, and it sends nothing in the European Economic Area, the United Kingdom or Switzerland.</li>
+  <li><strong>Crash reports.</strong> If the app crashes, a technical report of what the app’s code was doing
+      goes to Firebase Crashlytics so we can fix it. Like the usage statistics, it is never sent from the
+      European Economic Area, the United Kingdom, or Switzerland.</li>
   <li><strong>The camera measures the room.</strong> When you record, the app also keeps the camera video beside the scan, on your device.</li>
   <li><strong>The microphone is used only while you record,</strong> so the recording has sound. You can turn sound off in the scan settings.</li>
   <li><strong>Your location is never used.</strong></li>
@@ -116,17 +120,28 @@ unlock screen.</p>
 <p>In the European Economic Area, the United Kingdom, and Switzerland, the app does not send usage statistics.</p>
 <p>Google processes this information for us as a service provider. We have turned off Google’s options to use it for its own products or for advertising, and we do not link it to Google Ads. The recorded actions are kept for 2 months, and the identifier until 2 months after you last use the app. Then Google deletes them automatically. See also <a href="data-deletion.html">Data Deletion Requests</a>.</p>
 
+<h2 id="crash-reports">Crash reports</h2>
+<p>GhostLab: Spirit Detector uses <a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> on iPhone and iPad so we can find and fix crashes. When the app crashes, it saves a report on your device and sends it the next time you open the app. A report contains:</p>
+<ul>
+  <li>Where in the app’s code the crash happened, and what the app was doing at that moment.</li>
+  <li>Device and app details at the time: device model, iOS or iPadOS version, app version, free memory and storage, whether the app was in the foreground, and whether the device is jailbroken.</li>
+  <li>The last few app actions counted in usage statistics, from the same list described above.</li>
+  <li>An installation identifier that Crashlytics creates for the app on your device, used to tell how many people a crash affects. It is not linked to your name, your Apple Account, or your device’s advertising identifier, and it resets if you delete the app.</li>
+</ul>
+<p>Crash reports never include LiDAR readings, points or rooms, the camera picture, sound, your snapshots, recordings or clips, anything you type, or your location. Rarely, an error message in a report can include the name of a file the app was opening when it crashed.</p>
+<p>Crash reports follow the same rule as the usage statistics: they start switched off every time the app opens, turn on only after the same country check, and are never sent from the European Economic Area, the United Kingdom, or Switzerland. A report that hasn’t been sent yet waits on your device until a later launch passes the check, and is deleted if the check turns crash reports off while the app is open. Google processes crash reports for us as a service provider and deletes them automatically after 90 days.</p>
+
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell personal data.</li>
-  <li>We do not run advertising SDKs or trackers. The app’s only analytics is the usage statistics described above.</li>
+  <li>We do not run advertising SDKs or trackers. The app’s only analytics are the usage statistics and crash reports described above.</li>
   <li>We do not upload your scans, snapshots, or recordings.</li>
   <li>We do not use your location, and the app records sound only into your own recordings.</li>
 </ul>
 
 <h2>Children</h2>
 <p>The app carries the age rating shown on its App Store page. We do not knowingly collect
-personal information from children. The app’s usage statistics are described above.</p>
+personal information from children. The app’s usage statistics and crash reports are described above.</p>
 
 <h2>Changes</h2>
 <p>If our practices change, we will update this page and the effective date above before the
