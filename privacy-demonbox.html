@@ -30,17 +30,21 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Demon Box Privacy Policy</h1>
-<p class="updated">Effective date: November 20, 2026 · Applies to the iOS and Android apps “GhostLab: Demon Box”</p>
+<p class="updated">Effective date: November 21, 2026 · Applies to the iOS and Android apps “GhostLab: Demon Box”</p>
 
 <p>GhostLab: Demon Box is a paranormal investigative tool. During a hunt it records the room, reads
 your phone’s sensors and shows words in a ring of runes, and voices on your phone speak them aloud.
 You decide what the words mean. Demon Box has no accounts, no ads and no servers of our own. Your
 hunts stay on your phone unless you choose to share them. The app counts how it is used through
-Google Analytics for Firebase, described under <a href="#usage-statistics">Usage statistics</a>.</p>
+Google Analytics for Firebase, described under <a href="#usage-statistics">Usage statistics</a>, and sends a
+report if it crashes, described under <a href="#crash-reports">Crash reports</a>.</p>
 
 <h2>Summary</h2>
 <ul>
-  <li><strong>Usage statistics.</strong> The app counts how it is used through Google Analytics for Firebase. It never sends your recordings, the words in your hunts, anything you say or type, your name, or your GPS location. In the European Economic Area, the United Kingdom, and Switzerland it sends none at all. There is no crash reporting service, no advertising and no tracking.</li>
+  <li><strong>Usage statistics.</strong> The app counts how it is used through Google Analytics for Firebase. It never sends your recordings, the words in your hunts, anything you say or type, your name, or your GPS location. In the European Economic Area, the United Kingdom, and Switzerland it sends none at all. There is no advertising and no tracking.</li>
+  <li><strong>Crash reports.</strong> If the app crashes, a technical report of what the app’s code was doing
+      goes to Firebase Crashlytics so we can fix it. Like the usage statistics, it is never sent from the
+      European Economic Area, the United Kingdom, or Switzerland.</li>
   <li><strong>No accounts and no sign-in.</strong></li>
   <li><strong>Your hunts stay on your phone.</strong> Recordings, word logs and sensor readings leave the app only when you share them or make a backup.</li>
   <li><strong>The microphone records the room during a hunt.</strong></li>
@@ -138,6 +142,17 @@ The recorded actions are kept for 2 months, and the identifier until 2 months af
 the app. Then Google deletes them automatically. See <a href="data-deletion.html">Data deletion</a>
 for what that means for a deletion request.</p>
 
+<h2 id="crash-reports">Crash reports</h2>
+<p>GhostLab: Demon Box uses <a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> on iPhone and Android so we can find and fix crashes. When the app crashes, it saves a report on your phone and sends it the next time you open the app. A report contains:</p>
+<ul>
+  <li>Where in the app’s code the crash happened, and what the app was doing at that moment.</li>
+  <li>Phone and app details at the time: phone model, iOS or Android version, app version, free memory and storage, whether the app was in the foreground, and whether the phone is jailbroken or rooted.</li>
+  <li>The last few app actions counted in usage statistics, from the same list described above.</li>
+  <li>An installation identifier that Crashlytics creates for the app on your phone, used to tell how many people a crash affects. It is not linked to your name, your Apple or Google account, or your phone’s advertising identifier, and it resets if you delete the app, or on Android if you clear its data.</li>
+</ul>
+<p>Crash reports never include your recordings or clips, the words shown or spoken in a hunt, the questions you ask, the name you say aloud, your custom words, anything you type, or your location. Rarely, an error message in a report can include the name of a file the app was opening when it crashed.</p>
+<p>Crash reports follow the same rule as the usage statistics: they start switched off every time the app opens, turn on only after the same country check, and are never sent from the European Economic Area, the United Kingdom, or Switzerland. A report that hasn’t been sent yet waits on your phone until a later launch passes the check, and is deleted if the check turns crash reports off while the app is open. Google processes crash reports for us as a service provider and deletes them automatically after 90 days.</p>
+
 <h2>Data the app keeps on your device</h2>
 <ul>
   <li><strong>Hunts:</strong> the recording; the log of words, marks and the questions it heard; the
@@ -193,7 +208,8 @@ rating. On Android, Settings also has a link that opens Demon Box on Google Play
 
 <h2>Internet use</h2>
 <p>Demon Box has no servers of its own. Apart from the usage statistics described under
-<a href="#usage-statistics">Usage statistics</a>, the place lookup described under
+<a href="#usage-statistics">Usage statistics</a>, the crash reports described under
+<a href="#crash-reports">Crash reports</a>, the place lookup described under
 <a href="#location">Location</a> and the stores’ own rating cards, the app does not go online.
 Links in Settings, such as this policy, open in your browser. The Android app lists Android’s
 internet permission because a part it shares with the GhostLab Toolkit needs that permission to
@@ -202,7 +218,7 @@ start. Demon Box does not use it to send your hunts, recordings or settings anyw
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell personal data.</li>
-  <li>We do not run advertising or tracking tools in the app. The app’s only analytics is the usage statistics described above.</li>
+  <li>We do not run advertising or tracking tools in the app. The app’s only analytics are the usage statistics and crash reports described above.</li>
   <li>We do not upload your hunts, recordings, words, questions or location.</li>
   <li>We do not ask you to sign up or give an email address.</li>
 </ul>
@@ -210,7 +226,7 @@ start. Demon Box does not use it to send your hunts, recordings or settings anyw
 <h2>Children</h2>
 <p>The app carries the age rating shown on its App Store and Google Play pages. We do not knowingly
 collect personal information from children, and the app collects no personal information from
-anyone. The app’s usage statistics are described above.</p>
+anyone. The app’s usage statistics and crash reports are described above.</p>
 
 <h2>Changes</h2>
 <p>If our practices change, we will update this page and the effective date above before the
