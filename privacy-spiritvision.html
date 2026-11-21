@@ -30,7 +30,7 @@
 
 <p style="margin:0 0 1rem"><a href="index.html">← GhostLab home</a> · <a href="support.html">Support</a></p>
 <h1>GhostLab: Spirit Vision Privacy Policy</h1>
-<p class="updated">Effective date: November 12, 2026 · Applies to the iOS and Android apps “GhostLab: Spirit Vision”</p>
+<p class="updated">Effective date: November 21, 2026 · Applies to the iOS and Android apps “GhostLab: Spirit Vision”</p>
 
 <p>Spirit Vision is an experimental, AI-powered investigative tool. To generate an image during a
 session, it sends a text summary of the moment to GhostLab’s server and two outside AI services.
@@ -46,7 +46,7 @@ as well: it says what is different there, including what Google receives.</p>
   <li><strong>During a session, text goes to AI services.</strong> Sensor changes, the names of sounds, whether you seem to be in a car, indoors or outdoors, the place you chose, your local time and a short memory of the session go to Anthropic, and an image description goes to Runware.</li>
   <li><strong>GhostLab keeps very little of what is sent.</strong> Your sound names, sensor changes, chosen place, local time and the written memory of the session pass through our server and are never written to its storage. Our server stores your time zone offset with your daily count, and its service logs, kept for up to 7 days, note how often the sensors were firing, whether you seemed to be in a car, indoors or outdoors, and the kind of vision with a one-word label.</li>
   <li><strong>The camera is never used, and the location your phone reads stays on your phone.</strong> During a session the app uses it to tell whether you seem to be in a car, indoors or outdoors, and only that one word is sent.</li>
-  <li><strong>No third-party ads and no tracking.</strong> We do not sell personal data. On iPhone and Android, the app counts how it is used through Google Analytics for Firebase, described under <a href="#usage-statistics">Usage statistics</a>. It never sends anything from a session.</li>
+  <li><strong>No third-party ads and no tracking.</strong> We do not sell personal data. On iPhone and Android, the app counts how it is used through Google Analytics for Firebase, described under <a href="#usage-statistics">Usage statistics</a>, and sends a report if it crashes, described under <a href="#crash-reports">Crash reports</a>. Neither sends what a session contains.</li>
   <li><strong>No sign-in.</strong> The app uses a random account number that names nobody.</li>
 </ul>
 
@@ -212,6 +212,18 @@ turned off Google’s options to use it for its own products or for advertising,
 Google Ads. The recorded actions are kept for 2 months, and the identifier until 2 months after you last
 use the app. Then Google deletes them automatically.</p>
 
+<h2 id="crash-reports">Crash reports</h2>
+<p>Spirit Vision uses <a href="https://firebase.google.com/support/privacy">Firebase Crashlytics</a> on iPhone and Android so we can find and fix crashes. When the app crashes, it saves a report on your phone and sends it the next time you open the app. A report contains:</p>
+<ul>
+  <li>Where in the app’s code the crash happened, and what the app was doing at that moment.</li>
+  <li>Phone and app details at the time: phone model, iOS or Android version, app version, free memory and storage, whether the app was in the foreground, and whether the phone is jailbroken or rooted.</li>
+  <li>The last few app actions counted in usage statistics, from the same list described above.</li>
+  <li>An installation identifier that Crashlytics creates for the app on your phone, used to tell how many people a crash affects. It is not linked to your name, your Apple or Google account, or your phone’s advertising identifier, and it resets if you delete the app, or on Android if you clear its storage.</li>
+</ul>
+<p>Crash reports never include what a session contains: sensor readings, sound names, the car, indoors or outdoors word, your local time, visions or their pictures, your recordings or snapshots, reports, your account number, anything you type, or your location. Like the usage statistics, the recent actions in a report can show that a session was started and the place you chose, but nothing from inside it. Rarely, an error message in a report can include the name of a file the app was opening when it crashed.</p>
+<p>Crash reports follow the same rule as the usage statistics: they start switched off every time the app opens, turn on only after the same country check, and are never sent from the European Economic Area, the United Kingdom, or Switzerland. A report that hasn’t been sent yet waits on your phone until a later launch passes the check, and is deleted if the check turns crash reports off while the app is open. Google processes crash reports for us as a service provider and deletes them automatically after 90 days.</p>
+<p>Like the usage statistics, crash reports carry no name, email address, order number or account number, so we have no way to find yours on request, and Delete my data does not reach them.</p>
+
 <h2 id="android">On Android</h2>
 <p>The Android app sends the same session summary to the same services, under the same permission, and
 everything above applies to it, except for the differences below. Where this page mentions your
@@ -234,7 +246,7 @@ iPhone, read your Android phone.</p>
       Google Play’s rating card, all through Google Play services on your phone. Google handles what
       passes through them under the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
       The rating card doesn’t tell the app whether anyone rated it, and a rating or review left on Google Play
-      shows there like any other Play review. No session summary goes to Google. The usage statistics described under <a href="#usage-statistics">Usage statistics</a> go to Google Analytics for Firebase.</li>
+      shows there like any other Play review. No session summary goes to Google. The usage statistics described under <a href="#usage-statistics">Usage statistics</a> go to Google Analytics for Firebase, and the crash reports described under <a href="#crash-reports">Crash reports</a> go to Firebase Crashlytics.</li>
   <li><strong>Usage statistics.</strong> The Android app sends the usage statistics described under <a href="#usage-statistics">Usage statistics</a>. Its identifier also resets if you clear the app’s storage. It does not collect the Android advertising ID: the permission is removed from the app and collection is switched off.</li>
   <li><strong>What is sent outside a session.</strong> The app contacts our server when it starts or comes
       to the front and each time a session starts, with your account number, your key’s signature, your
@@ -273,7 +285,7 @@ iPhone, read your Android phone.</p>
 <h2>What we do not do</h2>
 <ul>
   <li>We do not sell personal data.</li>
-  <li>We do not run advertising SDKs or trackers. The app’s only analytics is the usage statistics described under <a href="#usage-statistics">Usage statistics</a>.</li>
+  <li>We do not run advertising SDKs or trackers. The app’s only analytics are the usage statistics and crash reports described under <a href="#usage-statistics">Usage statistics</a> and <a href="#crash-reports">Crash reports</a>.</li>
   <li>We do not upload your audio, recordings or snapshots.</li>
   <li>We do not use the camera, and the location your phone reads never leaves it. Your IP address and time zone offset can still show a rough area, as described under Who receives it.</li>
 </ul>
