@@ -143,39 +143,59 @@
       .hh-visual.hh-six .hh-phone .phone-screen { border-radius: 16px; }
       .hh-visual.hh-six .phone-notch { display: none; }
     }
-    /* Demon Box announcement. It takes the place of the site-wide Quiet Hours
-       strip on the home page only, so the strip site.js injects is hidden here. */
-    body.home .quiet-banner:not(.db-announce) { display: none; }
-    .quiet-banner.db-announce {
+    /* Holiday look announcement for the Toolkit, in the holiday palette:
+       deep green, cranberry red, candle gold. It takes the place of the
+       site-wide Quiet Hours strip on the home page only, so the strip site.js
+       injects is hidden here. */
+    body.home .quiet-banner:not(.yule-announce) { display: none; }
+    .quiet-banner.yule-announce {
       gap: 16px;
       padding: 14px 18px;
-      border-color: rgba(242, 71, 89, 0.45);
-      background: linear-gradient(90deg, rgba(242, 71, 89, 0.16), rgba(242, 71, 89, 0.05));
+      border-color: rgba(232, 193, 106, 0.5);
+      background: linear-gradient(90deg, rgba(24, 92, 60, 0.5), rgba(16, 60, 42, 0.32) 55%, rgba(150, 28, 52, 0.26));
     }
-    .db-announce-icon {
+    .yule-announce-icon {
       flex: 0 0 auto;
       width: 56px;
       height: 56px;
       border-radius: 13px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(232, 193, 106, 0.55);
+      box-shadow: 0 0 18px rgba(232, 193, 106, 0.2);
     }
-    .db-announce-quote {
+    .yule-announce-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 10px;
       margin: 0 0 6px;
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
       font-size: 1.05rem;
       line-height: 1.35;
-      color: var(--text);
+      color: #f3d58a;
     }
-    .db-announce-quote p { margin: 0; }
-    .db-announce-copy { margin: 0; color: rgba(255, 255, 255, 0.78); }
-    .quiet-banner.db-announce a { color: #ff8793; }
-    .quiet-banner.db-announce a:hover { color: var(--text); }
-    .db-announce-tag { color: var(--text); font-weight: 700; white-space: nowrap; }
+    .yule-announce-copy { margin: 0; color: rgba(255, 255, 255, 0.84); }
+    .quiet-banner.yule-announce a { color: #f3d58a; }
+    .quiet-banner.yule-announce a:hover { color: var(--text); }
+    .quiet-banner.yule-announce a:focus-visible { outline-color: #f3d58a; }
+    .yule-announce-setting { color: var(--text); font-weight: 600; }
+    .yule-announce-tag {
+      padding: 1px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 150, 165, 0.35);
+      background: #8c1c32;
+      color: #fff;
+      font-family: var(--font);
+      font-style: normal;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
     @media (max-width: 560px) {
-      .quiet-banner.db-announce { gap: 12px; padding: 12px 14px; }
-      .db-announce-icon { width: 44px; height: 44px; border-radius: 10px; }
-      .db-announce-quote { font-size: 0.98rem; }
+      .quiet-banner.yule-announce { gap: 12px; padding: 12px 14px; }
+      .yule-announce-icon { width: 44px; height: 44px; border-radius: 10px; }
+      .yule-announce-title { font-size: 0.98rem; }
     }
     /* Explore: the three newest apps share the first row. On the two-column
        tablet grid, Demon Box spans the row so the nine cards stay even. */
@@ -227,14 +247,12 @@
       </div>
     </header>
 
-    <!-- Demon Box is on the App Store and Google Play. Same spot the Quiet Hours strip had on this page. -->
-    <aside class="quiet-banner db-announce" aria-label="GhostLab: Demon Box is on the App Store and Google Play">
-      <img class="db-announce-icon" src="assets/sphere/demonbox.png?v=20261116-demonbox" width="56" height="56" alt="" />
+    <!-- Toolkit holiday look, December 1, 2026. Same spot the Quiet Hours strip had on this page. -->
+    <aside class="quiet-banner yule-announce" aria-label="A holiday look for GhostLab: Paranormal Toolkit arrives December 1">
+      <img class="yule-announce-icon" src="assets/yuletide/lantern.webp?v=20261128-yule" width="56" height="56" alt="" />
       <div class="quiet-banner-text">
-        <blockquote class="db-announce-quote">
-          <p>And lead us not into temptation,<br />But deliver us from evil.</p>
-        </blockquote>
-        <p class="db-announce-copy"><a href="demon-box.html">GhostLab: Demon Box</a> is on the App Store and Google Play. <span class="db-announce-tag">Uncover the darkness.</span></p>
+        <p class="yule-announce-title"><span>A holiday look arrives December 1.</span> <span class="yule-announce-tag">Free for everyone.</span></p>
+        <p class="yule-announce-copy"><a href="modes.html">GhostLab: Paranormal Toolkit</a> gets an optional holiday look on iPhone, iPad and Android. Update the app, then turn it on in Settings under <span class="yule-announce-setting">Holiday look</span>.</p>
       </div>
     </aside>
 
